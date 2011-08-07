@@ -1,0 +1,38 @@
+/*
+Sass mixin by Scott Kellum
+  https://github.com/scottkellum/modular-scale
+  @scottkellum
+
+Adapted from modularscale.com by Tim Brown
+  http://modularscale.com/
+  @nicewebtype
+
+related link:
+  http://alistapart.com/articles/more-meaningful-typography/
+
+Additional credit to Robert Bringhurst
+  The Elements of Typographic Style (Chapter 8: Shaping the page)
+*/
+
+
+// Ratios to choose from:
+$golden: 1.618;
+$thirds: 3 / 2;
+$fourths: 4 / 3;
+
+
+// Where the magic happens:
+@mixin modular-scale($attribute, $value, $ratio, $multiple) {
+  $modular-scale: $value;
+  @if $multiple > 0 {}
+  @for $i from 1 through $multiple {
+    $modular-scale: $modular-scale * $ratio; }
+  @if $multiple < 0 {
+    @for $i from 1 through $multiple * -1 {
+      $modular-scale: $modular-scale / $ratio; } }
+  #{$attribute}: $modular-scale; }
+
+
+// Plug in, the attribute, base value, ratio and location on the scale.
+.foo {
+  @include modular-scale(width, 12px, $golden, 3); }

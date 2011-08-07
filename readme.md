@@ -1,5 +1,5 @@
 # Sassy Modular Scale
-## Put down the calculator and let Sass do the work.
+#### Put down the calculator and let Sass do the work.
 
 # How to use
 
@@ -9,20 +9,20 @@
 
 # Credits
 
-## Sass mixin by Scott Kellum
+#### Sass mixin by Scott Kellum
 
 * [https://github.com/scottkellum/modular-scale](https://github.com/scottkellum/modular-scale)
 * [@scottkellum](http://twitter.com/scottkellum)
 
-## Adapted from modularscale.com by Tim Brown
+#### Adapted from modularscale.com by Tim Brown
 
 * [http://modularscale.com/](http://modularscale.com/)
 * [@nicewebtype](http://twitter.com/nicewebtype)
 
-## Related link:
+#### Related link:
 
 * [http://alistapart.com/articles/more-meaningful-typography/](http://alistapart.com/articles/more-meaningful-typography/)
 
-## Additional credit to Robert Bringhurst
+#### Additional credit to Robert Bringhurst
 
 * The Elements of Typographic Style (Chapter 8: Shaping the page)

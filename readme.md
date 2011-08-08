@@ -4,7 +4,7 @@
 # How to use
 
 * First, you need to have Sass installed. Visit [sass-lang.com](http://sass-lang.com)
-* Copy or link the mixin to your project.
+* Copy or link the mixin to your project from the stylesheets directory.
 * Pull in the mixin as needed
   * Sass: +modular-scale(attribute, base-value, scale, location-on-scale)
   * SCSS: @include modular-scale(attribute, base-value, scale, location-on-scale);

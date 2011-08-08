@@ -1,0 +1,30 @@
+// Ratios
+$golden: 1.618 !default
+$octave: (2 / 1) !default
+$major-seventh: (15 / 8) !default
+$minor-seventh: (16 / 9) !default
+$major-sixth: (5 / 3) !default
+$minor-sixth: (8 / 5) !default
+$fifth: (3 / 2) !default
+$fourth: (4 / 3) !default
+$major-third: (5 / 4) !default
+$minor-third: (6 / 5) !default
+$major-second: (9 / 8) !default
+$minor-second: (16 / 15) !default
+
+// Default config
+$multiple: 10 !default
+$property: width !default
+$size: 12px !default
+$ratio: $golden !default
+
+// Modular Scale logic
+=modular-scale($multiple,$property,$size,$ratio)
+  $modular-scale: $size
+  @if $multiple > 0
+    @for $i from 1 through $multiple
+      $modular-scale: $modular-scale * $ratio
+  @if $multiple < 0
+    @for $i from 1 through ($multiple * -1)
+      $modular-scale: $modular-scale / $ratio
+  #{$property}: $modular-scale

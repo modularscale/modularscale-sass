@@ -16,9 +16,9 @@ $minor-second: 16 / 15;
 // Where the magic happens:
 @mixin modular-scale($attribute, $value, $ratio, $multiple) {
   $modular-scale: $value;
-  @if $multiple > 0 {}
-  @for $i from 1 through $multiple {
-    $modular-scale: $modular-scale * $ratio; }
+  @if $multiple > 0 {
+    @for $i from 1 through $multiple {
+      $modular-scale: $modular-scale * $ratio; } }
   @if $multiple < 0 {
     @for $i from 1 through $multiple * -1 {
       $modular-scale: $modular-scale / $ratio; } }

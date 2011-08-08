@@ -9,6 +9,22 @@
   * Sass: +modular-scale(attribute, base-value, scale, location-on-scale)
   * SCSS: @include modular-scale(attribute, base-value, scale, location-on-scale);
 
+# Ratios to choose from:
+
+* $golden: 1.618
+* $octave: 2 / 1
+* $major-seventh: 15 / 8
+* $minor-seventh: 16 / 9
+* $major-sixth: 5 / 3
+* $minor-sixth: 8 / 5
+* $fifth: 3 / 2
+* $fourth: 4 / 3
+* $major-third: 5 / 4
+* $minor-third: 6 / 5
+* $major-second: 9 / 8
+* $minor-second: 16 / 15
+
+
 # Credits
 
 #### Sass mixin by Scott Kellum

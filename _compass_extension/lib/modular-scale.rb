@@ -1,0 +1,1 @@
+Compass::Frameworks.register("modular-scale", :path => "#{File.dirname(__FILE__)}/..")

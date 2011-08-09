@@ -13,8 +13,8 @@ $major-second: (9 / 8)
 $minor-second: (16 / 15)
 
 // Modular Scale logic
-=modular-scale($property,$multiple,$size,$ratio)
-  $modular-scale: $size
+=modular-scale($property,$multiple,$base-size,$ratio)
+  $modular-scale: $base-size
   @if $multiple > 0
     @for $i from 1 through $multiple
       $modular-scale: $modular-scale * $ratio

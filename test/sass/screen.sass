@@ -1,7 +1,26 @@
 @import "../../stylesheets/modular-scale"
 
-.foo
-  +modular-scale(1)
+// Just some coloring so you can see what is going on:
+body
+  background: #333
 
-.bar
-  +modular-scale(0, $ratio: $octave)
+.page
+  background: #fff
+  // Fill in the property, multiple, base size, and ratio:
+  +modular-scale(height, 7, 14px, $golden)
+  +modular-scale(width, 8, 14px, $golden)
+
+p
+  font-size: 14px
+  +modular-scale(line-height, 1, 14px, $golden)
+
+// You can fill in all the variables as shown above, or set up default values:
+$base-size: 14px
+$ratio: $golden
+
+// Now you just need to fill in the property and multiple:
+.page
+  +modular-scale(padding-left, 2)
+  +modular-scale(padding-right, 2)
+  +modular-scale(padding-top, 1)
+  +modular-scale(padding-bottom, 1)

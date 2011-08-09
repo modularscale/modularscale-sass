@@ -1,7 +1,17 @@
-.foo {
-  width: 19.416px;
-}
+body {
+  background: #333333; }
 
-.bar {
-  width: 12px;
-}
+.page {
+  background: white;
+  height: 406.422px;
+  width: 657.591px; }
+
+p {
+  font-size: 14px;
+  line-height: 22.652px; }
+
+.page {
+  padding-left: 36.651px;
+  padding-right: 36.651px;
+  padding-top: 22.652px;
+  padding-bottom: 22.652px; }

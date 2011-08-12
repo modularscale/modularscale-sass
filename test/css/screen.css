@@ -1,17 +1,28 @@
 body {
-  background: #333333; }
+  background: #333333;
+}
 
 .page {
   background: white;
   height: 406.422px;
-  width: 657.591px; }
+  width: 657.591px;
+}
 
 p {
   font-size: 14px;
-  line-height: 22.652px; }
+  line-height: 22.652px;
+}
+
+h1 {
+  font-size: 36.651px;
+  line-height: 43.981px;
+}
+
+h2 {
+  font-size: 22.652px;
+  line-height: 33.978px;
+}
 
 .page {
-  padding-left: 36.651px;
-  padding-right: 36.651px;
-  padding-top: 22.652px;
-  padding-bottom: 22.652px; }
+  padding: 36.651px 22.652px;
+}

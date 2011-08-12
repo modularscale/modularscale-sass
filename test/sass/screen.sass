@@ -6,21 +6,32 @@ body
 
 .page
   background: #fff
-  // Fill in the property, multiple, base size, and ratio:
-  +modular-scale(height, 7, 14px, $golden)
-  +modular-scale(width, 8, 14px, $golden)
+  // Use as a function. Fill in the multiple, base size, and ratio:
+  height: modular-scale(7, 14px, $golden)
+  // or use the short name
+  width: modular-scale(8, 14px, $golden)
+
 
 p
   font-size: 14px
+  // You can also use it as a mixin. 
+  // Fill in the property, multiple, base size, and ratio:
   +modular-scale(line-height, 1, 14px, $golden)
 
 // You can fill in all the variables as shown above, or set up default values:
 $base-size: 14px
 $ratio: $golden
+ 
+h1
+  font-size: ms(2)
+  // You can multiply the calculated value, to arrive at a suitable line-height for example
+  line-height: ms(2) * 1.2
+  
+h2
+  font-size: ms(1)
+  line-height: ms(1) * 1.5
 
-// Now you just need to fill in the property and multiple:
+// Now you just need to fill in the multiple:
 .page
-  +modular-scale(padding-left, 2)
-  +modular-scale(padding-right, 2)
-  +modular-scale(padding-top, 1)
-  +modular-scale(padding-bottom, 1)
+  padding: ms(2) ms(1) 
+  

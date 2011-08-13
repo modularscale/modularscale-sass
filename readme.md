@@ -18,7 +18,7 @@ Examples using the Sass syntax:
     // Use as a mixin. Fill in the property, multiple, base-size, and ratio
     +modular-scale(line-height, 1, 14px, $golden)
     
-    // This method will generate a range of class to `@extend`
+    // This method will generate a range of classes to `@extend`
     +modular-scale-classes(6)
 
     [role="main"]
@@ -37,7 +37,7 @@ Examples using the SCSS syntax:
     // Use as a mixin. Fill in the property, multiple, base-size, and ratio
     @include modular-scale(line-height, 1, 14px, $golden);
 
-    // This method will generate a range of class to `@extend`
+    // This method will generate a range of classes to `@extend`
     @ionclude modular-scale-classes(6);
 
     [role="main"] {

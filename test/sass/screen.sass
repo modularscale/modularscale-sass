@@ -4,13 +4,13 @@
 body
   background: #333
 
-.page
+[role="page"]
   background: #fff
+  margin: 0 auto
   // Use as a function. Fill in the multiple, base size, and ratio:
   height: modular-scale(7, 14px, $golden)
   // or use the short name
   width: modular-scale(8, 14px, $golden)
-
 
 p
   font-size: 14px
@@ -32,6 +32,5 @@ h2
   line-height: ms(1) * 1.5
 
 // Now you just need to fill in the multiple:
-.page
+[role="page"]
   padding: ms(2) ms(1) 
-  

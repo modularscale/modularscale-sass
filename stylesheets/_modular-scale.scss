@@ -25,10 +25,10 @@ $ratio: $golden !default;
       $modular-scale: $modular-scale / $ratio; } }
   @return $modular-scale; }
 
-// shortcut name
+// Shortcut
 @function ms($multiple, $base-size, $ratio) {
   @return modular-scale($multiple, $base-size, $ratio); }
 
-// mixin version
+// Mixin
 @mixin modular-scale($property, $multiple, $base-size, $ratio) {
   #{$property}: +modular-scale($multiple, $base-size, $ratio); }

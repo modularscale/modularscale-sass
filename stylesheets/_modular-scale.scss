@@ -12,8 +12,10 @@ $minor-third: 6 / 5;
 $major-second: 9 / 8;
 $minor-second: 16 / 15;
 
+$ratio: $golden !default;
+
 // Modular Scale logic
-@mixin modular-scale($property, $multiple, $base-size, $ratio) {
+@function modular-scale($multiple, $base-size, $ratio) {
   $modular-scale: $base-size;
   @if $multiple > 0 {
     @for $i from 1 through $multiple {
@@ -21,4 +23,12 @@ $minor-second: 16 / 15;
   @if $multiple < 0 {
     @for $i from 1 through $multiple * -1 {
       $modular-scale: $modular-scale / $ratio; } }
-  #{$property}: $modular-scale; }
+  @return $modular-scale; }
+
+// shortcut name
+@function ms($multiple, $base-size, $ratio) {
+  @return modular-scale($multiple, $base-size, $ratio); }
+
+// mixin version
+@mixin modular-scale($property, $multiple, $base-size, $ratio) {
+  #{$property}: +modular-scale($multiple, $base-size, $ratio); }

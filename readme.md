@@ -1,15 +1,34 @@
 # Sassy Modular Scale
 #### Put down the calculator and let Sass do the work.
 
-# How to use
+# Usage and Installation
 
-* First, you need to have Sass installed. Visit [sass-lang.com](http://sass-lang.com)
-* Copy or link the mixin to your project from the stylesheets directory.
-* Pull in the mixin as needed
-  * Sass: +modular-scale(property, multiple, base-size, ratio)
-  * SCSS: @include modular-scale(property, multiple, base-size, ratio);
+Sass Modular Scale is written in Sass and requires Sass to be used. Visit [sass-lang.com](http://sass-lang.com) to learn more and install.
 
-# Ratios to choose from:
+* Copy either `stylesheets/_modular-scale.sass` or `stylesheets/_modular-scale.scss` into your project
+* Import the file into your Sass stylesheet to access the mixins and functions
+
+Sassy Modular Scale can be used as a function or a mixin.
+
+Examples using the Sass syntax:
+
+    // Use as a function. Fill in the multiple, base-size, and ratio
+    height: modular-scale(7, 14px, $golden)
+    
+    // Use as a mixin. Fill in the property, multiple, base-size, and ratio
+    +modular-scale(line-height, 1, 14px, $golden)
+
+Examples using the SCSS syntax:
+
+    // Use as a function. Fill in the multiple, base-size, and ratio
+    height: modular-scale(7, 14px, $golden);
+    
+    // Use as a mixin. Fill in the property, multiple, base-size, and ratio
+    @include modular-scale(line-height, 1, 14px, $golden);
+
+# Ratios
+
+Below is a list of Ratios to choose from. By default, the variable `$ratio` is set to `$golden`.
 
 * $golden: 1.618
 * $octave: 2 / 1
@@ -23,7 +42,6 @@
 * $minor-third: 6 / 5
 * $major-second: 9 / 8
 * $minor-second: 16 / 15
-
 
 # Credits
 

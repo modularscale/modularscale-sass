@@ -8,7 +8,7 @@ Sass Modular Scale is written in Sass and requires Sass to be used. Visit [sass-
 * Copy either `stylesheets/_modular-scale.sass` or `stylesheets/_modular-scale.scss` into your project
 * Import the file into your Sass stylesheet to access the mixins and functions
 
-Sassy Modular Scale can be used as a function or a mixin.
+Sassy Modular Scale can be used as a function, mixin or a mixin that generates a range of classes to `@extend`.
 
 Examples using the Sass syntax:
 
@@ -17,6 +17,17 @@ Examples using the Sass syntax:
     
     // Use as a mixin. Fill in the property, multiple, base-size, and ratio
     +modular-scale(line-height, 1, 14px, $golden)
+    
+    // This method will generate a range of class to `@extend`
+    +modular-scale-classes(6)
+
+    [role="main"]
+      h1
+        @extend .ms-2
+      h2
+        @extend .ms-1
+      h3
+        @extend .ms-0
 
 Examples using the SCSS syntax:
 
@@ -25,6 +36,15 @@ Examples using the SCSS syntax:
     
     // Use as a mixin. Fill in the property, multiple, base-size, and ratio
     @include modular-scale(line-height, 1, 14px, $golden);
+
+    // This method will generate a range of class to `@extend`
+    @ionclude modular-scale-classes(6);
+
+    [role="main"] {
+      h1 { @extend .ms-2; }
+      h2 { @extend .ms-1; }
+      h3 { @extend .ms-0; }
+    }
 
 # Ratios
 

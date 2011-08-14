@@ -20,22 +20,60 @@ $class-slug: ms !default
 
 // Modular Scale function
 @function modular-scale($multiple, $base-size, $ratio)
+  // if multiple ratios are passed in as a list
+  // calculate values in using each ratio
+  @if type-of($ratio) == 'list'
+    // start with an empty list to place all values in
+    $concatenate: ()
+    // If $multiple is a positive integer (up the scale)
+    @if $multiple > 0
+      $j: 1
+      // take each ratio in turn
+      @while $j <= length($ratio)
+        // reset $modular-scale for each set
+        $modular-scale: $base-size
+        // do the scale using this ratio thru the multiple, and add the result to $concatenate
+        @for $i from 1 through $multiple
+          $modular-scale: $modular-scale * nth($ratio, $j)
+          $concatenate: append($concatenate, $modular-scale)
+        $j: $j + 1
+      // sort acsending
+      $concatenate: sort-list($concatenate)
+      // return the final value using the laced list
+      @return nth($concatenate, $multiple)
+    // If $multiple is a negative integer (down the scale)
+    @if $multiple < 0
+      $j: 1
+      // take each ratio in turn
+      @while $j <= length($ratio)
+        // reset $modular-scale for each set
+        $modular-scale: $base-size
+        // do the scale using this ratio thru the multiple, and add the result to $concatenate
+        @for $i from 1 through ($multiple * -1)
+          $modular-scale: $modular-scale / nth($ratio, $j)
+          $concatenate: append($concatenate, $modular-scale)
+        $j: $j + 1
+      // sort acsending
+      $concatenate: sort-list($concatenate, 'dec')
+      // return the final value using the laced list
+      @return nth($concatenate, $multiple * -1)
 
-  // On init, $modular-scale equals the default value of $base-size or the value passed to the function
-  $modular-scale: $base-size
+  // if one ratio is passed in as a number
+  @if type-of($ratio) == 'number'
+    // On init, $modular-scale equals the default value of $base-size or the value passed to the function
+    $modular-scale: $base-size
+    // If $multiple is a positive integer (up the scale)
+    @if $multiple > 0
+      @for $i from 1 through $multiple
+        $modular-scale: $modular-scale * $ratio
 
-  // If $multiple is a positive integer (up the scale)
-  @if $multiple > 0
-    @for $i from 1 through $multiple
-      $modular-scale: $modular-scale * $ratio
+    // If $multiple is a negative integer (down the scale)
+    @if $multiple < 0
+      @for $i from 1 through ($multiple * -1)
+        $modular-scale: $modular-scale / $ratio
 
-  // If $multiple is a negative integer (down the scale)
-  @if $multiple < 0
-    @for $i from 1 through ($multiple * -1)
-      $modular-scale: $modular-scale / $ratio
-
-  // Return the new or unchanged value of $modular-scale
-  @return $modular-scale
+    // Return the new or unchanged value of $modular-scale
+    @return $modular-scale
   
 // Shortcut
 @function ms($multiple, $base-size, $ratio)
@@ -54,3 +92,47 @@ $class-slug: ms !default
   @for $i from 0 through $multiple
     .#{$class-slug}-#{$i}
       +modular-scale($property, $i)
+      
+
+@function sort-list($list, $dir: 'asc')
+  // built-in list sorting in Sass would make this go away.
+  // declare some empty lists to put our new order and temporary values 
+  $new-order: ()
+  $temp: ()
+  // fill $temp with the contents of $list
+  $temp: join($temp, $list)
+  // if sorting ascending
+  @if $dir == 'asc'
+    // loop through all values in $list
+    @for $k from 1 through length($list)
+      // impossibly high starter value to compare
+      $low: 1000000
+      // check for lowest value in $temp
+      @for $l from 1 through length($temp)
+        @if nth($temp, $l) < $low
+          $low: nth($temp, $l)
+      // add lowest value to $new-order
+      $new-order: append($new-order, $low)
+      // empty $temp for the next comparison
+      $temp: ()
+      // re-populate $temp with remaining values to sort
+      @for $m from 1 through length($list)
+        @if nth($list, $m) > $low
+          $temp: append($temp, nth($list, $m))
+  @if $dir == 'dec'
+    // loop through all values in $list
+    @for $k from 1 through length($list)
+      // 0 starter value
+      $high: 0
+      // check for highest value in $temp
+      @for $l from 1 through length($temp)
+        @if nth($temp, $l) > $high
+          $high: nth($temp, $l)
+      $new-order: append($new-order, $high)
+      // empty $temp for the next comparison
+      $temp: ()
+      // re-populate $temp with remaining values to sort
+      @for $m from 1 through length($list)
+        @if nth($list, $m) < $high
+          $temp: append($temp, nth($list, $m))
+  @return $new-order

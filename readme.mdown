@@ -1,12 +1,27 @@
 # Sassy Modular Scale
-#### Put down the calculator and let Sass do the work.
 
-# Usage and Installation
+## A Sass mixin to calculate the incremental values of the modular scale.
 
-Sassy Modular Scale is written in Sass and requires Sass to be used. Visit [sass-lang.com](http://sass-lang.com) to learn more and install.
+Sassy Modular Scale is a Sass based mixin that calculates the incremental values of the modular scale in proportion to a set size and ratio. It was inspired by and adapted from Tim Brown's modularscale.com.
 
-* Copy either `stylesheets/_modular-scale.sass` or `stylesheets/_modular-scale.scss` into your project
-* Import the file into your Sass stylesheet to access the mixins and functions
+Sassy Modular Scale can be used as a [Compass](http://compass-style.org/) [extension](http://compass-style.org/help/tutorials/extensions/) and can be installed as a [Ruby gem](https://rubygems.org/gems/modular-scale).
+
+## Installation
+
+Usage requires Sass. Visit [sass-lang.com](http://sass-lang.com) to learn more and install.
+
+`gem install modular-scale`
+
+Then add `require 'modular-scale'` to your Compass config file.
+
+## Alternative installation (without Compass)
+
+Compass provides a way for Sass mixins to be easily required into a project, but we also support the following:
+
+* Copy either `stylesheets/_modular-scale.sass` or `stylesheets/_modular-scale.scss` into your project's Sass directory
+* Import the file into your Sass stylesheet to access the mixins and functions. For example, `@import vendor/modular-scale`
+
+## Usage
 
 Sassy Modular Scale can be used as a function, mixin or a mixin that generates a range of classes to `@extend`.
 
@@ -46,7 +61,7 @@ Examples using the SCSS syntax:
       h3 { @extend .ms-0; }
     }
 
-# Ratios
+## Ratios
 
 Below is a list of Ratios to choose from. By default, the variable `$ratio` is set to `$golden`.
 
@@ -63,22 +78,16 @@ Below is a list of Ratios to choose from. By default, the variable `$ratio` is s
 * $major-second: 9 / 8
 * $minor-second: 16 / 15
 
-# Credits
+## Inspiration
 
-#### Sass mixin by Scott Kellum
+Sassy Modular Scale was adapted from [modularscale.com](http://modularscale.com/) by Tim Brown ([@nicewebtype](http://twitter.com/nicewebtype)). Tim also wrote a supporting article at [A List Apart](http://www.alistapart.com/) titled ["More Meaningful Typography"](http://www.alistapart.com/articles/more-meaningful-typography/). Additional inspiration goes to [Robert Bringhurst](http://en.wikipedia.org/wiki/Robert_Bringhurst), author of ["The Elements of Typographic Style"](http://en.wikipedia.org/wiki/The_Elements_of_Typographic_Style) - specifically Chapter 8 titled "Shaping the Page"
 
-* [https://github.com/scottkellum/modular-scale](https://github.com/scottkellum/modular-scale)
-* [@scottkellum](http://twitter.com/scottkellum)
+## License
 
-#### Adapted from modularscale.com by Tim Brown
+Copyright (c) 2011 [Scott Kellum](http://www.scottkellum.com/) ([@scottkellum](http://twitter.com/scottkellum)), [Adam Stacoviak](http://adamstacoviak.com/) ([@adamstac](http://twitter.com/adamstac)) and [Mason Wendell](http://birdsandmonkeys.com/) ([@canarymason](http://twitter.com/canarymason))
 
-* [http://modularscale.com/](http://modularscale.com/)
-* [@nicewebtype](http://twitter.com/nicewebtype)
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-#### Related link:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-* [http://alistapart.com/articles/more-meaningful-typography/](http://alistapart.com/articles/more-meaningful-typography/)
-
-#### Additional credit to Robert Bringhurst
-
-* The Elements of Typographic Style (Chapter 8: Shaping the page)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

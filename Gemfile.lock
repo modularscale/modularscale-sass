@@ -1,0 +1,33 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (3.0.9)
+    chunky_png (1.2.1)
+    compass (0.11.5)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    fssm (0.2.7)
+    i18n (0.6.0)
+    rack (1.3.2)
+    rack-test (0.6.1)
+      rack (>= 1.0)
+    rake (0.8.7)
+    sass (3.1.7)
+    serve (1.5.1)
+      activesupport (~> 3.0)
+      i18n
+      rack (~> 1.2)
+      rack-test (~> 0.5)
+      tilt (~> 1.3)
+      tzinfo
+    tilt (1.3.2)
+    tzinfo (0.3.29)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  compass (~> 0.11.5)
+  rake
+  serve (~> 1.5.0)

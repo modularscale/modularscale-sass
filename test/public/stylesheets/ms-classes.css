@@ -1,0 +1,27 @@
+.ms-0, [role="main"] h3 {
+  font-size: 12px;
+}
+
+.ms-1, [role="main"] h2 {
+  font-size: 19.416px;
+}
+
+.ms-2, [role="main"] h1 {
+  font-size: 31.415px;
+}
+
+.ms-3 {
+  font-size: 50.83px;
+}
+
+.ms-4 {
+  font-size: 82.242px;
+}
+
+.ms-5 {
+  font-size: 133.068px;
+}
+
+.ms-6 {
+  font-size: 215.304px;
+}

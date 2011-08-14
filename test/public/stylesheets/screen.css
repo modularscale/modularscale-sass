@@ -2,8 +2,9 @@ body {
   background: #333333;
 }
 
-.page {
+[role="page"] {
   background: white;
+  margin: 0 auto;
   height: 406.422px;
   width: 657.591px;
 }
@@ -23,6 +24,6 @@ h2 {
   line-height: 33.978px;
 }
 
-.page {
+[role="page"] {
   padding: 36.651px 22.652px;
 }

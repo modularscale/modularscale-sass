@@ -12,13 +12,40 @@ $minor-third: 6 / 5;
 $major-second: 9 / 8;
 $minor-second: 16 / 15;
 
-// Modular Scale logic
-@mixin modular-scale($property, $multiple, $base-size, $ratio) {
+// Defaults
+$ratio: $golden !default;
+$base-size: 12px !default;
+$property: font-size !default;
+$class-slug: ms !default;
+
+// Modular Scale function
+@function modular-scale($multiple, $base-size, $ratio) {
+  // On init, $modular-scale equals the default value of $base-size or the value passed to the function
   $modular-scale: $base-size;
+  // If $multiple is a positive integer (up the scale)
   @if $multiple > 0 {
     @for $i from 1 through $multiple {
       $modular-scale: $modular-scale * $ratio; } }
+  // If $multiple is a negative integer (down the scale)
   @if $multiple < 0 {
     @for $i from 1 through $multiple * -1 {
       $modular-scale: $modular-scale / $ratio; } }
-  #{$property}: $modular-scale; }
+  // Return the new or unchanged value of $modular-scale
+  @return $modular-scale; }
+
+// Shortcut
+@function ms($multiple, $base-size, $ratio) {
+  // Return the value from the Modular Scale function
+  @return modular-scale($multiple, $base-size, $ratio); }
+
+// Mixin
+@mixin modular-scale($property, $multiple, $base-size, $ratio) {
+  // Print the $property and return the value from the Modular Scale function
+  #{$property}: modular-scale($multiple, $base-size, $ratio); }
+
+// Classes Mixin
+@mixin modular-scale-classes($multiple, $property) {
+  // Loop from 0 through the value of $multiple and generate a range of classes
+  @for $i from 0 through $multiple {
+    .#{$class-slug}-#{$i} {
+      @include modular-scale($property, $i); } } }

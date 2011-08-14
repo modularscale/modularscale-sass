@@ -3,7 +3,7 @@
 
 # Usage and Installation
 
-Sass Modular Scale is written in Sass and requires Sass to be used. Visit [sass-lang.com](http://sass-lang.com) to learn more and install.
+Sassy Modular Scale is written in Sass and requires Sass to be used. Visit [sass-lang.com](http://sass-lang.com) to learn more and install.
 
 * Copy either `stylesheets/_modular-scale.sass` or `stylesheets/_modular-scale.scss` into your project
 * Import the file into your Sass stylesheet to access the mixins and functions

@@ -3,6 +3,8 @@
 // path to local mixin ~ for development use only
 @import "../../stylesheets/modular-scale"
 
+
+
 // Background color to see what is going on
 body
   background: #333
@@ -23,16 +25,34 @@ p
 // You can fill in all the variables as shown above, or set up default values
 $base-size: 14px
 $ratio: $golden
- 
-h1
-  font-size: ms(2)
-  // You can multiply the calculated value, to arrive at a suitable line-height for example
-  line-height: ms(2) * 1.2
-  
-h2
-  font-size: ms(1)
-  line-height: ms(1) * 1.5
 
 // Now you just need to fill in the multiple
 [role="page"]
   padding: ms(2) ms(1)
+
+// You can also 'lace' multiple ratios together by passing them in as a list
+.lace
+  width: ms(7, 14px, $golden $fourth)
+  
+// And you can set the $ratio variable to a list
+$ratio: $golden $fourth
+
+h1
+  font-size: ms(6)
+h2
+  font-size: ms(5)
+h3
+  font-size: ms(4)
+h4
+  font-size: ms(3)
+h5
+  font-size: ms(2)
+h6
+  font-size: ms(1)
+  
+h1
+  // You can multiply the calculated value, to arrive at a suitable line-height for example
+  line-height: ms(6) * 1.2
+
+h2
+  line-height: ms(5) * 1.5

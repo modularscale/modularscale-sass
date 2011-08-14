@@ -14,16 +14,42 @@ p {
   line-height: 22.652px;
 }
 
+[role="page"] {
+  padding: 36.651px 22.652px;
+}
+
+.lace {
+  width: 58.996px;
+}
+
 h1 {
-  font-size: 36.651px;
-  line-height: 43.981px;
+  font-size: 44.247px;
 }
 
 h2 {
-  font-size: 22.652px;
-  line-height: 33.978px;
+  font-size: 36.651px;
 }
 
-[role="page"] {
-  padding: 36.651px 22.652px;
+h3 {
+  font-size: 33.185px;
+}
+
+h4 {
+  font-size: 24.889px;
+}
+
+h5 {
+  font-size: 22.652px;
+}
+
+h6 {
+  font-size: 18.667px;
+}
+
+h1 {
+  line-height: 53.096px;
+}
+
+h2 {
+  line-height: 54.976px;
 }

@@ -43,6 +43,11 @@ Examples using the Sass syntax:
         @extend .ms-1
       h3
         @extend .ms-0
+        
+    // You can also 'lace' multiple ratios together by 
+    // passing them in as a list (space-separated)
+    .lace
+      width: ms(7, 14px, $golden $fourth)
 
 Examples using the SCSS syntax:
 
@@ -60,6 +65,13 @@ Examples using the SCSS syntax:
       h2 { @extend .ms-1; }
       h3 { @extend .ms-0; }
     }
+    
+    // You can also 'lace' multiple ratios together by 
+    // passing them in as a list (space-separated)
+    .lace {
+      width: ms(7, 14px, $golden $fourth);
+    }
+      
 
 ## Ratios
 

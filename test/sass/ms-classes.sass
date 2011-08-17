@@ -1,10 +1,11 @@
 @import "../../stylesheets/modular-scale"
 
-// $ratio: $octave
-// $base-size: 10px
+// $ratio: $golden
+// $base-size: 12px
 // $property: font-size
-// $class-slug: ms-font-size
+// $class-slug: ms
 
+// Generate extendable classes simply, using the assumed defaults
 +modular-scale-classes(6)
 
 [role="main"]
@@ -14,3 +15,7 @@
     @extend .ms-1
   h3
     @extend .ms-0
+    
+// Or pass in explicit arguments
++modular-scale-classes(6, width, 10px, $golden, 'mm')
+

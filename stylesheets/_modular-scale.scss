@@ -20,6 +20,9 @@ $class-slug: ms !default;
 
 // Modular Scale function
 @function modular-scale($multiple, $base-size, $ratio) {
+  // return the $base-size if $multiple is zero
+  @if $multiple == 0 {
+    @return $base-size; }
   // if multiple ratios are passed in as a list
   // calculate values in using each ratio
   @if type-of($ratio) == "list" {

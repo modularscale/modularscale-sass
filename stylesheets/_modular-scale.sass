@@ -86,12 +86,11 @@ $class-slug: ms !default
   #{$property}: modular-scale($multiple, $base-size, $ratio)
 
 // Classes Mixin
-=modular-scale-classes($multiple, $property)
-
+=modular-scale-classes($multiple, $property, $base-size, $ratio, $class-slug)
   // Loop from 0 through the value of $multiple and generate a range of classes
   @for $i from 0 through $multiple
     .#{$class-slug}-#{$i}
-      +modular-scale($property, $i)
+      +modular-scale($property, $i, $base-size, $ratio)
       
 
 @function sort-list($list, $dir: 'asc')

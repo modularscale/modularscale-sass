@@ -11,8 +11,8 @@ body
 .page
   background: #fff
   // You can define the attribute, multiple, base size, and ratio witin a mixin
-  +modular-scale(width, 9, 14px, $golden)
-  +modular-scale(height, 8, 14px, $golden)
+  +modular-scale(width, 8, 14px, $golden)
+  +modular-scale(height, 7, 14px, $golden)
   // Or just use functions
   padding: modular-scale(1, 14px, $golden) modular-scale(2, 14px, $golden)
 
@@ -29,18 +29,16 @@ h2
   font-size: modular-scale(1)
   line-height: modular-scale(1)
 
-// Using multiple ratios
-$ratio: $major-seventh $minor-seventh
-
+    
+// There's also a shortcut name. ms() is equivalent to modular-scale()
 p
-  font-size: modular-scale(0)
-  line-height: modular-scale(1)
+  font-size: ms(0)
+  line-height: ms(1)
 
-+modular-scale-classes(6, font-size)
 
 // You can also 'lace' multiple ratios together by passing them in as a list (space-separated)
 .lace
-  width: ms(7, 14px, $golden $fourth)
+  width: modular-scale(7, 14px, $golden $fourth)
   
 // And you can set the $ratio variable to a list
 $ratio: $golden $fourth
@@ -51,7 +49,10 @@ h5
   font-size: ms(2)
 h6
   font-size: ms(1)
-  
 h3
   // You can multiply the calculated value, to arrive at a suitable line-height for example
   line-height: ms(6) * 1.2
+
+
+// You can use the modular-scale-classes mixin to generate extendable classes 
++modular-scale-classes(6, font-size)

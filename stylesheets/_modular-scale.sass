@@ -13,7 +13,6 @@ $major-second: (9 / 8)
 $minor-second: (16 / 15)
 
 // Defaults
-$ratio: $golden !default
 $class-slug: ms !default
 
 // Modular Scale function
@@ -21,6 +20,8 @@ $class-slug: ms !default
   // return the $base-size if $multiple is zero
   @if $multiple == 0
     @return $base-size
+  
+  
   // if multiple ratios are passed in as a list
   // calculate values in using each ratio
   @if type-of($ratio) == 'list'

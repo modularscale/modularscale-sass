@@ -88,7 +88,7 @@ $class-slug: ms !default
   #{$property}: modular-scale($multiple, $base-size, $ratio)
 
 // Classes Mixin
-=modular-scale-classes($multiple, $property, $base-size, $ratio, $class-slug)
+=modular-scale-classes($multiple, $property, $class-slug, $base-size, $ratio)
   // Loop from 0 through the value of $multiple and generate a range of classes
   @for $i from 0 through $multiple
     .#{$class-slug}-#{$i}

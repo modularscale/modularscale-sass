@@ -13,9 +13,6 @@ $major-second: 9 / 8;
 $minor-second: 16 / 15;
 
 // Defaults
-$ratio: $golden !default;
-$base-size: 12px !default;
-$property: font-size !default;
 $class-slug: ms !default;
 
 // Modular Scale function
@@ -86,7 +83,7 @@ $class-slug: ms !default;
   #{$property}: modular-scale($multiple, $base-size, $ratio); }
 
 // Classes Mixin
-@mixin modular-scale-classes($multiple, $property, $base-size, $ratio, $class-slug) {
+@mixin modular-scale-classes($multiple, $property, $class-slug, $base-size, $ratio) {
   // Loop from 0 through the value of $multiple and generate a range of classes
   @for $i from 0 through $multiple {
     .#{$class-slug}-#{$i} {

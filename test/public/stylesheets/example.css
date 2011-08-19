@@ -1,0 +1,77 @@
+html {
+  padding: 20px;
+}
+
+body {
+  background: #333333;
+}
+
+.page {
+  background: white;
+  width: 657.591px;
+  height: 406.422px;
+  padding: 22.652px 36.651px;
+}
+
+h1 {
+  font-size: 36.651px;
+  line-height: 36.651px;
+}
+
+h2 {
+  font-size: 22.652px;
+  line-height: 22.652px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 22.652px;
+}
+
+.lace {
+  width: 58.996px;
+}
+
+h4 {
+  font-size: 24.889px;
+}
+
+h5 {
+  font-size: 22.652px;
+}
+
+h6 {
+  font-size: 18.667px;
+}
+
+h3 {
+  line-height: 53.096px;
+}
+
+.ms-0 {
+  font-size: 14px;
+}
+
+.ms-1 {
+  font-size: 18.667px;
+}
+
+.ms-2 {
+  font-size: 22.652px;
+}
+
+.ms-3 {
+  font-size: 24.889px;
+}
+
+.ms-4 {
+  font-size: 33.185px;
+}
+
+.ms-5 {
+  font-size: 36.651px;
+}
+
+.ms-6 {
+  font-size: 44.247px;
+}

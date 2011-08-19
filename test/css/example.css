@@ -46,15 +46,6 @@ p {
 .lace {
   width: 58.996px; }
 
-h1 {
-  font-size: 44.247px; }
-
-h2 {
-  font-size: 36.651px; }
-
-h3 {
-  font-size: 33.185px; }
-
 h4 {
   font-size: 24.889px; }
 
@@ -64,5 +55,5 @@ h5 {
 h6 {
   font-size: 18.667px; }
 
-h1 {
+h3 {
   line-height: 53.096px; }

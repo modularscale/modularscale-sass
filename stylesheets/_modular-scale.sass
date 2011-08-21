@@ -23,7 +23,10 @@ $class-slug: ms !default
   // return the $base-size if $multiple is zero
   @if $multiple == 0
     @return $base-size
-  
+    
+  // initialise $modular-scale as $base-size
+  $modular-scale: $base-size
+
   // if multiple ratios are passed in as a list
   // calculate values in using each ratio
   @if type-of($ratio) == 'list'
@@ -38,10 +41,10 @@ $class-slug: ms !default
         $modular-scale: $base-size
         // do the scale using this ratio thru the multiple, and add the result to $scale-values
         @for $i from 1 through $multiple
-          $modular-scale: $modular-scale * nth($ratio, $j)
+          $modular-scale: exponent($base-size, $i, nth($ratio, $j))
           $scale-values: append($scale-values, $modular-scale)
         $j: $j + 1
-      // sort acsending
+      // sort acsending      
       $scale-values: sort-list($scale-values)
       // return the final value using the laced list
       @return nth($scale-values, $multiple)
@@ -54,7 +57,7 @@ $class-slug: ms !default
         $modular-scale: $base-size
         // do the scale using this ratio thru the multiple, and add the result to $scale-values
         @for $i from 1 through ($multiple * -1)
-          $modular-scale: $modular-scale / nth($ratio, $j)
+          $modular-scale: exponent($base-size, -$i, nth($ratio, $j))
           $scale-values: append($scale-values, $modular-scale)
         $j: $j + 1
       // sort acsending
@@ -64,19 +67,9 @@ $class-slug: ms !default
 
   // if one ratio is passed in as a number
   @if type-of($ratio) == 'number'
-    // On init, $modular-scale equals the default value of $base-size or the value passed to the function
-    $modular-scale: $base-size
-    // If $multiple is a positive integer (up the scale)
-    @if $multiple > 0
-      @for $i from 1 through $multiple
-        $modular-scale: $modular-scale * $ratio
-
-    // If $multiple is a negative integer (down the scale)
-    @if $multiple < 0
-      @for $i from 1 through ($multiple * -1)
-        $modular-scale: $modular-scale / $ratio
-
-    // Return the new or unchanged value of $modular-scale
+    // calculate the nth exponent
+    $modular-scale: exponent($base-size, $multiple, $ratio)
+    // Return the value of $modular-scale
     @return $modular-scale
   
 // Shortcut
@@ -98,20 +91,25 @@ $class-slug: ms !default
 
 
 
-// Sass exponent support
+// Calculate position on a scale
 @function exponent($base, $multiple, $ratio)
   // initialise $exponent as 0
-  $exponent: 0
+  $exponent: $base
+  
+  @if $multiple == 0
+    @return $exponent
+  
   // If $multiple is a positive integer (up the scale)
   @if $multiple > 0
-    @for $i from 0 through ($multiple)
-      $exponent: $base * $ratio
+    @for $i from 1 through ($multiple)
+      $exponent: $exponent * $ratio
   // If $multiple is a negative integer (down the scale)
   @if $multiple < 0
-    @for $i from 0 through ($multiple)
-      $exponent: $base / $ratio
+    @for $i from 1 through ($multiple * -1)
+      $exponent: $exponent / $ratio
   // return the calculated exponent
   @return $exponent
+
         
               
 // Sass list sorting support

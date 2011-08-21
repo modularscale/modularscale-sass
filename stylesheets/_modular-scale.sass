@@ -24,7 +24,6 @@ $class-slug: ms !default
   @if $multiple == 0
     @return $base-size
   
-  
   // if multiple ratios are passed in as a list
   // calculate values in using each ratio
   @if type-of($ratio) == 'list'
@@ -96,8 +95,26 @@ $class-slug: ms !default
   @for $i from 0 through $multiple
     .#{$class-slug}-#{$i}
       +modular-scale($property, $i, $base-size, $ratio)
-      
 
+
+
+// Sass exponent support
+@function exponent($base, $multiple, $ratio)
+  // initialise $exponent as 0
+  $exponent: 0
+  // If $multiple is a positive integer (up the scale)
+  @if $multiple > 0
+    @for $i from 0 through ($multiple)
+      $exponent: $base * $ratio
+  // If $multiple is a negative integer (down the scale)
+  @if $multiple < 0
+    @for $i from 0 through ($multiple)
+      $exponent: $base / $ratio
+  // return the calculated exponent
+  @return $exponent
+        
+              
+// Sass list sorting support
 @function sort-list($list, $dir: 'asc')
   // built-in list sorting in Sass would make this go away.
   // declare some empty lists to put our new order and temporary values 

@@ -48,30 +48,42 @@ h3 {
   line-height: 53.096px;
 }
 
+.foo {
+  font-size: 16.721px;
+}
+
+.bar {
+  font-size: 16.894px;
+}
+
+.baz {
+  font-size: 12.671px;
+}
+
 .ms-0 {
   font-size: 14px;
 }
 
 .ms-1 {
-  font-size: 18.667px;
+  font-size: 16.721px;
 }
 
 .ms-2 {
-  font-size: 22.652px;
+  font-size: 16.894px;
 }
 
 .ms-3 {
-  font-size: 24.889px;
+  font-size: 18.667px;
 }
 
 .ms-4 {
-  font-size: 33.185px;
+  font-size: 22.525px;
 }
 
 .ms-5 {
-  font-size: 36.651px;
+  font-size: 22.652px;
 }
 
 .ms-6 {
-  font-size: 44.247px;
+  font-size: 24.889px;
 }

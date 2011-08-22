@@ -39,6 +39,7 @@ p {
   width: modular-scale(7, 14px, $golden $fourth); }
 
 // And you can set the $ratio variable to a list
+// to get a richer set of variables
 $ratio: $golden $fourth;
 
 h4 {
@@ -53,6 +54,20 @@ h6 {
 h3 {
   // You can multiply the calculated value, to arrive at a suitable line-height for example
   line-height: ms(6) * 1.2; }
+
+// You can also set the $base-size variable to a list
+// to interrelate two significant know sizes in your design
+// note: the starting point of the scale will always be the *lowest* value in this list
+$base-size: 14px 300px;
+
+.foo {
+  font-size: ms(1); }
+
+.bar {
+  font-size: ms(2); }
+
+.baz {
+  font-size: ms(-1); }
 
 // You can use the modular-scale-classes mixin to generate extendable classes
 @include modular-scale-classes(6, font-size);

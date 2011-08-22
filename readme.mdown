@@ -71,6 +71,18 @@ Examples using the SCSS syntax:
     .lace {
       width: ms(7, 14px, $golden $fourth);
     }
+    
+    // You can also set the $base-size variable to a list
+    // to interrelate two significant known sizes in your design
+    // note: the starting point of the scale will always be the *lowest* value in this list
+    .multibases {
+      width: ms(7, 14px 300px, $golden);
+    }
+      
+    // You can use multiple $base-sizes and multiple $ratios together
+    .multibase-multiratio {
+      width: ms(7, 14px 300px, $golden $fourth);
+    }
       
 
 ## Ratios

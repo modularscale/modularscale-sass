@@ -36,13 +36,12 @@ Examples using the Sass syntax:
     // This method will generate a range of classes to `@extend`
     +modular-scale-classes(6)
 
-    [role="main"]
-      h1
-        @extend .ms-2
-      h2
-        @extend .ms-1
-      h3
-        @extend .ms-0
+    h1
+      @extend .ms-2
+    h2
+      @extend .ms-1
+    h3
+      @extend .ms-0
         
     // You can also 'lace' multiple ratios together by 
     // passing them in as a list (space-separated)
@@ -60,11 +59,9 @@ Examples using the SCSS syntax:
     // This method will generate a range of classes to `@extend`
     @ionclude modular-scale-classes(6);
 
-    [role="main"] {
-      h1 { @extend .ms-2; }
-      h2 { @extend .ms-1; }
-      h3 { @extend .ms-0; }
-    }
+    h1 { @extend .ms-2; }
+    h2 { @extend .ms-1; }
+    h3 { @extend .ms-0; }
     
     // You can also 'lace' multiple ratios together by 
     // passing them in as a list (space-separated)

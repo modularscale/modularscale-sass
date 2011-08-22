@@ -27,60 +27,64 @@ Sassy Modular Scale can be used as a function, mixin or a mixin that generates a
 
 Examples using the Sass syntax:
 
-    // Use as a function. Fill in the multiple, base-size, and ratio
-    height: modular-scale(7, 14px, $golden)
-    
-    // Use as a mixin. Fill in the property, multiple, base-size, and ratio
-    +modular-scale(line-height, 1, 14px, $golden)
-    
-    // This method will generate a range of classes to `@extend`
-    +modular-scale-classes(6)
+```sass
+// Use as a function. Fill in the multiple, base-size, and ratio
+height: modular-scale(7, 14px, $golden)
 
-    h1
-      @extend .ms-2
-    h2
-      @extend .ms-1
-    h3
-      @extend .ms-0
-        
-    // You can also 'lace' multiple ratios together by 
-    // passing them in as a list (space-separated)
-    .lace
-      width: ms(7, 14px, $golden $fourth)
+// Use as a mixin. Fill in the property, multiple, base-size, and ratio
++modular-scale(line-height, 1, 14px, $golden)
+
+// This method will generate a range of classes to `@extend`
++modular-scale-classes(6)
+
+h1
+  @extend .ms-2
+h2
+  @extend .ms-1
+h3
+  @extend .ms-0
+    
+// You can also 'lace' multiple ratios together by 
+// passing them in as a list (space-separated)
+.lace
+  width: ms(7, 14px, $golden $fourth)
+```
 
 Examples using the SCSS syntax:
 
-    // Use as a function. Fill in the multiple, base-size, and ratio
-    height: modular-scale(7, 14px, $golden);
-    
-    // Use as a mixin. Fill in the property, multiple, base-size, and ratio
-    @include modular-scale(line-height, 1, 14px, $golden);
+```scss
+// Use as a function. Fill in the multiple, base-size, and ratio
+height: modular-scale(7, 14px, $golden);
 
-    // This method will generate a range of classes to `@extend`
-    @include modular-scale-classes(6);
+// Use as a mixin. Fill in the property, multiple, base-size, and ratio
+@include modular-scale(line-height, 1, 14px, $golden);
 
-    h1 { @extend .ms-2; }
-    h2 { @extend .ms-1; }
-    h3 { @extend .ms-0; }
-    
-    // You can also 'lace' multiple ratios together by 
-    // passing them in as a list (space-separated)
-    .lace {
-      width: ms(7, 14px, $golden $fourth);
-    }
-    
-    // You can also set the $base-size variable to a list
-    // to interrelate two significant known sizes in your design
-    // note: the starting point of the scale will always be the *lowest* value in this list
-    .multibases {
-      width: ms(7, 14px 300px, $golden);
-    }
-      
-    // You can use multiple $base-sizes and multiple $ratios together
-    .multibase-multiratio {
-      width: ms(7, 14px 300px, $golden $fourth);
-    }
-      
+// This method will generate a range of classes to `@extend`
+@include modular-scale-classes(6);
+
+h1 { @extend .ms-2; }
+h2 { @extend .ms-1; }
+h3 { @extend .ms-0; }
+
+// You can also 'lace' multiple ratios together by 
+// passing them in as a list (space-separated)
+.lace {
+  width: ms(7, 14px, $golden $fourth);
+}
+
+// You can also set the $base-size variable to a list
+// to interrelate two significant known sizes in your design
+// note: the starting point of the scale will always be the *lowest* value in this list
+.multibases {
+  width: ms(7, 14px 300px, $golden);
+}
+  
+// You can use multiple $base-sizes and multiple $ratios together
+.multibase-multiratio {
+  width: ms(7, 14px 300px, $golden $fourth);
+}
+```
+
 
 ## Ratios
 

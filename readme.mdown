@@ -57,7 +57,7 @@ Examples using the SCSS syntax:
     @include modular-scale(line-height, 1, 14px, $golden);
 
     // This method will generate a range of classes to `@extend`
-    @ionclude modular-scale-classes(6);
+    @include modular-scale-classes(6);
 
     h1 { @extend .ms-2; }
     h2 { @extend .ms-1; }

@@ -3,7 +3,7 @@ Compass::Frameworks.register("modular-scale", :path => "#{File.dirname(__FILE__)
 
 module ModularScale
   
-  VERSION = "0.0.3"
-  DATE = "2011-08-14"
+  VERSION = "0.0.4"
+  DATE = "2011-09-15"
 
 end

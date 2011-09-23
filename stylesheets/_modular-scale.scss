@@ -238,8 +238,8 @@ $class-slug: ms !default;
 @function sort-list($list, $dir: "asc") {
   // built-in list sorting in Sass would make this go away.
   // declare some empty lists to put our new order and temporary values
-  $new-order: ;
-  $temp: ;
+  $new-order: ();
+  $temp: ();
   // fill $temp with the contents of $list
   $temp: join($temp, $list);
   // if sorting ascending
@@ -255,7 +255,7 @@ $class-slug: ms !default;
       // add lowest value to $new-order
       $new-order: append($new-order, $low);
       // empty $temp for the next comparison
-      $temp: ;
+      $temp: ();
       // re-populate $temp with remaining values to sort
       @for $k from 1 through length($list) {
         @if nth($list, $k) > $low {
@@ -271,7 +271,7 @@ $class-slug: ms !default;
           $high: nth($temp, $j); } }
       $new-order: append($new-order, $high);
       // empty $temp for the next comparison
-      $temp: ;
+      $temp: ();
       // re-populate $temp with remaining values to sort
       @for $k from 1 through length($list) {
         @if nth($list, $k) < $high {
@@ -282,7 +282,7 @@ $class-slug: ms !default;
 @function trim-list($list, $start, $dir: "asc") {
   // built-in list trimming in Sass would make this go away.
   // declare some empty lists to put our trimmed values
-  $trimmed: ;
+  $trimmed: ();
   // if sorting ascending
   @if $dir == "asc" {
     // loop through all values in $list

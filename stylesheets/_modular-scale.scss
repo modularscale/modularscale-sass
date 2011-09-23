@@ -58,7 +58,7 @@ $class-slug: ms !default;
 // calculate values in using each base-size / ratio combination
 @function ms-multibase-multiratio($multiple, $base-size, $ratio) {
   // start with an empty list to place all values in
-  $scale-values: ;
+  $scale-values: ();
   // make sure base sizes are in ascending order
   $base-size: sort-list($base-size);
   // take each base-size in turn
@@ -103,7 +103,7 @@ $class-slug: ms !default;
 // calculate values in using each base-size
 @function ms-multibase($multiple, $base-size, $ratio) {
   // start with an empty list to place all values in
-  $scale-values: ;
+  $scale-values: ();
   // make sure base sizes are in ascending order
   $base-size: sort-list($base-size);
   // take each base-size in turn
@@ -144,7 +144,7 @@ $class-slug: ms !default;
 // calculate values in using each ratio
 @function ms-multiratio($multiple, $base-size, $ratio) {
   // start with an empty list to place all values in
-  $scale-values: ;
+  $scale-values: ();
   // If $multiple is a positive integer (up the scale)
   @if $multiple > 0 {
     // take each ratio in turn

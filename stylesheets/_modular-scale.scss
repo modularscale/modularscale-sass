@@ -295,3 +295,6 @@ $class-slug: ms !default;
       @if nth($list, $i) <= $start {
         $trimmed: append($trimmed, nth($list, $i)); } } }
   @return $trimmed; }
+
+// Other libraries can easily query if this function is avalible
+$modular-scale-loaded: true;

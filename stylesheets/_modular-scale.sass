@@ -218,21 +218,33 @@ $class-slug: ms !default
   // Return the value from the Modular Scale function
   @return modular-scale($multiple, $base-size, $ratio)
 
-// Mixin
-// Deprecated. Use the modular-scale() function instead
-=modular-scale($property, $multiple, $base-size, $ratio)
-  // Print the $property and return the value from the Modular Scale function
-  @warn "The modular-scale mixin is deprecated. Instead use the function: width: modular-scale(3)" 
-  #{$property}: modular-scale($multiple, $base-size, $ratio)
-
 // Classes Mixin
 =modular-scale-classes($multiple, $property, $class-slug, $base-size, $ratio)
+  
   // Loop from 0 through the value of $multiple and generate a range of classes
   @for $i from 0 through $multiple
     .#{$class-slug}-#{$i}
       // Print the $property and return the value from the Modular Scale function
       #{$property}: modular-scale($i, $base-size, $ratio)
-      
+
+=ms-classes($multiple, $property, $class-slug, $base-size, $ratio)
+  +modular-scale-classes($multiple, $property, $class-slug, $base-size, $ratio)
+
+// Write Modular Scale List
+@function modular-scale-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
+  $ms-list: unquote("MS-LIST:")
+  @for $i from $start through $finish
+    $ms-list: append($ms-list, ms($i, $base-size, $ratio))
+  @return $ms-list
+
+@function ms-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
+  @return modular-scale-list($start, $finish, $base-size, $ratio)
+
+=modular-scale-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
+  @debug modular-scale-list($start, $finish, $base-size, $ratio)
+
+=ms-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
+  @debug modular-scale-list($start, $finish, $base-size, $ratio)
 
 /////////////////////////////////////////////////////////////////////////
 

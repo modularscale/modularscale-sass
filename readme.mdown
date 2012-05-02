@@ -23,36 +23,71 @@ Compass provides a way for Sass mixins to be easily required into a project, but
 
 ## Usage
 
+Modular-scale should primarily be used as a function. Simply pass it through in place of any value to generate a value based on a modular scale.
+
+```scss
+width: modular-scale(2); // two up the modular scale
+width: ms(2); // Shorthand for the line above
+width: modular-scale(2, 1em); // two up the modular scale with a base size of 1em
+width: modular-scale(2, 1em, $octave); // Same as above but on an octave scale
+```
+
+You can output a list to your terminal to help you find out what values are on your scale.
+
+```scss
+@include modular-scale-list($start, $end, $base-size, $ratio);
+```
+
+By default, it writes 0-20 on the scale. You can also use shorthand to make things more efficient.
+
+```scss
+@include ms-list; // shorthand without attributes
+@include ms-list($start, $end, $base-size, $ratio); // shorthand with attributes
+```
+
+As a side effect of the modular-scale functions a `exponent` function is also available.
+
+```scss
+@include exponent($base, $exponent);
+```
+
 Sassy Modular Scale can be used as a function, mixin or a mixin that generates a range of classes to `@extend`.
 
 ```scss
 // Use as a function. Fill in the multiple, base-size, and ratio
 height: modular-scale(7, 16px, $golden);
+```
 
-// Use as a mixin. Fill in the property, multiple, base-size, and ratio
-@include modular-scale(line-height, 1, 16px, $golden);
+This method will generate a range of classes to `@extend`
 
-// This method will generate a range of classes to `@extend`
+```scss
 @include modular-scale-classes(6);
 
 h1 { @extend .ms-2; }
 h2 { @extend .ms-1; }
 h3 { @extend .ms-0; }
+```
 
-// You can also 'lace' multiple ratios together by 
-// passing them in as a list (space-separated)
+You can also 'lace' multiple ratios together by passing them in as a list (space-separated)
+
+```scss
 .lace {
   width: ms(7, 16px, $golden $fourth);
 }
+```
 
-// You can also set the $base-size variable to a list
-// to interrelate two significant known sizes in your design
-// note: the starting point of the scale will always be the *lowest* value in this list
+You can also set the $base-size variable to a list to interrelate two significant known sizes in your design
+*note:* the starting point of the scale will always be the *lowest* value in this list
+
+```scss
 .multibases {
   width: ms(7, 16px 300px, $golden);
 }
+```
   
-// You can use multiple $base-sizes and multiple $ratios together
+You can use multiple $base-sizes and multiple $ratios together
+
+```scss
 .multibase-multiratio {
   width: ms(7, 16px 300px, $golden $fourth);
 }

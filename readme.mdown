@@ -12,7 +12,9 @@ Usage requires Sass. Visit [sass-lang.com](http://sass-lang.com) to learn more a
 
 `gem install modular-scale`
 
-Then add `require 'modular-scale'` to your Compass config file.
+Add `require 'modular-scale'` to your Compass config file.
+
+Import the file into your stylesheets: `@import 'modular-scale';`
 
 ## Alternative installation (without Compass)
 

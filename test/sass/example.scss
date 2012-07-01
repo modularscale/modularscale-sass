@@ -1,6 +1,13 @@
 // path to local mixin
 @import "../../stylesheets/modular-scale";
 
+
+// @debug deg-to-rad(127deg);
+// @debug deg-to-rad(127);
+// @debug sort(6 5 7 4 8 3 9 2 0 10 1);
+// @debug reverse(sort(6 5 7 4 8 3 9 2 0 10 1));
+@debug modular-scale-list();
+
 // Defining the background color so we can see what is going on.
 html {
   padding: 20px; }
@@ -11,14 +18,13 @@ body {
 .page {
   background: white;
   // You can define the attribute, multiple, base size, and ratio witin a mixin
-  @include modular-scale(width, 8, 14px, $golden);
-  @include modular-scale(height, 7, 14px, $golden);
   // Or just use functions
   padding: modular-scale(1, 14px, $golden) modular-scale(2, 14px, $golden); }
 
 // You can also define your default values ahead of time
 $base-size: 14px;
 $ratio: $golden;
+@debug modular-scale-list();
 
 // Then just write the multiple
 h1 {
@@ -41,6 +47,7 @@ p {
 // And you can set the $ratio variable to a list
 // to get a richer set of variables
 $ratio: $golden $fourth;
+@debug modular-scale-list();
 
 h4 {
   font-size: ms(3); }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   padding: 20px;
 }
@@ -8,56 +9,54 @@ body {
 
 .page {
   background: white;
-  width: 657.591px;
-  height: 406.422px;
-  padding: 22.652px 36.651px;
+  padding: 23px 37px;
 }
 
 h1 {
-  font-size: 36.651px;
-  line-height: 36.651px;
+  font-size: 37px;
+  line-height: 37px;
 }
 
 h2 {
-  font-size: 22.652px;
-  line-height: 22.652px;
+  font-size: 23px;
+  line-height: 23px;
 }
 
 p {
   font-size: 14px;
-  line-height: 22.652px;
+  line-height: 23px;
 }
 
 .lace {
-  width: 58.996px;
+  width: 59px;
 }
 
 h4 {
-  font-size: 24.889px;
+  font-size: 25px;
 }
 
 h5 {
-  font-size: 22.652px;
+  font-size: 23px;
 }
 
 h6 {
-  font-size: 18.667px;
+  font-size: 19px;
 }
 
 h3 {
-  line-height: 53.096px;
+  line-height: 52.8px;
 }
 
 .foo {
-  font-size: 16.721px;
+  font-size: 17px;
 }
 
 .bar {
-  font-size: 16.894px;
+  font-size: 17px;
 }
 
 .baz {
-  font-size: 12.671px;
+  font-size: 13px;
 }
 
 .ms-0 {
@@ -65,25 +64,25 @@ h3 {
 }
 
 .ms-1 {
-  font-size: 16.721px;
+  font-size: 17px;
 }
 
 .ms-2 {
-  font-size: 16.894px;
+  font-size: 17px;
 }
 
 .ms-3 {
-  font-size: 18.667px;
+  font-size: 19px;
 }
 
 .ms-4 {
-  font-size: 22.525px;
+  font-size: 23px;
 }
 
 .ms-5 {
-  font-size: 22.652px;
+  font-size: 23px;
 }
 
 .ms-6 {
-  font-size: 24.889px;
+  font-size: 25px;
 }

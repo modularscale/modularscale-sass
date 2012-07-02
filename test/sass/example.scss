@@ -7,6 +7,12 @@
 // @debug sort(6 5 7 4 8 3 9 2 0 10 1);
 // @debug reverse(sort(6 5 7 4 8 3 9 2 0 10 1));
 @debug modular-scale-list();
+@debug modular-scale(0);
+@debug modular-scale(1);
+@debug modular-scale(2);
+@debug modular-scale(3);
+@debug modular-scale(4);
+@debug modular-scale(5);
 
 // Defining the background color so we can see what is going on.
 html {

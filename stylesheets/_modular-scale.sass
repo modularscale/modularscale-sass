@@ -62,9 +62,9 @@ $class-slug: ms !default
     @return ms-multiratio($multiple, $base-size, $ratio)
 
   // If there are no lists just run the simple function
-  @if unit(exponent($ratio, $multiple) * $base-size) == 'px'
-    @return round(exponent($ratio, $multiple) * $base-size)
-  @return exponent($ratio, $multiple) * $base-size
+  @if unit(power($ratio, $multiple) * $base-size) == 'px'
+    @return round(power($ratio, $multiple) * $base-size)
+  @return power($ratio, $multiple) * $base-size
 
 
 // calculate values in using each base-size / ratio combination
@@ -89,14 +89,14 @@ $class-slug: ms !default
         // up $multiple times
         // and add the result to $scale-values
         @for $i from 1 through $multiple
-          $modular-scale: exponent(nth($ratio, $j), $i) * nth($base-size, $k)
+          $modular-scale: power(nth($ratio, $j), $i) * nth($base-size, $k)
           $scale-values: append($scale-values, $modular-scale)
         // and down until the value is lower than the lowest $base-size
         // and add the result to $scale-values
         $i: -1
         $modular-scale: nth($base-size, $k)
         @while $modular-scale >= nth($base-size, 1)
-          $modular-scale: exponent(nth($ratio, $j), $i) * nth($base-size, $k)
+          $modular-scale: power(nth($ratio, $j), $i) * nth($base-size, $k)
           $scale-values: append($scale-values, $modular-scale)
           $i: $i - 1
       @if $multiple < 0
@@ -104,7 +104,7 @@ $class-slug: ms !default
         $i: -1
         $modular-scale: nth($base-size, $k)
         @while $modular-scale > 1
-          $modular-scale: exponent(nth($ratio, $j), $i) * nth($base-size, $k)
+          $modular-scale: power(nth($ratio, $j), $i) * nth($base-size, $k)
           $scale-values: append($scale-values, $modular-scale)
           $i: $i - 1
       $j: $j + 1
@@ -132,14 +132,14 @@ $class-slug: ms !default
       // up $multiple times
       // and add the result to $scale-values
       @for $i from 1 through $multiple
-        $modular-scale: exponent($ratio, $i) * nth($base-size, $k)
+        $modular-scale: power($ratio, $i) * nth($base-size, $k)
         $scale-values: append($scale-values, $modular-scale)
       // and down until the value is lower than the lowest $base-size
       // and add the result to $scale-values
       $i: -1
       $modular-scale: nth($base-size, $k)
       @while $modular-scale >= nth($base-size, 1)
-        $modular-scale: exponent($ratio, $i) * nth($base-size, $k)
+        $modular-scale: power($ratio, $i) * nth($base-size, $k)
         $scale-values: append($scale-values, $modular-scale)
         $i: $i - 1
     @if $multiple < 0
@@ -147,7 +147,7 @@ $class-slug: ms !default
       $i: -1
       $modular-scale: nth($base-size, $k)
       @while $modular-scale > 1
-        $modular-scale: exponent($ratio, $i) * nth($base-size, $k)
+        $modular-scale: power($ratio, $i) * nth($base-size, $k)
         $scale-values: append($scale-values, $modular-scale)
         $i: $i - 1
     $k: $k + 1
@@ -168,7 +168,7 @@ $class-slug: ms !default
       $modular-scale: $base-size
       // do the scale using this ratio thru the multiple, and add the result to $scale-values
       @for $i from 1 through $multiple
-        $modular-scale: exponent(nth($ratio, $j), $i) * $base-size
+        $modular-scale: power(nth($ratio, $j), $i) * $base-size
         $scale-values: append($scale-values, $modular-scale)
       $j: $j + 1
     // sort acsending
@@ -184,7 +184,7 @@ $class-slug: ms !default
       $modular-scale: $base-size
       // do the scale using this ratio thru the multiple, and add the result to $scale-values
       @for $i from 1 through ($multiple * -1)
-        $modular-scale: exponent(nth($ratio, $j), -$i) * $base-size
+        $modular-scale: power(nth($ratio, $j), -$i) * $base-size
         $scale-values: append($scale-values, $modular-scale)
       $j: $j + 1
     // sort decending
@@ -250,19 +250,19 @@ $class-slug: ms !default
 
 
 // Sass exponent support
-@function exponent($base, $exponent)
-  // reset value
-  $value: $base
-  // positive intergers get multiplied
-  @if $exponent > 1
-    @for $i from 2 through $exponent
-      $value: $value * $base
-  // negitive intergers get divided. A number divided by itself is 1
-  @if $exponent < 1
-    @for $i from 0 through -$exponent
-      $value: $value / $base
-  // return the last value written
-  @return $value
+// @function exponent($base, $exponent)
+//   // reset value
+//   $value: $base
+//   // positive intergers get multiplied
+//   @if $exponent > 1
+//     @for $i from 2 through $exponent
+//       $value: $value * $base
+//   // negitive intergers get divided. A number divided by itself is 1
+//   @if $exponent < 1
+//     @for $i from 0 through -$exponent
+//       $value: $value / $base
+//   // return the last value written
+//   @return $value
 
 
 // Sass list sorting support

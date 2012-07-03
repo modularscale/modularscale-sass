@@ -34,7 +34,7 @@ $class-slug: ms !default
   // return the $base-size if $multiple is zero
   @if $multiple == 0
     @if type-of($base-size) == 'list'
-      $base-size: sort($base-size)
+      $base-size: sort_list($base-size)
       @return nth($base-size, 1)
     // return just the simple $base-size value if it's not a list
     @return $base-size
@@ -72,7 +72,7 @@ $class-slug: ms !default
   // start with an empty list to place all values in
   $scale-values: ()
   // make sure base sizes are in ascending order
-  $base-size: sort($base-size)
+  $base-size: sort_list($base-size)
   // take each base-size in turn
   $k: 1
   @while $k <= length($base-size)
@@ -118,7 +118,7 @@ $class-slug: ms !default
   // start with an empty list to place all values in
   $scale-values: ()
   // make sure base sizes are in ascending order
-  $base-size: sort($base-size)
+  $base-size: sort_list($base-size)
   // take each base-size in turn
   $k: 1
   @while $k <= length($base-size)
@@ -172,7 +172,7 @@ $class-slug: ms !default
         $scale-values: append($scale-values, $modular-scale)
       $j: $j + 1
     // sort acsending
-    $scale-values: sort($scale-values)
+    $scale-values: sort_list($scale-values)
     // return the final value using the laced list
     @return nth($scale-values, $multiple)
   // If $multiple is a negative integer (down the scale)
@@ -188,7 +188,7 @@ $class-slug: ms !default
         $scale-values: append($scale-values, $modular-scale)
       $j: $j + 1
     // sort decending
-    $scale-values: reverse(sort($scale-values))
+    $scale-values: reverse_list(sort_list($scale-values))
     // return the final value using the laced list
     @return nth($scale-values, $multiple * -1)
 
@@ -197,16 +197,16 @@ $class-slug: ms !default
 @function trim-sort($multiple, $scale-values, $base-size)
   @if $multiple > 0
     // trim list so we can count from the lowest $base-size
-    $scale-values: trim-list($scale-values, nth($base-size, 1))
+    $scale-values: trim_list($scale-values, nth($base-size, 1), true)
     // sort acsending
-    $scale-values: sort($scale-values)
+    $scale-values: sort_list($scale-values)
     // return the final value using the laced list
     @return nth($scale-values, $multiple)
   @else
     // trim list so we can count from the lowest $base-size
-    $scale-values: trim-list($scale-values, nth($base-size, 1), 'dec')
+    $scale-values: trim_list($scale-values, nth($base-size, 1), false)
     // sort acsending
-    $scale-values: reverse(sort($scale-values))
+    $scale-values: reverse_list(sort_list($scale-values))
     // return the final value using the laced list
     @return nth($scale-values, -$multiple)
 
@@ -310,23 +310,23 @@ $class-slug: ms !default
 //   @return $new-order
 
 
-// Sass list trimming support
-@function trim-list($list, $start, $dir: 'asc')
-  // built-in list trimming in Sass would make this go away.
-  // declare some empty lists to put our trimmed values
-  $trimmed: ()
-  // if sorting ascending
-  @if $dir == 'asc'
-    // loop through all values in $list
-    @for $i from 1 through length($list)
-      @if nth($list, $i) >= $start
-        $trimmed: append($trimmed, nth($list, $i))
-  @if $dir == 'dec'
-    // loop through all values in $list
-    @for $i from 1 through length($list)
-      @if nth($list, $i) <= $start
-        $trimmed: append($trimmed, nth($list, $i))
-  @return $trimmed
+// // Sass list trimming support
+// @function trim-list($list, $start, $dir: 'asc')
+//   // built-in list trimming in Sass would make this go away.
+//   // declare some empty lists to put our trimmed values
+//   $trimmed: ()
+//   // if sorting ascending
+//   @if $dir == 'asc'
+//     // loop through all values in $list
+//     @for $i from 1 through length($list)
+//       @if nth($list, $i) >= $start
+//         $trimmed: append($trimmed, nth($list, $i))
+//   @if $dir == 'dec'
+//     // loop through all values in $list
+//     @for $i from 1 through length($list)
+//       @if nth($list, $i) <= $start
+//         $trimmed: append($trimmed, nth($list, $i))
+//   @return $trimmed
 
 // Other libraries can easily query if this function is avalible
 $modular-scale-loaded: true

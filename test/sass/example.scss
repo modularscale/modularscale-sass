@@ -1,18 +1,24 @@
 // path to local mixin
 @import "../../stylesheets/modular-scale";
 
+$base-size: 16px 44px;
+$ratio: $golden $major-third;
 
 // @debug deg-to-rad(127deg);
 // @debug deg-to-rad(127);
 // @debug sort(6 5 7 4 8 3 9 2 0 10 1);
 // @debug reverse(sort(6 5 7 4 8 3 9 2 0 10 1));
-@debug modular-scale-list();
+// @debug modular-scale-list();
+@debug modular-scale(-3);
+@debug modular-scale(-2);
+@debug modular-scale(-1);
 @debug modular-scale(0);
 @debug modular-scale(1);
 @debug modular-scale(2);
 @debug modular-scale(3);
-@debug modular-scale(4);
-@debug modular-scale(5);
+// @debug modular-scale(4);
+// @debug modular-scale(5);
+// @debug modular-scale(100);
 
 // Defining the background color so we can see what is going on.
 html {
@@ -30,7 +36,7 @@ body {
 // You can also define your default values ahead of time
 $base-size: 14px;
 $ratio: $golden;
-@debug modular-scale-list();
+// @debug modular-scale-list();
 
 // Then just write the multiple
 h1 {
@@ -53,7 +59,7 @@ p {
 // And you can set the $ratio variable to a list
 // to get a richer set of variables
 $ratio: $golden $fourth;
-@debug modular-scale-list();
+// @debug modular-scale-list();
 
 h4 {
   font-size: ms(3); }

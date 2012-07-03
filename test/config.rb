@@ -39,14 +39,29 @@ end
 
 module Sass::Script::Functions
   # Lists
-  def sort(list)
+  def sort_list(list)
     sep = list.separator if list.is_a?(Sass::Script::List)
     list = list.to_a.sort
     Sass::Script::List.new(list, sep)
   end
-  def reverse(list)
+  def reverse_list(list)
     sep = list.separator if list.is_a?(Sass::Script::List)
     list = list.to_a.reverse
+    Sass::Script::List.new(list, sep)
+  end
+  def trim_list(list, threshold, ascending)
+    # remove list items above or below a threshold
+    sep = list.separator if list.is_a?(Sass::Script::List)
+    list = list.to_a
+    if ascending.value
+      list = list.delete_if {
+        |x| x.value <= threshold.value
+      }
+    else
+      list = list.delete_if {
+        |x| x.value >= threshold.value
+      }
+    end
     Sass::Script::List.new(list, sep)
   end
   # Fractions

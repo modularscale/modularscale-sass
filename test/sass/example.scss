@@ -4,7 +4,10 @@
 // $base-size: 1px 16px;
 // $base-size: 1em 16em;
 // $base-size: 1em;
-// $ratio: $golden $major-third;
+// $ratio: $augfourth;
+// @debug $augfourth;
+// @debug sqrt(2);
+// @debug golden_ratio();
 // @debug modular-scale-list(-15, 30);
 // @debug modular-scale(-10);
 

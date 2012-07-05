@@ -1,24 +1,12 @@
 // path to local mixin
 @import "../../stylesheets/modular-scale";
 
-$base-size: 16px 44px;
-$ratio: $golden $major-third;
-
-// @debug deg-to-rad(127deg);
-// @debug deg-to-rad(127);
-// @debug sort(6 5 7 4 8 3 9 2 0 10 1);
-// @debug reverse(sort(6 5 7 4 8 3 9 2 0 10 1));
-// @debug modular-scale-list();
-@debug modular-scale(-3);
-@debug modular-scale(-2);
-@debug modular-scale(-1);
-@debug modular-scale(0);
-@debug modular-scale(1);
-@debug modular-scale(2);
-@debug modular-scale(3);
-// @debug modular-scale(4);
-// @debug modular-scale(5);
-// @debug modular-scale(100);
+// $base-size: 1px 16px;
+// $base-size: 1em 16em;
+// $base-size: 1em;
+// $ratio: $golden $major-third;
+// @debug modular-scale-list(-15, 30);
+// @debug modular-scale(-10);
 
 // Defining the background color so we can see what is going on.
 html {

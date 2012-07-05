@@ -101,9 +101,9 @@ $class-slug: ms !default
           $i: $i - 1
       @if $multiple < 0
         // do the scale down for each set to below 1px
-        $i: -1
+        $i: 0
         $modular-scale: nth($base-size, $k)
-        @while $modular-scale > 1
+        @while $i >= $multiple
           $modular-scale: power(nth($ratio, $j), $i) * nth($base-size, $k)
           $scale-values: append($scale-values, $modular-scale)
           $i: $i - 1
@@ -144,9 +144,9 @@ $class-slug: ms !default
         $i: $i - 1
     @if $multiple < 0
       // do the scale down for each set to below 1px
-      $i: -1
+      $i: 0
       $modular-scale: nth($base-size, $k)
-      @while $modular-scale > 1
+      @while $i >= $multiple
         $modular-scale: power($ratio, $i) * nth($base-size, $k)
         $scale-values: append($scale-values, $modular-scale)
         $i: $i - 1

@@ -1,36 +1,37 @@
 // SASSY MODULAR-SCALE
 // https://github.com/scottkellum/modular-scale
 
-@charset "UTF-8"
+// @charset "UTF-8"
 
 // Ratios
-$golden: golden_ratio()
-$gold: $golden
-$double-octave: (4 / 1)
-$major-twelfth: (3 / 1)
-$major-eleventh: (8 / 3)
-$major-tenth: (5 / 2)
-$octave: (2 / 1)
-$major-seventh: (15 / 8)
-$minor-seventh: (16 / 9)
-$major-sixth: (5 / 3)
-$minor-sixth: (8 / 5)
-$fifth: (3 / 2)
-$augfourth: (sqrt(2) / 1)
-$fourth: (4 / 3)
-$major-third: (5 / 4)
-$minor-third: (6 / 5)
-$major-second: (9 / 8)
-$minor-second: (16 / 15)
+// $golden: golden_ratio()
+// $gold: $golden
+// $double-octave: (4 / 1)
+// $major-twelfth: (3 / 1)
+// $major-eleventh: (8 / 3)
+// $major-tenth: (5 / 2)
+// $octave: (2 / 1)
+// $major-seventh: (15 / 8)
+// $minor-seventh: (16 / 9)
+// $major-sixth: (5 / 3)
+// $minor-sixth: (8 / 5)
+// $fifth: (3 / 2)
+// $augfourth: (sqrt(2) / 1)
+// $fourth: (4 / 3)
+// $major-third: (5 / 4)
+// $minor-third: (6 / 5)
+// $major-second: (9 / 8)
+// $minor-second: (16 / 15)
 
 // Defaults
-$ratio: $golden !default
+$ratio: golden_ratio() !default
 $base-size: 16px !default
+$round_pixels: true !default
 $property: font-size !default
 $class-slug: ms !default
 
 // Modular Scale function
-@function modular-scale($multiple, $base-size, $ratio)
+@function modular-scale($multiple, $base-size, $ratio, $round_pixels)
   // return the $base-size if $multiple is zero
   @if $multiple == 0
     @if type-of($base-size) == 'list'
@@ -43,26 +44,26 @@ $class-slug: ms !default
   // and multiple ratios are passed in as a list
   // calculate values in using each base-size / ratio combination
   @if type-of($base-size) == 'list' and type-of($ratio) == 'list'
-    @if unit(ms-multibase-multiratio($multiple, $base-size, $ratio)) == 'px'
+    @if unit(ms-multibase-multiratio($multiple, $base-size, $ratio)) == 'px' and $round_pixels == true
       @return round(ms-multibase-multiratio($multiple, $base-size, $ratio))
     @return ms-multibase-multiratio($multiple, $base-size, $ratio)
 
   // if multiple base-sizes are passed in as a list
   // calculate values in using each base-size
   @if type-of($base-size) == 'list' and type-of($ratio) == 'number'
-    @if unit(ms-multibase($multiple, $base-size, $ratio)) == 'px'
+    @if unit(ms-multibase($multiple, $base-size, $ratio)) == 'px' and $round_pixels == true
       @return round(ms-multibase($multiple, $base-size, $ratio))
     @return ms-multibase($multiple, $base-size, $ratio)
 
   // if multiple ratios are passed in as a list
   // calculate values in using each ratio
   @if type-of($base-size) == 'number' and type-of($ratio) == 'list'
-    @if unit(ms-multiratio($multiple, $base-size, $ratio)) == 'px'
+    @if unit(ms-multiratio($multiple, $base-size, $ratio)) == 'px' and $round_pixels == true
       @return round(ms-multiratio($multiple, $base-size, $ratio))
     @return ms-multiratio($multiple, $base-size, $ratio)
 
   // If there are no lists just run the simple function
-  @if unit(power($ratio, $multiple) * $base-size) == 'px'
+  @if unit(power($ratio, $multiple) * $base-size) == 'px' and $round_pixels == true
     @return round(power($ratio, $multiple) * $base-size)
   @return power($ratio, $multiple) * $base-size
 

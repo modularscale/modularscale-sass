@@ -1,34 +1,10 @@
 // SASSY MODULAR-SCALE
 // https://github.com/scottkellum/modular-scale
 
-// @charset "UTF-8"
-
-// Ratios
-// $golden: golden_ratio()
-// $gold: $golden
-// $double-octave: (4 / 1)
-// $major-twelfth: (3 / 1)
-// $major-eleventh: (8 / 3)
-// $major-tenth: (5 / 2)
-// $octave: (2 / 1)
-// $major-seventh: (15 / 8)
-// $minor-seventh: (16 / 9)
-// $major-sixth: (5 / 3)
-// $minor-sixth: (8 / 5)
-// $fifth: (3 / 2)
-// $augfourth: (sqrt(2) / 1)
-// $fourth: (4 / 3)
-// $major-third: (5 / 4)
-// $minor-third: (6 / 5)
-// $major-second: (9 / 8)
-// $minor-second: (16 / 15)
-
 // Defaults
 $ratio: golden_ratio() !default
 $base-size: 16px !default
 $round_pixels: true !default
-$property: font-size !default
-$class-slug: ms !default
 
 // Modular Scale function
 @function modular-scale($multiple, $base-size, $ratio, $round_pixels)
@@ -219,18 +195,6 @@ $class-slug: ms !default
   // Return the value from the Modular Scale function
   @return modular-scale($multiple, $base-size, $ratio)
 
-// Classes Mixin
-=modular-scale-classes($multiple, $property, $class-slug, $base-size, $ratio)
-
-  // Loop from 0 through the value of $multiple and generate a range of classes
-  @for $i from 0 through $multiple
-    .#{$class-slug}-#{$i}
-      // Print the $property and return the value from the Modular Scale function
-      #{$property}: modular-scale($i, $base-size, $ratio)
-
-=ms-classes($multiple, $property, $class-slug, $base-size, $ratio)
-  +modular-scale-classes($multiple, $property, $class-slug, $base-size, $ratio)
-
 // Write Modular Scale List
 @function modular-scale-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
   $ms-list: unquote("MS-LIST:")
@@ -247,87 +211,6 @@ $class-slug: ms !default
 =ms-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
   @debug modular-scale-list($start, $finish, $base-size, $ratio)
 
-/////////////////////////////////////////////////////////////////////////
-
-
-// Sass exponent support
-// @function exponent($base, $exponent)
-//   // reset value
-//   $value: $base
-//   // positive intergers get multiplied
-//   @if $exponent > 1
-//     @for $i from 2 through $exponent
-//       $value: $value * $base
-//   // negitive intergers get divided. A number divided by itself is 1
-//   @if $exponent < 1
-//     @for $i from 0 through -$exponent
-//       $value: $value / $base
-//   // return the last value written
-//   @return $value
-
-
-// Sass list sorting support
-// @function sort-list($list, $dir: 'asc')
-//   // built-in list sorting in Sass would make this go away.
-//   // declare some empty lists to put our new order and temporary values
-//   $new-order: ()
-//   $temp: ()
-//   // fill $temp with the contents of $list
-//   $temp: join($temp, $list)
-//   // if sorting ascending
-//   @if $dir == 'asc'
-//     // loop through all values in $list
-//     @for $i from 1 through length($list)
-//       // impossibly high starter value to compare
-//       $low: 1000000
-//       // check for lowest value in $temp
-//       @for $j from 1 through length($temp)
-//         @if nth($temp, $j) < $low
-//           $low: nth($temp, $j)
-//       // add lowest value to $new-order
-//       $new-order: append($new-order, $low)
-//       // empty $temp for the next comparison
-//       $temp: ()
-//       // re-populate $temp with remaining values to sort
-//       @for $k from 1 through length($list)
-//         @if nth($list, $k) > $low
-//           $temp: append($temp, nth($list, $k))
-//   @if $dir == 'dec'
-//     // loop through all values in $list
-//     @for $i from 1 through length($list)
-//       // 0 starter value
-//       $high: 0
-//       // check for highest value in $temp
-//       @for $j from 1 through length($temp)
-//         @if nth($temp, $j) > $high
-//           $high: nth($temp, $j)
-//       $new-order: append($new-order, $high)
-//       // empty $temp for the next comparison
-//       $temp: ()
-//       // re-populate $temp with remaining values to sort
-//       @for $k from 1 through length($list)
-//         @if nth($list, $k) < $high
-//           $temp: append($temp, nth($list, $k))
-//   @return $new-order
-
-
-// // Sass list trimming support
-// @function trim-list($list, $start, $dir: 'asc')
-//   // built-in list trimming in Sass would make this go away.
-//   // declare some empty lists to put our trimmed values
-//   $trimmed: ()
-//   // if sorting ascending
-//   @if $dir == 'asc'
-//     // loop through all values in $list
-//     @for $i from 1 through length($list)
-//       @if nth($list, $i) >= $start
-//         $trimmed: append($trimmed, nth($list, $i))
-//   @if $dir == 'dec'
-//     // loop through all values in $list
-//     @for $i from 1 through length($list)
-//       @if nth($list, $i) <= $start
-//         $trimmed: append($trimmed, nth($list, $i))
-//   @return $trimmed
 
 // Other libraries can easily query if this function is avalible
 $modular-scale-loaded: true

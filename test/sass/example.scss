@@ -83,6 +83,3 @@ $base-size: 14px 300px;
 
 .baz {
   font-size: ms(-1); }
-
-// You can use the modular-scale-classes mixin to generate extendable classes
-@include modular-scale-classes(6, font-size);

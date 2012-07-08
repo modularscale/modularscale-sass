@@ -104,18 +104,6 @@ module Sass::Script::Functions
     value = 16 / 15.0
     Sass::Script::Number.new(value)
   end
-  # def modular_scale(multiple, base_size, ratio)
-  #   assert_type multiple, :Number
-  #   if !multiple.int?
-  #     raise ArgumentError.new("Multiple #{multiple} must be an integer")
-  #   end
-  #   puts multiple
-  #   puts base_size
-  #   puts ratio
-
-  #   Sass::Script::Number.new(16, 'px')
-  # end
-  # declare :modular_scale, [:multiple]
 
   # Lists
   def sort_list(list)

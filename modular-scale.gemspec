@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{Sassy Modular Scale calculates the incremental values of the modular scale.}
   s.summary = %q{Sassy Modular Scale calculates the incremental values of the modular scale in proportion to a set size and ratio. Inspired by and adapted from Tim Brown's modularscale.com.}
   s.authors = ["Scott Kellum", "Adam Stacoviak", "Mason Wendell"]
-  s.email = ["scott@scottkellum.com", "adam@stacoviak.com", "mason@zivtech.com"]
+  s.email = ["scott@scottkellum.com", "adam@stacoviak.com", "mason@canarypromo.com"]
   s.homepage = "https://github.com/scottkellum/modular-scale"
 
   # Gem Files

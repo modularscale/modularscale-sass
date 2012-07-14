@@ -1,0 +1,7 @@
+# Changelog
+
+## 1.0.alpha - July 14, 2012
+* rewrite modular scale calculations and list operations in Ruby
+* remove automatic class generation
+* remove non-compass support, because of the custom Ruby code
+* update readme

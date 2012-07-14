@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
   s.rubygems_version = %q{1.3.6}
   s.add_dependency("compass", [">= 0.11.5"])
+  s.add_dependency("sassy-math", [">= 1.1"])
 end

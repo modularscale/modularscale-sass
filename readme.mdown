@@ -1,7 +1,5 @@
 # Sassy Modular Scale
 
-# [THE GEM IS NOT UPDATED ON RUBYGEMS YET. DOCS FOR v0.0.5 CAN BE FOUND HERE](https://github.com/scottkellum/modular-scale/blob/39e2bc1d36fdbd91b7cb1663d9bd57e401cf909c/readme.mdown)
-
 ## Put down the calculator and let Sass do the work.
 
 Sassy Modular Scale is a Sass based mixin that calculates the incremental values of the modular scale in proportion to a set size and ratio. It was inspired by and adapted from Tim Brown's modularscale.com.

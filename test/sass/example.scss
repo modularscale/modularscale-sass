@@ -11,10 +11,17 @@
 // $round_pixels: false;
 //
 // @debug golden_ratio();
+// @debug golden();
 // @debug modular-scale-list(-5, 10);
 // @debug modular-scale-list(-15, 30);
 // @debug modular-scale(-10);
 // @debug modular-scale(1);
+
+// $ratio: golden();
+// $scale: modular-scale(1, 16px, $ratio);
+// @include modular-scale-list(1, 3, 16px, $ratio);
+// @debug $scale;
+
 
 // Defining the background color so we can see what is going on.
 html {

@@ -190,6 +190,10 @@ $round_pixels: true !default
 
 /////////////////////////////////////////////////////////////////////////
 
+// alias for golden_ratio()
+@function golden()
+  @return golden_ratio()
+
 // Shortcut
 @function ms($multiple, $base-size, $ratio)
   // Return the value from the Modular Scale function

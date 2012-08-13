@@ -8,6 +8,7 @@
 // $base-size: 1rem 2.75rem; // 16px, 44px
 // $base-size: 1em;
 // $ratio: augmented_forth();
+// $ratio: golden_ratio() major_third();
 // $round_pixels: false;
 //
 // @debug golden_ratio();
@@ -16,6 +17,7 @@
 // @debug modular-scale-list(-15, 30);
 // @debug modular-scale(-10);
 // @debug modular-scale(1);
+// @debug modular-scale(10);
 
 // $ratio: golden();
 // $scale: modular-scale(1, 16px, $ratio);

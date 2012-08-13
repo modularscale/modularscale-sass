@@ -7,7 +7,7 @@ $base-size: 16px !default
 $round_pixels: true !default
 
 // Modular Scale function
-@function modular-scale($multiple, $base-size, $ratio, $round_pixels)
+@function modular-scale($multiple, $base-size: $base-size, $ratio: $ratio, $round_pixels: $round_pixels)
   // return the $base-size if $multiple is zero
   @if $multiple == 0
     @if type-of($base-size) == 'list'
@@ -195,9 +195,9 @@ $round_pixels: true !default
   @return golden_ratio()
 
 // Shortcut
-@function ms($multiple, $base-size, $ratio)
+@function ms($args...)
   // Return the value from the Modular Scale function
-  @return modular-scale($multiple, $base-size, $ratio)
+  @return modular-scale($args...)
 
 // Write Modular Scale List
 @function modular-scale-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)

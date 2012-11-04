@@ -24,7 +24,7 @@ Modular-scale is used as a function. Simply pass it through in place of any valu
 width: modular-scale(2); // two up the modular scale
 width: ms(2); // Shorthand for the line above
 width: modular-scale(2, 1em); // two up the modular scale with a base size of 1em
-width: modular-scale(2, 1em, $octave); // Same as above but on an octave scale
+width: modular-scale(2, 1em, octave() ); // Same as above but on an octave scale
 ```
 
 You can output a list to your terminal to help you find out what values are on your scale.
@@ -50,7 +50,7 @@ Sassy Modular Scale can be used as a function, like so:
 
 ```scss
 // Use as a function. Fill in the multiple, base-size, and ratio
-height: modular-scale(7, 16px, $golden);
+height: modular-scale(7, 16px, golden() );
 ```
 
 
@@ -59,7 +59,7 @@ You can also 'lace' multiple ratios together by passing them in as a list (space
 
 ```scss
 .lace {
-  width: ms(7, 16px, $golden $fourth);
+  width: ms(7, 16px, golden() fourth() );
 }
 ```
 
@@ -68,7 +68,7 @@ You can also set the $base-size variable to a list to interrelate two significan
 
 ```scss
 .multibases {
-  width: ms(7, 16px 300px, $golden);
+  width: ms(7, 16px 300px, golden() );
 }
 ```
 
@@ -76,7 +76,7 @@ You can use multiple $base-sizes and multiple $ratios together
 
 ```scss
 .multibase-multiratio {
-  width: ms(7, 16px 300px, $golden $fourth);
+  width: ms(7, 16px 300px, golden() fourth() );
 }
 ```
 

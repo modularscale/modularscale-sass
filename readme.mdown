@@ -98,7 +98,7 @@ Below is a list of ratios to choose from. By default, the variable `$ratio` is s
 * major-sixth()
 * minor-sixth()
 * fifth()
-* augfourth()
+* augmented-forth()
 * fourth()
 * major-third()
 * minor-third()

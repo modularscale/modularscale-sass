@@ -80,36 +80,43 @@ You can use multiple $base-sizes and multiple $ratios together
 }
 ```
 
-
 ## Ratios
 
-The included ratios are called by functions. You can add your own ratios as well.
+Modular scale includes functions for a number of classic design and musical scale ratios. You can add your own ratios as well.
 
-Below is a list of ratios to choose from. By default, the variable `$ratio` is set to `golden()`.
+By default, the variable `$ratio` is set to `golden()`.
 
-* golden()
-* double-octave()
-* major-twelfth()
-* major-eleventh()
-* major-tenth()
-* octave()
-* major-seventh()
-* minor-seventh()
-* major-sixth()
-* minor-sixth()
-* fifth()
-* augmented-forth()
-* fourth()
-* major-third()
-* minor-third()
-* major-second()
-* minor-second()
+<table>
+
+  <tr><th>Function</th><th>Ratio</th><th>Decimal value</th></tr>
+
+  <tr><td>golden()</td><td>1:1.618</td><td>1.618</td></tr>
+  <tr><td>double-octave()</td><td>1:4</td><td>4</td></tr>
+  <tr><td>major-twelfth()</td><td>1:3</td><td>3</td></tr>
+  <tr><td>major-eleventh()</td><td>3:8</td><td>2.667</td></tr>
+  <tr><td>major-tenth()</td><td>2.5</td><td>2:5</td></tr>
+  <tr><td>octave()</td><td>1:2</td><td>2</td></tr>
+  <tr><td>major-seventh()</td><td>8:15</td><td>1.875</td></tr>
+  <tr><td>minor-seventh()</td><td>9:16</td><td>1.778</td></tr>
+  <tr><td>major-sixth()</td><td>3:5</td><td>1.667</td></tr>
+  <tr><td>minor-sixth()</td><td>5:8</td><td>1.6</td></tr>
+  <tr><td>fifth()</td><td>2:3</td><td>1.5</td></tr>
+  <tr><td>augmented-forth()</td><td>1:√2</td><td>1.414</td></tr>
+  <tr><td>fourth()</td><td>3:4</td><td>1.333</td></tr>
+  <tr><td>major-third()</td><td>4:5</td><td>1.25</td></tr>
+  <tr><td>minor-third()</td><td>5:6</td><td>1.2</td></tr>
+  <tr><td>major-second()</td><td>8:9</td><td>1.125</td></tr>
+  <tr><td>minor-second()</td><td>15:16</td><td>1.067</td></tr>
+
+</table>
 
 Add your own ratio in Sass by setting a variable and passing that to modular-scale.
 
 ```scss
 $my-variable: 1 / 3.14159265;
+$ratio: $my-variable;
 ```
+
 
 ## Inspiration
 

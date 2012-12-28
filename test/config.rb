@@ -81,7 +81,7 @@ module Sass::Script::Functions
     value = 3 / 2.0
     Sass::Script::Number.new(value)
   end
-  def augmented_forth
+  def augmented_fourth
     value = Math.sqrt(2) / 1.0
     Sass::Script::Number.new(value)
   end

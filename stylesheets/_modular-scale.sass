@@ -195,9 +195,9 @@ $round-pixels: true !default
   @return golden_ratio()
 
 // Shortcut
-@function ms($multiple, $base-size: $base-size, $ratio: $ratio)
+@function ms($multiple, $base-size: $base-size, $ratio: $ratio, $round-pixels: $round-pixels)
   // Return the value from the Modular Scale function
-  @return modular-scale($multiple, $base-size, $ratio)
+  @return modular-scale($multiple, $base-size, $ratio, $round-pixels)
 
 // Write Modular Scale List
 @function modular-scale-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)

@@ -4,10 +4,10 @@
 // Defaults
 $ratio: golden_ratio() !default
 $base-size: 16px !default
-$round_pixels: true !default
+$round-pixels: true !default
 
 // Modular Scale function
-@function modular-scale($multiple, $base-size: $base-size, $ratio: $ratio, $round_pixels: $round_pixels)
+@function modular-scale($multiple, $base-size: $base-size, $ratio: $ratio, $round-pixels: $round-pixels)
   // return the $base-size if $multiple is zero
   @if $multiple == 0
     @if type-of($base-size) == 'list'
@@ -20,32 +20,32 @@ $round_pixels: true !default
   // and multiple ratios are passed in as a list
   // calculate values in using each base-size / ratio combination
   @if type-of($base-size) == 'list' and type-of($ratio) == 'list'
-    @if unit(ms-multibase-multiratio($multiple, $base-size, $ratio)) == 'px' and $round_pixels == true
+    @if unit(ms-multibase-multiratio($multiple, $base-size, $ratio)) == 'px' and $round-pixels == true
       @return round(ms-multibase-multiratio($multiple, $base-size, $ratio))
     @return ms-multibase-multiratio($multiple, $base-size, $ratio)
 
   // if multiple base-sizes are passed in as a list
   // calculate values in using each base-size
   @if type-of($base-size) == 'list' and type-of($ratio) == 'number'
-    @if unit(ms-multibase($multiple, $base-size, $ratio)) == 'px' and $round_pixels == true
+    @if unit(ms-multibase($multiple, $base-size, $ratio)) == 'px' and $round-pixels == true
       @return round(ms-multibase($multiple, $base-size, $ratio))
     @return ms-multibase($multiple, $base-size, $ratio)
 
   // if multiple ratios are passed in as a list
   // calculate values in using each ratio
   @if type-of($base-size) == 'number' and type-of($ratio) == 'list'
-    @if unit(ms-multiratio($multiple, $base-size, $ratio)) == 'px' and $round_pixels == true
+    @if unit(ms-multiratio($multiple, $base-size, $ratio)) == 'px' and $round-pixels == true
       @return round(ms-multiratio($multiple, $base-size, $ratio))
     @return ms-multiratio($multiple, $base-size, $ratio)
 
   // If there are no lists just run the simple function
-  @if unit(power($ratio, $multiple) * $base-size) == 'px' and $round_pixels == true
+  @if unit(power($ratio, $multiple) * $base-size) == 'px' and $round-pixels == true
     @return round(power($ratio, $multiple) * $base-size)
   @return power($ratio, $multiple) * $base-size
 
 
 // calculate values in using each base-size / ratio combination
-@function ms-multibase-multiratio($multiple, $base-size, $ratio)
+@function ms-multibase-multiratio($multiple, $base-size: $base-size, $ratio: $ratio)
   // start with an empty list to place all values in
   $scale-values: ()
   // make sure base sizes are in ascending order
@@ -91,7 +91,7 @@ $round_pixels: true !default
 
 
 // calculate values in using each base-size
-@function ms-multibase($multiple, $base-size, $ratio)
+@function ms-multibase($multiple, $base-size: $base-size, $ratio: $ratio)
   // start with an empty list to place all values in
   $scale-values: ()
   // make sure base sizes are in ascending order
@@ -133,7 +133,7 @@ $round_pixels: true !default
 
 
 // calculate values in using each ratio
-@function ms-multiratio($multiple, $base-size, $ratio)
+@function ms-multiratio($multiple, $base-size: $base-size, $ratio: $ratio)
   // start with an empty list to place all values in
   $scale-values: ()
   // If $multiple is a positive integer (up the scale)
@@ -171,7 +171,7 @@ $round_pixels: true !default
 
 
 // trim and sort the final list
-@function trim-sort($multiple, $scale-values, $base-size)
+@function trim-sort($multiple, $scale-values: $scale-values, $base-size: $base-size)
   @if $multiple > 0
     // trim list so we can count from the lowest $base-size
     $scale-values: trim_list($scale-values, nth($base-size, 1), true)
@@ -195,9 +195,9 @@ $round_pixels: true !default
   @return golden_ratio()
 
 // Shortcut
-@function ms($args...)
+@function ms($multiple, $base-size: $base-size, $ratio: $ratio)
   // Return the value from the Modular Scale function
-  @return modular-scale($args...)
+  @return modular-scale($multiple, $base-size, $ratio)
 
 // Write Modular Scale List
 @function modular-scale-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)

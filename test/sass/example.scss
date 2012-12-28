@@ -1,5 +1,5 @@
 // path to local mixin
-@import "../../stylesheets/modular-scale";
+@import "modular-scale";
 
 // $base-size: 1px 16px;
 // $base-size: 1em 16em;
@@ -24,6 +24,8 @@
 // @include modular-scale-list(1, 3, 16px, $ratio);
 // @debug $scale;
 
+
+@include ms-list-output;
 
 // Defining the background color so we can see what is going on.
 html {

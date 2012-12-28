@@ -215,6 +215,12 @@ $round_pixels: true !default
 =ms-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
   @debug modular-scale-list($start, $finish, $base-size, $ratio)
 
+=modular-scale-list-output($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
+  MODULAR-SCALE-LIST
+    •: modular-scale-list($start, $finish, $base-size, $ratio)
+
+=ms-list-output($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
+  +modular-scale-list-output($start, $finish, $base-size, $ratio)
 
 // Other libraries can easily query if this function is avalible
 $modular-scale-loaded: true

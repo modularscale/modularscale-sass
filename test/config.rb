@@ -1,6 +1,7 @@
 # Compass Configuration
 
 # require 'modular-scale'
+add_import_path '../stylesheets'
 require 'sassy-math'
 
 # HTTP paths
@@ -28,7 +29,7 @@ relative_assets       = true
 
 # Learn more: http://compass-style.org/docs/tutorials/configuration-reference/
 
-# Sass Script Proving Grounds
+# Modular Scale Sass Script
 module Sass::Script
   class Number < Literal
     # Comparison
@@ -131,5 +132,4 @@ module Sass::Script::Functions
     end
     Sass::Script::List.new(list, sep)
   end
-
 end

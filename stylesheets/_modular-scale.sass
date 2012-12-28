@@ -200,27 +200,27 @@ $round-pixels: true !default
   @return modular-scale($multiple, $base-size, $ratio, $round-pixels)
 
 // Write Modular Scale List
-@function modular-scale-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
+@function modular-scale-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio, $round-pixels: $round-pixels)
   $ms-list: unquote("MS-LIST:")
   @for $i from $start through $finish
-    $ms-list: append($ms-list, ms($i, $base-size, $ratio))
+    $ms-list: append($ms-list, ms($i, $base-size, $ratio, $round-pixels))
   @return $ms-list
 
-@function ms-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
-  @return modular-scale-list($start, $finish, $base-size, $ratio)
+@function ms-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio, $round-pixels: $round-pixels)
+  @return modular-scale-list($start, $finish, $base-size, $ratio, $round-pixels)
 
-=modular-scale-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
-  @debug modular-scale-list($start, $finish, $base-size, $ratio)
+=modular-scale-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio, $round-pixels: $round-pixels)
+  @debug modular-scale-list($start, $finish, $base-size, $ratio, $round-pixels)
 
-=ms-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
-  @debug modular-scale-list($start, $finish, $base-size, $ratio)
+=ms-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio, $round-pixels: $round-pixels)
+  @debug modular-scale-list($start, $finish, $base-size, $ratio, $round-pixels)
 
-=modular-scale-list-output($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
+=modular-scale-list-output($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio, $round-pixels: $round-pixels)
   MODULAR-SCALE-LIST
-    •: modular-scale-list($start, $finish, $base-size, $ratio)
+    •: modular-scale-list($start, $finish, $base-size, $ratio, $round-pixels)
 
-=ms-list-output($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
-  +modular-scale-list-output($start, $finish, $base-size, $ratio)
+=ms-list-output($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio, $round-pixels: $round-pixels)
+  +modular-scale-list-output($start, $finish, $base-size, $ratio, $round-pixels)
 
 // Other libraries can easily query if this function is avalible
 $modular-scale-loaded: true

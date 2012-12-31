@@ -40,10 +40,10 @@ By default, it writes 0-20 on the scale. You can also use shorthand to make thin
 @include ms-list($start, $end, $base-size, $ratio); // shorthand with attributes
 ```
 
-As a side effect of the modular-scale functions a `exponent` function is also available.
+As a side effect of the modular-scale functions a `power` function is also available.
 
 ```scss
-@include exponent($base, $exponent);
+@include power($base, $power);
 ```
 
 Sassy Modular Scale can be used as a function, like so:

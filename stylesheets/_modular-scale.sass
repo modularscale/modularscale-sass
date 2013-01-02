@@ -217,7 +217,7 @@ $round-pixels: true !default
 
 =modular-scale-list-output($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio, $round-pixels: $round-pixels)
   MODULAR-SCALE-LIST
-    •: modular-scale-list($start, $finish, $base-size, $ratio, $round-pixels)
+    ms-list: modular-scale-list($start, $finish, $base-size, $ratio, $round-pixels)
 
 =ms-list-output($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio, $round-pixels: $round-pixels)
   +modular-scale-list-output($start, $finish, $base-size, $ratio, $round-pixels)

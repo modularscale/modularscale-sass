@@ -40,6 +40,12 @@ By default, it writes 0-20 on the scale. You can also use shorthand to make thin
 @include ms-list($start, $end, $base-size, $ratio); // shorthand with attributes
 ```
 
+You can also write the output to your CSS file if you are using the terminal:
+
+```scss
+@include ms-list-output($start, $end, $base-size, $ratio);
+```
+
 As a side effect of the modular-scale functions a `power` function is also available.
 
 ```scss

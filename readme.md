@@ -8,8 +8,6 @@ Sassy Modular Scale can be used as a [Compass](http://compass-style.org/) [exten
 
 ## Installation
 
-Usage requires Sass. Visit [sass-lang.com](http://sass-lang.com) to learn more and install.
-
 `gem install modular-scale`
 
 Add `require 'modular-scale'` to your Compass config file.

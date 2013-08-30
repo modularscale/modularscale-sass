@@ -1,6 +1,0 @@
-// path to local mixin
-@import "modular-scale";
-
-@debug ms-list(-5, -1, 16 44, 1.618, false);
-
-@include ms-list-output(0, 10, 1);

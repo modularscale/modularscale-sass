@@ -1,13 +1,13 @@
 {
-  "name": "modular-scale",
-  "version": "1.0.6",
+  "name": "my-extension",
+  "version": "2.0.alpha1",
   "main": "stylesheets/_modular-scale.scss",
   "ignore": [
     "**/.*",
     "node_modules",
     "components"
-  ],
-  "dependencies": {
-    "sassy-math": ">=1.5"
-  }
+  ]
+  // "dependencies": {
+  //   "dependency": ">=1.0"
+  // }
 }

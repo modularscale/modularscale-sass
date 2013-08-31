@@ -11,10 +11,22 @@
 
 		// Start a blank list to write all possible outcomes to
 		$return-list: null;
+		
+		// Is $value negitive?
+		$value-negitive: false;
+		@if abs($value) != $value {
+			$value-negitive: true;
+		}
 
+		// Loop through all possible values, bases, and ratios ...
 		@for $i from 0 through abs($value) {
+			@if $value-negitive {
+				$i: $i * -1;
+			}
 			@each $base in $bases {
 				@each $ratio in $ratios {
+					
+					// ... and write them to the list
 					$return-list: join($return-list, ms-calc($i, $base, $ratio));
 				}
 			}

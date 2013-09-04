@@ -1,0 +1,45 @@
+@function ms($value, $bases, $ratios) {
+
+	// Multi-base or multi-ratio check
+	@if length($bases) > 1 or length($ratios) > 1 {
+
+		// Non-interger numbers values are not supported here
+		// write to console if they are used
+		@if round($value) != $value {
+			@debug "modular-scale values need to be whole numbers when used with multiple bases or ratios.";
+		}
+
+		// Start a blank list to write all possible outcomes to
+		$return-list: ();
+		
+		// Is $value negitive?
+		$value-negitive: false;
+		@if abs($value) != $value {
+			$value-negitive: true;
+		}
+
+		// Loop through all possible values, bases, and ratios ...
+		@for $i from 0 through abs($value) {
+			@if $value-negitive {
+				$i: $i * -1;
+			}
+			@each $base in $bases {
+				@each $ratio in $ratios {
+					
+					// ... and write them to the list
+					$return-list: join($return-list, ms-calc($i, $base, $ratio));
+				}
+			}
+		}
+		
+		$return-list: ms-list-sort($return-list);
+
+		// @return $return-list;
+		@return $return-list;
+	}
+
+	// If it’s simple, just calculate it
+	@return ms-calc($value, $bases, $ratios);
+}
+
+@debug ms(3, 12px 16px, $golden);

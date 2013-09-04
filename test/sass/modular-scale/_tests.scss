@@ -1,0 +1,5 @@
+// Compass test
+$ms-compass: false;
+@if pow(4, .5) == 2 {
+	$ms-compass: true;
+}

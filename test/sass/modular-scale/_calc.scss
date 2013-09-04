@@ -8,7 +8,7 @@
 	// Sass version of the ms calculator
 	@else {
 
-		// Non-interger numbers values are not supported here
+		// Non-integer numbers values are not supported here
 		// write to console if they are used
 		@if round($value) != $value {
 			@debug "modular-scale values need to be whole numbers when used without Compass.";

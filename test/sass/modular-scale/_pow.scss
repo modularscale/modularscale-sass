@@ -1,0 +1,10 @@
+@function ms-pow($base, $exponent) {
+	@if round($exponent) != $exponent {
+		@debug "Unfortunately, you need Compass to use non-integer exponents";
+	}
+	$return: $base;
+	@for $i from 1 to $exponent {
+		$return: $return * $base;
+	}
+	@return $return;
+}

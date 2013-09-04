@@ -1,0 +1,12 @@
+@function ms-list-trim($list, $a) {
+	
+	$new-list: ();
+
+	@for $i from 1 through length($list) {
+		@if $i != $a {
+			$new-list: join($new-list, nth($list, $i));
+		}
+	}
+
+	@return $new-list;
+}

@@ -1,0 +1,18 @@
+@function ms-list-swap($list, $a, $b) {
+	
+	$new-list: ();
+
+	@for $i from 1 through length($list) {
+		@if $i == $a {
+			$new-list: join($new-list, nth($list, $b));
+		}
+		@elseif $i == $b {
+			$new-list: join($new-list, nth($list, $a));
+		}
+		@else {
+			$new-list: join($new-list, nth($list, $i));
+		}
+	}
+
+	@return $new-list;
+}

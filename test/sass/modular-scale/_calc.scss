@@ -1,29 +1,17 @@
-@function ms-calc($value, $base, $ratio) {
+@function ms-calc($value, $base: $ms-base, $ratio: $ms-ratio) {
+  
+  // If pow exists use it.
+  // It supports non-interger values!
+  @if $ms-pow-exists {
 
-	// Ruby version of the ms calculator
-	@if ms-ruby() == "true" {
-		// ruby version of ms-calc
-	}
+    // The formula for figuring out modular scales is:
+    // (r^v)*b
+    @return pow($ratio, $value) * $base;
+  }
 
-	// Sass version of the ms calculator
-	@else {
-
-		// Non-integer numbers values are not supported here
-		// write to console if they are used
-		@if round($value) != $value {
-			@debug "modular-scale values need to be whole numbers when used without Compass.";
-		}
-
-		@if $value > 0 {
-		  @for $i from 1 through $value {
-		    $base: $base * $ratio;
-		  }
-		}
-		@else {
-		  @for $i from 1 through ($value * -1) {
-		    $base: $base * (1 / $ratio);
-		  }
-		}
-	  @return $base;
-	}
+  // If not, use ms-pow().
+  // Not as fast or capable of non-integer exponents.
+  @else {
+    @return ms-pow($ratio, $value) * $base;
+  }
 }

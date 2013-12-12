@@ -1,10 +1,39 @@
+// If a native exponent function doesnt exist
+// this one is needed.
 @function ms-pow($base, $exponent) {
+  
+  // Find and remove unit.
+  // Avoids messyness with unit calculations
+  $unit: $base * 0 + 1;
+  $base: $base/$unit;
+
+  // This function doesnt support non-interger exponents.
+  // Warn the user about why this is breaking.
 	@if round($exponent) != $exponent {
-		@debug "Unfortunately, you need Compass to use non-integer exponents";
+		@warn "Unfortunately, you need Compass to use non-integer exponents";
 	}
+
+  // Set up the loop, priming the return with the base.
 	$return: $base;
-	@for $i from 1 to $exponent {
-		$return: $return * $base;
-	}
-	@return $return;
+  
+  // If the number is positive, multiply it.
+  @if $exponent > 0 {
+    // Basic feedback loop as exponents
+    // are recursivley multiplied numbers.
+    @for $i from 1 to $exponent {
+      $return: $return * $base;
+    }
+  }
+  
+  // If the number is 0 or negitive
+  // divide instead of multiply.
+  @else {
+    @for $i from -1 to abs($exponent) {
+      $return: $return / $base;
+    }
+  }
+
+  // Return is now compounded redy to be returned.
+  // Add the unit back onto the number.
+	@return $return * $unit;
 }

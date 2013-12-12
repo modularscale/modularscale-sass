@@ -1,5 +1,11 @@
 // Compass test
-$ms-compass: false;
-@if pow(4, .5) == 2 {
-	$ms-compass: true;
-}
+
+// This not only tests for the pow() function
+// as that can be done with function-exists()
+// but this tests that the pow() function
+// is capable of non-interger exponents.
+
+$ms-pow-exists: false;
+// @if pow(4, .5) == 2 {
+// 	$ms-pow-exists: true !global;
+// }

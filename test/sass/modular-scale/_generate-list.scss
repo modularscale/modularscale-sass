@@ -1,0 +1,56 @@
+@function ms-generate-list($value: 0, $bases: $ms-base, $ratios: $ms-ratio) {
+
+  // Create blank lists
+  $ms-list: ();
+  $ms-base-list: ();
+  
+  // Loop through each ratio AND each base
+  // to generate all possibilities.
+  @each $ratio in $ratios {
+    @each $base in $bases {
+      
+      $ms-base-list: ();
+      $base-counter: 0;
+
+      @if $base == nth($bases, 1) {
+        $ms-base-list: $base;
+      }
+
+      @if $value > 0 {
+
+        $base-counter: -1;
+        @while ms-calc($base-counter, $base, $ms-ratio) >= nth($bases, 1) {
+          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ms-ratio));
+          $base-counter: $base-counter - 1;
+        }
+
+        $base-counter: 1;
+        @while ms-calc($base-counter, $base, $ms-ratio) <= ms-calc($value, nth($bases, 1), $ms-ratio) {
+          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ms-ratio));
+          $base-counter: $base-counter + 1;
+        }
+      }
+      @if $value < 0 {
+
+        $base-counter: 1;
+        @while ms-calc($base-counter, $base, $ms-ratio) <= nth($bases, 1) {
+          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ms-ratio));
+          $base-counter: $base-counter + 1;
+        }
+
+        $base-counter: -1;
+        @while ms-calc($base-counter, $base, $ms-ratio) >= ms-calc($value, nth($bases, 1), $ms-ratio) {
+          @debug ms-calc($base-counter, $base, $ms-ratio);
+          @debug ms-calc($value, nth($bases, 1), $ms-ratio);
+          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ms-ratio));
+          $base-counter: $base-counter - 1;
+        }
+      }
+
+    }
+
+    $ms-list: join($ms-list, $ms-base-list);
+  }
+
+  @return $ms-list;
+}

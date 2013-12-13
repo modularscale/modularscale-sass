@@ -1,8 +1,6 @@
-@function ms($value, $base: $ms-base, $ratio: $ms-ratio) {
-
-  
-
-  @return ms-calc($value, $base, $ratio);
+@function ms($value: 0, $bases: $ms-base, $ratios: $ms-ratio) {
+  @return ms-generate-list($value, $bases, $ratios);
 }
 
-@warn ms(-10, 1000em, 1.5);
+@debug ms(0, 912);
+@debug ms-calc(0, 912);

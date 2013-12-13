@@ -6,6 +6,6 @@
 // is capable of non-interger exponents.
 
 $ms-pow-exists: false;
-// @if pow(4, .5) == 2 {
-// 	$ms-pow-exists: true !global;
-// }
+@if pow(4, .5) == 2 {
+	$ms-pow-exists: true !global;
+}

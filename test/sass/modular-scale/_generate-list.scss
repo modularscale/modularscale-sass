@@ -19,37 +19,38 @@
       @if $value > 0 {
 
         $base-counter: -1;
-        @while ms-calc($base-counter, $base, $ms-ratio) >= nth($bases, 1) {
-          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ms-ratio));
+        @while ms-calc($base-counter, $base, $ratio) >= nth($bases, 1) {
+          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ratio));
           $base-counter: $base-counter - 1;
         }
 
         $base-counter: 1;
-        @while ms-calc($base-counter, $base, $ms-ratio) <= ms-calc($value, nth($bases, 1), $ms-ratio) {
-          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ms-ratio));
+        @while ms-calc($base-counter, $base, $ratio) <= ms-calc($value, nth($bases, 1), $ms-ratio) {
+          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ratio));
           $base-counter: $base-counter + 1;
         }
       }
       @if $value < 0 {
 
         $base-counter: 1;
-        @while ms-calc($base-counter, $base, $ms-ratio) <= nth($bases, 1) {
-          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ms-ratio));
+        @while ms-calc($base-counter, $base, $ratio) <= nth($bases, 1) {
+          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ratio));
           $base-counter: $base-counter + 1;
         }
 
         $base-counter: -1;
-        @while ms-calc($base-counter, $base, $ms-ratio) >= ms-calc($value, nth($bases, 1), $ms-ratio) {
-          @debug ms-calc($base-counter, $base, $ms-ratio);
-          @debug ms-calc($value, nth($bases, 1), $ms-ratio);
-          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ms-ratio));
+        @while ms-calc($base-counter, $base, $ratio) >= ms-calc($value, nth($bases, 1), $ratio) {
+          @debug ms-calc($base-counter, $base, $ratio);
+          @debug ms-calc($value, nth($bases, 1), $ratio);
+          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ratio));
           $base-counter: $base-counter - 1;
         }
       }
 
-    }
+      $ms-list: join($ms-list, $ms-base-list);
+      @debug $ms-list;
 
-    $ms-list: join($ms-list, $ms-base-list);
+    }
   }
 
   @return $ms-list;

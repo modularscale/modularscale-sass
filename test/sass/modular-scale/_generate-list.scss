@@ -9,49 +9,57 @@
   @each $ratio in $ratios {
     @each $base in $bases {
       
+      // Set base variables
       $ms-base-list: ();
       $base-counter: 0;
-
+      
+      // Seed list with an initial value
       @if $base == nth($bases, 1) {
         $ms-base-list: $base;
       }
-
+      
+      // Find values on a positive scale
       @if $value > 0 {
-
+        
+        // Find lower values on the scale
         $base-counter: -1;
         @while ms-calc($base-counter, $base, $ratio) >= nth($bases, 1) {
           $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ratio));
           $base-counter: $base-counter - 1;
         }
-
+        
+        // Find higher possible values on the scale
         $base-counter: 1;
         @while ms-calc($base-counter, $base, $ratio) <= ms-calc($value, nth($bases, 1), $ms-ratio) {
           $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ratio));
           $base-counter: $base-counter + 1;
         }
       }
-      @if $value < 0 {
 
+      // Find values on a negitive scale
+      @if $value < 0 {
+        
+        // Find lower values on the scale
         $base-counter: 1;
         @while ms-calc($base-counter, $base, $ratio) <= nth($bases, 1) {
           $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ratio));
           $base-counter: $base-counter + 1;
         }
 
+        // Find higher possible values on the scale
         $base-counter: -1;
         @while ms-calc($base-counter, $base, $ratio) >= ms-calc($value, nth($bases, 1), $ratio) {
-          @debug ms-calc($base-counter, $base, $ratio);
-          @debug ms-calc($value, nth($bases, 1), $ratio);
           $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ratio));
           $base-counter: $base-counter - 1;
         }
       }
-
+      
+      // Add new possibilities to the master list
       $ms-list: join($ms-list, $ms-base-list);
-      @debug $ms-list;
 
     }
   }
-
+  
+  // After all the possibilities are found, output a master list
   @return $ms-list;
 }

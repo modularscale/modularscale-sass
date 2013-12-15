@@ -1,0 +1,30 @@
+@function ms-sort-list($list) {
+  
+  // $list: random(10) random(10) random(10) random(10) random(10) random(10) random(10) random(10);
+
+  // Shell sort algorithms
+  // http://www.sorting-algorithms.com/shell-sort
+  
+  // h = 1
+  // while h < n, h = 3*h + 1
+  // while h > 0,
+  //     h = h / 3
+  //     for k = 1:h, insertion sort a[k:h:n]
+  //     → invariant: each h-sub-array is sorted
+  // end
+
+  @each $item in $list {
+
+    // # Do an insertion sort for each gap size.
+    // @for (i = gap; i < n; i += 1) {
+    //     temp = a[i]
+    //     for (j = i; j >= gap and a[j - gap] > temp; j -= gap)
+    //     {
+    //         a[j] = a[j - gap]
+    //     }
+    //     a[j] = temp
+    // }
+  }
+
+  @return $list;
+}

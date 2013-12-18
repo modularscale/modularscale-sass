@@ -4,6 +4,12 @@
 @function ms-merge($a, $b) {
   
   $return: ();
+  
+  // Some empty lists get passed through
+  // so just pass the other list throguh
+  @if length($a) == 0 {
+    @return $b;
+  }
 
   // If lists fit next to each other, just merge them
   // This helps performance skipping the need to check each value
@@ -69,6 +75,18 @@
       $return: ms-merge($list, $return);
     }
   }
+
+  // final cleanup of repeated items
+  $last: null;
+  $new-list: ();
+  @each $item in $return {
+    @if $item != $last {
+      $new-list: join($new-list, $item);
+    }
+    $last: $item;
+  }
+  $return: $new-list;
+
 
   @return $return;
 }

@@ -3,7 +3,7 @@
   // Create blank lists
   $ms-list: ();
   $ms-base-list: ();
-  
+
   // Loop through each ratio AND each base
   // to generate all possibilities.
   @each $ratio in $ratios {
@@ -49,18 +49,24 @@
         // Find higher possible values on the scale
         $base-counter: -1;
         @while ms-calc($base-counter, $base, $ratio) >= ms-calc($value, nth($bases, 1), $ratio) {
-          $ms-base-list: join($ms-base-list, ms-calc($base-counter, $base, $ratio));
+          $ms-calc: ms-calc($base-counter, $base, $ratio);
+          // detect if the value excedes the main base value
+          @if $ms-calc < nth($bases, 1) {
+            $ms-base-list: join($ms-base-list, $ms-calc);
+          }
           $base-counter: $base-counter - 1;
         }
       }
       
       // reverse list if its largest to smallest
-      @if nth($ms-base-list, 1) > nth($ms-base-list, length($ms-base-list)) {
-        $ms-reversed-list: ();
-        @each $value in $ms-base-list {
-          $ms-reversed-list: join($value, $ms-reversed-list);
+      @if length($ms-base-list) > 1 {
+        @if nth($ms-base-list, 1) > nth($ms-base-list, length($ms-base-list)) {
+          $ms-reversed-list: ();
+          @each $value in $ms-base-list {
+            $ms-reversed-list: join($value, $ms-reversed-list);
+          }
+          $ms-base-list: $ms-reversed-list;
         }
-        $ms-base-list: $ms-reversed-list;
       }
 
       // Add new possibilities to the master list

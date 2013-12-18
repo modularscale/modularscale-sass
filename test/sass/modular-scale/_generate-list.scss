@@ -54,8 +54,17 @@
         }
       }
       
+      // reverse list if its largest to smallest
+      @if nth($ms-base-list, 1) > nth($ms-base-list, length($ms-base-list)) {
+        $ms-reversed-list: ();
+        @each $value in $ms-base-list {
+          $ms-reversed-list: join($value, $ms-reversed-list);
+        }
+        $ms-base-list: $ms-reversed-list;
+      }
+
       // Add new possibilities to the master list
-      $ms-list: join($ms-list, $ms-base-list);
+      $ms-list: append($ms-list, $ms-base-list, comma);
 
     }
   }

@@ -1,4 +1,5 @@
 @import "modular-scale/ratios";
+@import "modular-scale/cache";
 
 $ms-base: 1em !default;
 $ms-ratio: $golden !default;
@@ -11,4 +12,4 @@ $ms-ratio: $golden !default;
 @import "modular-scale/generate-list";
 @import "modular-scale/sort-list";
 @import "modular-scale/function";
-// @import "modular-scale/extras";
+@import "modular-scale/function-list";

@@ -1,3 +1,4 @@
+// The main function that brings it all together
 @function ms($value: 0, $bases: $ms-base, $ratios: $ms-ratio) {
   
   // If no multi-base or multi-ratio stuff is going on
@@ -24,4 +25,9 @@
   $return: nth($return, $value);
 
   @return $return;
+}
+
+// Same function, different name, for good measure.
+@function modular-scale($value: 0, $bases: $ms-base, $ratios: $ms-ratio) {
+  @return ms($value, $bases, $ratios);
 }

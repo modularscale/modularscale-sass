@@ -1,10 +1,7 @@
 // Feature testing
 
 
-// This not only tests for the pow() function
-// as that can be done with function-exists()
-// but this tests that the pow() function
-// is capable of non-interger exponents.
+// Test if the pow() function exists
 
 @function ms-pow-exists() {
   @if pow(4, 2) == 16 {
@@ -19,7 +16,7 @@ $ms-pow-exists: ms-pow-exists();
 // Test if map capability exists
 // maps are used to cache calculations
 
-@function ms-cache-exists() {
+@function ms-maps-exist() {
   @if function-exists(map-get) == true {
     @return true;
   }
@@ -28,4 +25,4 @@ $ms-pow-exists: ms-pow-exists();
   }
 }
 
-$ms-maps-exists: ms-cache-exists();
+$ms-maps-exist: ms-maps-exist();

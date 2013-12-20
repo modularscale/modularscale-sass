@@ -7,13 +7,42 @@
     @return ms-calc($value, $bases, $ratios);
   }
   
+  // Use cached values if they exist
+  @if $ms-maps-exist {
+    // Find the map
+    // it's labeld with the base and ratio values
+    @if map-get($ms-cache, "#{$bases} #{$ratios}") {
+      // Positive list
+      $ms-pos: map-get(map-get($ms-cache, "#{$bases} #{$ratios}"), pos);
+      // See if the map matches the range
+      @if $value >= 0 and length($ms-pos) > $value {
+        @return nth($ms-pos, $value + 1);
+      }
+      // And again for negitive values
+      $ms-neg: map-get(map-get($ms-cache, "#{$bases} #{$ratios}"), neg);
+      @if $value < 0 and length($ms-neg) > abs($value - 1) {
+        @return nth($ms-neg, $value - 1);
+      }
+    }
+    // If nothing matched criteria in map
+    // then just carry on with calculaitons.
+  }
+  
   // Generate a list of all possible values
   $return: ms-generate-list($value, $bases, $ratios);
   
   // Sort the generated lists
   $return: ms-sort-list($return);
 
-  // normalize value for counting from 1
+  // Cache
+  @if $ms-maps-exist {
+    $ms-cache: ms-cache($value, $bases, $ratios, $return) !global;
+  }
+
+  // Normalize value for counting from 1
+  // Because CSS counts things from 1
+  // So Sass does as well
+  // So I get to write fun stuff like this
   @if $value >= 0 {
     $value: $value + 1;
   }

@@ -1,12 +1,11 @@
 @import "modular-scale/ratios";
-@import "modular-scale/cache";
 
 $ms-base: 1em !default;
 $ms-ratio: $golden !default;
 
 @import "modular-scale/tests";
 
-// @import "modular-scale/list-functions";
+@import "modular-scale/cache";
 @import "modular-scale/pow";
 @import "modular-scale/calc";
 @import "modular-scale/generate-list";

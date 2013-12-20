@@ -28,10 +28,14 @@ Gem::Specification.new do |s|
   # Uncomment those that you use.
 
   # README file
-  # s.files = ["README.md"]
+  s.files = ["readme.md"]
 
   # CHANGELOG
-  # s.files += ["CHANGELOG.md"]
+  s.files += ["changelog.md"]
+
+  s.license = "MIT"
+  
+  s.files = ["license.md"]
 
   # Library Files
   s.files += Dir.glob("lib/**/*.*")
@@ -52,6 +56,5 @@ Gem::Specification.new do |s|
   # These are Gem dependencies, not Compass dependencies. Including gems
   #  here will make sure the relevant gem and version are installed on the
   #  user's system when installing your gem.
-  s.add_dependency("sass",      [">=3.2.0"])
-  s.add_dependency("compass",   [">= 0.12.1"])
+  s.add_dependency("compass",   [">= 0.12.0"])
 end

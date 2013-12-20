@@ -16,8 +16,8 @@ Compass::Frameworks.register('modular-scale', :path => extension_path)
 #    a prerelease version
 #  Date is in the form of YYYY-MM-DD
 module ModularScale
-  VERSION = "2.0.alpha1"
-  DATE = "2013-07-23"
+  VERSION = "2.0.0.alpha1"
+  DATE = "2013-12-20"
 end
 
 # This is where any custom SassScript should be placed. The functions will be  

@@ -1,92 +1,92 @@
 // List sorting via a modified merge-sort algorythmn
 // http://en.wikipedia.org/wiki/Merge_sort
 
-@function ms-merge($a, $b) {
+@function ms-merge($A, $B) {
   
-  $return: ();
+  $Return: ();
   
   // Some empty lists get passed through
   // so just pass the other list throguh
-  @if length($a) == 0 {
-    @return $b;
+  @if length($A) == 0 {
+    @return $B;
   }
 
   // If lists fit next to each other, just merge them
   // This helps performance skipping the need to check each value
-  @if nth($a, length($a)) < nth($b, 1) {
-    @return join($a, $b);
+  @if nth($A, length($A)) < nth($B, 1) {
+    @return join($A, $B);
   }
-  @if nth($b, length($b)) < nth($a, 1) {
-    @return join($b, $a);
+  @if nth($B, length($B)) < nth($A, 1) {
+    @return join($B, $A);
   }
   
   // Counters start at 1
-  $a-counter: 1;
-  $b-counter: 1;
+  $A-counter: 1;
+  $B-counter: 1;
   
   // Start looping through all numbers in array
-  @while $a-counter <= length($a) and $b-counter <= length($b) {
+  @while $A-counter <= length($A) and $B-counter <= length($B) {
     
     // Check if the A value is smaller
     // Uses or equal to avoid duplicate numbers
-    @if nth($a, $a-counter) <= nth($b, $b-counter) {
-      $return: join($return, nth($a, $a-counter));
-      $a-counter: $a-counter + 1;
+    @if nth($A, $A-counter) <= nth($B, $B-counter) {
+      $Return: join($Return, nth($A, $A-counter));
+      $A-counter: $A-counter + 1;
     }
     
     // Check if the B value is smaller
-    @elseif nth($a, $a-counter) > nth($b, $b-counter) {
-      $return: join($return, nth($b, $b-counter));
-      $b-counter: $b-counter + 1;
+    @elseif nth($A, $A-counter) > nth($B, $B-counter) {
+      $Return: join($Return, nth($B, $B-counter));
+      $B-counter: $B-counter + 1;
     }
   }
   
 
   // Run through remainder values in the list
-  @while $a-counter <= length($a) {
-    $current: nth($a, $a-counter);
-    @if $current != nth($return, length($return)) {
-      $return: join($return, $current);
+  @while $A-counter <= length($A) {
+    $Current: nth($A, $A-counter);
+    @if $Current != nth($Return, length($Return)) {
+      $Return: join($Return, $Current);
     }
-    $a-counter: $a-counter + 1;
+    $A-counter: $A-counter + 1;
   }
-  @while $b-counter <= length($b) {
-    $current: nth($b, $b-counter);
-    @if $current != nth($return, length($return)) {
-      $return: join($return, $current);
+  @while $B-counter <= length($B) {
+    $Current: nth($B, $B-counter);
+    @if $Current != nth($Return, length($Return)) {
+      $Return: join($Return, $Current);
     }
-    $b-counter: $b-counter + 1;
+    $B-counter: $B-counter + 1;
   }
   
   // Done! return is now sorted and complete
-  @return $return;
+  @return $Return;
 }
 
 // Pull it all together
-@function ms-sort-list($lists) {
+@function ms-sort-list($Lists) {
   
-  $return: ();
+  $Return: ();
 
-  @each $list in $lists {
-    @if $return == () {
-      $return: $list;
+  @each $List in $Lists {
+    @if $Return == () {
+      $Return: $List;
     }
     @else {
-      $return: ms-merge($list, $return);
+      $Return: ms-merge($List, $Return);
     }
   }
 
   // final cleanup of repeated items
-  $last: null;
-  $new-list: ();
-  @each $item in $return {
-    @if $item != $last {
-      $new-list: join($new-list, $item);
+  $Last: null;
+  $New-list: ();
+  @each $Item in $Return {
+    @if $Item != $Last {
+      $New-list: join($New-list, $Item);
     }
-    $last: $item;
+    $Last: $Item;
   }
-  $return: $new-list;
+  $Return: $New-list;
 
 
-  @return $return;
+  @return $Return;
 }

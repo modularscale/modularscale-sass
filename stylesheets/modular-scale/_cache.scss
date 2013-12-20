@@ -1,25 +1,25 @@
 // An empty cache map
-$ms-cache: ();
+$MS-cache: ();
 
-@function ms-cache($value, $bases, $ratios, $return) {
+@function ms-cache($Value, $Bases, $Ratios, $Return) {
 
-  $ms-new-map: ();
+  $MS-new-map: ();
 
-  @if $value >= 0 {
-    $ms-new-map: (
-      "#{$bases} #{$ratios}": (
-        pos:  $return,
+  @if $Value >= 0 {
+    $MS-new-map: (
+      "#{$Bases} #{$Ratios}": (
+        pos: $Return,
       ),
     );
   }  
 
-  @if $value < 0 {
-    $ms-new-map: (
-      "#{$bases} #{$ratios}": (
-        neg:  $return,
+  @if $Value < 0 {
+    $MS-new-map: (
+      "#{$Bases} #{$Ratios}": (
+        neg: $Return,
       ),
     );
   }  
 
-  @return map-merge($ms-cache, $ms-new-map);
+  @return map-merge($MS-cache, $MS-new-map);
 }

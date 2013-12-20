@@ -32,5 +32,4 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  compass (= 1.0.0.alpha.17)
-  sass (= 3.3.0.rc.2)
+  compass (> 0.12.0)

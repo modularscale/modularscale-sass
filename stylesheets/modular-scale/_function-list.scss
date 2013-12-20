@@ -1,60 +1,60 @@
 // Outputs a list of values instead of a single value
-@function ms-list($start: 0, $end: 0, $bases: $ms-base, $ratios: $ms-ratio) {
+@function ms-list($Start: 0, $End: 0, $Bases: $ms-base, $Ratios: $ms-ratio) {
   
-  $positive-return: ();
-  $negitive-return: ();
-  $return: ();
+  $Positive-return: ();
+  $Negitive-return: ();
+  $Return: ();
 
-  @if $end >= 0 {
+  @if $End >= 0 {
     // Generate a list of all possible values
-    $positive-return: ms-generate-list($end, $bases, $ratios);
+    $Positive-return: ms-generate-list($End, $Bases, $Ratios);
     
     // Sort the generated lists
-    $positive-return: ms-sort-list($positive-return);
+    $Positive-return: ms-sort-list($Positive-return);
 
     // Trim list
-    $trim-list: ();
+    $Trim-list: ();
     // If the starting value is a positive number
     // trim the positive return from that
-    @if $start >= 0 {
-      @for $i from ($start + 1) through $end + 1 {
-        $trim-list: join($trim-list, nth($positive-return, $i));
+    @if $Start >= 0 {
+      @for $i from ($Start + 1) through $End + 1 {
+        $Trim-list: join($Trim-list, nth($Positive-return, $i));
       }
     }
     // If not, then include everything up to the end.
     @else {
-      @for $i from 1 through $end + 1 {
-        $trim-list: join($trim-list, nth($positive-return, $i));
+      @for $i from 1 through $End + 1 {
+        $Trim-list: join($Trim-list, nth($Positive-return, $i));
       }
     }
-    $positive-return: $trim-list;
+    $Positive-return: $Trim-list;
   }
   
   // Generate a negitive list
-  @if $start < 0 {
+  @if $Start < 0 {
     // Generate a list of all possible values
-    $negitive-return: ms-generate-list($start, $bases, $ratios);
+    $Negitive-return: ms-generate-list($Start, $Bases, $Ratios);
     
     // Sort the generated lists
-    $negitive-return: ms-sort-list($negitive-return);
+    $Negitive-return: ms-sort-list($Negitive-return);
 
     // Trim list
-    $trim-list: ();
-    @if $end < 0 {
-      @for $i from abs($end) through abs($start) {
-        $trim-list: join($trim-list, nth($negitive-return, $i));
+    $Trim-list: ();
+    @if $End < 0 {
+      @for $i from abs($End) through abs($Start) {
+        $Trim-list: join($Trim-list, nth($Negitive-return, $i));
       }
     }
     @else {
-      @for $i from 1 through abs($start) {
-        $trim-list: join($trim-list, nth($negitive-return, $i));
+      @for $i from 1 through abs($Start) {
+        $Trim-list: join($Trim-list, nth($Negitive-return, $i));
       }
     }
-    $negitive-return: $trim-list;
+    $Negitive-return: $Trim-list;
   }
   
   // Join both positive and negitive possibilities.
-  $return: join($negitive-return, $positive-return);
+  $Return: join($Negitive-return, $Positive-return);
 
-  @return $return;
+  @return $Return;
 }

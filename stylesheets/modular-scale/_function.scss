@@ -1,27 +1,27 @@
 // The main function that brings it all together
-@function ms($value: 0, $bases: $ms-base, $ratios: $ms-ratio) {
+@function ms($Value: 0, $Bases: $ms-base, $Ratios: $ms-ratio) {
   
   // If no multi-base or multi-ratio stuff is going on
   // then just retrn the basic calculaiton
-  @if length($bases) == 1 and length($ratios) == 1 {
-    @return ms-calc($value, $bases, $ratios);
+  @if length($Bases) == 1 and length($Ratios) == 1 {
+    @return ms-calc($Value, $Bases, $Ratios);
   }
   
   // Use cached values if they exist
-  @if $ms-maps-exist {
+  @if $MS-maps-exist {
     // Find the map
     // it's labeld with the base and ratio values
-    @if map-get($ms-cache, "#{$bases} #{$ratios}") {
+    @if map-get($MS-cache, "#{$Bases} #{$Ratios}") {
       // Positive list
-      $ms-pos: map-get(map-get($ms-cache, "#{$bases} #{$ratios}"), pos);
+      $MS-pos: map-get(map-get($MS-cache, "#{$Bases} #{$Ratios}"), pos);
       // See if the map matches the range
-      @if $value >= 0 and length($ms-pos) > $value {
-        @return nth($ms-pos, $value + 1);
+      @if $Value >= 0 and length($MS-pos) > $Value {
+        @return nth($MS-pos, $Value + 1);
       }
       // And again for negitive values
-      $ms-neg: map-get(map-get($ms-cache, "#{$bases} #{$ratios}"), neg);
-      @if $value < 0 and length($ms-neg) > abs($value - 1) {
-        @return nth($ms-neg, $value - 1);
+      $MS-neg: map-get(map-get($MS-cache, "#{$Bases} #{$Ratios}"), neg);
+      @if $Value < 0 and length($MS-neg) > abs($Value - 1) {
+        @return nth($MS-neg, $Value - 1);
       }
     }
     // If nothing matched criteria in map
@@ -29,34 +29,34 @@
   }
   
   // Generate a list of all possible values
-  $return: ms-generate-list($value, $bases, $ratios);
+  $Return: ms-generate-list($Value, $Bases, $Ratios);
   
   // Sort the generated lists
-  $return: ms-sort-list($return);
+  $Return: ms-sort-list($Return);
 
   // Cache
-  @if $ms-maps-exist {
-    $ms-cache: ms-cache($value, $bases, $ratios, $return) !global;
+  @if $MS-maps-exist {
+    $MS-cache: ms-cache($Value, $Bases, $Ratios, $Return) !global;
   }
 
   // Normalize value for counting from 1
   // Because CSS counts things from 1
   // So Sass does as well
   // So I get to write fun stuff like this
-  @if $value >= 0 {
-    $value: $value + 1;
+  @if $Value >= 0 {
+    $Value: $Value + 1;
   }
   @else {
-    $value: $value - 1;
+    $Value: $Value - 1;
   }
 
   // Find the correct value in the list
-  $return: nth($return, $value);
+  $Return: nth($Return, $Value);
 
-  @return $return;
+  @return $Return;
 }
 
 // Same function, different name, for good measure.
-@function modular-scale($value: 0, $bases: $ms-base, $ratios: $ms-ratio) {
-  @return ms($value, $bases, $ratios);
+@function modular-scale($Value: 0, $Bases: $ms-base, $Ratios: $ms-ratio) {
+  @return ms($Value, $Bases, $Ratios);
 }

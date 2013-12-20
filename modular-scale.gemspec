@@ -3,32 +3,48 @@ require './lib/modular-scale'
 
 Gem::Specification.new do |s|
   # Release Specific Information
-  #  Replace Extension with the name you used in your extension.rb
-  #   in the mdodule with version and date.
   s.version = ModularScale::VERSION
   s.date = ModularScale::DATE
 
   # Gem Details
+  # Replace "modular-scale" with the name of your extension
   s.name = "modular-scale"
-  s.description = %q{Sassy Modular Scale calculates the incremental values of the modular scale}
-  s.summary = %q{Sassy Modular Scale calculates the incremental values of the modular scale in proportion to a set size and ratio. Inspired by and adapted from Tim Brown's modularscale.com.}
-  s.authors = ["Scott Kellum", "Adam Stacoviak", "Mason Wendell"]
-  s.email = ["scott@scottkellum.com", "adam@stacoviak.com", "mason@canarypromo.com"]
-  s.homepage = "https://github.com/scottkellum/modular-scale"
+  s.rubyforge_project = "modular-scale"
+  # Description of your extension
+  s.description = %q{A generalized Compass extension to build off of}
+  # A summary of your Compass extension. Should be different than Description
+  s.summary = %q{An easy to use system for writing and managing media queries.}
+  # The names of the author(s) of the extension.
+  # If more than one author, comma separate inside of the brackets
+  s.authors = ["First Last"]
+  # The email address(es) of the author(s)
+  # If more than one author, comma separate inside of the brackets
+  s.email = ["firstlast@extension.com"]
+  # URL of the extension
+  s.homepage = "http://extension.com"
 
   # Gem Files
-  
+  # These are the files to be included in your Compass extension.
+  # Uncomment those that you use.
+
   # README file
   s.files = ["readme.md"]
 
+  # CHANGELOG
+  s.files += ["changelog.md"]
+
+  s.license = "MIT"
+  
+  s.files = ["license.md"]
+
   # Library Files
   s.files += Dir.glob("lib/**/*.*")
-  
+
   # Sass Files
   s.files += Dir.glob("stylesheets/**/*.*")
-  
+
   # Template Files
-  # s.files += Dir.glob("templates/**/*.*")
+  s.files += Dir.glob("templates/**/*.*")
 
   # Gem Bookkeeping
   # Versions of Ruby and Rubygems you require
@@ -40,7 +56,5 @@ Gem::Specification.new do |s|
   # These are Gem dependencies, not Compass dependencies. Including gems
   #  here will make sure the relevant gem and version are installed on the
   #  user's system when installing your gem.
-  s.add_dependency("sass",       [">=3.2.0"])
-  s.add_dependency("compass",    [">= 0.12.1"])
-  s.add_dependency("sassy-math", [">= 1.5"])
+  s.add_dependency("compass",   [">= 0.12.0"])
 end

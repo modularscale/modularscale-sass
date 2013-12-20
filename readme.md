@@ -1,4 +1,4 @@
-# Sassy Modular Scale [![Gem Version](https://badge.fury.io/rb/modular-scale.png)](http://badge.fury.io/rb/modular-scale)
+# Sassy Modular Scale
 
 ## Put down the calculator and let Sass do the work.
 

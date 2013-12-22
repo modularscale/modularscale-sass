@@ -11,18 +11,3 @@
 }
 
 $MS-pow-exists: ms-pow-exists();
-
-
-// Test if map capability exists
-// maps are used to cache calculations
-
-@function ms-maps-exist() {
-  @if function-exists(map-get) == true {
-    @return true;
-  }
-  @else {
-    @return false;
-  }
-}
-
-$MS-maps-exist: ms-maps-exist();

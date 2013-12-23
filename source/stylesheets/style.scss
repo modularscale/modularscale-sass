@@ -1,0 +1,78 @@
+@import "modular-scale";
+
+@charset "utf-8";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+// COLOR
+
+$color-primary: #1392c4;
+
+// NAV
+
+nav {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: ms(0);
+  background-color: $color-primary;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid white;
+  a {
+    color: white;
+  }
+}
+
+// SVG
+
+svg {
+  width: 50%;
+  height: 50vh;
+  margin: 4em auto 0 auto;
+  display: block;
+}
+
+.st0, .st1 {
+  fill: $color-primary;
+}
+
+.st0 {
+  -webkit-animation: logo .5s;
+  &:nth-child(2) {
+    -webkit-animation-duration: 1s;
+  }
+  &:nth-child(3) {
+    -webkit-animation-duration: 1.5s;
+  }
+}
+
+@-webkit-keyframes logo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+// CODE BLOCKS
+
+pre {
+  overflow: auto;
+  padding: .5em;
+}
+
+// SECTIONS
+
+#install {
+  background-color: $color-primary;
+}

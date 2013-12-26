@@ -5,6 +5,6 @@
   "ignore": [
     "lib",
     "test-compass",
-    "test-note-sass"
+    "test-node-sass"
   ]
 }

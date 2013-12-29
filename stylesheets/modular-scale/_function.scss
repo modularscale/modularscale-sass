@@ -6,7 +6,9 @@
   @if length($Bases) == 1 and length($Ratios) == 1 {
     @return ms-calc($Value, $Bases, $Ratios);
   }
-
+  
+  // If the gem is installed
+  // use more performant ruby function
   @if $MS-gem-exists {
     @debug ms-gem-func($Value, $Bases, $Ratios);
   }

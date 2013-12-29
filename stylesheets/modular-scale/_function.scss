@@ -6,6 +6,10 @@
   @if length($Bases) == 1 and length($Ratios) == 1 {
     @return ms-calc($Value, $Bases, $Ratios);
   }
+
+  @if $MS-gem-exists {
+    @debug ms-gem-func($Value, $Bases, $Ratios);
+  }
   
   // Generate a list of all possible values
   $Return: ms-generate-list($Value, $Bases, $Ratios);

@@ -13,3 +13,18 @@ javascripts_dir = "javascripts"
 # relative_assets = true
 line_comments = false
 output_style = :compact
+
+
+module Sass::Script::Functions
+
+  # Let MS know that extra functionality is avalible
+  def ms_gem_installed()
+    Sass::Script::Bool.new(true)
+  end
+
+  def ms_gem_func(value, bases, ratios)
+    value = value.value.to_f
+    puts bases
+    Sass::Script::Number.new(value)
+  end
+end

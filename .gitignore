@@ -1,3 +1,5 @@
 *.gem
 .sass-cache
 
+
+*.lock

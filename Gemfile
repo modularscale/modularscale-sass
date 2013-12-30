@@ -2,5 +2,6 @@
 # the following line to use "https"
 source 'https://rubygems.org'
 
-gem "compass", "> 0.12.0"
-gem "modular-scale"
+gem "compass", "~> 1.0.0.alpha.1"
+gem "sass", "~> 3.3.0.rc.1"
+# gem "modular-scale"

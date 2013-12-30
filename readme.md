@@ -55,7 +55,7 @@ Modular-scale is used as a function. Simply pass it through in place of any valu
 ```scss
 font-size: ms(2); // two up the modular scale
 font-size: ms(2, 16px); // two up the modular scale with a base size of 16px, default is 1em
-font-size: ms(2, 1em, $octave; // Same as above but on an octave scale
+font-size: ms(2, 1em, $octave); // Same as above but on an octave scale
 ```
 
 You can output a list to your terminal to help you find out what values are on your scale.

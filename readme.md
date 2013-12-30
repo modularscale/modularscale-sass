@@ -31,7 +31,7 @@ To get started, you need to select a ratio and a base value. The base value is u
 
 I have been working incredibly hard to make Modular Scale compatible with multiple versions of Sass. As a result, it will work and has been tested in **Libsass**, **Sass 3.2**, and **Sass 3.3**.
 
-These are dramatically different environments so things may have slight differences. **For best results, install via the gem with Compass**.
+These are dramatically different environments so things may have slight differences. **[For best results, install via the gem with Compass](https://github.com/Team-Sass/modular-scale/tree/2.x#compass)**.
 
 * **Compass + Sass (best):**
   * non-integer values work with the `ms()` function.

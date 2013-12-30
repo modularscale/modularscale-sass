@@ -104,7 +104,7 @@ By default, the variable `$ms-ratio` is set to `$golden`.
   <tr><td>$double-octave</td><td>1:4</td><td>4</td></tr>
   <tr><td>$major-twelfth</td><td>1:3</td><td>3</td></tr>
   <tr><td>$major-eleventh</td><td>3:8</td><td>2.667</td></tr>
-  <tr><td>$major-tenth</td><td>2.5</td><td>2:5</td></tr>
+  <tr><td>$major-tenth</td><td>2:5</td><td>2.5</td></tr>
   <tr><td>$octave</td><td>1:2</td><td>2</td></tr>
   <tr><td>$major-seventh</td><td>8:15</td><td>1.875</td></tr>
   <tr><td>$minor-seventh</td><td>9:16</td><td>1.778</td></tr>

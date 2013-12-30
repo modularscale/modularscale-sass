@@ -27,18 +27,18 @@ To get started, you need to select a ratio and a base value. The base value is u
 * Extract into your project
 * SCSS: `@import 'modular-scale';`
 
-## Compatability
+## Compatibility
 
-I have been working incredibly hard to make Modular Scale compatable with multiple versions of Sass. As a result, it will work and has been tested in *Libsass*, *Sass 3.2*, and *Sass 3.3*.
+I have been working incredibly hard to make Modular Scale compatible with multiple versions of Sass. As a result, it will work and has been tested in **Libsass**, **Sass 3.2**, and **Sass 3.3**.
 
-These are dramatically different enviroments so things may have slight differences. *For best results, install via the gem with Compass*.
+These are dramatically different environments so things may have slight differences. **For best results, install via the gem with Compass**.
 
-* *Compass + Sass (best):*
+* **Compass + Sass (best):**
   * non-integer values work with the `ms()` function.
-  * Signifigant speed increases as the gem does calculations natively in Ruby
-* *Libsass:*
+  * Significant speed increases as the gem does calculations natively in Ruby
+* **Libsass:**
   * Can hang when using multiple bases and ratios.
-* *Vanilla Sass:*
+* **Vanilla Sass:**
   * Possibly slow when using multiple bases and ratios.
 
 ## Usage
@@ -65,7 +65,7 @@ You can output a list to your terminal to help you find out what values are on y
 ```
 
 You can use a double standard scale by simply adding more base sizes in a space-sepreated list.
-*note:* the starting point of the scale will always be the *first* value in this list
+**note:** the starting point of the scale will always be the **first** value in this list
 
 ```scss
 .double-standard {

@@ -27,6 +27,20 @@ To get started, you need to select a ratio and a base value. The base value is u
 * Extract into your project
 * SCSS: `@import 'modular-scale';`
 
+## Compatability
+
+I have been working incredibly hard to make Modular Scale compatable with multiple versions of Sass. As a result, it will work and has been tested in *Libsass*, *Sass 3.2*, and *Sass 3.3*.
+
+These are dramatically different enviroments so things may have slight differences. *For best results, install via the gem with Compass*.
+
+* *Compass + Sass (best):*
+  * non-integer values work with the `ms()` function.
+  * Signifigant speed increases as the gem does calculations natively in Ruby
+* *Libsass:*
+  * Can hang when using multiple bases and ratios.
+* *Vanilla Sass:*
+  * Possibly slow when using multiple bases and ratios.
+
 ## Usage
 
 Modular Scale has two default variables that you should place with your other site wide variables. `$ms-base` is usually your font size or `1em` and can have multiple values. `$ms-ratio` is the factor of change between each number so if the ratio is `1.5` then each number in the sequence will be 1.5 times that of the previous number. Just as you can have multiple bases you can have multiple ratios.

@@ -127,6 +127,8 @@ $my-ratio: 1 / 3.14159265;
 $ms-ratio: $my-ratio;
 ```
 
+## [Changelog](https://github.com/Team-Sass/modular-scale/releases)
+
 ## Inspiration
 
 Sassy Modular Scale was adapted from [modularscale.com](http://modularscale.com/) by Tim Brown ([@nicewebtype](http://twitter.com/nicewebtype)). Tim also wrote a supporting article at [A List Apart](http://www.alistapart.com/) titled ["More Meaningful Typography"](http://www.alistapart.com/articles/more-meaningful-typography/). Additional inspiration goes to [Robert Bringhurst](http://en.wikipedia.org/wiki/Robert_Bringhurst), author of ["The Elements of Typographic Style"](http://en.wikipedia.org/wiki/The_Elements_of_Typographic_Style) - specifically Chapter 8 titled "Shaping the Page"

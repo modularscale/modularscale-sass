@@ -1,6 +1,6 @@
 @import "../../stylesheets/modular-scale";
 
 foo {
-  bar: ms(3, 10px 16px, $major-third);
+  bar: ms(3, 10px, $major-third);
   // baz: ms-list(3, 16px, $golden);
 }

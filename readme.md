@@ -1,5 +1,7 @@
 # Sassy Modular Scale
 
+## [2.0 documentation](https://github.com/Team-Sass/modular-scale/blob/2.x/readme.md)
+
 ## Put down the calculator and let Sass do the work.
 
 Sassy Modular Scale is a Sass based mixin that calculates the incremental values of the modular scale in proportion to a set size and ratio. It was inspired by and adapted from Tim Brown's modularscale.com.

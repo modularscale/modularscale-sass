@@ -1,3 +1,9 @@
 *.gem
 .sass-cache
 
+
+Gemfile.lock
+
+stylesheets/modular-scale.zip
+
+*.css

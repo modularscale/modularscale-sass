@@ -16,7 +16,7 @@ Compass::Frameworks.register('modular-scale', :path => extension_path)
 #    a prerelease version
 #  Date is in the form of YYYY-MM-DD
 module ModularScale
-  VERSION = "2.0.0.alpha2"
+  VERSION = "2.0.0.alpha3"
   DATE = "2013-12-20"
 end
 
@@ -24,6 +24,98 @@ end
 #  available on require of your extension without the need for users to import
 #  any partials. Uncomment below.
 
-# module Sass::Script::Functions
-# 
-# end
+module Sass::Script::Functions
+
+  # Let MS know that extra functionality is avalible
+  def ms_gem_installed()
+    Sass::Script::Bool.new(true)
+  end
+
+  def ms_gem_func(value, bases, ratios)
+
+    # Convert to native ruby things
+    rvalue  = value.value.to_i
+
+    if bases.class == Sass::Script::Number
+      bases  = [] << bases
+    else
+      bases  = bases.value.to_a
+    end
+    if ratios.class == Sass::Script::Number
+      ratios = [] << ratios
+    else
+      ratios = ratios.value.to_a
+    end
+
+    # Convert items in arrays to floating point numbers
+    rbases  = []
+    rratios = []
+    bases.each do |num|
+      rbases << num.value.to_f
+    end
+    ratios.each do |num|
+      rratios << num.value.to_f
+    end
+
+
+    # Blank array for return
+    r = [rbases[0]]
+
+    # loop through all possibilities
+    # NOTE THIS IS NOT FULLY FUNCTIONAL YET
+    # ONLY LOOPS THROUGH SOME/MOST OF THE POSSIBILITES
+    
+    rbases.each do |base|
+      rratios.each do |ratio|
+
+        # Find values on a positive scale
+        if rvalue > 0
+          # Find lower values on the scale
+          i = -1;
+          while ((ratio ** i) * base) >= (rbases[0])
+            r << (ratio ** i) * base
+            i = i - 1;
+          end
+
+          # Find higher possible values on the scale
+          i = 1;
+          while ((ratio ** i) * base) <= ((ratio ** rvalue) * base)
+            r << (ratio ** i) * base
+            i = i + 1;
+          end
+
+        else
+
+          # Find lower values on the scale
+          i = 1;
+          while ((ratio ** i) * base) <= (rbases[0])
+            r << (ratio ** i) * base
+            i = i + 1;
+          end
+
+          # Find higher possible values on the scale
+          i = -1;
+          while ((ratio ** i) * base) >= ((ratio ** rvalue) * base)
+            r << (ratio ** i) * base
+            i = i - 1;
+          end
+        end
+
+      end
+    end
+
+    # Sort and trim
+    r.sort!
+    r.uniq!
+
+    if rvalue < 0
+      r = r.keep_if { |a| a <= rbases[0] }
+      r.reverse!
+    end
+
+    # Final value
+    r = r[rvalue]
+
+    Sass::Script::Number.new(r)
+  end
+end

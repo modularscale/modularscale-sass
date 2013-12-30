@@ -7,6 +7,21 @@
     @return ms-calc($Value, $Bases, $Ratios);
   }
   
+  // Do calculations directly in Ruby when avalible
+  @if $MS-gem-exists {
+
+    // Remove units from bases
+    $Unit: nth($Bases, 1) * 0 + 1;
+    $Unitless-Bases: ();
+    @each $Base in $Bases {
+      $Base: $Base/$Unit;
+      $Unitless-Bases: join($Unitless-Bases, $Base);
+    }
+    
+    // Calculate natively in Ruby
+    @return ms-gem-func($Value, $Unitless-Bases, $Ratios) * $Unit;
+  }
+  
   // Generate a list of all possible values
   $Return: ms-generate-list($Value, $Bases, $Ratios);
   

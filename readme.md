@@ -1,6 +1,6 @@
 # Modular Scale
 
-### Go to [1.0 documentation](https://github.com/Team-Sass/modular-scale/blob/1.x/readme.md)
+### This is v2.0 documentation, Go to [v1.0 documentation here](https://github.com/Team-Sass/modular-scale/blob/1.x/readme.md)
 
 A modular scale is a list of values that share the same relationship. These values are often used to size type and create a sense of harmony in a design. Proportions within modular scales are all around us from the spacing of the joints on our fingers to branches on trees. These natural proportions have been used since the time of the ancient Greeks in architecture and design and can be a tremendously helpful tool to leverage for web designers.
 

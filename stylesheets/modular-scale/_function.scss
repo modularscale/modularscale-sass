@@ -36,9 +36,9 @@
     $Value: $Value + 1;
   }
   @else {
-    $Value: $Value - 1;
+    $Value: abs($Value - 1) + $Value;
   }
-
+  
   // Find the correct value in the list
   $Return: nth($Return, $Value);
 

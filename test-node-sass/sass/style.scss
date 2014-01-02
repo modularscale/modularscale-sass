@@ -1,7 +1,5 @@
 @import "../../stylesheets/modular-scale";
 
 foo {
-  @warn ms-calc(3, 10px 16px, $major-third);
-  // @warn ms-calc(-4, 10px, $major-third);
-  // @warn ms-pow(16, -2);
+  @warn ms(-1, 10px 16px, $major-third);
 }

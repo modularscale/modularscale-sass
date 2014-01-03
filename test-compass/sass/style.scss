@@ -1,6 +1,3 @@
 @import "modular-scale";
 
-$ms-base: 20px 44px;
-$ms-ratio: $major-third $fifth;
-
-@debug ms(4);
+@debug  ms-list(1, 5, 10px 16px, $major-third);

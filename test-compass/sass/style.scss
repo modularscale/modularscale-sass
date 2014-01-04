@@ -1,3 +1,13 @@
 @import "modular-scale";
 
-@debug  ms-list(1, 5, 10px 16px, $major-third);
+@debug ms-list(-2, 5, 10px 16px, $major-third);
+@debug
+  ms(-2, 10px 16px, $major-third)
+  ms(-1, 10px 16px, $major-third)
+  ms(0, 10px 16px, $major-third)
+  ms(1, 10px 16px, $major-third)
+  ms(2, 10px 16px, $major-third)
+  ms(3, 10px 16px, $major-third)
+  ms(4, 10px 16px, $major-third)
+  ms(5, 10px 16px, $major-third)
+;

@@ -14,7 +14,7 @@
       $Base-counter: 0;
       
       // Seed list with an initial value
-      @if $Base == nth($Bases, 1) {
+      @if $Base == $Base {
         $MS-base-list: $Base;
       }
       

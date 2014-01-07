@@ -1,0 +1,13 @@
+// Feature testing
+
+
+// Test if the pow() function exists
+
+@function ms-pow-exists() {
+  @if pow(4, 2) == 16 {
+    @return true;
+  }
+  @return false;
+}
+
+$MS-pow-exists: ms-pow-exists();

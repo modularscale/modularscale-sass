@@ -14,7 +14,7 @@
       $Base-counter: 0;
       
       // Seed list with an initial value
-      @if $Base == nth($Bases, 1) {
+      @if $Base == $Base {
         $MS-base-list: $Base;
       }
       
@@ -30,7 +30,7 @@
         
         // Find higher possible values on the scale
         $Base-counter: 1;
-        @while ms-calc($Base-counter, $Base, $Ratio) <= ms-calc($Value, nth($Bases, 1), $ms-ratio) {
+        @while ms-calc($Base-counter, $Base, $Ratio) <= ms-calc($Value, nth($Bases, 1), $Ratio) {
           $MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
           $Base-counter: $Base-counter + 1;
         }

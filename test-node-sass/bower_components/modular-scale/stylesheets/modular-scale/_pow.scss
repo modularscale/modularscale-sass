@@ -28,7 +28,8 @@
   // If the number is 0 or negitive
   // divide instead of multiply.
   @else {
-    @for $i from -1 to abs($Exponent) {
+    // Libsass doesn’t allow negitive values in loops
+    @for $i from (-1 + 1) to (abs($Exponent) + 1) {
       $Return: $Return / $Base;
     }
   }

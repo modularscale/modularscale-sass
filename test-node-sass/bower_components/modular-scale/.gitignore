@@ -1,0 +1,7 @@
+*.gem
+.sass-cache
+
+
+*.lock
+
+stylesheets/modular-scale.zip

@@ -28,16 +28,20 @@
   // Sort the generated lists
   $Return: ms-sort-list($Return);
 
+  // Reverse list if its negitive.
+  @if $Value < 0 {
+    $MS-new-return: ();
+    @each $i in $Return {
+      $MS-new-return: join($i, $MS-new-return);
+    }
+    $Return: $MS-new-return;
+  }
+  
   // Normalize value for counting from 1
   // Because CSS counts things from 1
   // So Sass does as well
   // So I get to write fun stuff like this
-  @if $Value >= 0 {
-    $Value: $Value + 1;
-  }
-  @else {
-    $Value: abs($Value - 1) + $Value;
-  }
+  $Value: abs($Value) + 1;
   
   // Find the correct value in the list
   $Return: nth($Return, $Value);

@@ -76,6 +76,19 @@
           }
           $Base-counter: $Base-counter - 1;
         }
+        
+        // Trim outlier base.
+        @if length($Bases) > 1 {
+          @for $i from 2 through length($Bases) {
+            @if nth($MS-base-list, 1) > nth($Bases, 1) {
+              $MS-new-list: ();
+              @for $i from 2 through length($MS-base-list) {
+                $MS-new-list: join($MS-new-list, nth($MS-base-list, $i));
+              }
+              $MS-base-list: $MS-new-list;
+            }
+          }
+        }
       }
       
       // reverse list if its largest to smallest

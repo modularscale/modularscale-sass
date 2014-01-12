@@ -33,12 +33,17 @@ I have been working incredibly hard to make Modular Scale compatible with multip
 
 These are dramatically different environments so things may have slight differences. **[For best results, install via the gem with Compass](https://github.com/Team-Sass/modular-scale/tree/2.x#compass)**.
 
-* **Compass + Sass (best):**
+#### **Compass + Sass (best):**
+
   * non-integer values work with the `ms()` function. (Compass only)
   * Significant speed increases as the gem does calculations natively in Ruby
-* **Libsass:**
+
+#### **Libsass:**
+
   * Everything should be working, and work fairly quickly.
-* **Vanilla Sass:**
+
+#### **Vanilla Sass:**
+
   * Possibly slow when using multiple bases and ratios.
 
 ## Usage

@@ -41,7 +41,6 @@
     }
   }
   
-
   // Run through remainder values in the list
   @while $A-counter <= length($A) {
     $Current: nth($A, $A-counter);
@@ -61,6 +60,8 @@
   // Done! return is now sorted and complete
   @return $Return;
 }
+
+
 
 // Pull it all together
 @function ms-sort-list($Lists) {

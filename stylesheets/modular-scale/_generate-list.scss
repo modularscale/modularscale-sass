@@ -38,7 +38,6 @@
         // Find lower values on the scale
         $Base-counter: -1;
         @while ms-calc($Base-counter, $Base, $Ratio) >= nth($Bases, 1) {
-          @debug ms-calc($Base-counter, $Base, $Ratio);
           $MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
           $Base-counter: $Base-counter - 1;
         }
@@ -89,6 +88,5 @@
   }
   
   // After all the possibilities are found, output a master list
-  @debug $MS-list;
   @return $MS-list;
 }

@@ -1,3 +1,17 @@
+@function ms-reverse-list($list) {
+  @if length($list) > 1 {
+    @if nth($list, 1) > nth($list, length($list)) {
+      $MS-reversed-list: ();
+      @each $Value in $list {
+        $MS-reversed-list: join($Value, $MS-reversed-list);
+      }
+      @return $MS-reversed-list;
+    }
+  }
+  @return $list;
+}
+
+
 @function ms-generate-list($Value: 0, $Bases: $ms-base, $Ratios: $ms-ratio) {
 
   // Create blank lists
@@ -19,15 +33,19 @@
       }
       
       // Find values on a positive scale
-      @if $Value > 0 {
+      @if $Value >= 0 {
         
         // Find lower values on the scale
         $Base-counter: -1;
         @while ms-calc($Base-counter, $Base, $Ratio) >= nth($Bases, 1) {
+          @debug ms-calc($Base-counter, $Base, $Ratio);
           $MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
           $Base-counter: $Base-counter - 1;
         }
         
+        // Ensure the list is smallest to largest
+        $MS-base-list: ms-reverse-list($MS-base-list);
+
         // Find higher possible values on the scale
         $Base-counter: 1;
         @while ms-calc($Base-counter, $Base, $Ratio) <= ms-calc($Value, nth($Bases, 1), $Ratio) {
@@ -46,6 +64,9 @@
           $Base-counter: $Base-counter + 1;
         }
 
+        // Ensure the list is smallest to largest
+        $MS-base-list: ms-reverse-list($MS-base-list);
+
         // Find higher possible values on the scale
         $Base-counter: -1;
         @while ms-calc($Base-counter, $Base, $Ratio) >= ms-calc($Value, nth($Bases, 1), $Ratio) {
@@ -59,15 +80,7 @@
       }
       
       // reverse list if its largest to smallest
-      @if length($MS-base-list) > 1 {
-        @if nth($MS-base-list, 1) > nth($MS-base-list, length($MS-base-list)) {
-          $ms-reversed-list: ();
-          @each $Value in $MS-base-list {
-            $ms-reversed-list: join($Value, $ms-reversed-list);
-          }
-          $MS-base-list: $ms-reversed-list;
-        }
-      }
+      $MS-base-list: ms-reverse-list($MS-base-list);
 
       // Add new possibilities to the master list
       $MS-list: append($MS-list, $MS-base-list, comma);
@@ -76,5 +89,6 @@
   }
   
   // After all the possibilities are found, output a master list
+  @debug $MS-list;
   @return $MS-list;
 }

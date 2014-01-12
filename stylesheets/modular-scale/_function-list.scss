@@ -49,12 +49,12 @@
     // Trim list
     $Trim-list: ();
     @if $End < 0 {
-      @for $i from abs($End) through (abs($Start) + 1) {
+      @for $i from abs($End) through (abs($Start) + 2) {
         $Trim-list: join(nth($Negitive-return, $i), $Trim-list);
       }
     }
     @else {
-      @for $i from 2 through abs($Start) {
+      @for $i from 2 through (abs($Start) + 1) {
         $Trim-list: join(nth($Negitive-return, $i), $Trim-list);
       }
     }

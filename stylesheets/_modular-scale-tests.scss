@@ -1,8 +1,8 @@
-@if ms-list(-3, 3, 10 16, $major-third) != (8 8.192 10 10.24 12.5 12.8) {
+@if ms-list(-3, 3, 10 16, $major-third) != (6.5536 8 8.192 10 10.24 12.5 12.8) {
   @warn "function ms-list(): FAIL";
   @debug "function ms-list(-3, 3, 10 16, $major-third)";
   @debug "Result:   (#{ms-list(-3, 3, 10 16, $major-third)})";
-  @debug "Intended: (8 8.192 10 10.24 12.5 12.8)";
+  @debug "Intended: (6.5536 8 8.192 10 10.24 12.5 12.8)";
 }@else {
   @debug "function ms-list(): PASS";
 }

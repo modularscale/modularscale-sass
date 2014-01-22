@@ -70,15 +70,15 @@ module Sass::Script::Functions
 
         # Find values on a positive scale
         if rvalue > 0
-          # Find lower values on the scale
-          i = -1;
+          # Find higher values on the scale
+          i = 0;
           while ((ratio ** i) * base) >= (rbases[0])
             r << (ratio ** i) * base
             i = i - 1;
           end
 
-          # Find higher possible values on the scale
-          i = 1;
+          # Find lower possible values on the scale
+          i = 0;
           while ((ratio ** i) * base) <= ((ratio ** rvalue) * base)
             r << (ratio ** i) * base
             i = i + 1;
@@ -87,14 +87,14 @@ module Sass::Script::Functions
         else
 
           # Find lower values on the scale
-          i = 1;
+          i = 0;
           while ((ratio ** i) * base) <= (rbases[0])
             r << (ratio ** i) * base
             i = i + 1;
           end
 
           # Find higher possible values on the scale
-          i = -1;
+          i = 0;
           while ((ratio ** i) * base) >= ((ratio ** rvalue) * base)
             r << (ratio ** i) * base
             i = i - 1;

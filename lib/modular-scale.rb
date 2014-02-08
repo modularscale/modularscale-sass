@@ -65,11 +65,16 @@ module Sass::Script::Functions
     # NOTE THIS IS NOT FULLY FUNCTIONAL YET
     # ONLY LOOPS THROUGH SOME/MOST OF THE POSSIBILITES
     
-    rbases.each do |base|
-      rratios.each do |ratio|
+    rratios.each do |ratio|
+      rbases.each do |base|
+
+        base_counter = 0
+
+        # Seed list with an initial value
+        r << base
 
         # Find values on a positive scale
-        if rvalue > 0
+        if rvalue >= 0
           # Find higher values on the scale
           i = 0;
           while ((ratio ** i) * base) >= (rbases[0])
@@ -79,7 +84,7 @@ module Sass::Script::Functions
 
           # Find lower possible values on the scale
           i = 0;
-          while ((ratio ** i) * base) <= ((ratio ** rvalue) * base)
+          while ((ratio ** i) * base) <= ((ratio ** (rvalue + 1)) * base)
             r << (ratio ** i) * base
             i = i + 1;
           end
@@ -95,7 +100,7 @@ module Sass::Script::Functions
 
           # Find higher possible values on the scale
           i = 0;
-          while ((ratio ** i) * base) >= ((ratio ** rvalue) * base)
+          while ((ratio ** i) * base) >= ((ratio ** (rvalue - 1)) * base)
             r << (ratio ** i) * base
             i = i - 1;
           end
@@ -108,10 +113,11 @@ module Sass::Script::Functions
     r.sort!
     r.uniq!
 
+
     if rvalue < 0
       r = r.keep_if { |a| a <= rbases[0] }
       # Final value
-      r = r[rvalue - 1]
+      r = r[(rvalue - 1)]
     else
       r = r[rvalue]
     end

@@ -28,9 +28,7 @@
       $Base-counter: 0;
       
       // Seed list with an initial value
-      @if $Base == $Base {
-        $MS-base-list: $Base;
-      }
+      $MS-base-list: $Base;
       
       // Find values on a positive scale
       @if $Value >= 0 {
@@ -54,7 +52,7 @@
       }
 
       // Find values on a negitive scale
-      @if $Value < 0 {
+      @else {
         
         // Find lower values on the scale
         $Base-counter: 1;

@@ -11,7 +11,7 @@
   @if $MS-gem-exists {
 
     // Remove units from bases
-    $Unit: nth($Bases, 1) * 0 + 1;
+    $Unit: nth($Bases, 1) * 0 + 1; // Extracts the unit from the base
     $Unitless-Bases: ();
     @each $Base in $Bases {
       $Base: $Base/$Unit;

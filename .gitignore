@@ -1,6 +1,6 @@
 *.gem
 .sass-cache
-
+.bundle
 
 *.lock
 

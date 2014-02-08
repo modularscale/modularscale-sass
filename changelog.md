@@ -1,4 +1,4 @@
-# Version 2.0.0 (unreleased)
+# Version 2.0.0
   
   This is a breaking version. You will need to refactor slightly in order to upgrade to this version from a previous version.
 

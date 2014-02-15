@@ -132,6 +132,15 @@ $my-ratio: 1 / 3.14159265;
 $ms-ratio: $my-ratio;
 ```
 
+## Upgrading from 1.x to 2.x
+
+1. Follow the [install instructions](#install) above.
+2. remove older versions of modular-scale with `gem cleanup modular-scale`.
+3. Rename `$base-size` to `$ms-base`.
+4. Rename `$ratio` to `$ms-ratio`.
+5. Change ratios from function format `golden()`, to variable format `$golden`.
+6. The `ms-list-output()` mixin and `power()` function have been removed.
+
 ## [Changelog](https://github.com/Team-Sass/modular-scale/releases)
 
 ## Inspiration

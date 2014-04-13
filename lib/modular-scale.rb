@@ -16,11 +16,11 @@ Compass::Frameworks.register('modular-scale', :path => extension_path)
 #    a prerelease version
 #  Date is in the form of YYYY-MM-DD
 module ModularScale
-  VERSION = "2.0.4"
+  VERSION = "2.0.5"
   DATE = "2013-12-20"
 end
 
-# This is where any custom SassScript should be placed. The functions will be  
+# This is where any custom SassScript should be placed. The functions will be
 #  available on require of your extension without the need for users to import
 #  any partials. Uncomment below.
 
@@ -64,7 +64,7 @@ module Sass::Script::Functions
     # loop through all possibilities
     # NOTE THIS IS NOT FULLY FUNCTIONAL YET
     # ONLY LOOPS THROUGH SOME/MOST OF THE POSSIBILITES
-    
+
     rratios.each do |ratio|
       rbases.each do |base|
 

@@ -1,7 +1,7 @@
 // If a native exponent function doesnt exist
 // this one is needed.
 @function ms-pow($Base, $Exponent) {
-  
+
   // Find and remove unit.
   // Avoids messyness with unit calculations
   $Unit: $Base * 0 + 1;
@@ -15,7 +15,7 @@
 
   // Set up the loop, priming the return with the base.
 	$Return: $Base;
-  
+
   // If the number is positive, multiply it.
   @if $Exponent > 0 {
     // Basic feedback loop as exponents
@@ -24,11 +24,11 @@
       $Return: $Return * $Base;
     }
   }
-  
+
   // If the number is 0 or negitive
   // divide instead of multiply.
   @else {
-    // Libsass doesn’t allow negitive values in loops
+    // Libsass doesnt allow negitive values in loops
     @for $i from (-1 + 1) to (abs($Exponent) + 1) {
       $Return: $Return / $Base;
     }

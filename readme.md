@@ -1,7 +1,5 @@
 # Modular Scale
 
-### This is v2.0 documentation, Go to [v1.0 documentation here](https://github.com/Team-Sass/modular-scale/blob/1.x/readme.md)
-
 A modular scale is a list of values that share the same relationship. These values are often used to size type and create a sense of harmony in a design. Proportions within modular scales are all around us from the spacing of the joints on our fingers to branches on trees. These natural proportions have been used since the time of the ancient Greeks in architecture and design and can be a tremendously helpful tool to leverage for web designers.
 
 Ems work especially well with modular scales as their recursive properties mimic modular scales making them more predictable and easier to manage. Pixels and other units work just fine and breakpoints in responsive web design can naturally fall on your scale to create better relevance to your text as all the values in your layout harmonize with each other.
@@ -29,7 +27,7 @@ To get started, you need to select a ratio and a base value. The base value is u
 
 ## Compatibility
 
-I have been working incredibly hard to make Modular Scale compatible with multiple versions of Sass. As a result, it will work and has been tested in **Libsass**, **Sass 3.2**, and **Sass 3.3**.
+I have been working incredibly hard to make Modular Scale compatible with multiple versions of Sass. As a result, it will work and has been tested in **Libsass**, **Sass 3.2**, **Sass 3.3**, and **Sass 3.4**.
 
 These are dramatically different environments so things may have slight differences. **[For best results, install via the gem with Compass](https://github.com/Team-Sass/modular-scale/tree/2.x#compass)**.
 
@@ -40,11 +38,11 @@ These are dramatically different environments so things may have slight differen
 
 #### **Libsass:**
 
-  * Everything should be working, and work fairly quickly.
+  * Everything should be working, and work very quickly.
 
 #### **Vanilla Sass:**
 
-  * Possibly slow when using multiple bases and ratios.
+  * Works fine, but is slow when using multiple bases and ratios.
 
 ## Usage
 

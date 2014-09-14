@@ -1,0 +1,14 @@
+// Responsive logic function
+@function ms-respond($Bases, $Ratios) {
+
+  @if $ms-respond {
+    $MS-context: map-get($ms-respond,"#{breakpoint-get-context('min-width')}");
+    @if $MS-context {
+      $Ratios: nth($MS-context,1);
+      @if length($MS-context) > 1 {
+        $Bases: nth($MS-context,2);
+      }
+    }
+  }
+  @return $Bases, $Ratios;
+}

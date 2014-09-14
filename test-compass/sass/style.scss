@@ -1,5 +1,6 @@
-@import "modular-scale";
-@import "modular-scale-tests";
+@import 'modular-scale';
+// @import 'breakpoint';
+@import 'modular-scale-tests';
 
 // @debug ms(2, 100, 1.618);
 // @debug ms(1, 100, 1.618);
@@ -7,3 +8,19 @@
 // @debug ms(-1, 100, 1.618);
 // @debug ms(-2, 100, 1.618);
 // @debug ms(-3, 100, 1.618);
+
+// $ms-respond: (
+//   '20em': 1.2 16px,
+//   '400px': 1.4,
+// );
+
+// $ms-respond: false;
+
+div {
+  // @include ms-ratio(1.2) {
+    c: ms(1);
+  // }
+  // @include breakpoint(20em) {
+  //   c: ms(1);
+  // }
+}

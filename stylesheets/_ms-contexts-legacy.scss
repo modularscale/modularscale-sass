@@ -1,0 +1,24 @@
+// Context mixins
+@mixin ms-context($base,$ratio) {
+  $ms-og-base: $ms-base;
+  $ms-base: $base;
+  $ms-og-ratio: $ms-ratio;
+  $ms-ratio: $ratio;
+  @content;
+  $ms-base: $ms-og-base;
+  $ms-ratio: $ms-og-ratio;
+}
+
+@mixin ms-ratio($ratio) {
+  $ms-og-ratio: $ms-ratio;
+  $ms-ratio: $ratio;
+  @content;
+  $ms-ratio: $ms-og-ratio;
+}
+
+@mixin ms-base($base) {
+  $ms-og-base: $ms-base;
+  $ms-base: $base;
+  @content;
+  $ms-base: $ms-og-base;
+}

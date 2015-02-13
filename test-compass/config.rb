@@ -1,6 +1,6 @@
 # Require any additional compass plugins here.
-load "../modularscale-sass"
-# require "modular-scale"
+# load "../modularscale-sass"
+require "modular-scale"
 
 # Set this to the root of your project when deployed:
 http_path = "/"

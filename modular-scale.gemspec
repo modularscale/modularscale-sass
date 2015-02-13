@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.date        = ModularScale::DATE
   s.authors     = ['Scott Kellum', 'Mason Wendell', 'Adam Stacoviak']
   s.email       = ['scott@scottkellum.com', 'mason@thecodingdesigner.com', 'adam@stacoviak.com']
-  s.homepage    = 'https://github.com/at-import/modular-scale'
+  s.homepage    = 'http://modularscale.com'
   s.license     = 'MIT'
 
   s.summary     = 'Modular scale calculator built into your Sass.'

@@ -130,6 +130,37 @@ $my-ratio: 1 / 3.14159265;
 $ms-ratio: $my-ratio;
 ```
 
+## Responsive scales
+
+At times you may want to have a scale with less contrast on small screens and big type with more contrast on larger screens. For this you can use the `ms-respond` mixin that allows you to plug in a range of ratios at various breakpoints.
+
+First, you will need to set your range. A range is a list of ratio and breakpoint values from smallest to largest.
+
+```scss
+$ms-range:
+  1.2 20em,
+  1.3 30em,
+  1.4 40em,
+  1.5 50em,
+  1.6 60em;
+```
+
+Now you can use the `ms-respond` mixin to output a range of values for a single point on a scale.
+
+```scss
+foo {
+  @include ms-respond(font-size, 2);
+}
+```
+
+```css
+foo { font-size: 1.44em; }
+@media (min-width: 30em) { foo { font-size: 1.69em; } }
+@media (min-width: 40em) { foo { font-size: 1.96em; } }
+@media (min-width: 50em) { foo { font-size: 2.25em; } }
+@media (min-width: 60em) { foo { font-size: 2.56em; } }
+```
+
 ## [Changelog](https://github.com/Team-Sass/modular-scale/releases)
 
 ### Licence

@@ -1,0 +1,5 @@
+foo { font-size: 1.44em; }
+@media (min-width: 30em) { foo { font-size: 1.69em; } }
+@media (min-width: 40em) { foo { font-size: 1.96em; } }
+@media (min-width: 50em) { foo { font-size: 2.25em; } }
+@media (min-width: 60em) { foo { font-size: 2.56em; } }

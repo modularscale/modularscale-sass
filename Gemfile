@@ -1,2 +1,3 @@
 source 'https://rubygems.org'
-gemspec
+gem "compass", "~> 1.0.0"
+# gem "modular-scale"

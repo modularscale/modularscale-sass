@@ -1,60 +1,25 @@
-# Replace extension with the name of your extension's .rb file
 require './lib/modular-scale'
 
 Gem::Specification.new do |s|
-  # Release Specific Information
-  s.version = ModularScale::VERSION
-  s.date = ModularScale::DATE
+  s.name        = 'modular-scale'
+  s.version     = ModularScale::VERSION
+  s.date        = ModularScale::DATE
+  s.authors     = ['Scott Kellum', 'Mason Wendell', 'Adam Stacoviak']
+  s.email       = ['scott@scottkellum.com', 'mason@thecodingdesigner.com', 'adam@stacoviak.com']
+  s.homepage    = 'https://github.com/at-import/modular-scale'
+  s.license     = 'MIT'
 
-  # Gem Details
-  # Replace "modular-scale" with the name of your extension
-  s.name = "modular-scale"
-  s.rubyforge_project = "modular-scale"
-  # Description of your extension
-  s.description = %q{A generalized Compass extension to build off of}
-  # A summary of your Compass extension. Should be different than Description
-  s.summary = %q{An easy to use system for writing and managing media queries.}
-  # The names of the author(s) of the extension.
-  # If more than one author, comma separate inside of the brackets
-  s.authors = ["First Last"]
-  # The email address(es) of the author(s)
-  # If more than one author, comma separate inside of the brackets
-  s.email = ["firstlast@extension.com"]
-  # URL of the extension
-  s.homepage = "http://extension.com"
+  s.summary     = 'Modular scale calculator built into your Sass.'
+  s.description = 'A modular scale is a list of values that share the same relationship. These
+values are often used to size type and create a sense of harmony in a design. Proportions within
+modular scales are all around us from the spacing of the joints on our fingers to branches on
+trees. These natural proportions have been used since the time of the ancient Greeks in
+architecture and design and can be a tremendously helpful tool to leverage for web designers.'
 
-  # Gem Files
-  # These are the files to be included in your Compass extension.
-  # Uncomment those that you use.
+  s.files       = Dir['lib/**/*'] + Dir['stylesheets/**/*']
+  s.extra_rdoc_files = ['changelog.md', 'license.md', 'readme.md']
 
-  # README file
-  s.files = ["readme.md"]
+  s.required_rubygems_version = '>= 1.3.6'
 
-  # CHANGELOG
-  s.files += ["changelog.md"]
-
-  s.license = "MIT"
-  
-  s.files = ["license.md"]
-
-  # Library Files
-  s.files += Dir.glob("lib/**/*.*")
-
-  # Sass Files
-  s.files += Dir.glob("stylesheets/**/*.*")
-
-  # Template Files
-  s.files += Dir.glob("templates/**/*.*")
-
-  # Gem Bookkeeping
-  # Versions of Ruby and Rubygems you require
-  s.required_rubygems_version = ">= 1.3.6"
-  s.rubygems_version = %q{1.3.6}
-
-  # Gems Dependencies
-  # Gem names and versions that are required for your Compass extension.
-  # These are Gem dependencies, not Compass dependencies. Including gems
-  #  here will make sure the relevant gem and version are installed on the
-  #  user's system when installing your gem.
-  s.add_dependency("compass",   [">= 0.12.0"])
+  s.add_runtime_dependency 'compass', '>= 0.12.0'
 end

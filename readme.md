@@ -67,7 +67,7 @@ You can output a list to your terminal to help you find out what values are on y
 @debug ms-list($start, $end, $ms-base, $ms-ratio);
 ```
 
-You can use a double standard scale by simply adding more base sizes in a space-sepreated list.
+You can use a double standard scale by simply adding more base sizes in a space-separated list.
 **note:** the starting point of the scale will always be the **first** value in this list
 
 ```scss

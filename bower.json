@@ -1,7 +1,10 @@
 {
   "name": "modular-scale",
   "version": "v2.0.6",
-  "main": "stylesheets/_modular-scale.scss",
+  "main": [
+    "stylesheets/_modular-scale.scss",
+    "stylesheets/modular-scale/*"
+  ],
   "ignore": [
     "lib",
     "test-compass",

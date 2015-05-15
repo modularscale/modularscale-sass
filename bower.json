@@ -2,7 +2,7 @@
   "name": "modular-scale",
   "version": "v2.0.6",
   "main": [
-    "stylesheets/_modular-scale.scss",
+    "stylesheets/_modular-scale.scss"
   ],
   "ignore": [
     "lib",

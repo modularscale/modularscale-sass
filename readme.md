@@ -16,7 +16,7 @@ To get started, you need to select a ratio and a base value. The base value is u
 
 ### Bower
 
-* Terminal: `bower install modular-scale`
+* Terminal: `bower install modular-scale --save-dev`
 * SCSS: `@import '../link_to_component_dir/modular-scale';`
 
 ### Eyeglass

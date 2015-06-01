@@ -19,6 +19,11 @@ To get started, you need to select a ratio and a base value. The base value is u
 * Terminal: `bower install modular-scale`
 * SCSS: `@import '../link_to_component_dir/modular-scale';`
 
+### Eyeglass
+
+* Terminal: `npm install modularscale-sass --save-dev`
+* SCSS: `@import 'modular-scale'`
+
 ### Vanilla Sass
 
 * [Download the latest zip](https://github.com/Team-Sass/modular-scale/releases/latest)

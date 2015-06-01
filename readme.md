@@ -14,15 +14,15 @@ To get started, you need to select a ratio and a base value. The base value is u
 * Compass config: `require 'modular-scale'`
 * SCSS: `@import 'modular-scale';`
 
-### Bower
-
-* Terminal: `bower install modular-scale --save-dev`
-* SCSS: `@import '../link_to_component_dir/modular-scale';`
-
 ### Eyeglass
 
 * Terminal: `npm install modularscale-sass --save-dev`
 * SCSS: `@import 'modular-scale'`
+
+### Bower
+
+* Terminal: `bower install modular-scale --save-dev`
+* SCSS: `@import '../link_to_component_dir/modular-scale';`
 
 ### Vanilla Sass
 

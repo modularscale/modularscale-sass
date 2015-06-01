@@ -1,0 +1,30 @@
+{
+  "name": "modularscale-sass",
+  "version": "2.0.6",
+  "description": "A tool to help web designers size their type in a more meaningful way.",
+  "main": "stylesheets/_modular-scale.scss",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "eyeglass": {
+    "exports": "eyeglass-exports.js",
+    "name": "modular-scale"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modularscale/modularscale-sass.git"
+  },
+  "keywords": [
+    "sass",
+    "design",
+    "typography",
+    "eyeglass-module",
+    "modular-scale"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/modularscale/modularscale-sass/issues"
+  },
+  "homepage": "https://github.com/modularscale/modularscale-sass"
+}

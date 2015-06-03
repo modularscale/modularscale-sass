@@ -168,7 +168,7 @@ foo { font-size: 1.44em; }
 
 ## [Changelog](https://github.com/Team-Sass/modular-scale/releases)
 
-### Licence
+### License
 
 The MIT License (MIT)
 

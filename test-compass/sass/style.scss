@@ -1,19 +1,23 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,700);
 @import "modular-scale";
 // @import "modular-scale-tests";
 $ms-ratio: 1.33;
 
 $ms-range:
-  1.1  20em,
-  1.3  50em;
+  1.1  30em,
+  1.3  40em,
+  1.2  50em;
+$ms-fluid: false;
 
 body {
   max-width: 40em;
   margin: 0 auto;
-  padding: 3% 2% 10%;
+  padding: 5% 5% 10%;
   line-height: ms(1);
+  font-family: Merriweather, serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5 {
   line-height: 1;
   margin: 0;
 
@@ -27,8 +31,8 @@ h1, h2, h3, h4, h5, h6 {
   // }
 }
 
-@for $i from 1 through 6 {
+@for $i from 1 through 5 {
   h#{$i} {
-    @include ms-respond(font-size,($i - 6) * -1)
+    @include ms-respond(font-size,($i - 5) * -1)
   }
 }

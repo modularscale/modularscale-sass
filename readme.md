@@ -137,11 +137,21 @@ $ms-ratio: $my-ratio;
 
 ## Responsive scales
 
-At times you may want to have a scale with less contrast on small screens and big type with more contrast on larger screens. For this you can use the `ms-respond` mixin that allows you to plug in a range of ratios at various breakpoints.
+Based on [Mike Riethmuller’s](https://twitter.com/MikeRiethmuller) [_Precise control over responsive typography_](http://madebymike.com.au/writing/precise-control-responsive-typography/). A fantastic technique for fluidly scaling typography.
 
-First, you will need to set your range. A range is a list of ratio and breakpoint values from smallest to largest.
+First, you will need to set your range. A range is a list of ratio and breakpoint values from smallest to largest. Because this will render as a fluid range by default you will probably only want or need a range of two.
 
 ```scss
+$ms-range:
+  1.1   20em,
+  1.333 60em;
+```
+
+If you want to have specified steps instead of fluid type set `$ms-fluid` to `false` and you may want to add more values to your range.
+
+```scss
+$ms-fluid: false;
+
 $ms-range:
   1.2 20em,
   1.3 30em,
@@ -156,14 +166,6 @@ Now you can use the `ms-respond` mixin to output a range of values for a single 
 foo {
   @include ms-respond(font-size, 2);
 }
-```
-
-```css
-foo { font-size: 1.44em; }
-@media (min-width: 30em) { foo { font-size: 1.69em; } }
-@media (min-width: 40em) { foo { font-size: 1.96em; } }
-@media (min-width: 50em) { foo { font-size: 2.25em; } }
-@media (min-width: 60em) { foo { font-size: 2.56em; } }
 ```
 
 ## [Changelog](https://github.com/Team-Sass/modular-scale/releases)

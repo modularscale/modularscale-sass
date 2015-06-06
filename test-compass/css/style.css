@@ -1,29 +1,32 @@
-body { max-width: 40em; margin: 0 auto; padding: 3% 2% 10%; line-height: 1.33em; }
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,700);
+body { max-width: 40em; margin: 0 auto; padding: 5% 5% 10%; line-height: 1.33em; font-family: Merriweather, serif; }
 
-h1, h2, h3, h4, h5, h6 { line-height: 1; margin: 0; font-size: 1.21em; }
-@media (min-width: 20em) { h1, h2, h3, h4, h5, h6 { font-size: calc( 1.21em + 0.48 * ( (100vw - 20em) / 30 )); } }
-@media (min-width: 50em) { h1, h2, h3, h4, h5, h6 { font-size: 1.69em; } }
+h1, h2, h3, h4, h5 { line-height: 1; margin: 0; font-size: 1.21em; }
+@media (min-width: 30em) and (max-width: 40em) { h1, h2, h3, h4, h5 { font-size: 1.21em; } }
+@media (min-width: 40em) and (max-width: 50em) { h1, h2, h3, h4, h5 { font-size: 1.69em; } }
+@media (min-width: 50em) { h1, h2, h3, h4, h5 { font-size: 1.44em; } }
 
-h1 { font-size: 1.61051em; }
-@media (min-width: 20em) { h1 { font-size: calc( 1.61051em + 2.10242 * ( (100vw - 20em) / 30 )); } }
-@media (min-width: 50em) { h1 { font-size: 3.71293em; } }
+h1 { font-size: 1.4641em; }
+@media (min-width: 30em) and (max-width: 40em) { h1 { font-size: 1.4641em; } }
+@media (min-width: 40em) and (max-width: 50em) { h1 { font-size: 2.8561em; } }
+@media (min-width: 50em) { h1 { font-size: 2.0736em; } }
 
-h2 { font-size: 1.4641em; }
-@media (min-width: 20em) { h2 { font-size: calc( 1.4641em + 1.392 * ( (100vw - 20em) / 30 )); } }
-@media (min-width: 50em) { h2 { font-size: 2.8561em; } }
+h2 { font-size: 1.331em; }
+@media (min-width: 30em) and (max-width: 40em) { h2 { font-size: 1.331em; } }
+@media (min-width: 40em) and (max-width: 50em) { h2 { font-size: 2.197em; } }
+@media (min-width: 50em) { h2 { font-size: 1.728em; } }
 
-h3 { font-size: 1.331em; }
-@media (min-width: 20em) { h3 { font-size: calc( 1.331em + 0.866 * ( (100vw - 20em) / 30 )); } }
-@media (min-width: 50em) { h3 { font-size: 2.197em; } }
+h3 { font-size: 1.21em; }
+@media (min-width: 30em) and (max-width: 40em) { h3 { font-size: 1.21em; } }
+@media (min-width: 40em) and (max-width: 50em) { h3 { font-size: 1.69em; } }
+@media (min-width: 50em) { h3 { font-size: 1.44em; } }
 
-h4 { font-size: 1.21em; }
-@media (min-width: 20em) { h4 { font-size: calc( 1.21em + 0.48 * ( (100vw - 20em) / 30 )); } }
-@media (min-width: 50em) { h4 { font-size: 1.69em; } }
+h4 { font-size: 1.1em; }
+@media (min-width: 30em) and (max-width: 40em) { h4 { font-size: 1.1em; } }
+@media (min-width: 40em) and (max-width: 50em) { h4 { font-size: 1.3em; } }
+@media (min-width: 50em) { h4 { font-size: 1.2em; } }
 
-h5 { font-size: 1.1em; }
-@media (min-width: 20em) { h5 { font-size: calc( 1.1em + 0.2 * ( (100vw - 20em) / 30 )); } }
-@media (min-width: 50em) { h5 { font-size: 1.3em; } }
-
-h6 { font-size: 1em; }
-@media (min-width: 20em) { h6 { font-size: calc( 1em + 0 * ( (100vw - 20em) / 30 )); } }
-@media (min-width: 50em) { h6 { font-size: 1em; } }
+h5 { font-size: 1em; }
+@media (min-width: 30em) and (max-width: 40em) { h5 { font-size: 1em; } }
+@media (min-width: 40em) and (max-width: 50em) { h5 { font-size: 1em; } }
+@media (min-width: 50em) { h5 { font-size: 1em; } }

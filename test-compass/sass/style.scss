@@ -1,9 +1,34 @@
 @import "modular-scale";
-@import "modular-scale-tests";
+// @import "modular-scale-tests";
+$ms-ratio: 1.33;
 
-// @debug ms(2, 100, 1.618);
-// @debug ms(1, 100, 1.618);
-// @debug ms(0, 100, 1.618);
-// @debug ms(-1, 100, 1.618);
-// @debug ms(-2, 100, 1.618);
-// @debug ms(-3, 100, 1.618);
+$ms-range:
+  1.1  20em,
+  1.3  50em;
+
+body {
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 3% 2% 10%;
+  line-height: ms(1);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  margin: 0;
+
+  @include ms-respond(font-size,2);
+  // font-size: 1em;
+  // @media (min-width: 40em) {
+  //   font-size: calc( 1em + #{2 - 1} * ( (100vw - 40em) / #{50 - 40} ));
+  // }
+  // @media (min-width: 50em) {
+  //   font-size: 2em;
+  // }
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    @include ms-respond(font-size,($i - 6) * -1)
+  }
+}

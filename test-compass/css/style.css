@@ -1,0 +1,32 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,700);
+body { max-width: 40em; margin: 0 auto; padding: 5% 5% 10%; line-height: 1.33em; font-family: Merriweather, serif; }
+
+h1, h2, h3, h4, h5 { line-height: 1; margin: 0; font-size: 1.21em; }
+@media (min-width: 30em) and (max-width: 40em) { h1, h2, h3, h4, h5 { font-size: 1.21em; } }
+@media (min-width: 40em) and (max-width: 50em) { h1, h2, h3, h4, h5 { font-size: 1.69em; } }
+@media (min-width: 50em) { h1, h2, h3, h4, h5 { font-size: 1.44em; } }
+
+h1 { font-size: 1.4641em; }
+@media (min-width: 30em) and (max-width: 40em) { h1 { font-size: 1.4641em; } }
+@media (min-width: 40em) and (max-width: 50em) { h1 { font-size: 2.8561em; } }
+@media (min-width: 50em) { h1 { font-size: 2.0736em; } }
+
+h2 { font-size: 1.331em; }
+@media (min-width: 30em) and (max-width: 40em) { h2 { font-size: 1.331em; } }
+@media (min-width: 40em) and (max-width: 50em) { h2 { font-size: 2.197em; } }
+@media (min-width: 50em) { h2 { font-size: 1.728em; } }
+
+h3 { font-size: 1.21em; }
+@media (min-width: 30em) and (max-width: 40em) { h3 { font-size: 1.21em; } }
+@media (min-width: 40em) and (max-width: 50em) { h3 { font-size: 1.69em; } }
+@media (min-width: 50em) { h3 { font-size: 1.44em; } }
+
+h4 { font-size: 1.1em; }
+@media (min-width: 30em) and (max-width: 40em) { h4 { font-size: 1.1em; } }
+@media (min-width: 40em) and (max-width: 50em) { h4 { font-size: 1.3em; } }
+@media (min-width: 50em) { h4 { font-size: 1.2em; } }
+
+h5 { font-size: 1em; }
+@media (min-width: 30em) and (max-width: 40em) { h5 { font-size: 1em; } }
+@media (min-width: 40em) and (max-width: 50em) { h5 { font-size: 1em; } }
+@media (min-width: 50em) { h5 { font-size: 1em; } }

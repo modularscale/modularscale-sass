@@ -1,16 +1,47 @@
+// Stripping units is rarely a best practice and this function
+// should not be used elsewhere
+@function ms-unitless($val) {
+  $val: $val / ($val - $val + 1);
+  @return $val;
+}
+
+// Search config for values
+@function ms-range($x,$y,$range:$ms-range) {
+  @return nth(nth($range,$x),$y);
+}
+
+// Generate calc() function
+@function ms-respond-calc($value, $n, $range: $ms-range, $base: $ms-base) {
+  $val1: ms($value,$base,ms-range($n,1,$range));
+  $val2: ms($value,$base,ms-range($n+1,1,$range));
+  $break1: ms-range($n,2,$range);
+  $break2: ms-range($n+1,2,$range);
+  $diff: ms-unitless($val2) - ms-unitless($val1);
+  @if $ms-fluid {
+    @return calc( #{$val1} + #{$diff} * ( ( 100vw - #{$break1}) / #{ms-unitless($break2) - ms-unitless($break1)} ) );
+  } @else {
+    @return ms($value,$base,ms-range($n,1,$range));
+  }
+}
+
+// Main responsive mixin
 @mixin ms-respond($property, $value, $range: $ms-range, $base: $ms-base) {
+  // If there is no responsive config, just output the property and value
   @if $ms-range == null {
     #{$property}: ms($value,$base,$ms-ratio);
   } @else {
-    @for $i from 1 through length($range) {
-      @debug nth($range,$i);
-      @if $i == 1 {
-        #{$property}: ms($value,$base,nth(nth($range,$i),1));
-      } @else {
-        @media (min-width: nth(nth($range,$i),2)) {
-          #{$property}: ms($value,$base,nth(nth($range,$i),1));
-        }
+
+    // Initial value
+    #{$property}: ms($value,$base,ms-range(1,1,$range));
+
+    //
+    @for $i from 1 through (length($range) - 1) {
+      @media (min-width: ms-range($i,2,$range)) and (max-width: ms-range($i+1,2,$range)) {
+        #{$property}: ms-respond-calc($value, $i, $range, $base);
       }
+    }
+    @media (min-width: ms-range(length($range),2,$range)) {
+      #{$property}: ms($value,$base,ms-range(length($range),1,$range));
     }
   }
 }

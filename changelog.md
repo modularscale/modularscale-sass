@@ -1,3 +1,7 @@
+# Version 2.1.0
+
+  Ground-up re-write of ms-respond based on http://madebymike.com.au/writing/precise-control-responsive-typography/
+
 # Version 2.0.6
 
   Pixel rounding and responsive mixins

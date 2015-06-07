@@ -97,6 +97,41 @@ You can use multiple $ms-bases and multiple $ms-ratio together
 }
 ```
 
+## Responsive scales
+
+Based on [Mike Riethmuller’s](https://twitter.com/MikeRiethmuller) [_Precise control over responsive typography_](http://madebymike.com.au/writing/precise-control-responsive-typography/). A fantastic technique for fluidly scaling typography.
+
+[See a responsive modular scale in action](http://lab.scottkellum.com/ms-respond.html).
+
+First, you will need to set your range. A range is a list of ratio and breakpoint values from smallest to largest. Because this will render as a fluid range by default you will probably only want or need a range of two.
+
+```scss
+$ms-range:
+  1.1   20em,
+  1.333 60em;
+```
+
+If you want to have specified steps instead of fluid type set `$ms-fluid` to `false` and you may want to add more values to your range.
+
+```scss
+$ms-fluid: false;
+
+$ms-range:
+  1.2 20em,
+  1.3 30em,
+  1.4 40em,
+  1.5 50em,
+  1.6 60em;
+```
+
+Now you can use the `ms-respond` mixin to output a range of values for a single point on a scale.
+
+```scss
+foo {
+  @include ms-respond(font-size, 2);
+}
+```
+
 ## Ratios
 
 Modular scale includes functions for a number of classic design and musical scale ratios. You can add your own ratios as well.
@@ -133,41 +168,6 @@ Add your own ratio in Sass by setting a variable and passing that to modular-sca
 ```scss
 $my-ratio: 1 / 3.14159265;
 $ms-ratio: $my-ratio;
-```
-
-## Responsive scales
-
-Based on [Mike Riethmuller’s](https://twitter.com/MikeRiethmuller) [_Precise control over responsive typography_](http://madebymike.com.au/writing/precise-control-responsive-typography/). A fantastic technique for fluidly scaling typography.
-
-[See a responsive modular scale in action](http://lab.scottkellum.com/ms-respond.html).
-
-First, you will need to set your range. A range is a list of ratio and breakpoint values from smallest to largest. Because this will render as a fluid range by default you will probably only want or need a range of two.
-
-```scss
-$ms-range:
-  1.1   20em,
-  1.333 60em;
-```
-
-If you want to have specified steps instead of fluid type set `$ms-fluid` to `false` and you may want to add more values to your range.
-
-```scss
-$ms-fluid: false;
-
-$ms-range:
-  1.2 20em,
-  1.3 30em,
-  1.4 40em,
-  1.5 50em,
-  1.6 60em;
-```
-
-Now you can use the `ms-respond` mixin to output a range of values for a single point on a scale.
-
-```scss
-foo {
-  @include ms-respond(font-size, 2);
-}
 ```
 
 ## [Changelog](https://github.com/Team-Sass/modular-scale/releases)

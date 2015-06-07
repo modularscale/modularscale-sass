@@ -1,3 +1,7 @@
+# Version 2.1.1
+
+  Bugfix an `@else if` statement.
+
 # Version 2.1.0
 
   Ground-up re-write of ms-respond based on http://madebymike.com.au/writing/precise-control-responsive-typography/

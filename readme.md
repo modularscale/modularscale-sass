@@ -139,6 +139,8 @@ $ms-ratio: $my-ratio;
 
 Based on [Mike Riethmuller’s](https://twitter.com/MikeRiethmuller) [_Precise control over responsive typography_](http://madebymike.com.au/writing/precise-control-responsive-typography/). A fantastic technique for fluidly scaling typography.
 
+[See a responsive modular scale in action](http://lab.scottkellum.com/ms-respond.html).
+
 First, you will need to set your range. A range is a list of ratio and breakpoint values from smallest to largest. Because this will render as a fluid range by default you will probably only want or need a range of two.
 
 ```scss

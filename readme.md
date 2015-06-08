@@ -124,7 +124,7 @@ $ms-range:
   1.6 60em;
 ```
 
-Now you can use the `ms-respond` mixin to output a range of values for a single point on a scale.
+Now you can use the `ms-respond` mixin to output a range of values for a single point on a scale. The first value is the property and the second value is the point on the scale you wish to use. That’s it, a series of responisve values will be generated based on your configuration.
 
 ```scss
 foo {

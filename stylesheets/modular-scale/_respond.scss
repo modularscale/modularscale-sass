@@ -1,7 +1,7 @@
 // Stripping units is rarely a best practice and this function
 // should not be used elsewhere
 @function ms-unitless($val) {
-  $val: $val / ($val - $val + 1);
+  $val: $val / $val * 0;
   @return $val;
 }
 

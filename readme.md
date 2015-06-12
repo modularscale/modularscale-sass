@@ -45,7 +45,7 @@ These are dramatically different environments so things may have slight differen
 
   * Everything should be working, and work very quickly.
 
-#### **Vanilla Sass:**
+#### **Ruby Sass:**
 
   * Works fine, but is slow when using multiple bases and ratios.
 

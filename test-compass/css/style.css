@@ -1,24 +1,91 @@
-@import url(http://fonts.googleapis.com/css?family=Merriweather:400,700);
-body { max-width: 40em; margin: 0 auto; padding: 5% 5% 10%; line-height: 1.33em; font-family: Merriweather, serif; }
+body {
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 5% 5% 10%;
+  line-height: 1.1;
+}
+@media (min-width: 20em) and (max-width: 40em) {
+  body {
+    line-height: calc( 1.1 + 0.3 * ( ( 100vw - 20em) / 20 ) );
+  }
+}
+@media (min-width: 40em) {
+  body {
+    line-height: 1.4;
+  }
+}
 
-h1, h2, h3, h4, h5 { line-height: 1; margin: 0; }
+h1, h2, h3, h4, h5 {
+  line-height: 1;
+  margin: 0;
+}
 
-h1 { font-size: 1.4641em; }
-@media (min-width: 20em) and (max-width: 60em) { h1 { font-size: calc( 1.4641em + 1.69323 * ( ( 100vw - 20em) / 40 ) ); } }
-@media (min-width: 60em) { h1 { font-size: 3.15733em; } }
+h1 {
+  font-size: 1.4641em;
+}
+@media (min-width: 20em) and (max-width: 60em) {
+  h1 {
+    font-size: calc( 1.4641em + 1.69323 * ( ( 100vw - 20em) / 40 ) );
+  }
+}
+@media (min-width: 60em) {
+  h1 {
+    font-size: 3.15733em;
+  }
+}
 
-h2 { font-size: 1.331em; }
-@media (min-width: 20em) and (max-width: 60em) { h2 { font-size: calc( 1.331em + 1.03759 * ( ( 100vw - 20em) / 40 ) ); } }
-@media (min-width: 60em) { h2 { font-size: 2.36859em; } }
+h2 {
+  font-size: 1.331em;
+}
+@media (min-width: 20em) and (max-width: 60em) {
+  h2 {
+    font-size: calc( 1.331em + 1.03759 * ( ( 100vw - 20em) / 40 ) );
+  }
+}
+@media (min-width: 60em) {
+  h2 {
+    font-size: 2.36859em;
+  }
+}
 
-h3 { font-size: 1.21em; }
-@media (min-width: 20em) and (max-width: 60em) { h3 { font-size: calc( 1.21em + 0.56689 * ( ( 100vw - 20em) / 40 ) ); } }
-@media (min-width: 60em) { h3 { font-size: 1.77689em; } }
+h3 {
+  font-size: 1.21em;
+}
+@media (min-width: 20em) and (max-width: 60em) {
+  h3 {
+    font-size: calc( 1.21em + 0.56689 * ( ( 100vw - 20em) / 40 ) );
+  }
+}
+@media (min-width: 60em) {
+  h3 {
+    font-size: 1.77689em;
+  }
+}
 
-h4 { font-size: 1.1em; }
-@media (min-width: 20em) and (max-width: 60em) { h4 { font-size: calc( 1.1em + 0.233 * ( ( 100vw - 20em) / 40 ) ); } }
-@media (min-width: 60em) { h4 { font-size: 1.333em; } }
+h4 {
+  font-size: 1.1em;
+}
+@media (min-width: 20em) and (max-width: 60em) {
+  h4 {
+    font-size: calc( 1.1em + 0.233 * ( ( 100vw - 20em) / 40 ) );
+  }
+}
+@media (min-width: 60em) {
+  h4 {
+    font-size: 1.333em;
+  }
+}
 
-h5 { font-size: 1em; }
-@media (min-width: 20em) and (max-width: 60em) { h5 { font-size: calc( 1em + 0 * ( ( 100vw - 20em) / 40 ) ); } }
-@media (min-width: 60em) { h5 { font-size: 1em; } }
+h5 {
+  font-size: 1em;
+}
+@media (min-width: 20em) and (max-width: 60em) {
+  h5 {
+    font-size: calc( 1em + 0 * ( ( 100vw - 20em) / 40 ) );
+  }
+}
+@media (min-width: 60em) {
+  h5 {
+    font-size: 1em;
+  }
+}

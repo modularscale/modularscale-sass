@@ -1,4 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Merriweather:400,700);
 @import "modular-scale";
 // @import "modular-scale-tests";
 $ms-ratio: 1.33;
@@ -6,14 +5,18 @@ $ms-ratio: 1.33;
 $ms-range:
   1.1  20em,
   1.333  60em;
-// $ms-fluid: false;
+
+$line-height:
+  1.1  20em,
+  1.4  40em;
+
+// Mike Riethmuller -- http://madebymike.com.au/writing/precise-control-responsive-typography/
 
 body {
   max-width: 40em;
   margin: 0 auto;
   padding: 5% 5% 10%;
-  line-height: ms(1);
-  font-family: Merriweather, serif;
+  @include ms-respond(line-height,1, $line-height, 1);
 }
 
 h1, h2, h3, h4, h5 {

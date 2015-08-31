@@ -1,0 +1,18 @@
+@function ms-sort($ms-list) {
+
+  $sorted: false;
+  @while $sorted == false {
+    $sorted: true;
+    @for $i from 2 through length($ms-list) {
+      $n1: nth($ms-list,$i - 1);
+      $n2: nth($ms-list,$i);
+      @if $n1 > $n2 {
+        $ms-list: set-nth($ms-list, $i, $n1);
+        $ms-list: set-nth($ms-list, $i - 1, $n2);
+        $sorted: false;
+      }
+    }
+  }
+
+  @return $ms-list;
+}

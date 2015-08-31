@@ -1,91 +1,114 @@
-body {
-  max-width: 40em;
-  margin: 0 auto;
-  padding: 5% 5% 10%;
-  line-height: 1.1;
-}
-@media (min-width: 20em) and (max-width: 40em) {
-  body {
-    line-height: calc( 1.1 + 0.3 * ( ( 100vw - 20em) / 20 ) );
-  }
-}
-@media (min-width: 40em) {
-  body {
-    line-height: 1.4;
-  }
-}
+/*
+Error: Undefined variable: "$exp".
+        on line 13 of /Users/scottkellum/Sites/modularscale-sass/stylesheets/modularscale/_pow.scss
+        from line 8 of /Users/scottkellum/Sites/modularscale-sass/stylesheets/_modularscale.scss
+        from line 1 of /Users/scottkellum/Sites/modularscale-sass/test-compass/sass/style.scss
 
-h1, h2, h3, h4, h5 {
-  line-height: 1;
-  margin: 0;
-}
-
-h1 {
-  font-size: 1.4641em;
-}
-@media (min-width: 20em) and (max-width: 60em) {
-  h1 {
-    font-size: calc( 1.4641em + 1.69323 * ( ( 100vw - 20em) / 40 ) );
-  }
-}
-@media (min-width: 60em) {
-  h1 {
-    font-size: 3.15733em;
-  }
-}
-
-h2 {
-  font-size: 1.331em;
-}
-@media (min-width: 20em) and (max-width: 60em) {
-  h2 {
-    font-size: calc( 1.331em + 1.03759 * ( ( 100vw - 20em) / 40 ) );
-  }
-}
-@media (min-width: 60em) {
-  h2 {
-    font-size: 2.36859em;
-  }
-}
-
-h3 {
-  font-size: 1.21em;
-}
-@media (min-width: 20em) and (max-width: 60em) {
-  h3 {
-    font-size: calc( 1.21em + 0.56689 * ( ( 100vw - 20em) / 40 ) );
-  }
-}
-@media (min-width: 60em) {
-  h3 {
-    font-size: 1.77689em;
-  }
-}
-
-h4 {
-  font-size: 1.1em;
-}
-@media (min-width: 20em) and (max-width: 60em) {
-  h4 {
-    font-size: calc( 1.1em + 0.233 * ( ( 100vw - 20em) / 40 ) );
-  }
-}
-@media (min-width: 60em) {
-  h4 {
-    font-size: 1.333em;
-  }
-}
-
-h5 {
-  font-size: 1em;
-}
-@media (min-width: 20em) and (max-width: 60em) {
-  h5 {
-    font-size: calc( 1em + 0 * ( ( 100vw - 20em) / 40 ) );
-  }
-}
-@media (min-width: 60em) {
-  h5 {
-    font-size: 1em;
-  }
-}
+Backtrace:
+/Users/scottkellum/Sites/modularscale-sass/stylesheets/modularscale/_pow.scss:13
+/Users/scottkellum/Sites/modularscale-sass/stylesheets/_modularscale.scss:8
+/Users/scottkellum/Sites/modularscale-sass/test-compass/sass/style.scss:1
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/script/tree/variable.rb:49:in `_perform'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/script/tree/node.rb:50:in `perform'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/script/tree/operation.rb:64:in `_perform'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/script/tree/node.rb:50:in `perform'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:297:in `visit_if'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:79:in `block in with_base'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:115:in `with_frame'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:79:in `with_base'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:299:in `block (2 levels) in visit_if'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:299:in `map'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:299:in `block in visit_if'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:298:in `visit_if'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:79:in `block in with_base'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:115:in `with_frame'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:79:in `with_base'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:302:in `visit_if'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:79:in `block in with_base'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:115:in `with_frame'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:79:in `with_base'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/script/tree/funcall.rb:248:in `block (3 levels) in perform_sass_fn'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/script/tree/funcall.rb:248:in `each'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/script/tree/funcall.rb:248:in `block (2 levels) in perform_sass_fn'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/script/tree/funcall.rb:247:in `catch'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/script/tree/funcall.rb:247:in `block in perform_sass_fn'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:84:in `perform_arguments'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/script/tree/funcall.rb:244:in `perform_sass_fn'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/script/tree/funcall.rb:131:in `_perform'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/script/tree/node.rb:50:in `perform'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:202:in `visit_debug'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:79:in `block in with_base'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:115:in `with_frame'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:79:in `with_base'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:325:in `map'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:88:in `block in with_import'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:115:in `with_frame'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:88:in `with_import'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:79:in `block in with_base'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:115:in `with_frame'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:79:in `with_base'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:325:in `map'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:88:in `block in with_import'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:115:in `with_frame'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:88:in `with_import'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:79:in `block in with_base'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:115:in `with_frame'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/stack.rb:79:in `with_base'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/tree/root_node.rb:20:in `render'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/engine.rb:268:in `render'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/plugin/compiler.rb:470:in `on_file_changed'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/lib/sass/plugin/compiler.rb:328:in `block in watch'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/vendor/listen/lib/listen/listener.rb:252:in `call'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/vendor/listen/lib/listen/adapter.rb:254:in `call'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/vendor/listen/lib/listen/adapter.rb:254:in `report_changes'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/vendor/listen/lib/listen/adapter.rb:323:in `poll_changed_directories'
+/Users/scottkellum/Sites/modularscale-sass/.bundle/gems/sass-3.4.14/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$exp\".\A         on line 13 of /Users/scottkellum/Sites/modularscale-sass/stylesheets/modularscale/_pow.scss\A         from line 8 of /Users/scottkellum/Sites/modularscale-sass/stylesheets/_modularscale.scss\A         from line 1 of /Users/scottkellum/Sites/modularscale-sass/test-compass/sass/style.scss"; }

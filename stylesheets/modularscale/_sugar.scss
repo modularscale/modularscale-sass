@@ -1,0 +1,3 @@
+@function ms($ms-s: 0, $ms-b: $ms-base, $ms-r: $ms-ratio) {
+  @return ms-modularscale($ms-s, $ms-b, $ms-r);
+}

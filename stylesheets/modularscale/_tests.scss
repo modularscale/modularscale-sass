@@ -9,7 +9,7 @@
   @return false;
 }
 
-$MS-pow-exists: ms-pow-exists();
+$ms-pow-exists: ms-pow-exists();
 
 // Test if MS was installed via the gem
 @function ms-gem-exists() {
@@ -19,4 +19,4 @@ $MS-pow-exists: ms-pow-exists();
   @return false;
 }
 
-$MS-gem-exists: ms-gem-exists();
+$ms-gem-exists: ms-gem-exists();

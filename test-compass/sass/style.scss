@@ -1,31 +1,4 @@
-@import "modular-scale";
+@import "modularscale";
 // @import "modular-scale-tests";
-$ms-ratio: 1.33;
 
-$ms-range:
-  1.1  20em,
-  1.333  60em;
-
-$line-height:
-  1.1  20em,
-  1.4  40em;
-
-// Mike Riethmuller -- http://madebymike.com.au/writing/precise-control-responsive-typography/
-
-body {
-  max-width: 40em;
-  margin: 0 auto;
-  padding: 5% 5% 10%;
-  @include ms-respond(line-height,1, $line-height, 1);
-}
-
-h1, h2, h3, h4, h5 {
-  line-height: 1;
-  margin: 0;
-}
-
-@for $i from 1 through 5 {
-  h#{$i} {
-    @include ms-respond(font-size,($i - 5) * -1)
-  }
-}
+@debug ms(1,12px 16px 20px);

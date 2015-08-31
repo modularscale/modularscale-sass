@@ -1,0 +1,43 @@
+@function ms-modularscale($ms-s: 0, $ms-b: $ms-base, $ms-r: $ms-ratio) {
+
+  // Fast calc if not multi stranded
+  @if(length($ms-b) == 1) {
+    @return pow($ms-r, $ms-s) * $ms-b;
+  }
+
+  // Create new base array
+  $ms-bases: nth($ms-b,1);
+
+  // Normalize base values
+  @for $ms-i from 2 through length($ms-b) {
+    // initial base value
+    $ms-base: nth($ms-b,$ms-i);
+    // If the base is bigger than the main base
+    @if($ms-base > nth($ms-b,1)) {
+      // divide the value until it aligns with main base.
+      @while($ms-base > nth($ms-b,1)) {
+        $ms-base: $ms-base / $ms-r;
+      }
+      $ms-base: $ms-base * $ms-r;
+    }
+    // If the base is smaller than the main base.
+    @elseif ($ms-base < nth($ms-b,1)) {
+      // pump up the value until it aligns with main base.
+      @while $ms-base < nth($ms-b,1) {
+        $ms-base: $ms-base * $ms-r;
+      }
+    }
+    // Push into new array
+    $ms-bases: append($ms-bases,$ms-base);
+  }
+
+  // Sort array from smallest to largest.
+  $ms-bases: ms-sort($ms-bases);
+
+  // Find step to use in calculation
+  $ms-step: floor($ms-s / length($ms-bases));
+  // Find base to use in calculation
+  $ms-base: round(($ms-s / length($ms-bases) - $ms-step) * length($ms-bases)) + 1;
+
+  @return pow($ms-r, $ms-step) * nth($ms-bases,$ms-base);
+}

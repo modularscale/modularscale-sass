@@ -1,0 +1,36 @@
+// If a native exponent function doesnt exist
+// this one is needed.
+@function ms-pow($base,$exponent) {
+
+  $return: null;
+
+  // Use native Compass pow() if avalible
+  @if $ms-gem-exists == true {
+    $return: pow($base,$exponent);
+  } @else {
+
+    // via https://github.com/terkel/mathsass/
+    @if $exp == floor($exp) {
+      $r: 1;
+      $s: 0;
+      @if $exp < 0 {
+        $exp: $exp * -1;
+        $s: 1;
+      }
+      @while $exp > 0 {
+        @if $exp % 2 == 1 {
+          $r: $r * $base;
+        }
+        $exp: floor($exp * 0.5);
+        $base: $base * $base;
+      }
+      @return if($s != 0, 1 / $r, $r);
+    } @else {
+      @return exp(log($base) * $exp);
+    }
+  }
+
+  @return $return;
+}
+
+@debug ms-pow(2,2);

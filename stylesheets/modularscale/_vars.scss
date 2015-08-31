@@ -1,8 +1,6 @@
-// Golden ratio
-$phi              : 1.618034          ;
-$golden           : $phi              ;
-
+// Ratios
 $double-octave    : 4                 ;
+$pi               : 3.14159265359     ;
 $major-twelfth    : 3                 ;
 $major-eleventh   : 2.666666667       ;
 $major-tenth      : 2.5               ;
@@ -10,6 +8,8 @@ $octave           : 2                 ;
 $major-seventh    : 1.875             ;
 $minor-seventh    : 1.777777778       ;
 $major-sixth      : 1.666666667       ;
+$phi              : 1.618034          ;
+$golden           : $phi              ;
 $minor-sixth      : 1.6               ;
 $fifth            : 1.5               ;
 $augmented-fourth : 1.41421           ;
@@ -18,3 +18,9 @@ $major-third      : 1.25              ;
 $minor-third      : 1.2               ;
 $major-second     : 1.125             ;
 $minor-second     : 1.066666667       ;
+
+// Defaults
+$ms-base          : 1em       !default;
+$ms-ratio         : $fifth    !default;
+$ms-range         : null      !default;
+$ms-fluid         : true      !default;

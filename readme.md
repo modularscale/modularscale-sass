@@ -19,6 +19,12 @@ To get started, you need to select a ratio and a base value. The base value is u
 * Terminal: `npm install modularscale-sass --save-dev`
 * SCSS: `@import 'modular-scale'`
 
+### Webpack with sass-loader
+
+* Terminal: `npm install modularscale-sass --save-dev`
+* Webpack config: install and use [sass-loader](https://github.com/jtangelder/sass-loader#apply-via-webpack-config)
+* SCSS: `@import '~modularscale-sass/stylesheets/modular-scale';`
+
 ### Bower
 
 * Terminal: `bower install modular-scale --save-dev`

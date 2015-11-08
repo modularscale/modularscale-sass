@@ -6,6 +6,9 @@
 $modularscale: (
   base: 12px,
   ratio: 1.1,
+  a: (
+    ratio: 19at6,
+  ),
   30em: (
     ratio: 1.2,
   ),
@@ -18,9 +21,4 @@ $modularscale: (
   ),
 );
 
-foo {
-  @include ms-respond(font-size, 3);
-}
-
-@debug ms-target(3.5at2,1em);
-@debug ms(2,1em,ms-target(3.5at2,1em))
+@debug ms(3);

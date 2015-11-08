@@ -1,7 +1,7 @@
 @function ms-target($t,$b) {
 
   @if type-of($b) == 'list' {
-    @error 'target ratios don’t work with multi-stranded modular scales.'
+    @error 'Target ratios don’t work with multi-stranded modular scales.'
   }
 
   // target value
@@ -11,6 +11,27 @@
   // Target place on the scale the value should match
   $t: str-slice(unit($t), 3);
 
+  // Convert strings into numbers...
+  @if $t == '0' { $t: 0; }
+  @if $t == '1' { $t: 1; }
+  @if $t == '2' { $t: 2; }
+  @if $t == '3' { $t: 3; }
+  @if $t == '4' { $t: 4; }
+  @if $t == '5' { $t: 5; }
+  @if $t == '6' { $t: 6; }
+  @if $t == '7' { $t: 7; }
+  @if $t == '8' { $t: 8; }
+  @if $t == '9' { $t: 9; }
+  @if $t == '10' { $t: 10; }
+  @if $t == '11' { $t: 11; }
+  @if $t == '12' { $t: 12; }
+  @if $t == '13' { $t: 13; }
+  @if $t == '14' { $t: 14; }
+
+  @if type-of($t) == 'string' {
+    @error 'Please select an integer between 0 and 14 for a target value in modular scale.'
+  }
+
   // todo make this n root with n being $t
-  @return sqrt($v/$b);
+  @return pow(($v/$b),(1/$t));
 }

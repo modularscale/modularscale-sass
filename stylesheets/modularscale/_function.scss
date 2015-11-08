@@ -4,6 +4,11 @@
   $base: nth($ms-settings, 1);
   $ratio: nth($ms-settings, 2);
 
+  // Render target values from settings.
+  @if unit($ratio) != '' {
+    $ratio: ms-target($ratio,$base)
+  }
+
   // Fast calc if not multi stranded
   @if(length($base) == 1) {
     @return ms-round-px(pow($ratio, $v) * $base);

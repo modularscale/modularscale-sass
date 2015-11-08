@@ -10,13 +10,3 @@
 }
 
 $ms-pow-exists: ms-pow-exists();
-
-// Test if MS was installed via the gem
-@function ms-gem-exists() {
-  @if ms-gem-installed() == true {
-    @return true;
-  }
-  @return false;
-}
-
-$ms-gem-exists: ms-gem-exists();

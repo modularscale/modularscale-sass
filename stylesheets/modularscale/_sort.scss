@@ -1,18 +1,18 @@
-@function ms-sort($ms-list) {
+@function ms-sort($l) {
 
   $sorted: false;
   @while $sorted == false {
     $sorted: true;
-    @for $i from 2 through length($ms-list) {
-      $n1: nth($ms-list,$i - 1);
-      $n2: nth($ms-list,$i);
+    @for $i from 2 through length($l) {
+      $n1: nth($l,$i - 1);
+      $n2: nth($l,$i);
       @if $n1 > $n2 {
-        $ms-list: set-nth($ms-list, $i, $n1);
-        $ms-list: set-nth($ms-list, $i - 1, $n2);
+        $l: set-nth($l, $i, $n1);
+        $l: set-nth($l, $i - 1, $n2);
         $sorted: false;
       }
     }
   }
 
-  @return $ms-list;
+  @return $l;
 }

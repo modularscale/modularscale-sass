@@ -19,8 +19,8 @@ $minor-third      : 1.2               ;
 $major-second     : 1.125             ;
 $minor-second     : 1.066666667       ;
 
-// Defaults
+// Base config
 $ms-base          : 1em       !default;
 $ms-ratio         : $fifth    !default;
-$ms-range         : null      !default;
-$ms-fluid         : true      !default;
+$ms-mobile-first  : true      !default;
+$modularscale     : ()        !default;

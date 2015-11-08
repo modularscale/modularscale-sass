@@ -1,30 +1,36 @@
-@function ms-modularscale($ms-s: 0, $ms-b: $ms-base, $ms-r: $ms-ratio) {
+@function ms-function($v: 0, $base: false, $ratio: false, $thread: false, $settings: $modularscale) {
+
+  $ms-settings: ms-settings($base,$ratio,$thread,$settings);
+  $base: nth($ms-settings, 1);
+  $ratio: nth($ms-settings, 2);
+
+  @debug $base, $ratio;
 
   // Fast calc if not multi stranded
-  @if(length($ms-b) == 1) {
-    @return pow($ms-r, $ms-s) * $ms-b;
+  @if(length($base) == 1) {
+    @return ms-round-px(pow($ratio, $v) * $base);
   }
 
   // Create new base array
-  $ms-bases: nth($ms-b,1);
+  $ms-bases: nth($base,1);
 
   // Normalize base values
-  @for $ms-i from 2 through length($ms-b) {
+  @for $i from 2 through length($base) {
     // initial base value
-    $ms-base: nth($ms-b,$ms-i);
+    $ms-base: nth($base,$i);
     // If the base is bigger than the main base
-    @if($ms-base > nth($ms-b,1)) {
+    @if($ms-base > nth($base,1)) {
       // divide the value until it aligns with main base.
-      @while($ms-base > nth($ms-b,1)) {
-        $ms-base: $ms-base / $ms-r;
+      @while($ms-base > nth($base,1)) {
+        $ms-base: $ms-base / $ratio;
       }
-      $ms-base: $ms-base * $ms-r;
+      $ms-base: $ms-base * $ratio;
     }
     // If the base is smaller than the main base.
-    @elseif ($ms-base < nth($ms-b,1)) {
+    @elseif ($ms-base < nth($base,1)) {
       // pump up the value until it aligns with main base.
-      @while $ms-base < nth($ms-b,1) {
-        $ms-base: $ms-base * $ms-r;
+      @while $ms-base < nth($base,1) {
+        $ms-base: $ms-base * $ratio;
       }
     }
     // Push into new array
@@ -35,9 +41,9 @@
   $ms-bases: ms-sort($ms-bases);
 
   // Find step to use in calculation
-  $ms-step: floor($ms-s / length($ms-bases));
+  $vtep: floor($v / length($ms-bases));
   // Find base to use in calculation
-  $ms-base: round(($ms-s / length($ms-bases) - $ms-step) * length($ms-bases)) + 1;
+  $ms-base: round(($v / length($ms-bases) - $vtep) * length($ms-bases)) + 1;
 
-  @return pow($ms-r, $ms-step) * nth($ms-bases,$ms-base);
+  @return ms-round-px(pow($ratio, $vtep) * nth($ms-bases,$ms-base));
 }

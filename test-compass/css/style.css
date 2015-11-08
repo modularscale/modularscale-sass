@@ -1,8 +1,4 @@
 foo {
-  bar: baz;
-}
-
-foo {
   font-size: 21px;
 }
 @media (min-width: 30em) and (max-width: 40em) {

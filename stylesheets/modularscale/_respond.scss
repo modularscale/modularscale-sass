@@ -38,8 +38,6 @@
           }
           $last-break: $v;
         }
-        @debug unit($v);
-        @debug $v $s;
       }
     }
   }
@@ -48,8 +46,4 @@
       #{$prop}: ms-function($val, $thread: $last-break, $settings: $map);
     }
   }
-}
-
-foo {
-  bar: baz;
 }

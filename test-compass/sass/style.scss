@@ -6,12 +6,6 @@
 $modularscale: (
   base: 12px,
   ratio: 1.1,
-  a: (
-    ratio: 1.3,
-  ),
-  b: (
-    ratio: 1.6,
-  ),
   30em: (
     ratio: 1.2,
   ),
@@ -29,4 +23,6 @@ $modularscale: (
 
 @debug ms(4);
 
-@include ms-respond(font-size, 3);
+foo {
+  @include ms-respond(font-size, 3);
+}

@@ -9,18 +9,47 @@
 // Generate calc() function
 @function ms-fluid($val1: 1em, $val2: 1em, $break1: 0, $break2: 0) {
   $diff: ms-unitless($val2) - ms-unitless($val1);
-  @if $ms-fluid {
-    @return calc( #{$val1} + #{$diff} * ( ( 100vw - #{$break1}) / #{ms-unitless($break2) - ms-unitless($break1)} ) );
-  } @else {
-    @return ms($value,$base,ms-range($n,1,$range));
-  }
+  @return calc( #{$val1} + #{ms-unitless($val2) - ms-unitless($val1)} * ( ( 100vw - #{$break1}) / #{ms-unitless($break2) - ms-unitless($break1)} ) );
 }
 
 // Main responsive mixin
-@mixin ms-respond($prop, $val) {
+@mixin ms-respond($prop, $val, $map: $modularscale) {
   $base: $ms-base;
   $ratio: $ms-ratio;
-  @each $v, $s in $modularscale {
-    @debug $v $s;
+
+  $first-write: true;
+  $last-break: null;
+
+  // loop through all settings with a breakpoint type value
+  @each $v, $s in $map {
+    @if type-of($v) == number {
+      @if unit($v) != '' {
+
+        @if $first-write {
+          #{$prop}: ms-function($val, $thread: $v, $settings: $map);
+          $first-write: false;
+          $last-break: $v;
+        }
+        @else {
+          @media (min-width: $last-break) and (max-width: $v) {
+            $val1: ms-function($val, $thread: $last-break, $settings: $map);
+            $val2: ms-function($val, $thread: $v, $settings: $map);
+            #{$prop}: ms-fluid($val1,$val2,$last-break,$v);
+          }
+          $last-break: $v;
+        }
+        @debug unit($v);
+        @debug $v $s;
+      }
+    }
   }
+  @if $last-break {
+    @media (min-width: $last-break) {
+      #{$prop}: ms-function($val, $thread: $last-break, $settings: $map);
+    }
+  }
+}
+
+foo {
+  bar: baz;
 }

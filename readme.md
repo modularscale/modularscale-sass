@@ -19,6 +19,12 @@ To get started, you need to select a ratio and a base value. The base value is u
 * Terminal: `npm install modularscale-sass --save-dev`
 * SCSS: `@import 'modular-scale'`
 
+### Webpack with sass-loader
+
+* Terminal: `npm install modularscale-sass --save-dev`
+* Webpack config: install and use [sass-loader](https://github.com/jtangelder/sass-loader#apply-via-webpack-config)
+* SCSS: `@import '~modularscale-sass/stylesheets/modular-scale';`
+
 ### Bower
 
 * Terminal: `bower install modular-scale --save-dev`
@@ -30,145 +36,37 @@ To get started, you need to select a ratio and a base value. The base value is u
 * Extract into your project
 * SCSS: `@import 'modular-scale';`
 
-## Compatibility
+## Using modular scale
 
-I have been working incredibly hard to make Modular Scale compatible with multiple versions of Sass. As a result, it will work and has been tested in **Libsass**, **Sass 3.2**, **Sass 3.3**, and **Sass 3.4**.
 
-These are dramatically different environments so things may have slight differences. **[For best results, install via the gem with Compass](https://github.com/Team-Sass/modular-scale/tree/2.x#compass)**.
-
-#### **Compass + Sass (best):**
-
-  * non-integer values work with the `ms()` function. (Compass only)
-  * Significant speed increases as the gem does calculations natively in Ruby
-
-#### **Libsass:**
-
-  * Everything should be working, and work very quickly.
-
-#### **Ruby Sass:**
-
-  * Works fine, but is slow when using multiple bases and ratios.
-
-## Usage
-
-Modular Scale has two default variables that you should place with your other site wide variables. `$ms-base` is usually your font size or `1em` and can have multiple values. `$ms-ratio` is the factor of change between each number so if the ratio is `1.5` then each number in the sequence will be 1.5 times that of the previous number. Just as you can have multiple bases you can have multiple ratios.
-
-```scss
-$ms-base: 1em;
-$ms-ratio: $golden;
-```
-
-Modular-scale is used as a function. Simply pass it through in place of any value to generate a value based on a modular scale.
-
-```scss
-font-size: ms(2); // two up the modular scale
-font-size: ms(2, 16px); // two up the modular scale with a base size of 16px, default is 1em
-font-size: ms(2, 1em, $octave); // Same as above but on an octave scale
-```
-
-You can output a list to your terminal to help you find out what values are on your scale.
-
-```scss
-@debug ms-list($start, $end, $ms-base, $ms-ratio);
-```
-
-You can use a double standard scale by simply adding more base sizes in a space-separated list.
-**note:** the starting point of the scale will always be the **first** value in this list
-
-```scss
-.double-standard {
-  width: ms(7, 1em 2em);
-}
-```
-
-You can do the same thing with ratios
-
-```scss
-.multi-ratio {
-  width: ms(7, 1em, $golden $octave);
-}
-```
-
-You can use multiple $ms-bases and multiple $ms-ratio together
-
-```scss
-.multibase-multiratio {
-  width: ms(7, 16px 24px, $golden $fourth);
-}
-```
-
-## Responsive scales
-
-Based on [Mike Riethmuller’s](https://twitter.com/MikeRiethmuller) [_Precise control over responsive typography_](http://madebymike.com.au/writing/precise-control-responsive-typography/). A fantastic technique for fluidly scaling typography.
-
-[See a responsive modular scale in action](http://lab.scottkellum.com/ms-respond.html).
-
-First, you will need to set your range. A range is a list of ratio and breakpoint values from smallest to largest. Because this will render as a fluid range by default you will probably only want or need a range of two.
-
-```scss
-$ms-range:
-  1.1   20em,
-  1.333 60em;
-```
-
-If you want to have specified steps instead of fluid type set `$ms-fluid` to `false` and you may want to add more values to your range.
-
-```scss
-$ms-fluid: false;
-
-$ms-range:
-  1.2 20em,
-  1.3 30em,
-  1.4 40em,
-  1.5 50em,
-  1.6 60em;
-```
-
-Now you can use the `ms-respond` mixin to output a range of values for a single point on a scale. The first value is the property and the second value is the point on the scale you wish to use. That’s it, a series of responisve values will be generated based on your configuration.
-
-```scss
-foo {
-  @include ms-respond(font-size, 2);
-}
-```
 
 ## Ratios
 
 Modular scale includes functions for a number of classic design and musical scale ratios. You can add your own ratios as well.
 
-By default, the variable `$ms-ratio` is set to `$golden`.
+By default ratio is set to `$fifth`.
 
 <table>
-
-  <tr><th>Function</th><th>Ratio</th><th>Decimal value</th></tr>
-
-  <tr><td>$phi</td><td>1:1.618</td><td>1.618</td></tr>
-  <tr><td>$golden</td><td>1:1.618</td><td>1.618</td></tr>
-  <tr><td>$double-octave</td><td>1:4</td><td>4</td></tr>
-  <tr><td>$major-twelfth</td><td>1:3</td><td>3</td></tr>
-  <tr><td>$major-eleventh</td><td>3:8</td><td>2.667</td></tr>
-  <tr><td>$major-tenth</td><td>2:5</td><td>2.5</td></tr>
-  <tr><td>$octave</td><td>1:2</td><td>2</td></tr>
-  <tr><td>$major-seventh</td><td>8:15</td><td>1.875</td></tr>
-  <tr><td>$minor-seventh</td><td>9:16</td><td>1.778</td></tr>
-  <tr><td>$major-sixth</td><td>3:5</td><td>1.667</td></tr>
-  <tr><td>$minor-sixth</td><td>5:8</td><td>1.6</td></tr>
-  <tr><td>$fifth</td><td>2:3</td><td>1.5</td></tr>
-  <tr><td>$augmented-fourth</td><td>1:√2</td><td>1.414</td></tr>
-  <tr><td>$fourth</td><td>3:4</td><td>1.333</td></tr>
-  <tr><td>$major-third</td><td>4:5</td><td>1.25</td></tr>
-  <tr><td>$minor-third</td><td>5:6</td><td>1.2</td></tr>
-  <tr><td>$major-second</td><td>8:9</td><td>1.125</td></tr>
-  <tr><td>$minor-second</td><td>15:16</td><td>1.067</td></tr>
-
+  <tr><th>Function         </th><th>Ratio  </th><th>Decimal value</th></tr>
+  <tr><td>$phi             </td><td>1:1.618</td><td>1.618        </td></tr>
+  <tr><td>$golden          </td><td>1:1.618</td><td>1.618        </td></tr>
+  <tr><td>$double-octave   </td><td>1:4    </td><td>4            </td></tr>
+  <tr><td>$major-twelfth   </td><td>1:3    </td><td>3            </td></tr>
+  <tr><td>$major-eleventh  </td><td>3:8    </td><td>2.667        </td></tr>
+  <tr><td>$major-tenth     </td><td>2:5    </td><td>2.5          </td></tr>
+  <tr><td>$octave          </td><td>1:2    </td><td>2            </td></tr>
+  <tr><td>$major-seventh   </td><td>8:15   </td><td>1.875        </td></tr>
+  <tr><td>$minor-seventh   </td><td>9:16   </td><td>1.778        </td></tr>
+  <tr><td>$major-sixth     </td><td>3:5    </td><td>1.667        </td></tr>
+  <tr><td>$minor-sixth     </td><td>5:8    </td><td>1.6          </td></tr>
+  <tr><td>$fifth           </td><td>2:3    </td><td>1.5          </td></tr>
+  <tr><td>$augmented-fourth</td><td>1:√2   </td><td>1.414        </td></tr>
+  <tr><td>$fourth          </td><td>3:4    </td><td>1.333        </td></tr>
+  <tr><td>$major-third     </td><td>4:5    </td><td>1.25         </td></tr>
+  <tr><td>$minor-third     </td><td>5:6    </td><td>1.2          </td></tr>
+  <tr><td>$major-second    </td><td>8:9    </td><td>1.125        </td></tr>
+  <tr><td>$minor-second    </td><td>15:16  </td><td>1.067        </td></tr>
 </table>
-
-Add your own ratio in Sass by setting a variable and passing that to modular-scale.
-
-```scss
-$my-ratio: 1 / 3.14159265;
-$ms-ratio: $my-ratio;
-```
 
 ## [Changelog](https://github.com/Team-Sass/modular-scale/releases)
 

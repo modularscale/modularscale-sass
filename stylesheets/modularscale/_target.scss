@@ -1,0 +1,16 @@
+@function ms-target($t,$b) {
+
+  @if type-of($b) == 'list' {
+    @error 'target ratios don’t work with multi-stranded modular scales.'
+  }
+
+  // target value
+  $v: ms-unitless($t);
+  // base
+  $b: ms-unitless($b);
+  // Target place on the scale the value should match
+  $t: str-slice(unit($t), 3);
+
+  // todo make this n root with n being $t
+  @return sqrt($v/$b);
+}

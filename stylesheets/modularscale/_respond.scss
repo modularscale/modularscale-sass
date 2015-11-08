@@ -1,11 +1,3 @@
-// Stripping units is not a best practice
-// This function should not be used elsewhere
-// It is used here because calc() doesn't do unit logic
-@function ms-unitless($val) {
-  $val: $val / ($val - $val + 1);
-  @return $val;
-}
-
 // Generate calc() function
 @function ms-fluid($val1: 1em, $val2: 1em, $break1: 0, $break2: 0) {
   $diff: ms-unitless($val2) - ms-unitless($val1);

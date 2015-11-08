@@ -4,8 +4,6 @@
   $base: nth($ms-settings, 1);
   $ratio: nth($ms-settings, 2);
 
-  @debug $base, $ratio;
-
   // Fast calc if not multi stranded
   @if(length($base) == 1) {
     @return ms-round-px(pow($ratio, $v) * $base);

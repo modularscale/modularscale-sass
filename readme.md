@@ -38,7 +38,110 @@ To get started, you need to select a ratio and a base value. The base value is u
 
 ## Using modular scale
 
+#### Initial setup and usage:
 
+The first thing you’ll want to do when you start using modular scale is configure it to meet your needs. This is done in the `$modularscale` map.
+
+```scss
+$modularscale: (
+  base: 1em,
+  ratio: 1.5
+);
+```
+
+You can use any unit you wish as your base and any ratio. Multiple bases can be defined for creating multi stranded scales. There is no limit here to the number of strands you use.
+
+```scss
+$modularscale: (
+  base: 1em 1.2em 1.6em,
+  ratio: 1.5
+);
+```
+
+Now that we have defined your scale, we can start using it anywhere. Simply call the `ms(n)` function where `n` is the point on the scale.
+
+```scss
+h4 {
+  font-size: ms(3);
+}
+```
+
+Occasionally you may wind up with conflicts. All critical components are name-spaced to avoid conflicts with other libraries. If you do run into a conflict, `ms-function()` is the no-conflict function.
+
+#### Multiple scale threads
+
+Modular scale now supports different settings threads, so you can set up various threads to configure different ratios or breakpoints.
+
+```scss
+$modularscale: (
+  base: 1em,
+  ratio: 1.5,
+  a: (
+    ratio: 1.3
+  )
+);
+```
+
+To call the thread named `a`, call it in your function like so:
+
+```scss
+h5 {
+  font-size: ms(2, $thread: a);
+}
+```
+
+Your settings will cascade into the threads so no need to redefine a base or ratio if you want to re-use it from the main config.
+
+If you wish to put breakpoints into your settings for use with responsive typography then there are helpers in place for this. Simply organize your config with breakpoint values from smallest to largest:
+
+```scss
+$modularscale: (
+  base: 12px,
+  ratio: 1.5,
+  30em: (
+    ratio: 1.2,
+  ),
+  40em: (
+    base: 16px,
+    ratio: 1.3,
+  ),
+  60em: (
+    base: 16px,
+    ratio: 1.6,
+  ),
+);
+```
+
+Then, call the mixin `@include ms-respond();` and a fully fluid and responsive scale will be generated.
+
+```scss
+h2 {
+  @include ms-respond(font-size,5);
+}
+```
+
+If you do happen to have any values that are just named without numbers they will be ignored by the responsive mixin, it’s smart enough to just pull values that look like breakpoints.
+
+#### Non-integer values and target
+
+Unfortunately Sass doesn’t natively support exponents. You will need to either use Compass, math-sass, or another library that has a fully featured `pow()` function to use non-integer values in modular scale.
+
+Fortunately Compass and math-sass are excellent and if you install them alongside modular scale it will pick up on the added functionality and you will be able to write values like `ms(2.5)`.
+
+#### Target sizes*
+
+_NOTE: Please see above on using a robust pow function_
+
+One of the more difficult parts of setting up your scales is finding a ratio that works for you. In many cases you know what size you want your text to be and what size you want larger headings to be. The `at` helper allows you to plug in a target size into the ratio value and it will generate your ratio.
+
+```scss
+$modularscale: (
+  base: 16px,
+  ratio: 42at5
+);
+```
+
+Now your base is `16px` and when you call `ms(5)` it will be `42px`. Everything in-between falls neatly on a scale created with these two values.
 
 ## Ratios
 

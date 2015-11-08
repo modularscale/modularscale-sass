@@ -1,0 +1,18 @@
+foo {
+  font-size: 15px;
+}
+@media (min-width: 30em) and (max-width: 40em) {
+  foo {
+    font-size: calc( 15px + 4 * ( ( 100vw - 30em) / 10 ) );
+  }
+}
+@media (min-width: 40em) and (max-width: 60em) {
+  foo {
+    font-size: calc( 19px + 0 * ( ( 100vw - 40em) / 20 ) );
+  }
+}
+@media (min-width: 60em) {
+  foo {
+    font-size: 19px;
+  }
+}

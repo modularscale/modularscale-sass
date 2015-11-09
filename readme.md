@@ -124,9 +124,9 @@ If you do happen to have any values that are just named without numbers they wil
 
 #### Non-integer values and target
 
-Unfortunately Sass doesn’t natively support exponents. You will need to either use Compass, math-sass, or another library that has a fully featured `pow()` function to use non-integer values in modular scale.
+Unfortunately Sass doesn’t natively support exponents. You will need to either use [Compass](http://compass-style.org/), [mathsass](https://github.com/terkel/mathsass), or another library that has a fully featured `pow()` function to use non-integer values in modular scale.
 
-Fortunately Compass and math-sass are excellent and if you install them alongside modular scale it will pick up on the added functionality and you will be able to write values like `ms(2.5)`.
+Fortunately [Compass](http://compass-style.org/) and [mathsass](https://github.com/terkel/mathsass) are excellent and if you install them alongside modular scale it will pick up on the added functionality and you will be able to write values like `ms(2.5)`.
 
 #### Target sizes*
 

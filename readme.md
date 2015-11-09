@@ -10,7 +10,7 @@ To get started, you need to select a ratio and a base value. The base value is u
 
 ### Compass
 
-* Terminal: `gem install modular-scale`
+* Terminal: `gem install modular-scale --pre`
 * Compass config: `require 'modular-scale'`
 * SCSS: `@import 'modular-scale';`
 

@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/modularscale/modularscale-sass/issues"
   },
-  "homepage": "https://github.com/modularscale/modularscale-sass"
+  "homepage": "https://github.com/modularscale/modularscale-sass",
+  "dependencies": {
+    "eyeglass-math": "^1.0.1"
+  }
 }

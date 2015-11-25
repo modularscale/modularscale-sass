@@ -112,6 +112,8 @@ $modularscale: (
 );
 ```
 
+This technique is based on [Mike Riethmuller’s](https://twitter.com/MikeRiethmuller) [_Precise control over responsive typography_](http://madebymike.com.au/writing/precise-control-responsive-typography/). A fantastic technique for fluidly scaling typography.
+
 Then, call the mixin `@include ms-respond();` and a fully fluid and responsive scale will be generated.
 
 ```scss

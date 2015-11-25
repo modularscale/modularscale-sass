@@ -1,6 +1,10 @@
 // Generate calc() function
+// based on Mike Riethmuller's Precise control over responsive typography
+// http://madebymike.com.au/writing/precise-control-responsive-typography/
 @function ms-fluid($val1: 1em, $val2: 1em, $break1: 0, $break2: 0) {
   $diff: ms-unitless($val2) - ms-unitless($val1);
+
+  // v1 + (v2 - v1) * ( (100vw - b1) / b2 - b1 )
   @return calc( #{$val1} + #{ms-unitless($val2) - ms-unitless($val1)} * ( ( 100vw - #{$break1}) / #{ms-unitless($break2) - ms-unitless($break1)} ) );
 }
 

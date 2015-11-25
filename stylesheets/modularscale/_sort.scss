@@ -1,6 +1,6 @@
 // FAST but not fully featured sort
 // Should only be used within the context of modular scale
-// Doesn’t support super high values or anything 0 and below.
+// Doesn’t support super high values or letters.
 
 // Take in multiple arguments as a list.
 @function ms-sort($l...) {

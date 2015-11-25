@@ -17,6 +17,5 @@
     $l: set-nth($l, index($l,$m), 99999);
   }
 
-  // Return the newly sorted list
   @return $return;
 }

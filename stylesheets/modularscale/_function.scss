@@ -1,5 +1,6 @@
 @function ms-function($v: 0, $base: false, $ratio: false, $thread: false, $settings: $modularscale) {
 
+  // Parse settings
   $ms-settings: ms-settings($base,$ratio,$thread,$settings);
   $base: nth($ms-settings, 1);
   $ratio: nth($ms-settings, 2);

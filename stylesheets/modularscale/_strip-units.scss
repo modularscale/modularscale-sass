@@ -3,6 +3,5 @@
 // It is used here because calc() doesn't do unit logic
 // AND target ratios use units as a hack to get a number.
 @function ms-unitless($val) {
-  $val: $val / ($val - $val + 1);
-  @return $val;
+  @return ($val / ($val - $val + 1));
 }

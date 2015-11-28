@@ -1,7 +1,8 @@
 @function ms-target($t,$b) {
 
+  // Targets do not work with multi stranded scales.
   @if type-of($b) == 'list' {
-    @error 'Target ratios don’t work with multi-stranded modular scales.'
+    @error "Target ratios don't work with multi-stranded modular scales."
   }
 
   // target value
@@ -28,10 +29,11 @@
   @if $t == '13' { $t: 13; }
   @if $t == '14' { $t: 14; }
 
+  // Error handling when $t doesn't convert to a string.
   @if type-of($t) == 'string' {
     @error 'Please select an integer between 0 and 14 for a target value in modular scale.'
   }
 
-  // todo make this n root with n being $t
+  // Solve the modular scale function for the ratio.
   @return pow(($v/$b),(1/$t));
 }

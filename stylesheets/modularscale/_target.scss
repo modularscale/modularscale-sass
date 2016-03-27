@@ -1,39 +1,51 @@
+// Convert number string to number
+@function ms-to-num($n) {
+  $l: str-length($n);
+  $r: 0;
+  $m: str-index($n,'.');
+  @if $m == null {
+    $m: $l + 1;
+  }
+  // Loop through digits and convert to numbers
+  @for $i from 1 through $l {
+    $v: str-slice($n,$i,$i);
+    @if $v == '1' { $v: 1; }
+    @elseif $v == '2' { $v: 2; }
+    @elseif $v == '3' { $v: 3; }
+    @elseif $v == '4' { $v: 4; }
+    @elseif $v == '5' { $v: 5; }
+    @elseif $v == '6' { $v: 6; }
+    @elseif $v == '7' { $v: 7; }
+    @elseif $v == '8' { $v: 8; }
+    @elseif $v == '9' { $v: 9; }
+    @elseif $v == '0' { $v: 0; }
+    @else { $v: null; }
+    @if $v != null {
+      $m: $m - 1;
+      $r: $r + ms-pow(10,$m - 1) * $v;
+    } @else {
+      $l: $l - 1;
+    }
+  }
+  @return $r;
+}
+
+// Find a ratio based on a target value
 @function ms-target($t,$b) {
+  // Convert to string
+  $t: $t + '';
+  // Remove base units to calulate ratio
+  $b: ms-unitless(nth($b,1));
+  // Find where 'at' is in the string
+  $at: str-index($t,'at');
 
-  // Targets do not work with multi stranded scales.
-  @if type-of($b) == 'list' {
-    @error "Target ratios don't work with multi-stranded modular scales."
-  }
-
-  // target value
-  $v: ms-unitless($t);
-  // base
-  $b: ms-unitless($b);
-  // Target place on the scale the value should match
-  $t: str-slice(unit($t), 3);
-
-  // Convert strings into numbers...
-  @if $t == '0' { $t: 0; }
-  @if $t == '1' { $t: 1; }
-  @if $t == '2' { $t: 2; }
-  @if $t == '3' { $t: 3; }
-  @if $t == '4' { $t: 4; }
-  @if $t == '5' { $t: 5; }
-  @if $t == '6' { $t: 6; }
-  @if $t == '7' { $t: 7; }
-  @if $t == '8' { $t: 8; }
-  @if $t == '9' { $t: 9; }
-  @if $t == '10' { $t: 10; }
-  @if $t == '11' { $t: 11; }
-  @if $t == '12' { $t: 12; }
-  @if $t == '13' { $t: 13; }
-  @if $t == '14' { $t: 14; }
-
-  // Error handling when $t doesn't convert to a string.
-  @if type-of($t) == 'string' {
-    @error 'Please select an integer between 0 and 14 for a target value in modular scale.'
-  }
+  // Slice the value and target out
+  // and convert strings to numbers
+  $v: ms-to-num(str-slice($t,0,$at - 1));
+  $t: ms-to-num(str-slice($t,$at + 2));
 
   // Solve the modular scale function for the ratio.
-  @return pow(($v/$b),(1/$t));
+  @return ms-pow(($v/$b),(1/$t));
 }
+
+@debug ms-target(54at5,12px 14px 59px);

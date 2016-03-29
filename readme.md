@@ -124,15 +124,13 @@ h2 {
 
 If you do happen to have any values that are just named without numbers they will be ignored by the responsive mixin, it’s smart enough to just pull values that look like breakpoints.
 
-#### Non-integer values and target
+#### Note on non-integer values
 
-Unfortunately Sass doesn’t natively support exponents. You will need to either use [Compass](http://compass-style.org/), [mathsass](https://github.com/terkel/mathsass), or another library that has a fully featured `pow()` function to use non-integer values in modular scale.
+Unfortunately [Sass doesn’t natively support exponents](https://github.com/sass/sass/issues/684#issuecomment-196852515). This isn’t all bad news, you can use either use [Compass](http://compass-style.org/), [mathsass](https://github.com/terkel/mathsass), or another library that has a `pow()` function that supports non-integer values and this plugin will pick up on that function and use it. You will then be able to write values like `ms(2.5)`. This is also a prerequisite for _target sizes_ below.
 
-Fortunately [Compass](http://compass-style.org/) and [mathsass](https://github.com/terkel/mathsass) are excellent and if you install them alongside modular scale it will pick up on the added functionality and you will be able to write values like `ms(2.5)`.
+#### Target sizes
 
-#### Target sizes*
-
-_NOTE: Please see above on using a robust pow function_
+_NOTE: Please see above section on non-integer values before using this feature_
 
 One of the more difficult parts of setting up your scales is finding a ratio that works for you. In many cases you know what size you want your text to be and what size you want larger headings to be. The `at` helper allows you to plug in a target size into the ratio value and it will generate your ratio.
 

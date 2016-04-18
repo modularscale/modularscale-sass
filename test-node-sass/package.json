@@ -11,13 +11,13 @@
   "author": "",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "grunt": "~0.4.1",
-    "grunt-sass": "~0.8.0",
+    "grunt": "~1.0.0",
+    "grunt-sass": "~1.1.0",
     "express": "~3.4.4",
     "ejs": "~0.8.4"
   },
   "devDependencies": {
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-cli": "~0.1.11"
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-cli": "~1.0.0"
   }
 }

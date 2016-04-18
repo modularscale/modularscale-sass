@@ -14,6 +14,7 @@ var http = require('http')
   , cookie = require('cookie')
   , send = require('send')
   , mime = connect.mime
+  , resolve = require('url').resolve
   , basename = path.basename
   , extname = path.extname;
 
@@ -132,7 +133,7 @@ res.send = function(body){
 
   // ETag support
   // TODO: W/ support
-  if (app.settings.etag && len > 1024 && 'GET' == req.method) {
+  if (app.settings.etag && len && 'GET' == req.method) {
     if (!this.get('ETag')) {
       this.set('ETag', etag(body));
     }
@@ -604,8 +605,7 @@ res.cookie = function(name, val, options){
 /**
  * Set the location header to `url`.
  *
- * The given `url` can also be the name of a mapped url, for
- * example by default express supports "back" which redirects
+ * The given `url` can also be "back", which redirects
  * to the _Referrer_ or _Referer_ headers or "/".
  *
  * Examples:
@@ -633,22 +633,19 @@ res.cookie = function(name, val, options){
 
 res.location = function(url){
   var app = this.app
-    , req = this.req;
+    , req = this.req
+    , path;
 
-  // setup redirect map
-  var map = { back: req.get('Referrer') || '/' };
-
-  // perform redirect
-  url = map[url] || url;
+  // "back" is an alias for the referrer
+  if ('back' == url) url = req.get('Referrer') || '/';
 
   // relative
   if (!~url.indexOf('://') && 0 != url.indexOf('//')) {
-    var path
-
     // relative to path
     if ('.' == url[0]) {
-      path = req.originalUrl.split('?')[0]
-      url =  path + ('/' == path[path.length - 1] ? '' : '/') + url;
+      path = req.originalUrl.split('?')[0];
+      path = path + ('/' == path[path.length - 1] ? '' : '/');
+      url = resolve(path, url);
       // relative to mount-point
     } else if ('/' != url[0]) {
       path = app.path();

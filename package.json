@@ -1,6 +1,6 @@
 {
   "name": "modularscale-sass",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "A tool to help web designers size their type in a more meaningful way.",
   "main": "stylesheets/_modular-scale.scss",
   "scripts": {

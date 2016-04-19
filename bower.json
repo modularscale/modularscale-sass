@@ -1,6 +1,6 @@
 {
   "name": "modular-scale",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "main": [
     "stylesheets/_modular-scale.scss"
   ],

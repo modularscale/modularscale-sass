@@ -98,19 +98,21 @@ If you wish to put breakpoints into your settings for use with responsive typogr
 $modularscale: (
   base: 12px,
   ratio: 1.5,
-  30em: (
+  400px: (
     ratio: 1.2,
   ),
-  40em: (
+  900px: (
     base: 16px,
     ratio: 1.3,
   ),
-  60em: (
+  1200px: (
     base: 16px,
     ratio: 1.6,
   ),
 );
 ```
+
+_Note that you must use the same units for both your type and your breakpoints for this to work_
 
 This technique is based on [Mike Riethmuller’s](https://twitter.com/MikeRiethmuller) [_Precise control over responsive typography_](http://madebymike.com.au/writing/precise-control-responsive-typography/). A fantastic technique for fluidly scaling typography.
 

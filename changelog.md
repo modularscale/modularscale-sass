@@ -1,3 +1,14 @@
+# Version 3.0
+
+  Core logic re-write along with settings moved to maps so they can be multithreaded and setup responsive scales better.
+
+  * Settings moved into a map.
+  * Multiple settings threads so you can use different scales in tandem.
+  * Removed the list funciton that outputs a list of values.
+  * Removed multiple ratio support because it was confusing and you should use multiple threads anyway. This dramatically reduced the core logic and bugs.
+  * Fluid is the only responsive setting.
+  * Responsive mixin automatically pulls breakpoints from map threads.
+
 # Version 2.1.1
 
   Bugfix an `@else if` statement.

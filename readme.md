@@ -4,7 +4,7 @@ A modular scale is a list of values that share the same relationship. These valu
 
 Ems work especially well with modular scales as their recursive properties mimic modular scales making them more predictable and easier to manage. Pixels and other units work just fine and breakpoints in responsive web design can naturally fall on your scale to create better relevance to your text as all the values in your layout harmonize with each other.
 
-To get started, you need to select a ratio and a base value. The base value is usually your text font size or 1em. Optionally you can add another value to create a double standard modular scale which might be useful to create more options for in-between values. This base size paired with a ratio such as the golden ratio or any musical proportion will create your scale of values which all share this proportion.
+To get started, you need to select a ratio and a base value. The base value is usually your text font size or 1em. Optionally you can add another value to create a double stranded modular scale which might be useful to create more options for in-between values. This base size paired with a ratio such as the golden ratio or any musical proportion will create your scale of values which all share this proportion.
 
 ## Install
 
@@ -78,11 +78,11 @@ You can output a list to your terminal to help you find out what values are on y
 @debug ms-list($start, $end, $ms-base, $ms-ratio);
 ```
 
-You can use a double standard scale by simply adding more base sizes in a space-separated list.
+You can use a double stranded scale by simply adding more base sizes in a space-separated list.
 **note:** the starting point of the scale will always be the **first** value in this list
 
 ```scss
-.double-standard {
+.double-stranded {
   width: ms(7, 1em 2em);
 }
 ```

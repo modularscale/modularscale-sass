@@ -5,3 +5,5 @@
 *.lock
 
 stylesheets/modular-scale.zip
+
+node_modules

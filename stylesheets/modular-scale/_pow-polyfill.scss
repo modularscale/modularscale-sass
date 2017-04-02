@@ -1,0 +1,81 @@
+//
+// By drtimofey, script based on script by davidkpiano, see these links:
+// https://github.com/thoughtbot/bitters/issues/167
+// https://github.com/thoughtbot/bourbon/issues/717
+// https://gist.github.com/davidkpiano/ad6e6771df050ff3727f
+//
+
+@function math-pow-polyfill($number, $exp) {
+  @if (round($exp) != $exp) {
+    @return math-exp($exp * math-ln($number));
+  }
+
+  // Traditional method for integers
+  $value: 1;
+
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  }
+  @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: $value / $number;
+    }
+  }
+
+  @return $value;
+}
+
+@function math-factorial($value) {
+  @if $value == 0 {
+    @return 1;
+  }
+
+  $result: 1;
+
+  @for $index from 1 through $value {
+    $result: $result * $index;
+  }
+
+  @return $result;
+}
+
+@function math-summation($iteratee, $input, $initial: 0, $limit: 100) {
+  $sum: 0;
+
+  @for $index from $initial to $limit {
+    $sum: $sum + call($iteratee, $input, $index);
+  }
+
+  @return $sum;
+}
+
+@function math-exp-maclaurin($x, $n) {
+  $result: math-pow-polyfill($x, $n) / math-factorial($n);
+  @return $result;
+}
+@function math-exp($value) {
+  $result: math-summation(math-exp-maclaurin, $value, 0, 100);
+  @return $result;
+}
+
+@function math-ln-maclaurin($x, $n) {
+  $result: (math-pow-polyfill(-1, $n + 1) / $n) * (math-pow-polyfill($x - 1, $n));
+  @return $result;
+}
+
+@function math-ln($value) {
+  $ten-exp: 1;
+  $ln-ten: 2.30258509;
+
+  @while ($value > math-pow-polyfill(10, $ten-exp)) {
+    $ten-exp: $ten-exp + 1;
+  }
+
+  $value: $value / math-pow-polyfill(10, $ten-exp);
+
+  $result: math-summation(math-ln-maclaurin, $value, 1, 100);
+
+  @return $result + $ten-exp * $ln-ten;
+}

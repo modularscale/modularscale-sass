@@ -1,40 +1,20 @@
-// If a native exponent function doesnt exist
-// this one is needed.
+// pow with non-integer exponents
+// feature detection + polyfill
+
+// indirectly checks for eyeglass-math math-pow() existence
+@function pow-nonint-ok() {
+  // using some well-known input/output
+  $test: math-pow(9, 0.5);
+    // => 3 when pow works correctly with non-integer exponents
+  @return ($test == 3);
+}
+$pow-nonint-ok: pow-nonint-ok(); // cache result to improve performance
+
+@import '_pow-polyfill';
 @function ms-pow($Base, $Exponent) {
-
-  // Find and remove unit.
-  // Avoids messyness with unit calculations
-  $Unit: $Base * 0 + 1;
-  $Base: $Base/$Unit;
-
-  // This function doesnt support non-interger exponents.
-  // Warn the user about why this is breaking.
-	@if round($Exponent) != $Exponent {
-		@warn "Unfortunately, you need Compass to use non-integer exponents";
-	}
-
-  // Set up the loop, priming the return with the base.
-	$Return: $Base;
-
-  // If the number is positive, multiply it.
-  @if $Exponent > 0 {
-    // Basic feedback loop as exponents
-    // are recursivley multiplied numbers.
-    @for $i from 1 to $Exponent {
-      $Return: $Return * $Base;
-    }
+  @if($pow-nonint-ok == false) {
+    @return math-pow-polyfill($Base, $Exponent); // use polyfill pow
+  } @else {
+    @return math-pow($Base, $Exponent);          // use eyeglass-math pow
   }
-
-  // If the number is 0 or negitive
-  // divide instead of multiply.
-  @else {
-    // Libsass doesnt allow negitive values in loops
-    @for $i from (-1 + 1) to (abs($Exponent) + 1) {
-      $Return: $Return / $Base;
-    }
-  }
-
-  // Return is now compounded redy to be returned.
-  // Add the unit back onto the number.
-	@return $Return * $Unit;
 }

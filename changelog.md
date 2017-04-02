@@ -8,6 +8,7 @@
   * Removed multiple ratio support because it was confusing and you should use multiple threads anyway. This dramatically reduced the core logic and bugs.
   * Fluid is the only responsive setting.
   * Responsive mixin automatically pulls breakpoints from map threads.
+  * find ratios based on target sizes at points on the scale.
 
 # Version 2.1.1
 

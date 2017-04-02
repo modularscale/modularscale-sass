@@ -126,6 +126,8 @@ h2 {
 
 If you do happen to have any values that are just named without numbers they will be ignored by the responsive mixin, it’s smart enough to just pull values that look like breakpoints.
 
+Here is an [example page](http://skscratch.bitballoon.com/ms-demo) and the [corrisponding Sass](https://github.com/modularscale/modularscale-sass/blob/3.x/test-compass/sass/style.scss).
+
 #### Note on non-integer values
 
 Unfortunately [Sass doesn’t natively support exponents](https://github.com/sass/sass/issues/684#issuecomment-196852515). This isn’t all bad news, you can use either use [Compass](http://compass-style.org/), [mathsass](https://github.com/terkel/mathsass), or another library that has a `pow()` function that supports non-integer values and this plugin will pick up on that function and use it. You will then be able to write values like `ms(2.5)`. This is also a prerequisite for _target sizes_ below.

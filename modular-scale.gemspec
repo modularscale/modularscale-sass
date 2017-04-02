@@ -21,5 +21,4 @@ architecture and design and can be a tremendously helpful tool to leverage for w
 
   s.required_rubygems_version = '>= 1.3.6'
 
-  s.add_runtime_dependency 'compass', '>= 1.0.0'
 end

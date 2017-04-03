@@ -12,29 +12,29 @@ To get started, you need to select a ratio and a base value. The base value is u
 
 * Terminal: `gem install modular-scale --pre`
 * Compass config: `require 'modular-scale'`
-* SCSS: `@import 'modular-scale';`
+* SCSS: `@import 'modularscale';`
 
 ### Eyeglass
 
 * Terminal: `npm install modularscale-sass --save-dev`
-* SCSS: `@import 'modular-scale'`
+* SCSS: `@import 'modularscale'`
 
 ### Webpack with sass-loader
 
 * Terminal: `npm install modularscale-sass --save-dev`
 * Webpack config: install and use [sass-loader](https://github.com/jtangelder/sass-loader#apply-via-webpack-config)
-* SCSS: `@import '~modularscale-sass/stylesheets/modular-scale';`
+* SCSS: `@import '~modularscale-sass/stylesheets/modularscale';`
 
 ### Bower
 
 * Terminal: `bower install modular-scale --save-dev`
-* SCSS: `@import '../link_to_component_dir/modular-scale';`
+* SCSS: `@import '../link_to_component_dir/modularscale';`
 
 ### Vanilla Sass
 
-* [Download the latest zip](https://github.com/Team-Sass/modular-scale/releases/latest)
+* [Download the latest zip](https://github.com/modularscale/modularscale-sass/releases/latest)
 * Extract into your project
-* SCSS: `@import 'modular-scale';`
+* SCSS: `@import 'modularscale';`
 
 ## Using modular scale
 

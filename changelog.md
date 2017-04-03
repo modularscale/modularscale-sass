@@ -1,4 +1,8 @@
-# Version 3.0
+# Version 3.0.1
+
+* Fix issue with generic `pow()` being used instead of `ms-pow()`
+
+# Version 3.0.0
 
   Core logic re-write along with settings moved to maps so they can be multithreaded and setup responsive scales better.
 

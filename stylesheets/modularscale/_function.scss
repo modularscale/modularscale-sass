@@ -12,7 +12,7 @@
 
   // Fast calc if not multi stranded
   @if(length($base) == 1) {
-    @return ms-round-px(pow($ratio, $v) * $base);
+    @return ms-round-px(ms-pow($ratio, $v) * $base);
   }
 
   // Create new base array
@@ -49,5 +49,5 @@
   // Find base to use in calculation
   $ms-base: round(($v / length($ms-bases) - $vtep) * length($ms-bases)) + 1;
 
-  @return ms-round-px(pow($ratio, $vtep) * nth($ms-bases,$ms-base));
+  @return ms-round-px(ms-pow($ratio, $vtep) * nth($ms-bases,$ms-base));
 }

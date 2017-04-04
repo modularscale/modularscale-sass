@@ -1,3 +1,7 @@
+# Version 3.0.2
+
+* Fix bug when the exponent is 0
+
 # Version 3.0.1
 
 * Fix issue with generic `pow()` being used instead of `ms-pow()`

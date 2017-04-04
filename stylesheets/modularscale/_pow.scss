@@ -5,6 +5,11 @@
 
 @function ms-pow($b,$e) {
 
+  // Return 1 if exponent is 0
+  @if $e == 0 {
+    @return 1;
+  }
+
   // If pow() exists (compass or mathsass) use that.
   @if function-exists('pow') {
     @return pow($b,$e);

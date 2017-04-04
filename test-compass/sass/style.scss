@@ -1,6 +1,17 @@
 @import "modularscale";
 
 $modularscale: (
+  base: 16px,
+  ratio: 1.5
+);
+
+@debug ms(-1);
+@debug ms();
+@debug ms(0);
+@debug ms(1);
+@debug ms(2);
+
+$modularscale: (
   base: 1em,
   ratio: 1.3,
   20em: (

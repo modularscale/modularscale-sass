@@ -2,13 +2,13 @@
   "name": "modularscale-sass",
   "version": "3.0.2",
   "description": "A tool to help web designers size their type in a more meaningful way.",
-  "main": "stylesheets/_modular-scale.scss",
+  "main": "stylesheets/_modularscale.scss",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "eyeglass": {
     "exports": "eyeglass-exports.js",
-    "name": "modular-scale",
+    "name": "modularscale",
     "needs": "^0.6.2"
   },
   "repository": {

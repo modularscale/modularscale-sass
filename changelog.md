@@ -1,3 +1,9 @@
+# Version 3.0.3
+
+* Updated version for eyeglass (1.2.1)
+* Fixed scss file path for Bower
+* Removed `npm-debug.log` file
+
 # Version 3.0.2
 
 * Fix bug when the exponent is 0

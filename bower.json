@@ -1,8 +1,8 @@
 {
   "name": "modular-scale",
-  "version": "v3.0.2",
+  "version": "v3.0.3",
   "main": [
-    "stylesheets/_modular-scale.scss"
+    "stylesheets/_modularscale.scss"
   ],
   "ignore": [
     "lib",

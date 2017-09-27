@@ -8,12 +8,6 @@ To get started, you need to select a ratio and a base value. The base value is u
 
 ## Install
 
-### Compass
-
-* Terminal: `gem install modular-scale --pre`
-* Compass config: `require 'modular-scale'`
-* SCSS: `@import 'modularscale';`
-
 ### Eyeglass
 
 * Terminal: `npm install modularscale-sass --save-dev`
@@ -34,6 +28,12 @@ To get started, you need to select a ratio and a base value. The base value is u
 
 * [Download the latest zip](https://github.com/modularscale/modularscale-sass/releases/latest)
 * Extract into your project
+* SCSS: `@import 'modularscale';`
+
+### Compass (no longer being updated. Last release v3.0.2)
+
+* Terminal: `gem install modular-scale --pre`
+* Compass config: `require 'modular-scale'`
 * SCSS: `@import 'modularscale';`
 
 ## Using modular scale

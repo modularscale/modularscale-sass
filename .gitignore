@@ -7,3 +7,4 @@ libsass/npm-debug.log
 *.lock
 
 stylesheets/modular-scale.zip
+.DS_Store

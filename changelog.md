@@ -1,3 +1,7 @@
+# Version 3.0.4
+
+* Fixed line breaks in error messaging to be compatable with future versions of Sass.
+
 # Version 3.0.3
 
 * Updated version for eyeglass (1.2.1)

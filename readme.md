@@ -126,7 +126,7 @@ h2 {
 
 If you do happen to have any values that are just named without numbers they will be ignored by the responsive mixin, it’s smart enough to just pull values that look like breakpoints.
 
-Here is an [example page](http://skscratch.bitballoon.com/ms-demo) and the [corrisponding Sass](https://github.com/modularscale/modularscale-sass/blob/3.x/test-compass/sass/style.scss).
+Here is an [example page](http://skscratch.bitballoon.com/ms-demo) and the [corresponding Sass](https://github.com/modularscale/modularscale-sass/blob/3.x/test-compass/sass/style.scss).
 
 #### Note on non-integer values
 

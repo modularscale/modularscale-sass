@@ -1,3 +1,7 @@
+# Version 3.0.6
+
+* Fix deprecation warnings.
+
 # Version 3.0.5
 
 * Added an !important flag for specificity in some frameworks like IntuitCSS. [See pull 146 for details](https://github.com/modularscale/modularscale-sass/pull/146).

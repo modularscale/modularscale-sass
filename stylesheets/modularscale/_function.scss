@@ -49,5 +49,5 @@
   // Find base to use in calculation
   $ms-base: round(($v / length($ms-bases) - $vtep) * length($ms-bases)) + 1;
 
-  @return ms-round-px(ms-pow($ratio, $vtep) * nth($ms-bases,$ms-base));
+  @return ms-pow($ratio, $vtep) * nth($ms-bases,$ms-base);
 }

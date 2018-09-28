@@ -1,3 +1,7 @@
+# Version 3.0.7
+
+* Remove rounding errors.
+
 # Version 3.0.6
 
 * Fix deprecation warnings.

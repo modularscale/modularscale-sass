@@ -29,7 +29,7 @@
 
         // Write out the first value without a media query.
         @if $first-write {
-          #{$prop}: ms-function($val, $thread: $v, $settings: $map)#{$important};
+          #{$prop}: unquote("#{ms-function($val, $thread: $v, $settings: $map)}#{$important}");
 
           // Not the first write anymore, reset to false to move on.
           $first-write: false;
@@ -41,7 +41,7 @@
           @media (min-width: $last-break) and (max-width: $v) {
             $val1: ms-function($val, $thread: $last-break, $settings: $map);
             $val2: ms-function($val, $thread: $v, $settings: $map);
-            #{$prop}: ms-fluid($val1,$val2,$last-break,$v)#{$important};
+            #{$prop}: unquote("#{ms-fluid($val1,$val2,$last-break,$v)}#{$important}");
           }
           $last-break: $v;
         }
@@ -52,7 +52,7 @@
   // Write the last breakpoint.
   @if $last-break {
     @media (min-width: $last-break) {
-      #{$prop}: ms-function($val, $thread: $last-break, $settings: $map)#{$important};
+      #{$prop}: unquote("#{ms-function($val, $thread: $last-break, $settings: $map)}#{$important}");
     }
   }
 }

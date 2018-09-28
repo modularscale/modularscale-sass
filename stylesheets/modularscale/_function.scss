@@ -31,7 +31,7 @@
       $ms-base: $ms-base * $ratio;
     }
     // If the base is smaller than the main base.
-    @elseif ($ms-base < nth($base,1)) {
+    @else if ($ms-base < nth($base,1)) {
       // pump up the value until it aligns with main base.
       @while $ms-base < nth($base,1) {
         $ms-base: $ms-base * $ratio;

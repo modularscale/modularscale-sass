@@ -10,15 +10,15 @@
   @for $i from 1 through $l {
     $v: str-slice($n,$i,$i);
     @if $v == '1' { $v: 1; }
-    @elseif $v == '2' { $v: 2; }
-    @elseif $v == '3' { $v: 3; }
-    @elseif $v == '4' { $v: 4; }
-    @elseif $v == '5' { $v: 5; }
-    @elseif $v == '6' { $v: 6; }
-    @elseif $v == '7' { $v: 7; }
-    @elseif $v == '8' { $v: 8; }
-    @elseif $v == '9' { $v: 9; }
-    @elseif $v == '0' { $v: 0; }
+    @else if $v == '2' { $v: 2; }
+    @else if $v == '3' { $v: 3; }
+    @else if $v == '4' { $v: 4; }
+    @else if $v == '5' { $v: 5; }
+    @else if $v == '6' { $v: 6; }
+    @else if $v == '7' { $v: 7; }
+    @else if $v == '8' { $v: 8; }
+    @else if $v == '9' { $v: 9; }
+    @else if $v == '0' { $v: 0; }
     @else { $v: null; }
     @if $v != null {
       $m: $m - 1;

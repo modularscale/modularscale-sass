@@ -16,7 +16,7 @@ Compass::Frameworks.register('modular-scale', :path => extension_path)
 #    a prerelease version
 #  Date is in the form of YYYY-MM-DD
 module ModularScale
-  VERSION = "3.0.7"
+  VERSION = "3.0.8"
   DATE = "2018-09-27"
 end
 

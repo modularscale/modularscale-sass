@@ -12,7 +12,7 @@
 
   // Fast calc if not multi stranded
   @if(length($base) == 1) {
-    @return ms-round-px(ms-pow($ratio, $v) * $base);
+    @return ms-pow($ratio, $v) * $base;
   }
 
   // Create new base array

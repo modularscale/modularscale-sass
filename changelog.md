@@ -1,6 +1,10 @@
+# Version 3.0.8
+
+* Fix issues with removal of rounding, sorry folks.
+
 # Version 3.0.7
 
-* Remove rounding errors.
+* Remove rounding.
 
 # Version 3.0.6
 

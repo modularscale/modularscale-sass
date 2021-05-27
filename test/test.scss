@@ -1,0 +1,8 @@
+@use '../stylesheets/modularscale' as ms;
+
+* {
+	font-size: ms.ms(1);
+	font-size: ms.ms(2);
+	font-size: ms.ms(3);
+	foo: 1.24 * 3;
+}

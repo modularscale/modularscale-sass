@@ -1,22 +1,31 @@
 @use '../stylesheets/modularscale' as ms;
 
 ms.$settings: (
-  base: 1.25em,
-  ratio: 2
+  base: 1.2em,
+  ratio: 1.45
 );
 
-* {
-	--step-6: #{ms.step(-6)};
-	--step-5: #{ms.step(-5)};
-	--step-4: #{ms.step(-4)};
+.standard {
 	--step-3: #{ms.step(-3)};
 	--step-2: #{ms.step(-2)};
 	--step-1: #{ms.step(-1)};
-	--step0: #{ms.step(0)};
-	--step1: #{ms.step(1)};
-	--step2: #{ms.step(2)};
-	--step3: #{ms.step(3)};
-	--step4: #{ms.step(4)};
-	--step5: #{ms.step(5)};
-	--step6: #{ms.step(6)};
+	--step0:  #{ms.step(0)};
+	--step1:  #{ms.step(1)};
+	--step2:  #{ms.step(2)};
+	--step3:  #{ms.step(3)};
+}
+
+ms.$settings: (
+  base: 1em 4.2em 1.4em 0.3em,
+  ratio: 2
+);
+
+.multi-stranded {
+	--step-3: #{ms.step(-3)};
+	--step-2: #{ms.step(-2)};
+	--step-1: #{ms.step(-1)};
+	--step0:  #{ms.step(0)};
+	--step1:  #{ms.step(1)};
+	--step2:  #{ms.step(2)};
+	--step3:  #{ms.step(3)};
 }

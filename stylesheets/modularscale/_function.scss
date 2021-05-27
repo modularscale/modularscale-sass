@@ -17,32 +17,51 @@
   @if(list.length($base) == 1) {
     @return math.pow($ratio, $v) * $base;
   }
+	@else {
+		$unit: unit(list.nth($base,1));
+  	$bases: unitless(list.nth($base,1));
+		@for $i from 2 through list.length($base) {
+			$new-base: unitless(list.nth($base,$i));
+      @while($new-base > ($ratio * list.nth($base,1))) {
+        $new-base: math.div($new-base,$ratio);
+      }
+      @while($new-base < list.nth($base,1)) {
+        $new-base: $new-base * $ratio;
+      }
+			$bases: list.append($bases,$new-base);
+		}
+		// $bases: sort($bases);
+		
+		@return $bases;
+	}
 
   // Create new base array
-  $bases: list.nth($base,1);
-
+  // $bases: list.nth($base,1);
+	
   // Normalize base values
-  @for $i from 2 through list.length($base) {
-    // initial base value
-    $base: list.nth($base,$i);
-    // If the base is bigger than the main base
-    @if($base > list.nth($base,1)) {
-      // divide the value until it aligns with main base.
-      @while($base > list.nth($base,1)) {
-        $base: math.div($base,$ratio);
-      }
-      $base: $base * $ratio;
-    }
-    // If the base is smaller than the main base.
-    @else if ($base < list.nth($base,1)) {
-      // pump up the value until it aligns with main base.
-      @while $base < list.nth($base,1) {
-        $base: $base * $ratio;
-      }
-    }
-    // Push into new array
-    $bases: append($bases,$base);
-  }
+	// @if(list.length($base) > 1) {
+	//   @for $i from 2 through list.length($base) {
+	//     // initial base value
+	//     $base: list.nth($base,$i);
+	//     // If the base is bigger than the main base
+	//     @if($base > list.nth($base,1)) {
+	//       // divide the value until it aligns with main base.
+	//       @while($base > list.nth($base,1)) {
+	//         $base: math.div($base,$ratio);
+	//       }
+	//       $base: $base * $ratio;
+	//     }
+	//     // If the base is smaller than the main base.
+	//     @else if ($base < list.nth($base,1)) {
+	//       // pump up the value until it aligns with main base.
+	//       @while $base < list.nth($base,1) {
+	//         $base: $base * $ratio;
+	//       }
+	//     }
+	//     // Push into new array
+	//     $bases: list.append($bases,$base);
+	// 	}
+  // }
 
   // Sort array from smallest to largest.
   $bases: sort($bases);

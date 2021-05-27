@@ -1,17 +1,21 @@
-* {
-  --step-6: 0.01953125em;
-  --step-5: 0.0390625em;
-  --step-4: 0.078125em;
-  --step-3: 0.15625em;
-  --step-2: 0.3125em;
-  --step-1: 0.625em;
-  --step0: 1.25em;
-  --step1: 2.5em;
-  --step2: 5em;
-  --step3: 10em;
-  --step4: 20em;
-  --step5: 40em;
-  --step6: 80em;
+.standard {
+  --step-3: 0.3936200746em;
+  --step-2: 0.5707491082em;
+  --step-1: 0.8275862069em;
+  --step0: 1.2em;
+  --step1: 1.74em;
+  --step2: 2.523em;
+  --step3: 3.65835em;
+}
+
+.multi-stranded {
+  --step-3: 1 1.05 1.4 1.2;
+  --step-2: 1 1.05 1.4 1.2;
+  --step-1: 1 1.05 1.4 1.2;
+  --step0: 1 1.05 1.4 1.2;
+  --step1: 1 1.05 1.4 1.2;
+  --step2: 1 1.05 1.4 1.2;
+  --step3: 1 1.05 1.4 1.2;
 }
 
 /*# sourceMappingURL=test.css.map */

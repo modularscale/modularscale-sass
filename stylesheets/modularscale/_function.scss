@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "sass:list";
+@import "vars";
 
 @function step($v: 0, $base: false, $ratio: false, $thread: false, $settings: $settings) {
 
@@ -7,6 +8,9 @@
   $settings: settings($base,$ratio,$thread,$settings);
   $base: list.nth($settings, 1);
   $ratio: list.nth($settings, 2);
+	
+	$base-length: list.length($base);
+	$bases: ();
 
   // Render target values from settings.
   @if unit($ratio) != '' {
@@ -14,62 +18,30 @@
   }
 
   // Fast calc if not multi stranded
-  @if(list.length($base) == 1) {
+  @if($base-length == 1) {
     @return math.pow($ratio, $v) * $base;
   }
 	@else {
 		$unit: unit(list.nth($base,1));
-  	$bases: unitless(list.nth($base,1));
-		@for $i from 2 through list.length($base) {
-			$new-base: unitless(list.nth($base,$i));
+  	$bases: list.nth($base,1);
+		@for $i from 2 through $base-length {
+			$new-base: list.nth($base,$i);
       @while($new-base > ($ratio * list.nth($base,1))) {
         $new-base: math.div($new-base,$ratio);
       }
       @while($new-base < list.nth($base,1)) {
-        $new-base: $new-base * $ratio;
+        $new-base: ($new-base * $ratio);
       }
 			$bases: list.append($bases,$new-base);
 		}
-		// $bases: sort($bases);
 		
-		@return $bases;
+		$bases: sort($bases);
 	}
 
-  // Create new base array
-  // $bases: list.nth($base,1);
-	
-  // Normalize base values
-	// @if(list.length($base) > 1) {
-	//   @for $i from 2 through list.length($base) {
-	//     // initial base value
-	//     $base: list.nth($base,$i);
-	//     // If the base is bigger than the main base
-	//     @if($base > list.nth($base,1)) {
-	//       // divide the value until it aligns with main base.
-	//       @while($base > list.nth($base,1)) {
-	//         $base: math.div($base,$ratio);
-	//       }
-	//       $base: $base * $ratio;
-	//     }
-	//     // If the base is smaller than the main base.
-	//     @else if ($base < list.nth($base,1)) {
-	//       // pump up the value until it aligns with main base.
-	//       @while $base < list.nth($base,1) {
-	//         $base: $base * $ratio;
-	//       }
-	//     }
-	//     // Push into new array
-	//     $bases: list.append($bases,$base);
-	// 	}
-  // }
-
-  // Sort array from smallest to largest.
-  $bases: sort($bases);
-
   // Find step to use in calculation
-  $vtep: math.floor(math.div($v / list.length($bases)));
+  $step: math.floor(math.div($v, $base-length));
   // Find base to use in calculation
-  $base: math.round((math.div($v / list.length($bases)) - $vtep) * list.length($bases)) + 1;
+  $base: math.round((math.div($v, $base-length) - $step) * $base-length) + 1;
 
-  @return math.pow($ratio, $vtep) * list.nth($bases,$base);
+  @return math.pow($ratio, $step) * list.nth($bases,$base);
 }

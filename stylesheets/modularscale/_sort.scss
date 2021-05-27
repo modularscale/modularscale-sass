@@ -1,4 +1,7 @@
-@function sort($l...) {
+// Will remove this as soon as Sass has native sorting
+// https://github.com/sass/sass/issues/155
+
+@function sort($l) {
   // Seed the return list
   $return: ();
 
@@ -9,7 +12,7 @@
     // Write that value to the return
     $return: append($return,$m);
     // Replace that value in the list so it won’t be called again.
-    $l: set-nth($l, index($l,$m), 9999999999);
+    $l: set-nth($l, index($l,$m), 999);
   }
 
   // Return the newly sorted list

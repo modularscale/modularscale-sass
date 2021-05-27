@@ -49,7 +49,7 @@ h4 {
 }
 ```
 
-Occasionally you may wind up with conflicts. All critical components are name-spaced to avoid conflicts with other libraries. If you do run into a conflict, `ms-function()` is the no-conflict function.
+Occasionally you may wind up with conflicts. All critical components are name-spaced to avoid conflicts with other libraries. If you do run into a conflict, `function()` is the no-conflict function.
 
 #### Multiple scale threads
 
@@ -99,11 +99,11 @@ _Note that you must use the same units for both your type and your breakpoints f
 
 This technique is based on [Mike Riethmuller’s](https://twitter.com/MikeRiethmuller) [_Precise control over responsive typography_](http://madebymike.com.au/writing/precise-control-responsive-typography/). A fantastic technique for fluidly scaling typography.
 
-Then, call the mixin `@include ms-respond();` and a fully fluid and responsive scale will be generated.
+Then, call the mixin `@include respond();` and a fully fluid and responsive scale will be generated.
 
 ```scss
 h2 {
-  @include ms-respond(font-size,5);
+  @include respond(font-size,5);
 }
 ```
 

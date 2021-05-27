@@ -2,7 +2,7 @@
 // Would like to replace with http://sassmeister.com/gist/30e4863bd03ce0e1617c
 // Unfortunately libsass has a bug with passing arguments into the min() funciton.
 
-@function ms-sort($l) {
+@function sort($l) {
 
   // loop until the list is confirmed to be sorted
   $sorted: false;

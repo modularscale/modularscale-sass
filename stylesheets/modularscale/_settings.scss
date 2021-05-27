@@ -2,9 +2,9 @@
 // Settings should cascade down like you would expect in CSS.
 // More specific overrides previous settings.
 
-@function ms-settings($b: false, $r: false, $t: false, $m: $modularscale) {
-  $base: $ms-base;
-  $ratio: $ms-ratio;
+@function settings($b: false, $r: false, $t: false, $m: $modularscale) {
+  $base: $base;
+  $ratio: $ratio;
   $thread: map-get($m, $t);
 
   // Override with user settings

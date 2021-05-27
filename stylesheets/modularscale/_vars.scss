@@ -20,6 +20,6 @@ $major-second     : 1.125             ;
 $minor-second     : 1.066666667       ;
 
 // Base config
-$ms-base          : 1em       !default;
-$ms-ratio         : $fifth    !default;
-$modularscale     : ()        !default;
+$base             : 1em       !default;
+$ratio            : $fifth    !default;
+$settings         : ()        !default;

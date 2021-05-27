@@ -1,11 +1,12 @@
 @use "sass:math";
+@use "sass:list";
 
 @function step($v: 0, $base: false, $ratio: false, $thread: false, $settings: $settings) {
 
   // Parse settings
   $settings: settings($base,$ratio,$thread,$settings);
-  $base: nth($settings, 1);
-  $ratio: nth($settings, 2);
+  $base: list.nth($settings, 1);
+  $ratio: list.nth($settings, 2);
 
   // Render target values from settings.
   @if unit($ratio) != '' {
@@ -13,29 +14,29 @@
   }
 
   // Fast calc if not multi stranded
-  @if(length($base) == 1) {
+  @if(list.length($base) == 1) {
     @return math.pow($ratio, $v) * $base;
   }
 
   // Create new base array
-  $bases: nth($base,1);
+  $bases: list.nth($base,1);
 
   // Normalize base values
-  @for $i from 2 through length($base) {
+  @for $i from 2 through list.length($base) {
     // initial base value
-    $base: nth($base,$i);
+    $base: list.nth($base,$i);
     // If the base is bigger than the main base
-    @if($base > nth($base,1)) {
+    @if($base > list.nth($base,1)) {
       // divide the value until it aligns with main base.
-      @while($base > nth($base,1)) {
+      @while($base > list.nth($base,1)) {
         $base: math.div($base,$ratio);
       }
       $base: $base * $ratio;
     }
     // If the base is smaller than the main base.
-    @else if ($base < nth($base,1)) {
+    @else if ($base < list.nth($base,1)) {
       // pump up the value until it aligns with main base.
-      @while $base < nth($base,1) {
+      @while $base < list.nth($base,1) {
         $base: $base * $ratio;
       }
     }
@@ -47,9 +48,9 @@
   $bases: sort($bases);
 
   // Find step to use in calculation
-  $vtep: floor(math.div($v / length($bases)));
+  $vtep: math.floor(math.div($v / list.length($bases)));
   // Find base to use in calculation
-  $base: round((math.div($v / length($bases)) - $vtep) * length($bases)) + 1;
+  $base: math.round((math.div($v / list.length($bases)) - $vtep) * list.length($bases)) + 1;
 
-  @return math.pow($ratio, $vtep) * nth($bases,$base);
+  @return math.pow($ratio, $vtep) * list.nth($bases,$base);
 }

@@ -1,9 +1,17 @@
 * {
-  font-size: 1.2em;
-  font-size: 1.56em;
-  font-size: 2.028em;
-  font-size: 2.6364em;
-  foo: 3.72;
+  --step-6: 0.01953125em;
+  --step-5: 0.0390625em;
+  --step-4: 0.078125em;
+  --step-3: 0.15625em;
+  --step-2: 0.3125em;
+  --step-1: 0.625em;
+  --step0: 1.25em;
+  --step1: 2.5em;
+  --step2: 5em;
+  --step3: 10em;
+  --step4: 20em;
+  --step5: 40em;
+  --step6: 80em;
 }
 
 /*# sourceMappingURL=test.css.map */

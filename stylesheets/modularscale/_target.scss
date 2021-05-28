@@ -1,37 +1,29 @@
 // Convert number string to number
 @function to-num($n) {
-  $l: str-length($n);
-  $r: 0;
-  $m: str-index($n,'.');
-  @if $m == null {
-    $m: $l + 1;
-  }
-  // Loop through digits and convert to numbers
-  @for $i from 1 through $l {
-    $v: str-slice($n,$i,$i);
-    @if $v == '1' { $v: 1; }
-    @else if $v == '2' { $v: 2; }
-    @else if $v == '3' { $v: 3; }
-    @else if $v == '4' { $v: 4; }
-    @else if $v == '5' { $v: 5; }
-    @else if $v == '6' { $v: 6; }
-    @else if $v == '7' { $v: 7; }
-    @else if $v == '8' { $v: 8; }
-    @else if $v == '9' { $v: 9; }
-    @else if $v == '0' { $v: 0; }
-    @else { $v: null; }
-    @if $v != null {
-      $m: $m - 1;
-      $r: $r + pow(10,$m - 1) * $v;
-    } @else {
-      $l: $l - 1;
-    }
-  }
-  @return $r;
+	$length: string.length($n);
+	$return: 0;
+	@for $i from 1 through $length {
+		$return: $return * 10;
+	  $value: string.slice($n, $i, $i);
+		@if ($value == '0') { $return: $return + 0 }
+		@if ($value == '1') { $return: $return + 1 }
+		@if ($value == '2') { $return: $return + 2 }
+		@if ($value == '3') { $return: $return + 3 }
+		@if ($value == '4') { $return: $return + 4 }
+		@if ($value == '5') { $return: $return + 5 }
+		@if ($value == '6') { $return: $return + 6 }
+		@if ($value == '7') { $return: $return + 7 }
+		@if ($value == '8') { $return: $return + 8 }
+		@if ($value == '9') { $return: $return + 9 }
+	}
+	@return $return;
 }
 
 // Find a ratio based on a target value
 @function target($t,$b) {
+	@if (list.length($b) > 1) {
+		@error "You are currently using multiple bases in your modular scale: #{$b}. When targeting a value for your ratio, please use a single base.";
+	}
   // Convert to string
   $t: $t + '';
   // Remove base units to calulate ratio

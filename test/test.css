@@ -1,21 +1,20 @@
-.standard {
-  --step-3: 0.3936200746em;
-  --step-2: 0.5707491082em;
-  --step-1: 0.8275862069em;
-  --step0: 1.2em;
-  --step1: 1.74em;
-  --step2: 2.523em;
-  --step3: 3.65835em;
-}
+/* Error: Undefined operation "pow(10, 0) * 6".
+ *    ,
+ * 25 |       $r: $r + pow(10,$m - 1) * $v;
+ *    |                ^^^^^^^^^^^^^^^^^^^
+ *    '
+ *   stylesheets/modularscale/_target.scss 25:16  to-num()
+ *   stylesheets/modularscale/_target.scss 44:7   target()
+ *   stylesheets/modularscale/_step.scss 13:13    step()
+ *   test/test.scss 59:14                         root stylesheet */
 
-.multi-stranded {
-  --step-3: 1.5384615385cm;
-  --step-2: 0.7692307692in;
-  --step-1: 2cm;
-  --step0: 1in;
-  --step1: 2.6cm;
-  --step2: 1.3in;
-  --step3: 3.38cm;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: Undefined operation "pow(10, 0) * 6".\a    \2577 \a 25 \2502        $r: $r + pow(10,$m - 1) * $v;\a    \2502                 ^^^^^^^^^^^^^^^^^^^\a    \2575 \a   stylesheets/modularscale/_target.scss 25:16  to-num()\a   stylesheets/modularscale/_target.scss 44:7   target()\a   stylesheets/modularscale/_step.scss 13:13    step()\a   test/test.scss 59:14                         root stylesheet';
 }
-
-/*# sourceMappingURL=test.css.map */

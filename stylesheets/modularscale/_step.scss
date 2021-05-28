@@ -1,7 +1,3 @@
-@use "sass:math";
-@use "sass:list";
-@import "vars";
-
 @function step($v: 0, $base: false, $ratio: false, $thread: false, $settings: $settings) {
 
   // Parse settings

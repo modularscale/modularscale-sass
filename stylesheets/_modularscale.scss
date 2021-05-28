@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:list";
+
 // Defaults and variables
 @import 'modularscale/vars';
 
@@ -6,7 +9,7 @@
 @import 'modularscale/strip-units';
 @import 'modularscale/sort';
 @import 'modularscale/target';
-@import 'modularscale/function';
+@import 'modularscale/step';
 
 // Mixins
-@import 'modularscale/respond';
+@import 'modularscale/write';

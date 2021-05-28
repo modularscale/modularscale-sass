@@ -1,5 +1,3 @@
-@use 'sass:math';
-
 // Convert number string to number
 @function to-num($n) {
   $l: str-length($n);

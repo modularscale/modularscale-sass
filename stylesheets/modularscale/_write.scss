@@ -1,0 +1,11 @@
+@mixin write($min:-6, $max:12, $settings: $settings) {
+	@at-root {
+	  @property --step {
+	    syntax: "<length>";
+	    inherits: true;
+	    initial-value: ms.step(0);
+	  }
+		:root {
+		}
+	}
+}

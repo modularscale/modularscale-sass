@@ -1,20 +1,48 @@
-/* Error: Undefined operation "pow(10, 0) * 6".
- *    ,
- * 25 |       $r: $r + pow(10,$m - 1) * $v;
- *    |                ^^^^^^^^^^^^^^^^^^^
- *    '
- *   stylesheets/modularscale/_target.scss 25:16  to-num()
- *   stylesheets/modularscale/_target.scss 44:7   target()
- *   stylesheets/modularscale/_step.scss 13:13    step()
- *   test/test.scss 59:14                         root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: Undefined operation "pow(10, 0) * 6".\a    \2577 \a 25 \2502        $r: $r + pow(10,$m - 1) * $v;\a    \2502                 ^^^^^^^^^^^^^^^^^^^\a    \2575 \a   stylesheets/modularscale/_target.scss 25:16  to-num()\a   stylesheets/modularscale/_target.scss 44:7   target()\a   stylesheets/modularscale/_step.scss 13:13    step()\a   test/test.scss 59:14                         root stylesheet';
+foo {
+  bar: 2.25em;
 }
+
+foo {
+  bar: 2.25em;
+}
+
+.standard {
+  --step-3: 0.3936200746em;
+  --step-2: 0.5707491082em;
+  --step-1: 0.8275862069em;
+  --step0: 1.2em;
+  --step1: 1.74em;
+  --step2: 2.523em;
+  --step3: 3.65835em;
+}
+
+.multi-stranded {
+  --step-3: 0.7692307692in;
+  --step-2: 2cm;
+  --step-1: 5.9171597633pc;
+  --step0: 1in;
+  --step1: 2.6cm;
+  --step2: 7.6923076923pc;
+  --step3: 1.3in;
+}
+
+.multi-threaded {
+  --step0-thread-s: 12px;
+  --step1-thread-s: 14.4px;
+  --step2-thread-s: 17.28px;
+  --step0-thread-l: 20px;
+  --step1-thread-l: 32px;
+  --step2-thread-l: 51.2px;
+}
+
+.target-size {
+  --step-3: 0.24em;
+  --step-2: 0.4103942272em;
+  --step-1: 0.7017642572em;
+  --step0: 1.2em;
+  --step1: 2.051971136em;
+  --step2: 3.5088212859em;
+  --step3: 6em;
+}
+
+/*# sourceMappingURL=test.css.map */

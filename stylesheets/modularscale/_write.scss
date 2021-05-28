@@ -1,11 +1,29 @@
-@mixin write($min:-6, $max:12, $settings: $settings) {
-	@at-root {
-	  @property --step {
-	    syntax: "<length>";
-	    inherits: true;
-	    initial-value: ms.step(0);
-	  }
-		:root {
-		}
+// @import 'vars';
+
+@mixin respond($responsive: $responsive) {
+	@if $responsive {
+		$settings: (
+		  base: 1.2em,
+		  ratio: 1.45
+		);
+		@content
+	}
+	@else {
+		$settings: (
+		  base: 1em,
+		  ratio: 1.2
+		);
+		@content
+	}
+}
+
+@include respond(true) {
+	foo {
+		bar: step(2);
+	}
+}
+@include respond(false) {
+	foo {
+		bar: step(2);
 	}
 }

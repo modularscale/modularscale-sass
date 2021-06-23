@@ -1,0 +1,10 @@
+{
+  "actions" : {
+    "run" : {
+      "enabled" : true,
+      "script" : "sass --watch test"
+    }
+  },
+  "identifier" : "B980F861-6B28-4214-A80C-189821EAF3AC",
+  "openLogOnRun" : "start"
+}

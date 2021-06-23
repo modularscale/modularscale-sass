@@ -1,6 +1,6 @@
 // @import 'vars';
 
-@mixin respond($responsive: $responsive) {
+@mixin respond($min: -3, $max: 9, $responsive: $responsive) {
 	@if $responsive {
 		$settings: (
 		  base: 1.2em,

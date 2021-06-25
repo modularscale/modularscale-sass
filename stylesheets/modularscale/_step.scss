@@ -4,11 +4,11 @@
   $ratio: false,
   $thread: false,
   $settings: $settings,
-  $respond-to: false
+  $respond: false
 ) {
   // Parse settings
-  @if ($respond-to) {
-    $thread: $respond-to;
+  @if ($respond) {
+    $thread: $respond;
   }
   $settings: settings($base, $ratio, $thread, $settings);
   $base: list.nth($settings, 1);

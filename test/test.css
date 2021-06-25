@@ -39,10 +39,10 @@
 
 foo {
   bar: 17.28px;
-  --tt-key: ubhbfqk;
+  --tt-key: ubhbfuz;
   --tt-max: 1000px;
 }
-@keyframes ubhbfqk {
+@keyframes ubhbfuz {
   40% {
     bar: 14.4px;
   }

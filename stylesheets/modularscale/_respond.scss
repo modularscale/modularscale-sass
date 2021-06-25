@@ -10,9 +10,9 @@
     $query: media;
   }
   // Find maximum value
-  @each $breakpoints in $settings {
-    @if (type-of(list.nth($breakpoints, 1)) == "number") {
-      $max: list.nth($breakpoints, 1);
+  @each $bp in $settings {
+    @if (type-of(list.nth($bp, 1)) == "number") {
+      $max: list.nth($bp, 1);
       $queries: $queries + 1;
     }
   }
@@ -25,13 +25,13 @@
     --tt-key: #{$id};
     --tt-max: #{$max};
     @keyframes #{$id} {
-      @each $breakpoints in $settings {
-        @if (type-of(list.nth($breakpoints, 1)) == "number") {
+      @each $bp in $settings {
+        @if (type-of(list.nth($bp, 1)) == "number") {
           
-          $key: list.nth($breakpoints, 1);
+          $key: list.nth($bp, 1);
           $keyframe: percentage($key/$max);
           #{$keyframe} {
-            @content (list.nth($breakpoints, 1));
+            @content (list.nth($bp, 1));
           }
           $c: $c + 1;
         }
@@ -40,11 +40,11 @@
   } @else {
     
     // Loop through breakpoints
-    @each $breakpoints in $settings {
-      @if (type-of(list.nth($breakpoints, 1)) == "number") {
-        @#{$query} (min-width: #{list.nth($breakpoints, 1)}) {
-          $breakpoints: list.nth($breakpoints, 1);
-          @content ($breakpoints);
+    @each $bp in $settings {
+      @if (type-of(list.nth($bp, 1)) == "number") {
+        @#{$query} (min-width: #{list.nth($bp, 1)}) {
+          $bp: list.nth($bp, 1);
+          @content ($bp);
         }
       }
     }

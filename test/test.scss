@@ -64,13 +64,13 @@ ms.$settings: (
     base: 12px 14px,
     ratio: 1.2,
   ),
-  1000px: (
-    base: 20px,
-    ratio: 1.6,
-  ),
   s: (
     base: 12px,
     ratio: 1.2,
+  ),
+  1000px: (
+    base: 20px,
+    ratio: 1.6,
   ),
   l: (
     base: 20px,
@@ -79,14 +79,14 @@ ms.$settings: (
 );
 
 foo {
-  @include ms.step using ($breakpoints) {
-    bar: ms.step(2, $respond-to: $breakpoints);
+  @include ms.step using ($bp) {
+    bar: ms.step(2, $respond: $bp);
   }
 }
 
 foo {
-  @include ms.step(container) using ($breakpoints) {
-    bar: ms.step(2, $respond-to: $breakpoints);
-    padding: ms.step(2, $respond-to: $breakpoints) ms.step(2);
+  @include ms.step(container) using ($bp) {
+    bar: ms.step(2, $respond: $bp);
+    padding: ms.step(2, $respond: $bp) ms.step(2);
   }
 }

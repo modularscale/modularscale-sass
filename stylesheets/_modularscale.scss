@@ -2,6 +2,7 @@
 @use "sass:list";
 @use "sass:string";
 @use "sass:map";
+@use "sass:meta";
 
 // Defaults and variables
 @import "modularscale/vars";
@@ -14,4 +15,4 @@
 @import "modularscale/step";
 
 // Mixins
-@import "modularscale/write";
+@import "modularscale/respond";

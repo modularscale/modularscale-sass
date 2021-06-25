@@ -1,7 +1,6 @@
 foo {
   bar: 17.28px;
 }
-
 @media (min-width: 400px) {
   foo {
     bar: 14.4px;

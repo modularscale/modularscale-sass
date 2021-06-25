@@ -5,6 +5,7 @@
 @function settings($b: false, $r: false, $t: false, $m: $modularscale) {
   $base: $base;
   $ratio: $ratio;
+  $respond: $respond;
   $thread: map-get($m, $t);
 
   // Override with user settings
@@ -13,6 +14,9 @@
   }
   @if map-get($m, ratio) {
     $ratio: map-get($m, ratio);
+  }
+  @if map-get($m, respond) {
+    $respond: map-get($m, respond);
   }
 
   // Override with thread settings

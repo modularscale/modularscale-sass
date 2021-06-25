@@ -1,58 +1,14 @@
-// Generate calc() function
-// based on Mike Riethmuller's Precise control over responsive typography
-// http://madebymike.com.au/writing/precise-control-responsive-typography/
-@function fluid($val1: 1em, $val2: 1em, $break1: 0, $break2: 0) {
-  $diff: unitless($val2) - unitless($val1);
+@mixin step($mode: map-get($settings, respond)) {
+  // Write fallback styles to broader context
+  @content ($settings);
 
-  // v1 + (v2 - v1) * ( (100vw - b1) / b2 - b1 )
-  @return calc( #{$val1} + #{unitless($val2) - unitless($val1)} * ( ( 100vw - #{$break1}) / #{unitless($break2) - unitless($break1)} ) );
-}
-
-// Main responsive mixin
-@mixin respond($prop, $val, $map: $modularscale, $important: false) {
-  $base: $base;
-  $ratio: $ratio;
-
-  $first-write: true;
-  $last-break: null;
-
-  $important: '';
-
-  @if $important == true {
-    $important: ' !important';
-  }
-
-  // loop through all settings with a breakpoint type value
-  @each $v, $s in $map {
-    @if type-of($v) == number {
-      @if unit($v) != '' {
-
-        // Write out the first value without a media query.
-        @if $first-write {
-          #{$prop}: unquote("#{function($val, $thread: $v, $settings: $map)}#{$important}");
-
-          // Not the first write anymore, reset to false to move on.
-          $first-write: false;
-          $last-break: $v;
-        }
-
-        // Write intermediate breakpoints.
-        @else {
-          @media (min-width: $last-break) and (max-width: $v) {
-            $val1: function($val, $thread: $last-break, $settings: $map);
-            $val2: function($val, $thread: $v, $settings: $map);
-            #{$prop}: unquote("#{fluid($val1,$val2,$last-break,$v)}#{$important}");
-          }
-          $last-break: $v;
-        }
+  // Loop through breakpoints
+  @each $breakpoints in $settings {
+    @if (type-of(list.nth($breakpoints, 1)) == "number") {
+      @media (min-width: list.nth($breakpoints, 1)) {
+        $breakpoints: list.nth($breakpoints, 1);
+        @content ($breakpoints);
       }
-    }
-  }
-
-  // Write the last breakpoint.
-  @if $last-break {
-    @media (min-width: $last-break) {
-      #{$prop}: unquote("#{function($val, $thread: $last-break, $settings: $map)}#{$important}");
     }
   }
 }

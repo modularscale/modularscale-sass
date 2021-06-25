@@ -2,21 +2,10 @@
 @use "sass:list";
 @use "sass:string";
 
-@mixin step {
-  @content (ms.$settings);
-  @each $respond in ms.$settings {
-    @if (type-of(list.nth($respond, 1)) == "number") {
-      @media (min-width: list.nth($respond, 1)) {
-        $respond: list.nth($respond, 2);
-        @content ($respond);
-      }
-    }
-  }
-}
-
 ms.$settings: (
   base: 12px,
   ratio: 1.2,
+  respond: media,
   400px: (
     base: 12px 14px,
     ratio: 1.2,
@@ -35,9 +24,9 @@ ms.$settings: (
   )
 );
 
-@include step using ($respond) {
-  foo {
-    bar: ms.step(2, $settings: $respond);
+foo {
+  @include ms.step using ($breakpoints) {
+    bar: ms.step(2, $respond-to: $breakpoints);
   }
 }
 

@@ -3,9 +3,13 @@
   $base: false,
   $ratio: false,
   $thread: false,
-  $settings: $settings
+  $settings: $settings,
+  $respond-to: false
 ) {
   // Parse settings
+  @if ($respond-to) {
+    $thread: $respond-to;
+  }
   $settings: settings($base, $ratio, $thread, $settings);
   $base: list.nth($settings, 1);
   $ratio: list.nth($settings, 2);

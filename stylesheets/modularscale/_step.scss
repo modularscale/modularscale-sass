@@ -1,43 +1,47 @@
-@function step($v: 0, $base: false, $ratio: false, $thread: false, $settings: $settings) {
-
+@function step(
+  $v: 0,
+  $base: false,
+  $ratio: false,
+  $thread: false,
+  $settings: $settings
+) {
   // Parse settings
-  $settings: settings($base,$ratio,$thread,$settings);
+  $settings: settings($base, $ratio, $thread, $settings);
   $base: list.nth($settings, 1);
   $ratio: list.nth($settings, 2);
-	
-	$base-length: list.length($base);
-	$bases: ();
+
+  $base-length: list.length($base);
+  $bases: ();
 
   // Render target values from settings.
-  @if unit($ratio) != '' {
-    $ratio: target($ratio,$base)
+  @if unit($ratio) != "" {
+    $ratio: target($ratio, $base);
   }
 
   // Fast calc if not multi stranded
-  @if($base-length == 1) {
+  @if ($base-length == 1) {
     @return math.pow($ratio, $v) * $base;
-  }
-	@else {
-		$unit: unit(list.nth($base,1));
-  	$bases: list.nth($base,1);
-		@for $i from 2 through $base-length {
-			$new-base: list.nth($base,$i);
-      @while($new-base > ($ratio * list.nth($base,1))) {
-        $new-base: math.div($new-base,$ratio);
+  } @else {
+    $unit: unit(list.nth($base, 1));
+    $bases: list.nth($base, 1);
+    @for $i from 2 through $base-length {
+      $new-base: list.nth($base, $i);
+      @while ($new-base > ($ratio * list.nth($base, 1))) {
+        $new-base: math.div($new-base, $ratio);
       }
-      @while($new-base < list.nth($base,1)) {
+      @while ($new-base < list.nth($base, 1)) {
         $new-base: ($new-base * $ratio);
       }
-			$bases: list.append($bases,$new-base);
-		}
-		
-		$bases: sort($bases);
-	}
+      $bases: list.append($bases, $new-base);
+    }
+
+    $bases: sort($bases);
+  }
 
   // Find step to use in calculation
   $step: math.floor(math.div($v, $base-length));
   // Find base to use in calculation
   $base: math.round((math.div($v, $base-length) - $step) * $base-length) + 1;
 
-  @return math.pow($ratio, $step) * list.nth($bases,$base);
+  @return math.pow($ratio, $step) * list.nth($bases, $base);
 }

@@ -1,16 +1,17 @@
 @use "sass:math";
 @use "sass:list";
 @use "sass:string";
+@use "sass:map";
 
 // Defaults and variables
-@import 'modularscale/vars';
+@import "modularscale/vars";
 
 // Core functions
-@import 'modularscale/settings';
-@import 'modularscale/strip-units';
-@import 'modularscale/sort';
-@import 'modularscale/target';
-@import 'modularscale/step';
+@import "modularscale/settings";
+@import "modularscale/strip-units";
+@import "modularscale/sort";
+@import "modularscale/target";
+@import "modularscale/step";
 
 // Mixins
-@import 'modularscale/write';
+@import "modularscale/write";

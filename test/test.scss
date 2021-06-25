@@ -1,90 +1,107 @@
 @use '../stylesheets/modularscale' as ms;
+@use "sass:list";
+@use "sass:string";
 
-ms.$settings: (
-  base: 1.2em,
-  ratio: 1.45
-);
-
-.standard {
-	--step-3: #{ms.step(-3)};
-	--step-2: #{ms.step(-2)};
-	--step-1: #{ms.step(-1)};
-	--step0:  #{ms.step(0)};
-	--step1:  #{ms.step(1)};
-	--step2:  #{ms.step(2)};
-	--step3:  #{ms.step(3)};
-}
-
-ms.$settings: (
-  base: 1in 2cm 13pc,
-  ratio: 1.3
-);
-
-.multi-stranded {
-	--step-3: #{ms.step(-3)};
-	--step-2: #{ms.step(-2)};
-	--step-1: #{ms.step(-1)};
-	--step0:  #{ms.step(0)};
-	--step1:  #{ms.step(1)};
-	--step2:  #{ms.step(2)};
-	--step3:  #{ms.step(3)};
-}
-
-ms.$settings: (
-	s: (
-	  base: 12px,
-	  ratio: 1.2
-	),
-	l: (
-	  base: 20px,
-	  ratio: 1.6
-	)
-);
-
-.multi-threaded {
-	--step0-thread-s: #{ms.step(0, $thread: s)};
-	--step1-thread-s: #{ms.step(1, $thread: s)};
-	--step2-thread-s: #{ms.step(2, $thread: s)};
-	--step0-thread-l: #{ms.step(0, $thread: l)};
-	--step1-thread-l: #{ms.step(1, $thread: l)};
-	--step2-thread-l: #{ms.step(2, $thread: l)};
-}
-
-ms.$settings: (
-  base: 1.2em,
-  ratio: 6at3
-);
-
-.target-size {
-	--step-3: #{ms.step(-3)};
-	--step-2: #{ms.step(-2)};
-	--step-1: #{ms.step(-1)};
-	--step0:  #{ms.step(0)};
-	--step1:  #{ms.step(1)};
-	--step2:  #{ms.step(2)};
-	--step3:  #{ms.step(3)};
+@mixin step {
+  @content (ms.$settings);
+  @each $respond in ms.$settings {
+    @if (type-of(list.nth($respond, 1)) == "number") {
+      @media (min-width: list.nth($respond, 1)) {
+        $respond: list.nth($respond, 2);
+        @content ($respond);
+      }
+    }
+  }
 }
 
 ms.$settings: (
   base: 12px,
   ratio: 1.2,
-	400px: (
-	  base: 12px 14px,
-	  ratio: 1.2
-	),
-	900px: (
-	  base: 20px,
-	  ratio: 1.6
-	),
-	small: (
-	  base: 12px,
-	  ratio: 1.2
-	),
-	large: (
-	  base: 20px,
-	  ratio: 1.6
-	)
+  400px: (
+    base: 12px 14px,
+    ratio: 1.2,
+  ),
+  900px: (
+    base: 20px,
+    ratio: 1.6,
+  ),
+  small: (
+    base: 12px,
+    ratio: 1.2,
+  ),
+  large: (
+    base: 20px,
+    ratio: 1.6,
+  )
 );
 
-// @include ms.write();
+@include step using ($respond) {
+  foo {
+    bar: ms.step(2, $settings: $respond);
+  }
+}
 
+// ms.$settings: (
+//   base: 1.2em,
+//   ratio: 1.45
+// );
+//
+// .standard {
+// 	--step-3: #{ms.step(-3)};
+// 	--step-2: #{ms.step(-2)};
+// 	--step-1: #{ms.step(-1)};
+// 	--step0:  #{ms.step(0)};
+// 	--step1:  #{ms.step(1)};
+// 	--step2:  #{ms.step(2)};
+// 	--step3:  #{ms.step(3)};
+// }
+//
+// ms.$settings: (
+//   base: 1in 2cm 13pc,
+//   ratio: 1.3
+// );
+//
+// .multi-stranded {
+// 	--step-3: #{ms.step(-3)};
+// 	--step-2: #{ms.step(-2)};
+// 	--step-1: #{ms.step(-1)};
+// 	--step0:  #{ms.step(0)};
+// 	--step1:  #{ms.step(1)};
+// 	--step2:  #{ms.step(2)};
+// 	--step3:  #{ms.step(3)};
+// }
+//
+// ms.$settings: (
+// 	s: (
+// 	  base: 12px,
+// 	  ratio: 1.2
+// 	),
+// 	l: (
+// 	  base: 20px,
+// 	  ratio: 1.6
+// 	)
+// );
+//
+// .multi-threaded {
+// 	--step0-thread-s: #{ms.step(0, $thread: s)};
+// 	--step1-thread-s: #{ms.step(1, $thread: s)};
+// 	--step2-thread-s: #{ms.step(2, $thread: s)};
+// 	--step0-thread-l: #{ms.step(0, $thread: l)};
+// 	--step1-thread-l: #{ms.step(1, $thread: l)};
+// 	--step2-thread-l: #{ms.step(2, $thread: l)};
+// }
+//
+// ms.$settings: (
+//   base: 1.2em,
+//   ratio: 6at3
+// );
+//
+// .target-size {
+// 	--step-3: #{ms.step(-3)};
+// 	--step-2: #{ms.step(-2)};
+// 	--step-1: #{ms.step(-1)};
+// 	--step0:  #{ms.step(0)};
+// 	--step1:  #{ms.step(1)};
+// 	--step2:  #{ms.step(2)};
+// 	--step3:  #{ms.step(3)};
+// }

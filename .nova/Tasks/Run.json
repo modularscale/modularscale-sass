@@ -6,5 +6,6 @@
     }
   },
   "identifier" : "B980F861-6B28-4214-A80C-189821EAF3AC",
-  "openLogOnRun" : "start"
+  "openLogOnRun" : "start",
+  "persistent" : true
 }

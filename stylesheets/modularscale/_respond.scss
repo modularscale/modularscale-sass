@@ -1,14 +1,79 @@
 @mixin step($mode: map-get($settings, respond)) {
-  // Write fallback styles to broader context
-  @content ($settings);
-
-  // Loop through breakpoints
+  // Setup
+  $id: #{unique-id()};
+  $max: 0;
+  $queries: 0;
+  $c: 0;
+  $query: $mode;
+  // Default query type
+  @if ($query == null) {
+    $query: media;
+  }
+  // Find maximum value
   @each $breakpoints in $settings {
     @if (type-of(list.nth($breakpoints, 1)) == "number") {
-      @media (min-width: list.nth($breakpoints, 1)) {
-        $breakpoints: list.nth($breakpoints, 1);
-        @content ($breakpoints);
-      }
+      $max: list.nth($breakpoints, 1);
+      $queries: $queries + 1;
     }
   }
+  
+  // Write fallback styles to broader context
+  @content ($settings);
+  
+  // Typetura styles
+  @if ($query == typetura) {
+    --tt-key: #{$id};
+    --tt-max: #{$max};
+    @keyframes #{$id} {
+      @each $breakpoints in $settings {
+        @if (type-of(list.nth($breakpoints, 1)) == "number") {
+          
+          $key: list.nth($breakpoints, 1);
+          $keyframe: percentage($key/$max);
+          #{$keyframe} {
+            @content (list.nth($breakpoints, 1));
+          }
+          $c: $c + 1;
+        }
+      }
+    }
+  } @else {
+    
+    // Loop through breakpoints
+    @each $breakpoints in $settings {
+      @if (type-of(list.nth($breakpoints, 1)) == "number") {
+        @#{$query} (min-width: #{list.nth($breakpoints, 1)}) {
+          $breakpoints: list.nth($breakpoints, 1);
+          @content ($breakpoints);
+        }
+      }
+    }
+    
+  }
 }
+
+// @mixin tt($tt...) {
+//   $id: #{unique-id()};
+//   $max: nth(nth($tt, length($tt)), 1);
+//   $c: 0;
+//   --tt-key: #{$id};
+//   --tt-max: #{$max};
+//   @keyframes #{$id} {
+//     @each $key, $values in $tt {
+//       $keyframe: percentage($key/$max);
+//       @if $c == 0 {
+//         @if $key == 0 {
+//           $keyframe: 0%;
+//         } @else {
+//           $keyframe: 0%, percentage($key/$max);
+//         }
+//       }
+//       #{$keyframe} {
+//         @each $prop, $val in $values {
+//           #{$prop}: #{$val};
+//         }
+//       }
+//       $c: $c + 1;
+//     }
+//   }
+// }

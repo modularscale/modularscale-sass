@@ -10,42 +10,36 @@ To get started, you need to select a ratio and a base value. The base value is u
 
 ### NPM
 
-* Terminal: `npm install modularscale-sass --save-dev`
-* SCSS: `@use '~modularscale-sass/stylesheets/modularscale';`
+- Terminal: `npm install modularscale-sass --save-dev`
+- SCSS: `@use '~modularscale-sass/stylesheets/modularscale' as ms;`
 
 ### Sass
 
-* [Download the latest zip](https://github.com/modularscale/modularscale-sass/releases/latest)
-* Extract into your project
-* SCSS: `@import 'modularscale';`
+- [Download the latest zip](https://github.com/modularscale/modularscale-sass/releases/latest)
+- Extract into your project
+- SCSS: `@use '<path-to>/modularscale' as ms;`
 
 ## Using modular scale
 
 #### Initial setup and usage:
 
-The first thing you’ll want to do when you start using modular scale is configure it to meet your needs. This is done in the `$modularscale` map.
+The first thing you’ll want to do when you start using modular scale is configure it to meet your needs. This is done in the `ms.$settings` map.
 
 ```scss
-$modularscale: (
-  base: 1em,
-  ratio: 1.5
-);
+ms.$settings: (base: 1rem, ratio: 1.25);
 ```
 
 You can use any unit you wish as your base and any ratio. Multiple bases can be defined for creating multi stranded scales. There is no limit here to the number of strands you use.
 
 ```scss
-$modularscale: (
-  base: 1em 1.2em 1.6em,
-  ratio: 1.5
-);
+ms.$settings: (base: 1em 1.2em 1.6em, ratio: 1.5);
 ```
 
-Now that we have defined your scale, we can start using it anywhere. Simply call the `ms(n)` function where `n` is the point on the scale.
+Now that we have defined your scale, we can start using it anywhere. Simply call the `ms.step(n)` function where `n` is the point on the scale.
 
 ```scss
 h4 {
-  font-size: ms(3);
+  font-size: ms.step(2);
 }
 ```
 
@@ -56,11 +50,11 @@ Occasionally you may wind up with conflicts. All critical components are name-sp
 Modular scale now supports different settings threads, so you can set up various threads to configure different ratios or breakpoints.
 
 ```scss
-$modularscale: (
+ms.$settings: (
   base: 1em,
   ratio: 1.5,
   a: (
-    ratio: 1.3
+    ratio: 1.3,
   )
 );
 ```
@@ -69,91 +63,106 @@ To call the thread named `a`, call it in your function like so:
 
 ```scss
 h5 {
-  font-size: ms(2, $thread: a);
+  font-size: ms.step(2, $thread: a);
 }
 ```
 
-Your settings will cascade into the threads so no need to redefine a base or ratio if you want to re-use it from the main config.
+## Responsive modular scales
 
-If you wish to put breakpoints into your settings for use with responsive typography then there are helpers in place for this. Simply organize your config with breakpoint values from smallest to largest:
+You will likely want to change your typographic settings as browser or element sizes change. This functionality is built right into modular scale! Configure your breakpoints directly into your settings map and select your responsive mode. [Typetura](https://docs.typetura.com) is the default mode for fluidly responsive text that can respond to various elements in your layout. `media` for media queries and `container` for container queries can also be used.
 
 ```scss
-$modularscale: (
-  base: 12px,
+ms.$settings: (
+  base: 1rem,
   ratio: 1.5,
-  400px: (
-    ratio: 1.2,
-  ),
+  respond: typetura,
+  // typetura, media, or container
+  400px:
+    (
+      // base is inheritied
+      ratio: 1.2,
+    ),
   900px: (
-    base: 16px,
+    base: 1.25rem,
     ratio: 1.3,
   ),
   1200px: (
-    base: 16px,
+    base: 1.5rem,
     ratio: 1.6,
-  ),
+  )
 );
 ```
 
-_Note that you must use the same units for both your type and your breakpoints for this to work_
-
-This technique is based on [Mike Riethmuller’s](https://twitter.com/MikeRiethmuller) [_Precise control over responsive typography_](http://madebymike.com.au/writing/precise-control-responsive-typography/). A fantastic technique for fluidly scaling typography.
-
-Then, call the mixin `@include respond();` and a fully fluid and responsive scale will be generated.
+Nest the code you want to be responsive inside the `ms.step using ($respond)` mixin. Each time you call the `ms.step(#, $respond)` function and you want it to respond, you must pass the `$respond` variable to it.
 
 ```scss
-h2 {
-  @include respond(font-size,5);
+.element {
+  // Nest the responsive mixin inside of your element
+  @include ms.step using ($respond) {
+    // Now write all the styles you want to be responsive
+    // This value will be responsive
+    font-size: ms.step(2, $respond);
+
+    // This will not respond
+    margin-bottom: ms.step(3);
+
+    // top/bottom will be responsive, left/right will not
+    padding: ms.step(2, $respond) ms.step(2);
+  }
 }
 ```
 
-If you do happen to have any values that are just named without numbers they will be ignored by the responsive mixin, it’s smart enough to just pull values that look like breakpoints.
+#### Typetura implementation notes
 
-#### Note on non-integer values
+This requires the [Typetura script](https://github.com/Typetura/Typetura/releases/latest) is installed on your website. Only pixel based breakpoints can be used with this mode. You can still use any unit for your base size(s).
 
-Unfortunately [Sass doesn’t natively support exponents](https://github.com/sass/sass/issues/684#issuecomment-196852515). This isn’t all bad news, you can either use [Compass](http://compass-style.org/), [mathsass](https://github.com/terkel/mathsass), or another library that has a `pow()` function that supports non-integer values and this plugin will pick up on that function and use it. You will then be able to write values like `ms(2.5)`. This is also a prerequisite for _target sizes_ below.
+#### Container query implementation notes
 
-#### Target sizes
+You will need to define a container. Do this with the `@include ms.container;` mixin.
 
-_NOTE: Please see above section on non-integer values before using this feature_
+```scss
+// By default, the container is .modularscale
+@include ms.container;
+// You can define your own container by passing a selector through as an argument
+@include ms.container(".ms-container");
+```
+
+## Target sizes
 
 One of the more difficult parts of setting up your scales is finding a ratio that works for you. In many cases you know what size you want your text to be and what size you want larger headings to be. The `at` helper allows you to plug in a target size into the ratio value and it will generate your ratio.
 
 ```scss
-$modularscale: (
-  base: 16px,
-  ratio: 42at5
-);
+ms.$settings: (base: 16px, ratio: 42at5);
 ```
 
-Now your base is `16px` and when you call `ms(5)` it will be `42px`. Everything in-between falls neatly on a scale created with these two values.
+Now your base is `16px` and when you call `ms.step(5)` it will be `42px`. Everything in-between falls neatly on a scale created with these two values.
 
 ## Ratios
 
 Modular scale includes functions for a number of classic design and musical scale ratios. You can add your own ratios as well.
 
-By default ratio is set to `$fifth`.
+By default ratio is set to `ms.$fifth`.
 
 <table>
   <tr><th>Function         </th><th>Ratio  </th><th>Decimal value</th></tr>
-  <tr><td>$phi             </td><td>1:1.618</td><td>1.618        </td></tr>
-  <tr><td>$golden          </td><td>1:1.618</td><td>1.618        </td></tr>
-  <tr><td>$double-octave   </td><td>1:4    </td><td>4            </td></tr>
-  <tr><td>$major-twelfth   </td><td>1:3    </td><td>3            </td></tr>
-  <tr><td>$major-eleventh  </td><td>3:8    </td><td>2.667        </td></tr>
-  <tr><td>$major-tenth     </td><td>2:5    </td><td>2.5          </td></tr>
-  <tr><td>$octave          </td><td>1:2    </td><td>2            </td></tr>
-  <tr><td>$major-seventh   </td><td>8:15   </td><td>1.875        </td></tr>
-  <tr><td>$minor-seventh   </td><td>9:16   </td><td>1.778        </td></tr>
-  <tr><td>$major-sixth     </td><td>3:5    </td><td>1.667        </td></tr>
-  <tr><td>$minor-sixth     </td><td>5:8    </td><td>1.6          </td></tr>
-  <tr><td>$fifth           </td><td>2:3    </td><td>1.5          </td></tr>
-  <tr><td>$augmented-fourth</td><td>1:√2   </td><td>1.414        </td></tr>
-  <tr><td>$fourth          </td><td>3:4    </td><td>1.333        </td></tr>
-  <tr><td>$major-third     </td><td>4:5    </td><td>1.25         </td></tr>
-  <tr><td>$minor-third     </td><td>5:6    </td><td>1.2          </td></tr>
-  <tr><td>$major-second    </td><td>8:9    </td><td>1.125        </td></tr>
-  <tr><td>$minor-second    </td><td>15:16  </td><td>1.067        </td></tr>
+  <tr><td>ms.$phi             </td><td>1:1.618</td><td>1.618        </td></tr>
+  <tr><td>ms.$golden          </td><td>1:1.618</td><td>1.618        </td></tr>
+  <tr><td>ms.$double-octave   </td><td>1:4    </td><td>4            </td></tr>
+  <tr><td>ms.$major-twelfth   </td><td>1:3    </td><td>3            </td></tr>
+  <tr><td>ms.$major-eleventh  </td><td>3:8    </td><td>2.667        </td></tr>
+  <tr><td>ms.$major-tenth     </td><td>2:5    </td><td>2.5          </td></tr>
+  <tr><td>ms.$octave          </td><td>1:2    </td><td>2            </td></tr>
+  <tr><td>ms.$major-seventh   </td><td>8:15   </td><td>1.875        </td></tr>
+  <tr><td>ms.$minor-seventh   </td><td>9:16   </td><td>1.778        </td></tr>
+  <tr><td>ms.$major-sixth     </td><td>3:5    </td><td>1.667        </td></tr>
+  <tr><td>ms.$minor-sixth     </td><td>5:8    </td><td>1.6          </td></tr>
+  <tr><td>ms.$fifth           </td><td>2:3    </td><td>1.5          </td></tr>
+  <tr><td>ms.$augmented-fourth</td><td>1:√2   </td><td>1.414        </td></tr>
+  <tr><td>ms.$fourth          </td><td>3:4    </td><td>1.333        </td></tr>
+  <tr><td>ms.$major-third     </td><td>4:5    </td><td>1.25         </td></tr>
+  <tr><td>ms.$minor-third     </td><td>5:6    </td><td>1.2          </td></tr>
+  <tr><td>ms.$major-second    </td><td>8:9    </td><td>1.125        </td></tr>
+  <tr><td>ms.$minor-second    </td><td>15:16  </td><td>1.067        </td></tr>
 </table>
 
 ## [Changelog](https://github.com/Team-Sass/modular-scale/releases)

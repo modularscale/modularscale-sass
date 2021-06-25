@@ -79,8 +79,8 @@ ms.$settings: (
 );
 
 .typetura {
-  @include ms.step using ($bp) {
-    font-size: ms.step(2, $respond: $bp);
+  @include ms.step using ($respond) {
+    font-size: ms.step(2, $respond);
   }
 }
 
@@ -108,15 +108,15 @@ ms.$settings: (
 @include ms.container(".ms-container");
 
 .container {
-  @include ms.step(container) using ($bp) {
-    font-size: ms.step(2, $respond: $bp);
-    padding: ms.step(2, $respond: $bp) ms.step(2);
+  @include ms.step(container) using ($respond) {
+    font-size: ms.step(2, $respond);
+    padding: ms.step(2, $respond) ms.step(2);
   }
 }
 
 .foo {
-  @include ms.step(container) using ($bp) {
-    font-size: ms.step(2, $respond: $bp);
-    padding: ms.step(2, $respond: $bp) ms.step(2);
+  @include ms.step(container) using ($respond) {
+    font-size: ms.step(2, $respond);
+    padding: ms.step(2, $respond) ms.step(2);
   }
 }

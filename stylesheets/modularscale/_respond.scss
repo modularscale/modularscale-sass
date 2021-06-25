@@ -7,7 +7,7 @@
   $query: $mode;
   // Default query type
   @if ($query == null) {
-    $query: media;
+    $query: typetura;
   }
   // Find maximum value
   @each $bp in $settings {

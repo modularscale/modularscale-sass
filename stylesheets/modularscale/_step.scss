@@ -1,10 +1,10 @@
 @function step(
   $v: 0,
+  $respond: false,
   $base: false,
   $ratio: false,
   $thread: false,
-  $settings: $settings,
-  $respond: false
+  $settings: $settings
 ) {
   // Parse settings
   @if ($respond) {

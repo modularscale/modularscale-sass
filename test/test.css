@@ -39,10 +39,10 @@
 
 .typetura {
   font-size: 17.28px;
-  --tt-key: ufj3zmg;
+  --tt-key: ufj3zsf;
   --tt-max: 1000;
 }
-@keyframes ufj3zmg {
+@keyframes ufj3zsf {
   40% {
     font-size: 14.4px;
   }

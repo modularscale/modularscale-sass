@@ -1,9 +1,48 @@
+.standard {
+  --step-3: 0.3936200746em;
+  --step-2: 0.5707491082em;
+  --step-1: 0.8275862069em;
+  --step0: 1.2em;
+  --step1: 1.74em;
+  --step2: 2.523em;
+  --step3: 3.65835em;
+}
+
+.multi-stranded {
+  --step-3: 0.7692307692in;
+  --step-2: 2cm;
+  --step-1: 5.9171597633pc;
+  --step0: 1in;
+  --step1: 2.6cm;
+  --step2: 7.6923076923pc;
+  --step3: 1.3in;
+}
+
+.multi-threaded {
+  --step0-thread-s: 12px;
+  --step1-thread-s: 14.4px;
+  --step2-thread-s: 17.28px;
+  --step0-thread-l: 20px;
+  --step1-thread-l: 32px;
+  --step2-thread-l: 51.2px;
+}
+
+.target-size {
+  --step-3: 0.24em;
+  --step-2: 0.4103942272em;
+  --step-1: 0.7017642572em;
+  --step0: 1.2em;
+  --step1: 2.051971136em;
+  --step2: 3.5088212859em;
+  --step3: 6em;
+}
+
 .typetura {
   font-size: 17.28px;
-  --tt-key: ubhbh0h;
+  --tt-key: ufj3zmg;
   --tt-max: 1000;
 }
-@keyframes ubhbh0h {
+@keyframes ufj3zmg {
   40% {
     font-size: 14.4px;
   }

@@ -29,7 +29,7 @@
         @if (type-of(list.nth($bp, 1)) == "number") {
           
           $key: list.nth($bp, 1);
-          $keyframe: percentage($key/$max);
+          $keyframe: percentage(math.div($key, $max));
           #{$keyframe} {
             @content (list.nth($bp, 1));
           }

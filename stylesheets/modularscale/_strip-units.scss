@@ -3,5 +3,5 @@
 // It is used here because calc() doesn't do unit logic
 // AND target ratios use units as a hack to get a number.
 @function unitless($val) {
-  @return ($val / ($val - $val + 1));
+  @return math.div($val, $val - $val + 1);
 }

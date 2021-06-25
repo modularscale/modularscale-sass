@@ -23,7 +23,7 @@
   // Typetura styles
   @if ($query == typetura) {
     --tt-key: #{$id};
-    --tt-max: #{$max};
+    --tt-max: #{unitless($max)};
     @keyframes #{$id} {
       @each $bp in $settings {
         @if (type-of(list.nth($bp, 1)) == "number") {
@@ -37,7 +37,18 @@
         }
       }
     }
-  } @else {
+  } @else if ($query == container) {    
+      $query: $query + ' modularscale';
+            // Loop through breakpoints
+      @each $bp in $settings {
+        @if (type-of(list.nth($bp, 1)) == "number") {
+          @#{$query} (min-width: #{list.nth($bp, 1)}) {
+            $bp: list.nth($bp, 1);
+            @content ($bp);
+          }
+        }
+      }
+    } @else {
     
     // Loop through breakpoints
     @each $bp in $settings {
@@ -52,28 +63,12 @@
   }
 }
 
-// @mixin tt($tt...) {
-//   $id: #{unique-id()};
-//   $max: nth(nth($tt, length($tt)), 1);
-//   $c: 0;
-//   --tt-key: #{$id};
-//   --tt-max: #{$max};
-//   @keyframes #{$id} {
-//     @each $key, $values in $tt {
-//       $keyframe: percentage($key/$max);
-//       @if $c == 0 {
-//         @if $key == 0 {
-//           $keyframe: 0%;
-//         } @else {
-//           $keyframe: 0%, percentage($key/$max);
-//         }
-//       }
-//       #{$keyframe} {
-//         @each $prop, $val in $values {
-//           #{$prop}: #{$val};
-//         }
-//       }
-//       $c: $c + 1;
-//     }
-//   }
-// }
+@mixin container($selector: '.modularscale') {
+  @at-root {
+    #{$selector} {
+      container-name: modularscale;
+      container-type: inline-size;
+    }
+    $container-write: true;
+  }
+}

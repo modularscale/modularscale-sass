@@ -43,7 +43,13 @@ h4 {
 }
 ```
 
-Occasionally you may wind up with conflicts. All critical components are name-spaced to avoid conflicts with other libraries. If you do run into a conflict, `function()` is the no-conflict function.
+##### Avoiding scoped styles
+
+You can import the modular scale along with a configuration. Pass the unprefixed settings into the use function.
+
+```scss
+@use '../stylesheets/modularscale' as ms with ($settings: (base: 1em, ratio: 1.5));
+```
 
 #### Multiple scale threads
 

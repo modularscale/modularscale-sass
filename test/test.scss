@@ -1,6 +1,4 @@
-@use '../stylesheets/modularscale' as ms;
-
-ms.$settings: (base: 1.2em, ratio: 1.45);
+@use '../stylesheets/modularscale' as ms with ($base: 1.2345em, $ratio: 1.1);
 
 .standard {
   --step-3: #{ms.step(-3)};

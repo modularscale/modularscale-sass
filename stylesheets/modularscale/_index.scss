@@ -1,0 +1,6 @@
+@forward 'files' with (
+	$base: 1em !default,
+	$ratio: 1.5 !default,
+	$settings: () !default,
+	$respond: media !default
+);

@@ -1,11 +1,11 @@
 .standard {
-  --step-3: 0.3936200746em;
-  --step-2: 0.5707491082em;
-  --step-1: 0.8275862069em;
-  --step0: 1.2em;
-  --step1: 1.74em;
-  --step2: 2.523em;
-  --step3: 3.65835em;
+  --step-3: 0.9274981217em;
+  --step-2: 1.0202479339em;
+  --step-1: 1.1222727273em;
+  --step0: 1.2345em;
+  --step1: 1.35795em;
+  --step2: 1.493745em;
+  --step3: 1.6431195em;
 }
 
 .multi-stranded {
@@ -39,10 +39,10 @@
 
 .typetura {
   font-size: 17.28px;
-  --tt-key: ufj3zsf;
+  --tt-key: uaxt0j4;
   --tt-max: 1000;
 }
-@keyframes ufj3zsf {
+@keyframes uaxt0j4 {
   40% {
     font-size: 14.4px;
   }

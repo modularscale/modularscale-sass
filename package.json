@@ -4,7 +4,9 @@
   "description": "A tool to help web designers size their type in a more meaningful way.",
   "main": "stylesheets/_modularscale.scss",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "post-test": "git diff --exit-code tests/results.css",
+    "test": "npx sass --no-source-map --stop-on-error tests/index.scss:tests/results.css",
+    "test:watch": "npx sass --watch --no-source-map --stop-on-error tests/index.scss:tests/results.css"
   },
   "repository": {
     "type": "git",

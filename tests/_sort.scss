@@ -1,9 +1,9 @@
-@use '../node_modules/sass-true' as *;
+@use '../node_modules/sass-true' as true;
 
 @use '../stylesheets/modularscale/sort' as *;
 
-@include describe('sort [function]') {
-  @include it('It sorts a list of numbers') {
-    @include assert-equal(sort(1 3 5 2 9), (1 2 3 5 9));
+@include true.describe('sort [function]') {
+  @include true.it('It sorts a list of numbers') {
+    @include true.assert-equal(sort(1 3 5 2 9), (1 2 3 5 9));
   }
 }

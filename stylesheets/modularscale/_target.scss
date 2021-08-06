@@ -1,3 +1,5 @@
+@use "sass:string";
+
 // Convert number string to number
 @function to-num($n) {
   $length: string.length($n);
@@ -36,6 +38,11 @@
       $return: $return + 9;
     }
   }
+
+  @if string.slice($n, 1, 1) == '-' {
+    $return: $return * -1;
+  }
+
   @return $return;
 }
 

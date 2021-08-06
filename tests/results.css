@@ -2,7 +2,8 @@
 /* # Module: sort [function] */
 /* ------------------------- */
 /* Test: It sorts a list of numbers */
-/*   ✔ [assert-equal] It sorts a list of numbers */
+/*   ✔ [assert-equal] separated by spaces */
+/*   ✔ [assert-equal] separated by commas */
 /*  */
 /*  */
 /* # Module: strip-unit [function] */

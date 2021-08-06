@@ -9,8 +9,8 @@
 /* # Module: strip-unit [function] */
 /* ------------------------------- */
 /* Test: It remove units from numbers */
-/*   ✔ [assert-equal] It remove units from numbers */
-/*   ✔ [assert-equal] It remove units from numbers */
-/*   ✔ [assert-equal] It remove units from numbers */
+/*   ✔ [assert-equal] when positives */
+/*   ✔ [assert-equal] when negatives */
+/*   ✔ [assert-equal] when percentages */
 /*  */
 /*  */

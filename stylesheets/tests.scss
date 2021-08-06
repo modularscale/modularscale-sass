@@ -5,3 +5,5 @@
 @use 'tests/sort';
 @use 'tests/strip-unit';
 @use 'tests/target';
+
+@include true.report;

@@ -23,7 +23,7 @@
   // Typetura styles
   @if ($query == typetura) {
     --tt-key: #{$id};
-    --tt-max: #{unitless($max)};
+    --tt-max: #{strip-unit($max)};
     @keyframes #{$id} {
       @each $bp in $settings {
         @if (type-of(list.nth($bp, 1)) == "number") {

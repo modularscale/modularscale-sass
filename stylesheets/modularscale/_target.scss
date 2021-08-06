@@ -46,8 +46,8 @@
   }
   // Convert to string
   $t: $t + "";
-  // Remove base units to calulate ratio
-  $b: unitless(nth($b, 1));
+  // Remove base units to calculate ratio
+  $b: strip-unit(nth($b, 1));
   // Find where 'at' is in the string
   $at: str-index($t, "at");
 

@@ -1,6 +1,6 @@
-@use '../node_modules/sass-true' as true;
+@use '../../node_modules/sass-true' as true;
 
-@use '../stylesheets/modularscale/sort' as *;
+@use '../modularscale/sort' as *;
 
 @include true.describe('sort [function]') {
   @include true.it('It sorts a list of numbers') {

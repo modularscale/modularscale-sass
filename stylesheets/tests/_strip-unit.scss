@@ -1,6 +1,6 @@
-@use '../node_modules/sass-true' as true;
+@use '../../node_modules/sass-true' as true;
 
-@use '../stylesheets/modularscale/strip-unit'as *;
+@use '../modularscale/strip-unit' as *;
 
 @include true.describe('strip-unit [function]') {
   @include true.it('It remove units from numbers') {

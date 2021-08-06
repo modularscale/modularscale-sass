@@ -1,6 +1,6 @@
-@use '../node_modules/sass-true' as true;
+@use '../../node_modules/sass-true' as true;
 
-@use '../stylesheets/modularscale/target' as *;
+@use '../modularscale/target' as *;
 
 @include true.describe('to-num [function]') {
   @include true.it('It parses string digits as numbers') {

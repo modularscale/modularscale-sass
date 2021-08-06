@@ -4,9 +4,9 @@
   "description": "A tool to help web designers size their type in a more meaningful way.",
   "main": "stylesheets/_modularscale.scss",
   "scripts": {
-    "post-test": "git diff --exit-code tests/results.css",
-    "test": "npx sass --no-source-map tests/index.scss:tests/results.css",
-    "test:watch": "npx sass --watch --no-source-map tests/index.scss:tests/results.css"
+    "pretest": "npx sass --no-source-map stylesheets:test--results",
+    "test": "git diff --exit-code test-results/tests.css",
+    "test:watch": "npx sass --watch --no-source-map stylesheets:test--results"
   },
   "repository": {
     "type": "git",

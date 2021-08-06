@@ -1,0 +1,11 @@
+@use '../../node_modules/sass-true' as true;
+
+@use '../modularscale/step' as * with ($settings: (base: 1em, ratio: 1.5));
+
+@include true.describe('step [function]') {
+  @include true.it('It returns the size based at the provided step') {
+    @include true.assert-equal(step(3), 3.375em, 'when positive', true);
+    @include true.assert-equal(step(-5), 0.1316872428em, 'when negative', true);
+    @include true.assert-equal(step(7.5), 20.925914326em, 'when float', true);
+  }
+}

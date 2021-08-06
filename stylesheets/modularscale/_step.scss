@@ -1,3 +1,12 @@
+@use "sass:list";
+@use 'sass:math';
+
+@use 'settings' as *;
+@use 'sort' as *;
+@use 'target' as *;
+
+$settings: $settings !default;
+
 @function step(
   $v: 0,
   $respond: false,
@@ -13,12 +22,11 @@
   $settings: settings($base, $ratio, $thread, $settings);
   $base: list.nth($settings, 1);
   $ratio: list.nth($settings, 2);
-
   $base-length: list.length($base);
   $bases: ();
 
   // Render target values from settings.
-  @if unit($ratio) != "" {
+  @if math.unit($ratio) != "" {
     $ratio: target($ratio, $base);
   }
 
@@ -26,7 +34,7 @@
   @if ($base-length == 1) {
     @return math.pow($ratio, $v) * $base;
   } @else {
-    $unit: unit(list.nth($base, 1));
+    $unit: math.unit(list.nth($base, 1));
     $bases: list.nth($base, 1);
     @for $i from 2 through $base-length {
       $new-base: list.nth($base, $i);
@@ -44,6 +52,7 @@
 
   // Find step to use in calculation
   $step: math.floor(math.div($v, $base-length));
+
   // Find base to use in calculation
   $base: math.round((math.div($v, $base-length) - $step) * $base-length) + 1;
 

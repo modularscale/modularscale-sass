@@ -14,6 +14,14 @@
 /*   ✔ [assert-equal] when percentages */
 /*  */
 /*  */
+/* # Module: step [function] */
+/* ------------------------- */
+/* Test: It returns the size based at the provided step */
+/*   ✔ [assert-equal] when positive */
+/*   ✔ [assert-equal] when negative */
+/*   ✔ [assert-equal] when float */
+/*  */
+/*  */
 /* # Module: to-num [function] */
 /* --------------------------- */
 /* Test: It parses string digits as numbers */
@@ -34,11 +42,11 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 4 Tests: */
-/* - 4 Passed */
+/* 5 Tests: */
+/* - 5 Passed */
 /* - 0 Failed */
 /* Stats: */
-/* - 4 Modules */
-/* - 4 Tests */
-/* - 14 Assertions */
+/* - 5 Modules */
+/* - 5 Tests */
+/* - 17 Assertions */
 /* -------------------- */

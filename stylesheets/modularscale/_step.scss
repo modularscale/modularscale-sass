@@ -25,6 +25,16 @@ $settings: $settings !default;
   $base-length: list.length($base);
   $bases: ();
 
+  // if the step provided is actually a target and has the same unit as the base,
+  // we can figured the closest integer step on the current scale to be used.
+  // it's for the cases when the designer provided all values as pixels and not respecting
+  // the modular scale to the "number", but getting close.
+  // Designers don't like float numbers.
+  @if (math.unit($v) == math.unit($base)) {
+    $v: math.log(math.div($v, $base), $ratio);
+    $v: math.round($v);
+  }
+
   // Render target values from settings.
   @if math.unit($ratio) != "" {
     $ratio: target($ratio, $base);

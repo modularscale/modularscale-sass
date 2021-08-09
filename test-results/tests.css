@@ -6,20 +6,23 @@
 /*   ✔ [assert-equal] separated by commas */
 /*  */
 /*  */
-/* # Module: strip-unit [function] */
-/* ------------------------------- */
-/* Test: It remove units from numbers */
-/*   ✔ [assert-equal] when positives */
-/*   ✔ [assert-equal] when negatives */
-/*   ✔ [assert-equal] when percentages */
-/*  */
-/*  */
 /* # Module: step [function] */
 /* ------------------------- */
 /* Test: It returns the size based at the provided step */
 /*   ✔ [assert-equal] when positive */
 /*   ✔ [assert-equal] when negative */
 /*   ✔ [assert-equal] when float */
+/*   ✔ [assert-equal] when reversed and approximated to 5.0625em, being 5em */
+/*   ✔ [assert-equal] when reversed and approximated to 54px, being 56px */
+/*   ✔ [assert-equal] when reversed and approximated to 182.25px, being 180px */
+/*  */
+/*  */
+/* # Module: strip-unit [function] */
+/* ------------------------------- */
+/* Test: It remove units from numbers */
+/*   ✔ [assert-equal] when positives */
+/*   ✔ [assert-equal] when negatives */
+/*   ✔ [assert-equal] when percentages */
 /*  */
 /*  */
 /* # Module: to-num [function] */
@@ -48,5 +51,5 @@
 /* Stats: */
 /* - 5 Modules */
 /* - 5 Tests */
-/* - 17 Assertions */
+/* - 20 Assertions */
 /* -------------------- */

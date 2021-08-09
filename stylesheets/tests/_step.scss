@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @use '../../node_modules/sass-true' as true;
 
 @use '../modularscale/step' as * with ($settings: (base: 1em, ratio: 1.5));
@@ -7,5 +9,13 @@
     @include true.assert-equal(step(3), 3.375em, 'when positive', true);
     @include true.assert-equal(step(-5), 0.1316872428em, 'when negative', true);
     @include true.assert-equal(step(7.5), 20.925914326em, 'when float', true);
+
+    @include true.assert-equal(step(5em), 5.0625em, 'when reversed and approximated to 5.0625em, being 5em', true);
+
+    $target: math.div(56px, 16px)*1em;
+    @include true.assert-equal(step($target), 3.375em, 'when reversed and approximated to 54px, being 56px', true);
+
+    $target: math.div(180px, 16px)*1em;
+    @include true.assert-equal(step($target), 11.390625em, 'when reversed and approximated to 182.25px, being 180px', true);
   }
 }

@@ -15,6 +15,11 @@
 /*   ✔ [assert-equal] when reversed and approximated to 5.0625em, being 5em */
 /*   ✔ [assert-equal] when reversed and approximated to 54px, being 56px */
 /*   ✔ [assert-equal] when reversed and approximated to 182.25px, being 180px */
+/*   ✔ [assert-equal] when reversed and approximated to 170.86px, being 170px and using a percentage base */
+/*   ✔ [assert-equal] when reversed and approximated to 50.63px, being 50px and using a unusual percentage base */
+/*   ✔ [assert-equal] when reversed, approximated and lesser than 41.053px, being 40px, and using a base set on pixels */
+/*   ✔ [assert-equal] when reversed, approximated and greater than 28.833px, being 30px */
+/*   ✔ [assert-equal] when reversed and approximated to 12.642px, being 12px, lesser than the base */
 /*  */
 /*  */
 /* # Module: strip-unit [function] */
@@ -51,5 +56,5 @@
 /* Stats: */
 /* - 5 Modules */
 /* - 5 Tests */
-/* - 20 Assertions */
+/* - 25 Assertions */
 /* -------------------- */

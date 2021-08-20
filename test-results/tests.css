@@ -30,15 +30,6 @@
 /*   ✔ [assert-equal] when percentages */
 /*  */
 /*  */
-/* # Module: to-num [function] */
-/* --------------------------- */
-/* Test: It parses string digits as numbers */
-/*   ✔ [assert-equal] when 0 */
-/*   ✔ [assert-equal] when positive padded */
-/*   ✔ [assert-equal] when negative */
-/*   ✔ [assert-equal] when positive */
-/*  */
-/*  */
 /* # Module: target [function] */
 /* --------------------------- */
 /* Test: It finds a ratio based on a target value */
@@ -47,6 +38,15 @@
 /*   ✔ [assert-equal] It finds a ratio based on a target value */
 /*   ✔ [assert-equal] It finds a ratio based on a target value */
 /*   ✔ [assert-equal] It finds a ratio based on a target value */
+/*  */
+/*  */
+/* # Module: to-num [function] */
+/* --------------------------- */
+/* Test: It parses string digits as numbers */
+/*   ✔ [assert-equal] when 0 */
+/*   ✔ [assert-equal] when positive padded */
+/*   ✔ [assert-equal] when negative */
+/*   ✔ [assert-equal] when positive */
 /*  */
 /*  */
 /* # SUMMARY ---------- */

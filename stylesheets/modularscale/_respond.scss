@@ -1,4 +1,11 @@
-@mixin step($mode: map-get($settings, respond)) {
+@use 'sass:list';
+@use 'sass:math';
+
+@use 'strip-unit' as *;
+
+$_settings: () !default;
+
+@mixin step($mode: map-get($_settings, respond)) {
   // Setup
   $id: #{unique-id()};
   $max: 0;
@@ -39,7 +46,7 @@
     }
   } @else if ($query == container) {
       $query: $query + ' modularscale';
-            // Loop through breakpoints
+      // Loop through breakpoints
       @each $bp in $settings {
         @if (type-of(list.nth($bp, 1)) == "number") {
           @#{$query} (min-width: #{list.nth($bp, 1)}) {

@@ -2,10 +2,10 @@
 // Settings should cascade down like you would expect in CSS.
 // More specific overrides previous settings.
 
-@function settings($b: false, $r: false, $t: false, $m: $modularscale) {
-  $base: $base;
-  $ratio: $ratio;
-  $respond: $respond;
+@function settings($b: false, $r: false, $t: false, $m: ()) {
+  $base: 1em;
+  $ratio: 1.5;
+  $respond: media;
   $thread: map-get($m, $t);
 
   // Override with user settings

@@ -1,8 +1,9 @@
 @use '../node_modules/sass-true' as true;
 
 @use 'tests/sort';
-@use 'tests/strip-unit';
 @use 'tests/step';
+@use 'tests/strip-unit';
 @use 'tests/target';
+@use 'tests/to-num';
 
 @include true.report;

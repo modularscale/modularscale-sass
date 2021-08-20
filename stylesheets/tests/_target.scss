@@ -2,21 +2,12 @@
 
 @use '../modularscale/target' as *;
 
-@include true.describe('to-num [function]') {
-  @include true.it('It parses string digits as numbers') {
-    @include true.assert-equal(to-num('000'), 0, 'when 0');
-    @include true.assert-equal(to-num('0339'), 339, 'when positive padded');
-    @include true.assert-equal(to-num('-53150'), -53150, 'when negative');
-    @include true.assert-equal(to-num('7321'), 7321, 'when positive');
-  }
-}
-
 @include true.describe('target [function]') {
   @include true.it('It finds a ratio based on a target value') {
+    @include true.assert-equal(target('18at1', 16px), 1.125);
+    @include true.assert-equal(target('25at2', 16px), 1.25);
+    @include true.assert-equal(target('81at4', 16px), 1.5);
     @include true.assert-equal(target('128at3', 16px), 2);
     @include true.assert-equal(target('80at3', 10px), 2);
-    @include true.assert-equal(target('81at4', 16px), 1.5);
-    @include true.assert-equal(target('25at2', 16px), 1.25);
-    @include true.assert-equal(target('18at1', 16px), 1.125);
   }
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "pretest": "npx sass --no-source-map stylesheets:test-results",
     "test": "git diff --exit-code test-results/tests.css",
-    "test:watch": "npx sass --watch --no-source-map stylesheets:test-results"
+    "test:watch": "npm run pretest && npx sass --watch --no-source-map stylesheets:test-results"
   },
   "repository": {
     "type": "git",

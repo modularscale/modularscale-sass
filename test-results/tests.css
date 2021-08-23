@@ -1,4 +1,19 @@
 @charset "UTF-8";
+/* # Module: settings [function] */
+/* ----------------------------- */
+/* Test: It parses settings starting with defaults */
+/*   ✔ [assert-equal] It parses settings starting with defaults */
+/*   ✔ [assert-equal] It parses settings starting with defaults */
+/*   ✔ [assert-equal] It parses settings starting with defaults */
+/*   ✔ [assert-equal] It parses settings starting with defaults */
+/*   ✔ [assert-equal] It parses settings starting with defaults */
+/*   ✔ [assert-equal] It parses settings starting with defaults */
+/*   ✔ [assert-equal] It parses settings starting with defaults */
+/*   ✔ [assert-equal] It parses settings starting with defaults */
+/*   ✔ [assert-equal] It parses settings starting with defaults */
+/*   ✔ [assert-equal] It parses settings starting with defaults */
+/*  */
+/*  */
 /* # Module: sort [function] */
 /* ------------------------- */
 /* Test: It sorts a list of numbers */
@@ -53,11 +68,11 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 5 Tests: */
-/* - 5 Passed */
+/* 6 Tests: */
+/* - 6 Passed */
 /* - 0 Failed */
 /* Stats: */
-/* - 5 Modules */
-/* - 5 Tests */
-/* - 28 Assertions */
+/* - 6 Modules */
+/* - 6 Tests */
+/* - 38 Assertions */
 /* -------------------- */

@@ -25,6 +25,7 @@
 /* ------------------------- */
 /* Test: It returns the size based at the provided step */
 /*   ✔ [assert-equal] when positive */
+/*   ✔ [assert-equal] when using multiple scales */
 /*   ✔ [assert-equal] when negative */
 /*   ✔ [assert-equal] when float */
 /*   ✔ [assert-equal] when reversed and approximated to 5.0625em, being 5em */
@@ -74,5 +75,5 @@
 /* Stats: */
 /* - 6 Modules */
 /* - 6 Tests */
-/* - 38 Assertions */
+/* - 39 Assertions */
 /* -------------------- */

@@ -8,6 +8,10 @@
   @include true.it('It returns the size based at the provided step') {
     @include true.assert-equal(step(3), 3.375em, 'when positive', true);
 
+    @include true.assert-equal(step(5, $thread: test,
+      $settings: (base: 1em, ratio: 1.5, test: (ratio: 1.618 ))
+    ), 11.0890051809em, 'when using multiple scales', true);
+
     @include true.assert-equal(step(-5), 0.1316872428em, 'when negative', true);
 
     @include true.assert-equal(step(7.5), 20.925914326em, 'when float', true);

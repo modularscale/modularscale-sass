@@ -2,40 +2,26 @@
 
 @use '../../node_modules/sass-true' as true;
 
-@use '../modularscale/step'as * with ($_settings: (base: 1em, ratio: 1.5));
+@use '../modularscale/step' as * with ($_settings: (base: 1em, ratio: 1.5));
 
 @include true.describe('step [function]') {
   @include true.it('It returns the size based at the provided step') {
     @include true.assert-equal(step(3), 3.375em, 'when positive', true);
-
     @include true.assert-equal(step(5, $thread: test,
-      $settings: (base: 1em, ratio: 1.5, test: (ratio: 1.618 ))
-    ), 11.0890051809em, 'when using multiple scales', true);
-
+    $settings: (base: 1em, ratio: 1.5, test: (ratio: 1.618 ))
+  ), 11.0890051809em, 'when using multiple scales', true);
     @include true.assert-equal(step(-5), 0.1316872428em, 'when negative', true);
-
     @include true.assert-equal(step(7.5), 20.925914326em, 'when float', true);
-
     @include true.assert-equal(step(5em), 5.0625em, 'when reversed and approximated to 5.0625em, being 5em', true);
-
     @include true.assert-equal(step(56px), 3.375em, 'when reversed and approximated to 54px, being 56px', true);
-
     @include true.assert-equal(step(180px), 11.390625em, 'when reversed and approximated to 182.25px, being 180px', true);
-
     @include true.assert-equal(step(170px, null, 62.5%), 1067.87109375%, 'when reversed and approximated to 170.86px, being 170px and using a percentage base', true);
-
     @include true.assert-equal(step(50px, null, 60%), 303.75%, 'when reversed and approximated to 50.63px, being 50px and using a unusual percentage base', true);
-
     @include true.assert-equal(step(40px, null, 16px, 1.125), 41.0525522232px, 'when reversed, approximated and lesser than 41.053px, being 40px, and using a base set on pixels', true);
-
     @include true.assert-equal(step(30px, null, 1rem, 1.125), 1.8020324707rem, 'when reversed, approximated and greater than 28.833px, being 30px', true);
-
     @include true.assert-equal(step(17px, null, 1rem, 1.125), 1.125rem, 'when reversed, and half way to 16px and 18px, being 17px', true);
-
     @include true.assert-equal(step(15.5px, null, 1rem, 1.125), 1rem, 'when reversed, approximated and lesser than 16px, being 15.5px', true);
-
     @include true.assert-equal(step(15px, null, 1rem, 1.125), 0.8888888889rem, 'when reversed, approximated and greater than 14.2222222222px, being 15px', true);
-
     @include true.assert-equal(step(12px, null, 1rem, 1.125), 0.7901234568rem, 'when reversed and approximated to 12.642px, being 12px, lesser than the base', true);
   }
 }

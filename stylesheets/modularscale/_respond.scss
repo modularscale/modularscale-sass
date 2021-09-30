@@ -5,7 +5,7 @@
 
 $_settings: () !default;
 
-@mixin step($mode: map-get($_settings, respond)) {
+@mixin step($mode: map-get($_settings, 'respond')) {
   // Setup
   $id: #{unique-id()};
   $max: 0;
@@ -17,7 +17,7 @@ $_settings: () !default;
     $query: typetura;
   }
   // Find maximum value
-  @each $bp in $settings {
+  @each $bp in $_settings {
     @if (type-of(list.nth($bp, 1)) == "number") {
       $max: list.nth($bp, 1);
       $queries: $queries + 1;
@@ -25,14 +25,14 @@ $_settings: () !default;
   }
 
   // Write fallback styles to broader context
-  @content ($settings);
+  @content ($_settings);
 
   // Typetura styles
   @if ($query == typetura) {
     --tt-key: #{$id};
     --tt-max: #{strip-unit($max)};
     @keyframes #{$id} {
-      @each $bp in $settings {
+      @each $bp in $_settings {
         @if (type-of(list.nth($bp, 1)) == "number") {
 
           $key: list.nth($bp, 1);
@@ -47,7 +47,7 @@ $_settings: () !default;
   } @else if ($query == container) {
       $query: $query + ' modularscale';
       // Loop through breakpoints
-      @each $bp in $settings {
+      @each $bp in $_settings {
         @if (type-of(list.nth($bp, 1)) == "number") {
           @#{$query} (min-width: #{list.nth($bp, 1)}) {
             $bp: list.nth($bp, 1);
@@ -58,7 +58,7 @@ $_settings: () !default;
     } @else {
 
     // Loop through breakpoints
-    @each $bp in $settings {
+    @each $bp in $_settings {
       @if (type-of(list.nth($bp, 1)) == "number") {
         @#{$query} (min-width: #{list.nth($bp, 1)}) {
           $bp: list.nth($bp, 1);

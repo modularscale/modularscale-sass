@@ -1,23 +1,23 @@
-@use "sass:list";
-@use "sass:math";
-@use "sass:string";
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:string';
 
-@use "strip-unit" as *;
-@use "to-num" as *;
+@use 'strip-unit' as *;
+@use 'to-num' as *;
 
 // Find a ratio based on a target value
 @function target($t, $b) {
   @if (list.length($b) > 1) {
-    @error "You are currently using multiple bases in your modular scale: #{$b}. When targeting a value for your ratio, please use a single base.";
+    @error 'You are currently using multiple bases in your modular scale: #{$b}. When targeting a value for your ratio, please use a single base.';
   }
   // Convert to string
-  $t: $t + "";
+  $t: $t + '';
 
   // Remove base units to calculate ratio
   $b: strip-unit(nth($b, 1));
 
   // Find where 'at' is in the string
-  $at: string.index($t, "at");
+  $at: string.index($t, 'at');
 
   // Slice the value and target out
   // and convert strings to numbers

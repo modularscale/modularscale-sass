@@ -1,4 +1,4 @@
-@use "sass:list";
+@use 'sass:list';
 @use 'sass:math';
 
 @use 'settings' as *;
@@ -26,7 +26,7 @@ $_settings: () !default;
   $bases: ();
 
   // Render target values from settings.
-  @if math.unit($ratio) != "" {
+  @if math.unit($ratio) != '' {
     $ratio: target($ratio, $base);
   }
 
@@ -39,9 +39,8 @@ $_settings: () !default;
 
     // convert target pixels to the unit used on $base
     @if (not math.compatible($v, $base)) {
-
       @if (math.unit($v) != 'px') {
-        @error "To match incompatible units, the target one needs to be `px`, as we use 16px as root size. Target provided: #{$v}.";
+        @error 'To match incompatible units, the target one needs to be `px`, as we use 16px as root size. Target provided: #{$v}.';
       }
 
       @if (math.unit($base) == 'rem') {
@@ -64,11 +63,14 @@ $_settings: () !default;
     @return math.pow($ratio, $v) * $base;
   } @else {
     $bases: list.nth($base, 1);
+
     @for $i from 2 through $base-length {
       $new-base: list.nth($base, $i);
+
       @while ($new-base > ($ratio * list.nth($base, 1))) {
         $new-base: math.div($new-base, $ratio);
       }
+
       @while ($new-base < list.nth($base, 1)) {
         $new-base: ($new-base * $ratio);
       }

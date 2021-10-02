@@ -6,7 +6,7 @@ $settings: (
 ) !default;
 
 // Defaults and variables
-@forward 'vars';
+@forward 'constants';
 
 // Core functions
 @forward 'step' with ($_settings: $settings);

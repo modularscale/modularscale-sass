@@ -83,11 +83,10 @@ ms.$settings: (
   ratio: 1.5,
   respond: typetura,
   // typetura, media, or container
-  400px:
-    (
-      // base is inheritied
-      ratio: 1.2,
-    ),
+  400px: (
+    // base is inheritied
+    ratio: 1.2,
+  ),
   900px: (
     base: 1.25rem,
     ratio: 1.3,
@@ -130,7 +129,7 @@ You will need to define a container. Do this with the `@include ms.container;` m
 // By default, the container is .modularscale
 @include ms.container;
 // You can define your own container by passing a selector through as an argument
-@include ms.container(".ms-container");
+@include ms.container('.ms-container');
 ```
 
 ## Target sizes

@@ -14,11 +14,11 @@ $_settings: () !default;
   $query: $mode;
   // Default query type
   @if ($query == null) {
-    $query: typetura;
+    $query: 'typetura';
   }
   // Find maximum value
   @each $bp in $_settings {
-    @if (type-of(list.nth($bp, 1)) == "number") {
+    @if (type-of(list.nth($bp, 1)) == 'number') {
       $max: list.nth($bp, 1);
       $queries: $queries + 1;
     }
@@ -28,12 +28,12 @@ $_settings: () !default;
   @content ($_settings);
 
   // Typetura styles
-  @if ($query == typetura) {
+  @if ($query == 'typetura') {
     --tt-key: #{$id};
     --tt-max: #{strip-unit($max)};
     @keyframes #{$id} {
       @each $bp in $_settings {
-        @if (type-of(list.nth($bp, 1)) == "number") {
+        @if (type-of(list.nth($bp, 1)) == 'number') {
 
           $key: list.nth($bp, 1);
           $keyframe: percentage(math.div($key, $max));
@@ -44,11 +44,11 @@ $_settings: () !default;
         }
       }
     }
-  } @else if ($query == container) {
+  } @else if ($query == 'container') {
       $query: $query + ' modularscale';
       // Loop through breakpoints
       @each $bp in $_settings {
-        @if (type-of(list.nth($bp, 1)) == "number") {
+        @if (type-of(list.nth($bp, 1)) == 'number') {
           @#{$query} (min-width: #{list.nth($bp, 1)}) {
             $bp: list.nth($bp, 1);
             @content ($bp);
@@ -59,7 +59,7 @@ $_settings: () !default;
 
     // Loop through breakpoints
     @each $bp in $_settings {
-      @if (type-of(list.nth($bp, 1)) == "number") {
+      @if (type-of(list.nth($bp, 1)) == 'number') {
         @#{$query} (min-width: #{list.nth($bp, 1)}) {
           $bp: list.nth($bp, 1);
           @content ($bp);

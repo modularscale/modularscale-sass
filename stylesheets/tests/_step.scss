@@ -2,7 +2,7 @@
 
 @use '../../node_modules/sass-true' as true;
 
-@use '../modularscale/step' as * with ($_settings: (base: 1em, ratio: 1.5));
+@use '../modularscale/step' as *;
 
 @include true.describe('step [function]') {
   @include true.it('It returns the size based at the provided step') {

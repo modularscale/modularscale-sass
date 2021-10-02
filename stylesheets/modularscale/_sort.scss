@@ -11,7 +11,7 @@
     $m: min($l...);
     // Write that value to the return
     $return: append($return, $m);
-    // Replace that value in the list so it won’t be called again.
+    // Replace that value in the list so it won't be called again.
     $l: set-nth($l, index($l, $m), 999);
   }
 

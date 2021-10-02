@@ -30,36 +30,35 @@ $_settings: () !default;
     $ratio: target($ratio, $base);
   }
 
-  // if the step provided is actually a target and has the same unit as the base,
-  // we can figured the closest integer step on the current scale to be used.
-  // it's for the cases when the designer provided all values as pixels and not respecting
-  // the modular scale to the "number", but getting close.
-  // Designers don't like float numbers.
-  @if (math.unit($v) == math.unit($base) or math.unit($v) == 'px') {
-
-    // convert target pixels to the unit used on $base
-    @if (not math.compatible($v, $base)) {
-      @if (math.unit($v) != 'px') {
-        @error 'To match incompatible units, the target one needs to be `px`, as we use 16px as root size. Target provided: #{$v}.';
-      }
-
-      @if (math.unit($base) == 'rem') {
-        $v: math.div($v, 16px) * 1rem;
-      } @else if (math.unit($base) == 'em') {
-        $v: math.div($v, 16px) * 1em;
-      } @else if (math.unit($base) == '%') {
-        $v: math.div($v, 16px * math.div($base, 100%)) * $base;
-      } @else {
-        @error "#{$v} and #{$base} don't have units that can be converted using browser root size";
-      }
-    }
-
-    $v: math.log(math.div($v, $base), $ratio);
-    $v: math.round($v);
-  }
-
   // Fast calc if not multi stranded
   @if ($base-length == 1) {
+    // if the step provided is actually a target and has the same unit as the base,
+    // we can figured the closest integer step on the current scale to be used.
+    // It's for the cases when the designer provided all values as pixels and
+    // not respecting the modular scale to the "number", but getting close.
+    // Designers don't like float numbers.
+    @if (math.unit($v) == math.unit($base) or math.unit($v) == 'px') {
+      // convert target pixels to the unit used on $base
+      @if (not math.compatible($v, $base)) {
+        @if (math.unit($v) != 'px') {
+          @error 'To match incompatible units, the target one needs to be `px`, as we use 16px as root size. Target provided: #{$v}.';
+        }
+
+        @if (math.unit($base) == 'rem') {
+          $v: math.div($v, 16px) * 1rem;
+        } @else if (math.unit($base) == 'em') {
+          $v: math.div($v, 16px) * 1em;
+        } @else if (math.unit($base) == '%') {
+          $v: math.div($v, 16px * math.div($base, 100%)) * $base;
+        } @else {
+          @error '#{$v} and #{$base} don\'t have units that can be converted using browser root size';
+        }
+      }
+
+      $v: math.log(math.div($v, $base), $ratio);
+      $v: math.round($v);
+    }
+
     @return math.pow($ratio, $v) * $base;
   } @else {
     $bases: list.nth($base, 1);

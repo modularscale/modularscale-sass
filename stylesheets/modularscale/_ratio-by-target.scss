@@ -7,7 +7,7 @@
 @use 'to-num' as *;
 
 // Find a ratio based on a target value
-@function target($target, $base) {
+@function ratio-by-target($target, $base) {
   $value: 0;
 
   @if (list.length($base) > 1) {

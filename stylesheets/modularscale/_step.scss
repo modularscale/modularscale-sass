@@ -6,7 +6,7 @@
 @use 'constants' as *;
 @use 'settings' as *;
 @use 'sort' as *;
-@use 'target' as *;
+@use 'ratio-by-target' as *;
 
 $_settings: () !default;
 
@@ -38,8 +38,8 @@ $_settings: () !default;
   $bases: ();
 
   // Render target values from settings.
-  @if math.unit($ratio) != '' {
-    $ratio: target($ratio, $base);
+  @if type-of($ratio) == 'string' or type-of($ratio) == 'list' {
+    $ratio: radio-target($ratio, $base);
   }
 
   // Fast calc if not multi stranded

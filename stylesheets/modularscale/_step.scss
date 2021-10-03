@@ -4,7 +4,7 @@
 @use 'sass:meta';
 
 @use 'constants' as *;
-@use 'settings' as *;
+@use 'normalize-settings' as *;
 @use 'sort' as *;
 @use 'ratio-by-target' as *;
 @use 'step-by-target' as *;
@@ -32,7 +32,7 @@ $_settings: () !default;
     }
   }
 
-  $settings: settings($base, $ratio, $thread, $settings);
+  $settings: normalize-settings($base, $ratio, $thread, $settings);
   $base: list.nth($settings, 1);
   $ratio: list.nth($settings, 2);
   $base-length: list.length($base);

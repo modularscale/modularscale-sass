@@ -1,5 +1,6 @@
 @use 'sass:list';
 @use 'sass:math';
+@use 'sass:meta';
 
 @use 'strip-unit' as *;
 
@@ -18,7 +19,7 @@ $_settings: () !default;
   }
   // Find maximum value
   @each $bp in $_settings {
-    @if (type-of(list.nth($bp, 1)) == 'number') {
+    @if (meta.type-of(list.nth($bp, 1)) == 'number') {
       $max: list.nth($bp, 1);
       $queries: $queries + 1;
     }
@@ -33,7 +34,7 @@ $_settings: () !default;
     --tt-max: #{strip-unit($max)};
     @keyframes #{$id} {
       @each $bp in $_settings {
-        @if (type-of(list.nth($bp, 1)) == 'number') {
+        @if (meta.type-of(list.nth($bp, 1)) == 'number') {
 
           $key: list.nth($bp, 1);
           $keyframe: percentage(math.div($key, $max));
@@ -48,7 +49,7 @@ $_settings: () !default;
       $query: $query + ' modularscale';
       // Loop through breakpoints
       @each $bp in $_settings {
-        @if (type-of(list.nth($bp, 1)) == 'number') {
+        @if (meta.type-of(list.nth($bp, 1)) == 'number') {
           @#{$query} (min-width: #{list.nth($bp, 1)}) {
             $bp: list.nth($bp, 1);
             @content ($bp);
@@ -59,7 +60,7 @@ $_settings: () !default;
 
     // Loop through breakpoints
     @each $bp in $_settings {
-      @if (type-of(list.nth($bp, 1)) == 'number') {
+      @if (meta.type-of(list.nth($bp, 1)) == 'number') {
         @#{$query} (min-width: #{list.nth($bp, 1)}) {
           $bp: list.nth($bp, 1);
           @content ($bp);

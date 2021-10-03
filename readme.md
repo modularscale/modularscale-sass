@@ -179,6 +179,8 @@ Modular scale includes functions for a number of classic design and musical scal
 
 By default, ratio is set to `fifth`.
 
+You can add your own ratios as well.
+
 ## [Changelog](https://github.com/Team-Sass/modular-scale/releases)
 
 ### License

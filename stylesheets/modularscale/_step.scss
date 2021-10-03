@@ -10,6 +10,10 @@
 @use 'step-by-target' as *;
 
 $_settings: () !default;
+$_ratios: () !default;
+
+
+$_ratios: map.merge(constants.$ratios, $_ratios);
 
 @function step(
   $v: 0,
@@ -24,9 +28,17 @@ $_settings: () !default;
     $thread: $respond;
   }
 
+  @if map.has-key($settings, 'ratios') {
+    @if meta.type-of(map.get($settings, 'ratios')) == 'map' {
+      $_ratios: map.merge($_ratios, map.get($settings, 'ratios')) !global;
+    } @else {
+      @error 'ratios of invalid type submited whitin $settings: #{meta.type-of(map.get($settings, 'ratios'))}';
+    }
+  }
+
   @if meta.type-of($ratio) == 'string' {
-    @if map.has-key($ratios, $ratio) {
-      $ratio: map.get($ratios, $ratio);
+    @if map.has-key($_ratios, $ratio) {
+      $ratio: map.get($_ratios, $ratio);
     } @else {
       @error '#{$ratio} isn\'t a valid ratio';
     }

@@ -25,6 +25,7 @@
 /* ------------------------- */
 /* Test: It returns the size based at the provided step */
 /*   ✔ [assert-equal] when positive */
+/*   ✔ [assert-equal] when using a named ratio */
 /*   ✔ [assert-equal] when using two bases */
 /*   ✔ [assert-equal] when using three bases */
 /*   ✔ [assert-equal] when using multiple scales */
@@ -77,5 +78,5 @@
 /* Stats: */
 /* - 6 Modules */
 /* - 6 Tests */
-/* - 39 Assertions */
+/* - 42 Assertions */
 /* -------------------- */

@@ -144,31 +144,40 @@ Now your base is `16px` and when you call `ms.step(5)` it will be `42px`. Everyt
 
 ## Ratios
 
-Modular scale includes functions for a number of classic design and musical scale ratios. You can add your own ratios as well.
+Modular scale includes functions for a number of classic design and musical scale ratios.
 
-By default ratio is set to `ms.$fifth`.
+```scss
+@use '../stylesheets/modularscale' as ms with ($settings: (base: 1em, ratio: 'fifth'));
+```
 
-<table>
-  <tr><th>Function         </th><th>Ratio  </th><th>Decimal value</th></tr>
-  <tr><td>ms.$phi             </td><td>1:1.618</td><td>1.618        </td></tr>
-  <tr><td>ms.$golden          </td><td>1:1.618</td><td>1.618        </td></tr>
-  <tr><td>ms.$double-octave   </td><td>1:4    </td><td>4            </td></tr>
-  <tr><td>ms.$major-twelfth   </td><td>1:3    </td><td>3            </td></tr>
-  <tr><td>ms.$major-eleventh  </td><td>3:8    </td><td>2.667        </td></tr>
-  <tr><td>ms.$major-tenth     </td><td>2:5    </td><td>2.5          </td></tr>
-  <tr><td>ms.$octave          </td><td>1:2    </td><td>2            </td></tr>
-  <tr><td>ms.$major-seventh   </td><td>8:15   </td><td>1.875        </td></tr>
-  <tr><td>ms.$minor-seventh   </td><td>9:16   </td><td>1.778        </td></tr>
-  <tr><td>ms.$major-sixth     </td><td>3:5    </td><td>1.667        </td></tr>
-  <tr><td>ms.$minor-sixth     </td><td>5:8    </td><td>1.6          </td></tr>
-  <tr><td>ms.$fifth           </td><td>2:3    </td><td>1.5          </td></tr>
-  <tr><td>ms.$augmented-fourth</td><td>1:√2   </td><td>1.414        </td></tr>
-  <tr><td>ms.$fourth          </td><td>3:4    </td><td>1.333        </td></tr>
-  <tr><td>ms.$major-third     </td><td>4:5    </td><td>1.25         </td></tr>
-  <tr><td>ms.$minor-third     </td><td>5:6    </td><td>1.2          </td></tr>
-  <tr><td>ms.$major-second    </td><td>8:9    </td><td>1.125        </td></tr>
-  <tr><td>ms.$minor-second    </td><td>15:16  </td><td>1.067        </td></tr>
-</table>
+```scss
+.sample {
+  font-size: ms.step(2, $ratio: 'major-second');
+}
+```
+
+| Function             | Ratio   | Decimal value |
+|----------------------|---------|---------------|
+| phi                  | 1:1.618 | 1.618         |
+| golden               | 1:1.618 | 1.618         |
+| double-octave        | 1:4     | 4             |
+| major-twelfth        | 1:3     | 3             |
+| major-eleventh       | 3:8     | 2.667         |
+| major-tenth          | 2:5     | 2.5           |
+| octave               | 1:2     | 2             |
+| major-seventh        | 8:15    | 1.875         |
+| minor-seventh        | 9:16    | 1.778         |
+| major-sixth          | 3:5     | 1.667         |
+| minor-sixth          | 5:8     | 1.6           |
+| fifth                | 2:3     | 1.5           |
+| augmented-fourth     | 1:√2    | 1.414         |
+| fourth               | 3:4     | 1.333         |
+| major-third          | 4:5     | 1.25          |
+| minor-third          | 5:6     | 1.2           |
+| major-second         | 8:9     | 1.125         |
+| minor-second         | 15:16   | 1.067         |
+
+By default, ratio is set to `fifth`.
 
 ## [Changelog](https://github.com/Team-Sass/modular-scale/releases)
 

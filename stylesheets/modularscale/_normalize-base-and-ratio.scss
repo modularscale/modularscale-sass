@@ -2,7 +2,7 @@
 // Settings should cascade down like you would expect in CSS.
 // More specific overrides previous settings.
 
-@function normalize-settings($b: null, $r: null, $t: null, $m: ()) {
+@function normalize-base-and-ratio($b: null, $r: null, $t: null, $m: ()) {
   $base: 1em;
   $ratio: 1.5;
   $respond: 'media';

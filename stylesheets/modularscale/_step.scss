@@ -3,17 +3,16 @@
 @use 'sass:math';
 @use 'sass:meta';
 
-@use 'constants' as *;
-@use 'normalize-settings' as *;
+@use 'constants';
+@use 'normalize-base-and-ratio' as *;
 @use 'sort' as *;
 @use 'ratio-by-target' as *;
 @use 'step-by-target' as *;
 
-$_settings: () !default;
-$_ratios: () !default;
+$_settings: ( ) !default;
 
+$_ratios: constants.$ratios;
 
-$_ratios: map.merge(constants.$ratios, $_ratios);
 
 @function step(
   $v: 0,
@@ -21,30 +20,27 @@ $_ratios: map.merge(constants.$ratios, $_ratios);
   $base: null,
   $ratio: null,
   $thread: null,
-  $settings: $_settings
+  $settings: (),
 ) {
   // Parse settings
   @if ($respond) {
     $thread: $respond;
   }
 
-  @if map.has-key($settings, 'ratios') {
-    @if meta.type-of(map.get($settings, 'ratios')) == 'map' {
-      $_ratios: map.merge($_ratios, map.get($settings, 'ratios')) !global;
-    } @else {
-      @error 'ratios of invalid type submited whitin $settings: #{meta.type-of(map.get($settings, 'ratios'))}';
-    }
-  }
+  $settings: map.deep-merge($_settings, $settings);
 
   @if meta.type-of($ratio) == 'string' {
     @if map.has-key($_ratios, $ratio) {
       $ratio: map.get($_ratios, $ratio);
+    } @else if map.has-key($settings, 'ratios', $ratio) {
+      $ratio: map.get($settings, 'ratios', $ratio);
     } @else {
       @error '#{$ratio} isn\'t a valid ratio';
     }
   }
 
-  $settings: normalize-settings($base, $ratio, $thread, $settings);
+  $settings: normalize-base-and-ratio($base, $ratio, $thread, $settings);
+
   $base: list.nth($settings, 1);
   $ratio: list.nth($settings, 2);
   $base-length: list.length($base);

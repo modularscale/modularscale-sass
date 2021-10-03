@@ -62,6 +62,16 @@
 /*   ✔ [assert-equal] It finds a ratio based on a target value */
 /*  */
 /*  */
+/* # Module: step-by-target [function] */
+/* ----------------------------------- */
+/* Test: It finds a step based on a target value */
+/*   ✔ [assert-equal] It finds a step based on a target value */
+/*   ✔ [assert-equal] It finds a step based on a target value */
+/*   ✔ [assert-equal] It finds a step based on a target value */
+/*   ✔ [assert-equal] It finds a step based on a target value */
+/*   ✔ [assert-equal] It finds a step based on a target value */
+/*  */
+/*  */
 /* # Module: to-num [function] */
 /* --------------------------- */
 /* Test: It parses string digits as numbers */

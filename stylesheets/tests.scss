@@ -5,6 +5,7 @@
 @use 'tests/step';
 @use 'tests/strip-unit';
 @use 'tests/ratio-by-target';
+@use 'tests/step-by-target';
 @use 'tests/to-num';
 
 @include true.report;

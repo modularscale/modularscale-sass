@@ -7,6 +7,7 @@
 @use 'settings' as *;
 @use 'sort' as *;
 @use 'ratio-by-target' as *;
+@use 'step-by-target' as *;
 
 $_settings: () !default;
 
@@ -50,25 +51,7 @@ $_settings: () !default;
     // not respecting the modular scale to the "number", but getting close.
     // Designers don't like float numbers.
     @if (math.unit($v) == math.unit($base) or math.unit($v) == 'px') {
-      // convert target pixels to the unit used on $base
-      @if (not math.compatible($v, $base)) {
-        @if (math.unit($v) != 'px') {
-          @error 'To match incompatible units, the target one needs to be `px`, as we use 16px as root size. Target provided: #{$v}.';
-        }
-
-        @if (math.unit($base) == 'rem') {
-          $v: math.div($v, 16px) * 1rem;
-        } @else if (math.unit($base) == 'em') {
-          $v: math.div($v, 16px) * 1em;
-        } @else if (math.unit($base) == '%') {
-          $v: math.div($v, 16px * math.div($base, 100%)) * $base;
-        } @else {
-          @error '#{$v} and #{$base} don\'t have units that can be converted using browser root size';
-        }
-      }
-
-      $v: math.log(math.div($v, $base), $ratio);
-      $v: math.round($v);
+      $v: step-by-target($v, $base, $ratio);
     }
 
     @return math.pow($ratio, $v) * $base;

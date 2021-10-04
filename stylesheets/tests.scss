@@ -1,5 +1,6 @@
 @use '../node_modules/sass-true' as true;
 
+// functions
 @use 'tests/normalize-base-and-ratio';
 @use 'tests/sort';
 @use 'tests/step';
@@ -7,5 +8,8 @@
 @use 'tests/ratio-by-target';
 @use 'tests/step-by-target';
 @use 'tests/to-num';
+
+// mixins
+@use 'tests/respond';
 
 @include true.report;

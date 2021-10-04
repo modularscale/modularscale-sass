@@ -81,7 +81,7 @@ You will likely want to change your typographic settings as browser or element s
 ms.$settings: (
   base: 1rem,
   ratio: 1.5,
-  respond: typetura,
+  respond: 'typetura',
   // typetura, media, or container
   400px: (
     // base is inheritied

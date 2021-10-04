@@ -1,0 +1,223 @@
+@use '../../node_modules/sass-true' as true;
+
+// as step() is already loaded for other tests, their settings are defined and we need to override them
+@use '../modularscale/api' as *;
+
+@include true.describe('Responsive modular scales') {
+  @include true.test('declaring Typetura') {
+    @include true.assert {
+      $_test-settings: (
+        base: 12px,
+        ratio: 1.2,
+        respond: 'typetura',
+        400px: (
+          base: 12px 14px,
+          ratio: 1.2,
+        ),
+        s: (
+          base: 12px,
+          ratio: 1.2,
+        ),
+        1000px: (
+          base: 20px,
+          ratio: 1.6,
+        ),
+        l: (
+          base: 20px,
+          ratio: 1.6,
+        )
+      );
+
+      @include true.output(false) {
+        @include configure($_test-settings);
+
+        .typetura {
+          @include respond-to using ($respond) {
+            font-size: step(2, $respond);
+          }
+        }
+      }
+
+      @include true.expect(false) {
+        .typetura {
+          font-size: 17.28px;
+          --tt-key: uaxt0j4;
+          --tt-max: 1000;
+        }
+
+        @keyframes uaxt0j4 {
+          40% {
+            font-size: 14.4px;
+          }
+
+          100% {
+            font-size: 51.2px;
+          }
+        }
+      }
+    }
+  }
+
+  @include true.test('not declaring mode') {
+    @include true.assert {
+      $_test-settings: (
+        base: 12px,
+        ratio: 1.2,
+        30rem: (
+          base: 12px 14px,
+          ratio: 1.2,
+        ),
+        s: (
+          base: 12px,
+          ratio: 1.2,
+        ),
+        60rem: (
+          base: 20px,
+          ratio: 1.6,
+        ),
+        l: (
+          base: 20px,
+          ratio: 1.6,
+        )
+      );
+
+      @include true.output(false) {
+        @include configure($_test-settings);
+
+        // stylelint-disable-next-line order/order
+        @include container('.ms-container');
+
+        .container {
+          @include respond-to(container) using ($respond) {
+            font-size: step(2, $respond);
+            margin-bottom: step(3);
+            padding: step(2, $respond) step(2);
+          }
+        }
+
+        .foo {
+          @include respond-to(container) using ($respond) {
+            font-size: step(2, $respond);
+            padding: step(2, $respond) step(2);
+          }
+        }
+      }
+
+      @include true.expect(false) {
+        .ms-container {
+          container-name: modularscale;
+          container-type: inline-size;
+        }
+
+        .container {
+          font-size: 17.28px;
+          margin-bottom: 20.736px;
+          padding: 17.28px;
+        }
+
+        @container modularscale (min-width: 30rem) {
+          .container {
+            font-size: 14.4px;
+            padding: 14.4px 17.28px;
+          }
+        }
+
+        @container modularscale (min-width: 60rem) {
+          .container {
+            font-size: 51.2px;
+            padding: 51.2px 17.28px;
+          }
+        }
+
+        .foo {
+          font-size: 17.28px;
+          padding: 17.28px;
+        }
+
+        @container modularscale (min-width: 30rem) {
+          .foo {
+            font-size: 14.4px;
+            padding: 14.4px 17.28px;
+          }
+        }
+
+        @container modularscale (min-width: 60rem) {
+          .foo {
+            font-size: 51.2px;
+            padding: 51.2px 17.28px;
+          }
+        }
+      }
+    }
+  }
+
+  // @include true.test('using container query') {
+  //   @include true.assert {
+  //     @include true.output {
+  //       .element {
+  //         @include container;
+
+  //         @include respond-to ('container') using ($respond) {
+  //           font-size: step(2, $respond);
+  //           margin-bottom: step(3);
+  //           padding: step(2, $respond) step(2);
+  //         }
+  //       }
+  //     }
+
+  //     @include true.expect(false) {
+  //       .element {
+  //         font-size: 2.25em;
+  //         margin-bottom: 3.375em;
+  //         padding: 2.25em;
+  //       }
+  //     }
+  //   }
+  // }
+
+  // @include true.test('using custom container query') {
+  //   @include true.assert {
+  //     @include true.output {
+  //       .element {
+  //         @include container('.ms-container');
+
+  //         @include respond-to ('container') using ($respond) {
+  //           font-size: step(2, $respond);
+  //           margin-bottom: step(3);
+  //           padding: step(2, $respond) step(2);
+  //         }
+  //       }
+  //     }
+
+  //     @include true.expect(false) {
+  //       .element {
+  //         font-size: 2.25em;
+  //         margin-bottom: 3.375em;
+  //         padding: 2.25em;
+  //       }
+  //     }
+  //   }
+  // }
+
+  // @include true.test('using media query') {
+  //   @include true.assert {
+  //     @include true.output {
+  //       .element {
+  //         @include respond-to ('media') using ($respond) {
+  //           font-size: step(2, $respond);
+  //           margin-bottom: step(3);
+  //           padding: step(2, $respond) step(2);
+  //         }
+  //       }
+  //     }
+
+  //     @include true.expect(false) {
+  //       .element {
+  //         font-size: 2.25em;
+  //         margin-bottom: 3.375em;
+  //         padding: 2.25em;
+  //       }
+  //     }
+  //   }
+  // }
+}

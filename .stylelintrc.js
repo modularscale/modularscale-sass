@@ -59,7 +59,8 @@ module.exports = {
     "length-zero-no-unit": true,
     "max-empty-lines": 2,
     "max-line-length": null,
-    "max-nesting-depth": 3,
+    // increasing max nesting because Sass-True already needs3
+    "max-nesting-depth": 4,
     "media-feature-name-no-vendor-prefix": true,
     "media-feature-parentheses-space-inside": "never",
     "media-feature-range-operator-space-after": "always",

@@ -82,12 +82,142 @@
 /*   ✔ [assert-equal] when positive */
 /*  */
 /*  */
+/* # Module: Responsive modular scales */
+/* ----------------------------------- */
+/* Test: declaring Typetura */
+/*   ASSERT:    */
+/*   OUTPUT   */
+.typetura {
+  font-size: 17.28px;
+  --tt-key: uus44wb;
+  --tt-max: 1000;
+}
+@keyframes uus44wb {
+  40% {
+    font-size: 14.4px;
+  }
+  100% {
+    font-size: 51.2px;
+  }
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.typetura {
+  font-size: 17.28px;
+  --tt-key: uaxt0j4;
+  --tt-max: 1000;
+}
+
+@keyframes uaxt0j4 {
+  40% {
+    font-size: 14.4px;
+  }
+  100% {
+    font-size: 51.2px;
+  }
+}
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/* Test: not declaring mode */
+/*   ASSERT:    */
+/*   OUTPUT   */
+.ms-container {
+  container-name: modularscale;
+  container-type: inline-size;
+}
+
+.container {
+  font-size: 17.28px;
+  margin-bottom: 20.736px;
+  padding: 17.28px 17.28px;
+}
+@container modularscale (min-width: 30rem) {
+  .container {
+    font-size: 14.4px;
+    margin-bottom: 20.736px;
+    padding: 14.4px 17.28px;
+  }
+}
+@container modularscale (min-width: 60rem) {
+  .container {
+    font-size: 51.2px;
+    margin-bottom: 20.736px;
+    padding: 51.2px 17.28px;
+  }
+}
+
+.foo {
+  font-size: 17.28px;
+  padding: 17.28px 17.28px;
+}
+@container modularscale (min-width: 30rem) {
+  .foo {
+    font-size: 14.4px;
+    padding: 14.4px 17.28px;
+  }
+}
+@container modularscale (min-width: 60rem) {
+  .foo {
+    font-size: 51.2px;
+    padding: 51.2px 17.28px;
+  }
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.ms-container {
+  container-name: modularscale;
+  container-type: inline-size;
+}
+
+.container {
+  font-size: 17.28px;
+  margin-bottom: 20.736px;
+  padding: 17.28px;
+}
+
+@container modularscale (min-width: 30rem) {
+  .container {
+    font-size: 14.4px;
+    padding: 14.4px 17.28px;
+  }
+}
+@container modularscale (min-width: 60rem) {
+  .container {
+    font-size: 51.2px;
+    padding: 51.2px 17.28px;
+  }
+}
+.foo {
+  font-size: 17.28px;
+  padding: 17.28px;
+}
+
+@container modularscale (min-width: 30rem) {
+  .foo {
+    font-size: 14.4px;
+    padding: 14.4px 17.28px;
+  }
+}
+@container modularscale (min-width: 60rem) {
+  .foo {
+    font-size: 51.2px;
+    padding: 51.2px 17.28px;
+  }
+}
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/*  */
 /* # SUMMARY ---------- */
-/* 7 Tests: */
+/* 9 Tests: */
 /* - 7 Passed */
 /* - 0 Failed */
+/* - 2 Output to CSS */
 /* Stats: */
-/* - 7 Modules */
-/* - 7 Tests */
-/* - 48 Assertions */
+/* - 8 Modules */
+/* - 9 Tests */
+/* - 50 Assertions */
 /* -------------------- */

@@ -20,12 +20,12 @@ $_ratios: constants.$ratios;
   }
 
   // we need to preserve base
-  @if meta.type-of(map.get($settings, 'base') != 'number') {
+  @if meta.type-of(map.get($settings, 'base')) != 'number' {
     $base: map.get($_settings, 'base');
     $settings: map.merge($settings, (base: $base));
   }
   // we need to preserve ratio
-  @if meta.type-of(map.get($settings, 'ratio') != 'number') {
+  @if meta.type-of(map.get($settings, 'ratio')) != 'number' {
     $ratio: map.get($_settings, 'ratio');
     $settings: map.merge($settings, (ratio: $ratio));
   }

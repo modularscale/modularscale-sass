@@ -2,7 +2,7 @@
 
 @use '../../node_modules/sass-true' as true;
 
-@use '../modularscale/step' as * with ($_settings: (base: 1.125em, ratio: 1.25));
+@use '../modularscale/api' as * with ($_settings: (base: 1.125em, ratio: 1.25));
 
 
 @include true.describe('step [function]') {

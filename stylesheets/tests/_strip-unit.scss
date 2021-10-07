@@ -1,0 +1,11 @@
+@use '../../node_modules/sass-true' as true;
+
+@use '../modularscale/strip-unit' as *;
+
+@include true.describe('strip-unit [function]') {
+  @include true.it('It remove units from numbers') {
+    @include true.assert-equal(strip-unit(3px), 3, 'when positives');
+    @include true.assert-equal(strip-unit(-5em), -5, 'when negatives');
+    @include true.assert-equal(strip-unit(7%), 7, 'when percentages');
+  }
+}

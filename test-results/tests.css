@@ -1,0 +1,223 @@
+@charset "UTF-8";
+/* # Module: settings [function] */
+/* ----------------------------- */
+/* Test: It normalizes base and ratio starting with defaults */
+/*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
+/*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
+/*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
+/*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
+/*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
+/*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
+/*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
+/*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
+/*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
+/*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
+/*  */
+/*  */
+/* # Module: sort [function] */
+/* ------------------------- */
+/* Test: It sorts a list of numbers */
+/*   ✔ [assert-equal] separated by spaces */
+/*   ✔ [assert-equal] separated by commas */
+/*  */
+/*  */
+/* # Module: step [function] */
+/* ------------------------- */
+/* Test: It returns the size based at the provided step */
+/*   ✔ [assert-equal] when positive */
+/*   ✔ [assert-equal] when using a named ratio */
+/*   ✔ [assert-equal] when using a custom named ratio */
+/*   ✔ [assert-equal] when using two bases */
+/*   ✔ [assert-equal] when using three bases */
+/*   ✔ [assert-equal] when using multiple scales */
+/*   ✔ [assert-equal] when negative */
+/*   ✔ [assert-equal] when float */
+/*   ✔ [assert-equal] when reversed and approximated to 5.3644180298em, being 5em */
+/*   ✔ [assert-equal] when reversed and approximated to 54.932px, being 56px */
+/*   ✔ [assert-equal] when reversed and approximated to 167.638px, being 180px */
+/*   ✔ [assert-equal] when reversed and approximated to 181.899px, being 170px and using a percentage base */
+/*   ✔ [assert-equal] when reversed and approximated to 45.776px, being 50px and using a unusual percentage base */
+/*   ✔ [assert-equal] when reversed, approximated and lesser than 41.053px, being 40px, and using a base set on pixels */
+/*   ✔ [assert-equal] when reversed, approximated and greater than 28.833px, being 30px */
+/*   ✔ [assert-equal] when reversed, and half way to 16px and 18px, being 17px */
+/*   ✔ [assert-equal] when reversed, approximated and lesser than 16px, being 15.5px */
+/*   ✔ [assert-equal] when reversed, approximated and greater than 14.2222222222px, being 15px */
+/*   ✔ [assert-equal] when reversed and approximated to 12.642px, being 12px, lesser than the base */
+/*  */
+/*  */
+/* # Module: strip-unit [function] */
+/* ------------------------------- */
+/* Test: It remove units from numbers */
+/*   ✔ [assert-equal] when positives */
+/*   ✔ [assert-equal] when negatives */
+/*   ✔ [assert-equal] when percentages */
+/*  */
+/*  */
+/* # Module: ratio-by-target [function] */
+/* ------------------------------------ */
+/* Test: It finds a ratio based on a target value */
+/*   ✔ [assert-equal] It finds a ratio based on a target value */
+/*   ✔ [assert-equal] It finds a ratio based on a target value */
+/*   ✔ [assert-equal] It finds a ratio based on a target value */
+/*   ✔ [assert-equal] It finds a ratio based on a target value */
+/*   ✔ [assert-equal] It finds a ratio based on a target value */
+/*  */
+/*  */
+/* # Module: step-by-target [function] */
+/* ----------------------------------- */
+/* Test: It finds a step based on a target value */
+/*   ✔ [assert-equal] It finds a step based on a target value */
+/*   ✔ [assert-equal] It finds a step based on a target value */
+/*   ✔ [assert-equal] It finds a step based on a target value */
+/*   ✔ [assert-equal] It finds a step based on a target value */
+/*   ✔ [assert-equal] It finds a step based on a target value */
+/*  */
+/*  */
+/* # Module: to-num [function] */
+/* --------------------------- */
+/* Test: It parses string digits as numbers */
+/*   ✔ [assert-equal] when 0 */
+/*   ✔ [assert-equal] when positive padded */
+/*   ✔ [assert-equal] when negative */
+/*   ✔ [assert-equal] when positive */
+/*  */
+/*  */
+/* # Module: Responsive modular scales */
+/* ----------------------------------- */
+/* Test: declaring Typetura */
+/*   ASSERT:    */
+/*   OUTPUT   */
+.typetura {
+  font-size: 17.28px;
+  --tt-key: uus44wb;
+  --tt-max: 1000;
+}
+@keyframes uus44wb {
+  40% {
+    font-size: 14.4px;
+  }
+  100% {
+    font-size: 51.2px;
+  }
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.typetura {
+  font-size: 17.28px;
+  --tt-key: uaxt0j4;
+  --tt-max: 1000;
+}
+
+@keyframes uaxt0j4 {
+  40% {
+    font-size: 14.4px;
+  }
+  100% {
+    font-size: 51.2px;
+  }
+}
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/* Test: not declaring mode */
+/*   ASSERT:    */
+/*   OUTPUT   */
+.ms-container {
+  container-name: modularscale;
+  container-type: inline-size;
+}
+
+.container {
+  font-size: 17.28px;
+  margin-bottom: 20.736px;
+  padding: 17.28px 17.28px;
+}
+@container modularscale (min-width: 30rem) {
+  .container {
+    font-size: 14.4px;
+    margin-bottom: 20.736px;
+    padding: 14.4px 17.28px;
+  }
+}
+@container modularscale (min-width: 60rem) {
+  .container {
+    font-size: 51.2px;
+    margin-bottom: 20.736px;
+    padding: 51.2px 17.28px;
+  }
+}
+
+.foo {
+  font-size: 17.28px;
+  padding: 17.28px 17.28px;
+}
+@container modularscale (min-width: 30rem) {
+  .foo {
+    font-size: 14.4px;
+    padding: 14.4px 17.28px;
+  }
+}
+@container modularscale (min-width: 60rem) {
+  .foo {
+    font-size: 51.2px;
+    padding: 51.2px 17.28px;
+  }
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.ms-container {
+  container-name: modularscale;
+  container-type: inline-size;
+}
+
+.container {
+  font-size: 17.28px;
+  margin-bottom: 20.736px;
+  padding: 17.28px;
+}
+
+@container modularscale (min-width: 30rem) {
+  .container {
+    font-size: 14.4px;
+    padding: 14.4px 17.28px;
+  }
+}
+@container modularscale (min-width: 60rem) {
+  .container {
+    font-size: 51.2px;
+    padding: 51.2px 17.28px;
+  }
+}
+.foo {
+  font-size: 17.28px;
+  padding: 17.28px;
+}
+
+@container modularscale (min-width: 30rem) {
+  .foo {
+    font-size: 14.4px;
+    padding: 14.4px 17.28px;
+  }
+}
+@container modularscale (min-width: 60rem) {
+  .foo {
+    font-size: 51.2px;
+    padding: 51.2px 17.28px;
+  }
+}
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/*  */
+/* # SUMMARY ---------- */
+/* 9 Tests: */
+/* - 7 Passed */
+/* - 0 Failed */
+/* - 2 Output to CSS */
+/* Stats: */
+/* - 8 Modules */
+/* - 9 Tests */
+/* - 50 Assertions */
+/* -------------------- */

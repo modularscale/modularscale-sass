@@ -1,0 +1,13 @@
+@use '../../node_modules/sass-true' as true;
+
+@use '../modularscale/ratio-by-target' as *;
+
+@include true.describe('ratio-by-target [function]') {
+  @include true.it('It finds a ratio based on a target value') {
+    @include true.assert-equal(ratio-by-target('18at1', 16px), 1.125);
+    @include true.assert-equal(ratio-by-target(25 at 2, 16px), 1.25);
+    @include true.assert-equal(ratio-by-target('81' 'at' '4', 16px), 1.5);
+    @include true.assert-equal(ratio-by-target(128at3, 16px), 2);
+    @include true.assert-equal(ratio-by-target('80at3', 10px), 2);
+  }
+}

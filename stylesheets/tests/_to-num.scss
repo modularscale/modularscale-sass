@@ -1,0 +1,12 @@
+@use '../../node_modules/sass-true' as true;
+
+@use '../modularscale/to-num' as *;
+
+@include true.describe('to-num [function]') {
+  @include true.it('It parses string digits as numbers') {
+    @include true.assert-equal(to-num('000'), 0, 'when 0');
+    @include true.assert-equal(to-num('0339'), 339, 'when positive padded');
+    @include true.assert-equal(to-num('-53150'), -53150, 'when negative');
+    @include true.assert-equal(to-num('7321'), 7321, 'when positive');
+  }
+}

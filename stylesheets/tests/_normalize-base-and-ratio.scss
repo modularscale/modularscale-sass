@@ -1,0 +1,18 @@
+@use '../../node_modules/sass-true' as true;
+
+@use '../modularscale/normalize-base-and-ratio' as *;
+
+@include true.describe('settings [function]') {
+  @include true.it('It normalizes base and ratio starting with defaults') {
+    @include true.assert-equal(normalize-base-and-ratio(16px), 16px 1.5);
+    @include true.assert-equal(normalize-base-and-ratio(1rem, 1.125), 1rem 1.125);
+    @include true.assert-equal(normalize-base-and-ratio((1em 1.2em 1.6em), 1.618), (1em 1.2em 1.6em) 1.618);
+    @include true.assert-equal(normalize-base-and-ratio($b: 1em 1.2em 1.6em, $r: 1.5), (1em 1.2em 1.6em) 1.5);
+    @include true.assert-equal(normalize-base-and-ratio($b: 1em, $r: 1.5, $t: 'a', $m: (a: (ratio: 1.3))), 1em 1.5);
+    @include true.assert-equal(normalize-base-and-ratio($b: 1em, $r: 1.5, $m: (a: (base: 1rem, ratio: 1.3))), 1em 1.5);
+    @include true.assert-equal(normalize-base-and-ratio($t: 'a', $m: (a: (ratio: 1.3))), 1em 1.3);
+    @include true.assert-equal(normalize-base-and-ratio($b: 1em, $m: (ratio: 1.3)), 1em 1.3);
+    @include true.assert-equal(normalize-base-and-ratio($r: 1.5, $m: (base: 62.5%)), 62.5% 1.5);
+    @include true.assert-equal(normalize-base-and-ratio($b: 1em, $r: 1.5), 1em 1.5);
+  }
+}

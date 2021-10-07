@@ -1,0 +1,193 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+
+@use 'constants';
+@use 'normalize-base-and-ratio' as *;
+@use 'ratio-by-target' as *;
+@use 'sort' as *;
+@use 'step-by-target' as *;
+@use 'strip-unit' as *;
+
+$_settings: ( ) !default;
+
+$_ratios: constants.$ratios;
+
+@mixin configure($settings: ()) {
+  @if meta.type-of($settings) != 'map' {
+    @error 'Invalid type of settings provided: #{meta.type-of($settings)}';
+  }
+
+  // we need to preserve base
+  @if meta.type-of(map.get($settings, 'base')) != 'number' {
+    $base: map.get($_settings, 'base');
+    $settings: map.merge($settings, (base: $base));
+  }
+  // we need to preserve ratio
+  @if meta.type-of(map.get($settings, 'ratio')) != 'number' {
+    $ratio: map.get($_settings, 'ratio');
+    $settings: map.merge($settings, (ratio: $ratio));
+  }
+
+  @if map.has-key($settings, 'ratios') {
+    $ratios: map.get('ratios');
+
+    @if meta.type-of($ratios) == 'map' {
+      $_ratios: map.deep-merge($_ratios, $ratios) !global;
+    }
+
+    $settings: map.remove($settings, 'ratios');
+  }
+
+  $_settings: $settings !global;
+}
+
+@function step(
+  $v: 0,
+  $respond: null,
+  $base: null,
+  $ratio: null,
+  $thread: null,
+  $settings: (),
+) {
+  // Parse settings
+  @if ($respond) {
+    $thread: $respond;
+  }
+
+  $settings: map.deep-merge($_settings, $settings);
+
+  @if meta.type-of($ratio) == 'string' {
+    @if map.has-key($_ratios, $ratio) {
+      $ratio: map.get($_ratios, $ratio);
+    } @else if map.has-key($settings, 'ratios', $ratio) {
+      $ratio: map.get($settings, 'ratios', $ratio);
+    } @else {
+      @error '#{$ratio} isn\'t a valid ratio';
+    }
+  }
+
+  $settings: normalize-base-and-ratio($base, $ratio, $thread, $settings);
+
+  $base: list.nth($settings, 1);
+  $ratio: list.nth($settings, 2);
+  $base-length: list.length($base);
+  $bases: ();
+
+  // Render target values from settings.
+  @if type-of($ratio) == 'string' or type-of($ratio) == 'list' {
+    $ratio: radio-target($ratio, $base);
+  }
+
+  // Fast calc if not multi stranded
+  @if ($base-length == 1) {
+    // if the step provided is actually a target and has the same unit as the base,
+    // we can figured the closest integer step on the current scale to be used.
+    // It's for the cases when the designer provided all values as pixels and
+    // not respecting the modular scale to the "number", but getting close.
+    // Designers don't like float numbers.
+    @if (math.unit($v) == math.unit($base) or math.unit($v) == 'px') {
+      $v: step-by-target($v, $base, $ratio);
+    }
+
+    @return math.pow($ratio, $v) * $base;
+  } @else {
+    $bases: list.nth($base, 1);
+
+    @for $i from 2 through $base-length {
+      $new-base: list.nth($base, $i);
+
+      @while ($new-base > ($ratio * list.nth($base, 1))) {
+        $new-base: math.div($new-base, $ratio);
+      }
+
+      @while ($new-base < list.nth($base, 1)) {
+        $new-base: ($new-base * $ratio);
+      }
+      $bases: list.append($bases, $new-base);
+    }
+
+    $bases: sort($bases);
+  }
+
+  // Find step to use in calculation
+  $step: math.floor(math.div($v, $base-length));
+
+  // Find base to use in calculation
+  $base: math.round((math.div($v, $base-length) - $step) * $base-length) + 1;
+
+  @return math.pow($ratio, $step) * list.nth($bases, $base);
+}
+
+@mixin respond-to($mode: map-get($_settings, 'respond')) {
+  // Setup
+  $id: #{unique-id()};
+  $max: 0;
+  $queries: 0;
+  $c: 0;
+  $query: $mode;
+  // Default query type
+  @if ($query == null) {
+    $query: 'typetura';
+  }
+  // Find maximum value
+  @each $bp in $_settings {
+    @if (meta.type-of(list.nth($bp, 1)) == 'number') {
+      $max: list.nth($bp, 1);
+      $queries: $queries + 1;
+    }
+  }
+
+  // Write fallback styles to broader context
+  @content ($_settings);
+
+  // Typetura styles
+  @if ($query == 'typetura') {
+    --tt-key: #{$id};
+    --tt-max: #{strip-unit($max)};
+    @keyframes #{$id} {
+      @each $bp in $_settings {
+        @if (meta.type-of(list.nth($bp, 1)) == 'number') {
+          $key: list.nth($bp, 1);
+          $keyframe: percentage(math.div($key, $max));
+          #{$keyframe} {
+            @content (list.nth($bp, 1));
+          }
+          $c: $c + 1;
+        }
+      }
+    }
+  } @else if ($query == 'container') {
+      $query: $query + ' modularscale';
+      // Loop through breakpoints
+      @each $bp in $_settings {
+        @if (meta.type-of(list.nth($bp, 1)) == 'number') {
+          @#{$query} (min-width: #{list.nth($bp, 1)}) {
+            $bp: list.nth($bp, 1);
+            @content ($bp);
+          }
+        }
+      }
+    } @else {
+    // Loop through breakpoints
+    @each $bp in $_settings {
+      @if (meta.type-of(list.nth($bp, 1)) == 'number') {
+        @#{$query} (min-width: #{list.nth($bp, 1)}) {
+          $bp: list.nth($bp, 1);
+          @content ($bp);
+        }
+      }
+    }
+  }
+}
+
+@mixin container($selector: '.modularscale') {
+  @at-root {
+    #{$selector} {
+      container-name: modularscale;
+      container-type: inline-size;
+    }
+    $container-write: true;
+  }
+}

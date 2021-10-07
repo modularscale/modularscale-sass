@@ -1,0 +1,13 @@
+@use '../../node_modules/sass-true' as true;
+
+@use '../modularscale/step-by-target' as *;
+
+@include true.describe('step-by-target [function]') {
+  @include true.it('It finds a step based on a target value') {
+    @include true.assert-equal(step-by-target(5em, 1em, 1.5), 4);
+    @include true.assert-equal(step-by-target(170px, 1em, 1.618034), 5);
+    @include true.assert-equal(step-by-target(30px, 1rem, 1.066666667), 10);
+    @include true.assert-equal(step-by-target(15.5px, 1em, 1.125), 0);
+    @include true.assert-equal(step-by-target(2.5rem, 1rem, 1.2), 5);
+  }
+}

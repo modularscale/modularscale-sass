@@ -1,0 +1,26 @@
+@use 'sass:math';
+
+// Find a step based on a target value
+@function step-by-target($target, $base, $ratio) {
+  // convert target pixels to the unit used on $base
+  @if (not math.compatible($target, $base)) {
+    @if (math.unit($target) != 'px') {
+      @error 'To match incompatible units, the target one needs to be `px`, as we use 16px as root size. Target provided: #{$target}.';
+    }
+
+    @if (math.unit($base) == 'rem') {
+      $target: math.div($target, 16px) * 1rem;
+    } @else if (math.unit($base) == 'em') {
+      $target: math.div($target, 16px) * 1em;
+    } @else if (math.unit($base) == '%') {
+      $target: math.div($target, 16px * math.div($base, 100%)) * $base;
+    } @else {
+      @error '#{$target} and #{$base} don\'t have units that can be converted using browser root size';
+    }
+  }
+
+  $target: math.log(math.div($target, $base), $ratio);
+  $target: math.round($target);
+
+  @return $target;
+}

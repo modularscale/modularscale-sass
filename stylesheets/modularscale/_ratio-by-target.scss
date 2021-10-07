@@ -1,0 +1,55 @@
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:string';
+
+@use 'strip-unit' as *;
+@use 'to-num' as *;
+
+// Find a ratio based on a target value
+@function ratio-by-target($target, $base) {
+  $value: 0;
+
+  @if (list.length($base) > 1) {
+    @error 'You are currently using multiple bases in your modular scale: #{$base}. When targeting a value for your ratio, please use a single base.';
+  }
+
+  @if meta.type-of($target) == 'list' {
+    @if list.length($target) != 3 and list.nth($target, 2) != 'at' {
+      @error 'when using 3 values length list, `target()` function expects the second to be `at`; #{list.nth($target, 2)} given.';
+    }
+
+    $value: list.nth($target, 1);
+
+    @if meta.type-of($value) == 'string' {
+      $value: to-num($value);
+    }
+
+    $target: list.nth($target, 3);
+
+    @if meta.type-of($target) == 'string' {
+      $target: to-num($target);
+    }
+  } @else {
+    // Convert to string
+    $target: $target + '';
+
+    // Find where 'at' is in the string
+    $at: string.index($target, 'at');
+
+    // Slice the value and target out
+    // and convert strings to numbers
+    $value: to-num(string.slice($target, 0, $at - 1));
+    $target: to-num(string.slice($target, $at + 2));
+  }
+
+  // Remove base units to calculate ratio
+  $base: strip-unit(nth($base, 1));
+
+  @if $value == $base or $target == 0 {
+    @error 'It\'s impossible to calculate a ratio from the same size as its base';
+  }
+
+  // Solve the modular scale function for the ratio.
+  @return math.pow(math.div($value, $base), math.div(1, $target));
+}

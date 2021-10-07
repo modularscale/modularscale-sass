@@ -30,7 +30,7 @@
 
 # Version 3.0.1
 
-* Fix issue with generic `pow()` being used instead of `ms-pow()`
+* Fix issue with generic `pow()` being used instead of `pow()`
 
 # Version 3.0.0
 
@@ -50,7 +50,7 @@
 
 # Version 2.1.0
 
-  Ground-up re-write of ms-respond based on http://madebymike.com.au/writing/precise-control-responsive-typography/
+  Ground-up re-write of respond based on http://madebymike.com.au/writing/precise-control-responsive-typography/
 
 # Version 2.0.6
 
@@ -66,8 +66,8 @@
 
   * Complete re-write.
   * ratios are variables, not functions
-  * Common variables are scoped to "ms-"
-  * ms-lists() is the list functions
+  * Common variables are scoped to ""
+  * lists() is the list functions
   * No more mixins at all, only functions.
   * Increased compatibility with Sass 3.1 and up
   * Compatibility with LibSass

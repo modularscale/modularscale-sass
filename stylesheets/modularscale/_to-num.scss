@@ -1,0 +1,58 @@
+@use 'sass:string';
+
+// Convert number string to number
+@function to-num($n) {
+  $length: string.length($n);
+  $return: 0;
+
+  @for $i from 1 through $length {
+    $return: $return * 10;
+    $value: string.slice($n, $i, $i);
+
+    @if ($value == '0') {
+      $return: $return + 0;
+    }
+
+    @if ($value == '1') {
+      $return: $return + 1;
+    }
+
+    @if ($value == '2') {
+      $return: $return + 2;
+    }
+
+    @if ($value == '3') {
+      $return: $return + 3;
+    }
+
+    @if ($value == '4') {
+      $return: $return + 4;
+    }
+
+    @if ($value == '5') {
+      $return: $return + 5;
+    }
+
+    @if ($value == '6') {
+      $return: $return + 6;
+    }
+
+    @if ($value == '7') {
+      $return: $return + 7;
+    }
+
+    @if ($value == '8') {
+      $return: $return + 8;
+    }
+
+    @if ($value == '9') {
+      $return: $return + 9;
+    }
+  }
+
+  @if string.slice($n, 1, 1) == '-' {
+    $return: $return * -1;
+  }
+
+  @return $return;
+}

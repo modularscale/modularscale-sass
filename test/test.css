@@ -1,0 +1,93 @@
+.standard {
+  --step-3: 0.9274981217em;
+  --step-2: 1.0202479339em;
+  --step-1: 1.1222727273em;
+  --step0: 1.2345em;
+  --step1: 1.35795em;
+  --step2: 1.493745em;
+  --step3: 1.6431195em;
+}
+
+.multi-stranded {
+  --step-3: 0.7692307692in;
+  --step-2: 2cm;
+  --step-1: 5.9171597633pc;
+  --step0: 1in;
+  --step1: 2.6cm;
+  --step2: 7.6923076923pc;
+  --step3: 1.3in;
+}
+
+.multi-threaded {
+  --step0-thread-s: 12px;
+  --step1-thread-s: 14.4px;
+  --step2-thread-s: 17.28px;
+  --step0-thread-l: 20px;
+  --step1-thread-l: 32px;
+  --step2-thread-l: 51.2px;
+}
+
+.target-size {
+  --step-3: 0.24em;
+  --step-2: 0.4103942272em;
+  --step-1: 0.7017642572em;
+  --step0: 1.2em;
+  --step1: 2.051971136em;
+  --step2: 3.5088212859em;
+  --step3: 6em;
+}
+
+.typetura {
+  font-size: 17.28px;
+  --tt-key: uaxt0j4;
+  --tt-max: 1000;
+}
+@keyframes uaxt0j4 {
+  40% {
+    font-size: 14.4px;
+  }
+  100% {
+    font-size: 51.2px;
+  }
+}
+
+.ms-container {
+  container-name: modularscale;
+  container-type: inline-size;
+}
+
+.container {
+  font-size: 17.28px;
+  padding: 17.28px 17.28px;
+}
+@container modularscale (min-width: 30rem) {
+  .container {
+    font-size: 14.4px;
+    padding: 14.4px 17.28px;
+  }
+}
+@container modularscale (min-width: 60rem) {
+  .container {
+    font-size: 51.2px;
+    padding: 51.2px 17.28px;
+  }
+}
+
+.foo {
+  font-size: 17.28px;
+  padding: 17.28px 17.28px;
+}
+@container modularscale (min-width: 30rem) {
+  .foo {
+    font-size: 14.4px;
+    padding: 14.4px 17.28px;
+  }
+}
+@container modularscale (min-width: 60rem) {
+  .foo {
+    font-size: 51.2px;
+    padding: 51.2px 17.28px;
+  }
+}
+
+/*# sourceMappingURL=test.css.map */

@@ -1,0 +1,9 @@
+@use 'sass:math';
+
+// Stripping units is not a best practice
+// This function should not be used elsewhere
+// It is used here because calc() doesn't do unit logic
+// AND target ratios use units as a hack to get a number.
+@function strip-unit($val) {
+  @return math.div($val, $val - $val + 1);
+}

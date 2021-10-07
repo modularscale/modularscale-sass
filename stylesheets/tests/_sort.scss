@@ -1,0 +1,10 @@
+@use '../../node_modules/sass-true' as true;
+
+@use '../modularscale/sort' as *;
+
+@include true.describe('sort [function]') {
+  @include true.it('It sorts a list of numbers') {
+    @include true.assert-equal(sort(1 3 5 2 9), 1 2 3 5 9, 'separated by spaces');
+    @include true.assert-equal(sort((7, 1, 8, 3, 0)), 0 1 3 7 8, 'separated by commas');
+  }
+}

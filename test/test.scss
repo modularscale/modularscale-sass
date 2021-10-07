@@ -1,0 +1,120 @@
+@use '../stylesheets/modularscale' as ms with ($base: 1.2345em, $ratio: 1.1);
+
+.standard {
+  --step-3: #{ms.step(-3)};
+  --step-2: #{ms.step(-2)};
+  --step-1: #{ms.step(-1)};
+  --step0: #{ms.step(0)};
+  --step1: #{ms.step(1)};
+  --step2: #{ms.step(2)};
+  --step3: #{ms.step(3)};
+}
+
+ms.$settings: (base: 1in 2cm 13pc, ratio: 1.3);
+
+.multi-stranded {
+  --step-3: #{ms.step(-3)};
+  --step-2: #{ms.step(-2)};
+  --step-1: #{ms.step(-1)};
+  --step0: #{ms.step(0)};
+  --step1: #{ms.step(1)};
+  --step2: #{ms.step(2)};
+  --step3: #{ms.step(3)};
+}
+
+ms.$settings: (
+  s: (
+    base: 12px,
+    ratio: 1.2,
+  ),
+  l: (
+    base: 20px,
+    ratio: 1.6,
+  )
+);
+
+.multi-threaded {
+  --step0-thread-s: #{ms.step(0, $thread: s)};
+  --step1-thread-s: #{ms.step(1, $thread: s)};
+  --step2-thread-s: #{ms.step(2, $thread: s)};
+  --step0-thread-l: #{ms.step(0, $thread: l)};
+  --step1-thread-l: #{ms.step(1, $thread: l)};
+  --step2-thread-l: #{ms.step(2, $thread: l)};
+}
+
+ms.$settings: (base: 1.2em, ratio: 6at3);
+
+.target-size {
+  --step-3: #{ms.step(-3)};
+  --step-2: #{ms.step(-2)};
+  --step-1: #{ms.step(-1)};
+  --step0: #{ms.step(0)};
+  --step1: #{ms.step(1)};
+  --step2: #{ms.step(2)};
+  --step3: #{ms.step(3)};
+}
+
+ms.$settings: (
+  base: 12px,
+  ratio: 1.2,
+  respond: typetura,
+  400px: (
+    base: 12px 14px,
+    ratio: 1.2,
+  ),
+  s: (
+    base: 12px,
+    ratio: 1.2,
+  ),
+  1000px: (
+    base: 20px,
+    ratio: 1.6,
+  ),
+  l: (
+    base: 20px,
+    ratio: 1.6,
+  )
+);
+
+.typetura {
+  @include ms.step using ($respond) {
+    font-size: ms.step(2, $respond);
+  }
+}
+
+ms.$settings: (
+  base: 12px,
+  ratio: 1.2,
+  30rem: (
+    base: 12px 14px,
+    ratio: 1.2,
+  ),
+  s: (
+    base: 12px,
+    ratio: 1.2,
+  ),
+  60rem: (
+    base: 20px,
+    ratio: 1.6,
+  ),
+  l: (
+    base: 20px,
+    ratio: 1.6,
+  )
+);
+
+@include ms.container(".ms-container");
+
+.container {
+  @include ms.step(container) using ($respond) {
+    font-size: ms.step(2, $respond);
+    padding: ms.step(2, $respond) ms.step(2);
+  }
+}
+
+.foo {
+  @include ms.step(container) using ($respond) {
+    font-size: ms.step(2, $respond);
+    padding: ms.step(2, $respond) ms.step(2);
+  }
+}

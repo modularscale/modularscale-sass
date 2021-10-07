@@ -1,4 +1,4 @@
-@use '../../node_modules/sass-true' as true;
+@use '../../node_modules/sass-true/sass/true' as true;
 
 // as step() is already loaded for other tests, their settings are defined and we need to override them
 @use '../modularscale/api' as *;
@@ -85,7 +85,7 @@
         @include configure($_test-settings);
 
         // stylelint-disable-next-line order/order
-        @include container('.ms-container');
+        @include container;
 
         .container {
           @include respond-to(container) using ($respond) {

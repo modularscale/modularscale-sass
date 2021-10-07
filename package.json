@@ -1,6 +1,6 @@
 {
   "name": "modularscale-sass",
-  "version": "4.0.0.rc2",
+  "version": "4.0.0.rc3",
   "description": "A tool to help web designers size their type in a more meaningful way.",
   "main": "stylesheets/_modularscale.scss",
   "scripts": {
@@ -29,7 +29,7 @@
     "sass": "^1.34.0"
   },
   "devDependencies": {
-    "sass-true": "^6.0.1",
-    "stylelint-config-sass-guidelines": "^8.0.0"
+    "sass-true": "^5.0.0",
+    "stylelint-config-sass-guidelines": "^1.1.1"
   }
 }

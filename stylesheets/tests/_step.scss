@@ -1,6 +1,6 @@
 @use 'sass:math';
 
-@use '../../node_modules/sass-true' as true;
+@use '../../node_modules/sass-true/sass/true' as true;
 
 @use '../modularscale/api' as * with ($_settings: (base: 1.125em, ratio: 1.25));
 

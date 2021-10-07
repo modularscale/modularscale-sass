@@ -10,7 +10,7 @@
 @use 'step-by-target' as *;
 @use 'strip-unit' as *;
 
-$_settings: ( ) !default;
+$_settings: () !default;
 
 $_ratios: constants.$ratios;
 

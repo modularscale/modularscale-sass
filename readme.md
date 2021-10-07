@@ -17,7 +17,7 @@ To get started, you need to select a ratio and a base value. The base value is u
 
 - [Download the latest zip](https://github.com/modularscale/modularscale-sass/releases/latest)
 - Extract into your project
-- SCSS: `@use '<path-to>/modularscale' as ms;`
+- SCSS: `@use '<path-to>/modularscale' as ms with ($settings: (base: 1.125em, ratio: 1.25));`
 
 ## Using modular scale
 
@@ -53,7 +53,7 @@ You can import the modular scale along with a configuration. Pass the unprefixed
 
 #### Multiple scale threads
 
-Modular scale now supports different settings threads, so you can set up various threads to configure different ratios or breakpoints.
+Modular scale supports different settings threads, so you can set up various threads to configure different ratios or breakpoints.
 
 ```scss
 ms.$settings: (
@@ -137,7 +137,7 @@ You will need to define a container. Do this with the `@include ms.container;` m
 One of the more difficult parts of setting up your scales is finding a ratio that works for you. In many cases you know what size you want your text to be and what size you want larger headings to be. The `at` helper allows you to plug in a target size into the ratio value and it will generate your ratio.
 
 ```scss
-ms.$settings: (base: 16px, ratio: 42at5);
+ms.$settings: (base: 16px, ratio: 42 at 5);
 ```
 
 Now your base is `16px` and when you call `ms.step(5)` it will be `42px`. Everything in-between falls neatly on a scale created with these two values.
@@ -183,11 +183,18 @@ You can add your own ratios as well.
 
 ## [Changelog](https://github.com/Team-Sass/modular-scale/releases)
 
+## Development and contributing
+
+
+
 ### License
 
 The MIT License (MIT)
 
-Copyright © 2011 - 2021 [Scott Kellum](http://www.scottkellum.com/) ([@scottkellum](http://twitter.com/scottkellum)), [Adam Stacoviak](http://adamstacoviak.com/) ([@adamstac](http://twitter.com/adamstac)) and [Mason Wendell](http://thecodingdesigner.com/) ([@codingdesigner](http://twitter.com/codingdesigner))
+Copyright © 2011 - 2021 [Scott Kellum](https://github.com/scottkellum), [Mae Wendell](https://github.com/codingdesigner), [Robson Sobral](https://github.com/robsonsobral), [Adam Stacoviak](https://github.com/adamstac), [Sam Richard](https://github.com/Snugug), [Rob Wierzbowski](https://github.com/robwierzbowski), and [many more](https://github.com/modularscale/modularscale-sass/graphs/contributors).
+
+Inspired by [Tim Brown’s](https://github.com/tbrown) article [_“More Meaningful Typography”_](https://alistapart.com/article/more-meaningful-typography/).
+
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

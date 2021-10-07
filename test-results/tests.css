@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* # Module: settings [function] */
-/* ----------------------------- */
+/* ------------------------------- */
 /* Test: It normalizes base and ratio starting with defaults */
 /*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
 /*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
@@ -15,14 +15,14 @@
 /*  */
 /*  */
 /* # Module: sort [function] */
-/* ------------------------- */
+/* --------------------------- */
 /* Test: It sorts a list of numbers */
 /*   ✔ [assert-equal] separated by spaces */
 /*   ✔ [assert-equal] separated by commas */
 /*  */
 /*  */
 /* # Module: step [function] */
-/* ------------------------- */
+/* --------------------------- */
 /* Test: It returns the size based at the provided step */
 /*   ✔ [assert-equal] when positive */
 /*   ✔ [assert-equal] when using a named ratio */
@@ -46,7 +46,7 @@
 /*  */
 /*  */
 /* # Module: strip-unit [function] */
-/* ------------------------------- */
+/* --------------------------------- */
 /* Test: It remove units from numbers */
 /*   ✔ [assert-equal] when positives */
 /*   ✔ [assert-equal] when negatives */
@@ -54,7 +54,7 @@
 /*  */
 /*  */
 /* # Module: ratio-by-target [function] */
-/* ------------------------------------ */
+/* -------------------------------------- */
 /* Test: It finds a ratio based on a target value */
 /*   ✔ [assert-equal] It finds a ratio based on a target value */
 /*   ✔ [assert-equal] It finds a ratio based on a target value */
@@ -64,7 +64,7 @@
 /*  */
 /*  */
 /* # Module: step-by-target [function] */
-/* ----------------------------------- */
+/* ------------------------------------- */
 /* Test: It finds a step based on a target value */
 /*   ✔ [assert-equal] It finds a step based on a target value */
 /*   ✔ [assert-equal] It finds a step based on a target value */
@@ -74,7 +74,7 @@
 /*  */
 /*  */
 /* # Module: to-num [function] */
-/* --------------------------- */
+/* ----------------------------- */
 /* Test: It parses string digits as numbers */
 /*   ✔ [assert-equal] when 0 */
 /*   ✔ [assert-equal] when positive padded */
@@ -83,16 +83,16 @@
 /*  */
 /*  */
 /* # Module: Responsive modular scales */
-/* ----------------------------------- */
+/* ------------------------------------- */
 /* Test: declaring Typetura */
 /*   ASSERT:    */
 /*   OUTPUT   */
 .typetura {
   font-size: 17.28px;
-  --tt-key: uus44wb;
+  --tt-key: u8jcsfm;
   --tt-max: 1000;
 }
-@keyframes uus44wb {
+@keyframes u8jcsfm {
   40% {
     font-size: 14.4px;
   }
@@ -123,7 +123,7 @@
 /* Test: not declaring mode */
 /*   ASSERT:    */
 /*   OUTPUT   */
-.ms-container {
+.modularscale {
   container-name: modularscale;
   container-type: inline-size;
 }

@@ -1,0 +1,40 @@
+@use 'sass:math';
+@use 'strip-unit' as *;
+
+/// Round a number to a specific number of decimal places
+///
+/// Rounds numbers to a specified number of decimal places, preserving units.
+///
+/// Dart Sass version 1.91.0+ emits numbers with maximum available precision.
+/// As of version 1.94.2, this high precision is incorrectly output to CSS.
+/// This function prevents precision issues by rounding to a specific decimal count.
+///
+/// @link https://github.com/sass/dart-sass/blob/main/CHANGELOG.md#1910
+/// @link https://sass-lang.com/documentation/values/numbers/#precision
+///
+/// @param {number} $number - The number to round (with or without units)
+/// @param {number} $digits [0] - The number of decimal places to round to
+/// @return {number} The rounded number with original units preserved
+/// @example
+///   round-to(3.14159, 2) // 3.14
+///   round-to(2.6999999999999997em, 2) // 2.7em
+///   round-to(41.052552223205566px, 2) // 41.05px
+///   round-to(0.8888888888888888, 4) // 0.8889
+@function round-to($number, $digits: 0) {
+  $unitless: strip-unit($number);
+
+  // Handle zero case to avoid division by zero
+  @if $unitless == 0 {
+    @return 0;
+  }
+
+  // If no decimal places, round to nearest integer using built-in function
+  @if $digits == 0 {
+    @return math.round($number);
+  }
+
+  $power: math.pow(10, $digits);
+  $rounded: math.div(math.round($unitless * $power), $power);
+
+  @return math.div($rounded * $number, $unitless);
+}

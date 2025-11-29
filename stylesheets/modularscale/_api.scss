@@ -10,6 +10,7 @@
 @use 'sort' as *;
 @use 'step-by-target' as *;
 @use 'strip-unit' as *;
+@use 'round-to' as *;
 
 $settings: () !default;
 
@@ -110,7 +111,7 @@ $_ratios: constants.$ratios;
       $v: step-by-target($v, $base, $ratio);
     }
 
-    @return math.pow($ratio, $v) * $base;
+    @return round-to(math.pow($ratio, $v) * $base, 10);
   } @else {
     $bases: list.nth($base, 1);
 
@@ -136,7 +137,7 @@ $_ratios: constants.$ratios;
   // Find base to use in calculation
   $base: math.round((math.div($v, $base-length) - $step) * $base-length) + 1;
 
-  @return math.pow($ratio, $step) * list.nth($bases, $base);
+  @return round-to(math.pow($ratio, $step) * list.nth($bases, $base), 10);
 }
 
 @mixin respond-to($mode: map.get($settings, 'respond')) {

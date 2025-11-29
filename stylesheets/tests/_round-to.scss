@@ -1,0 +1,62 @@
+@use 'pkg:sass-true' as true;
+
+@use '../modularscale/round-to' as *;
+
+
+@include true.describe('round-to [function]') {
+  @include true.it('It rounds numbers to a specific number of decimal places') {
+    // Test rounding to 0 decimal places (integers)
+    @include true.assert-equal(round-to(3.14159), 3, 'when rounding to integer');
+    @include true.assert-equal(round-to(4.5), 5, 'when rounding half to nearest integer');
+    @include true.assert-equal(round-to(4.4), 4, 'when rounding down to nearest integer');
+
+    // Test rounding to 2 decimal places
+    @include true.assert-equal(round-to(3.14159, 2), 3.14, 'to 2 decimals - truncate');
+    @include true.assert-equal(round-to(0.666, 2), 0.67, 'to 2 decimals - round up');
+    @include true.assert-equal(round-to(0.333, 2), 0.33, 'to 2 decimals - round down');
+
+    // Test rounding to 4 decimal places
+    @include true.assert-equal(round-to(3.14159, 4), 3.1416, 'to 4 decimals - round up');
+    @include true.assert-equal(round-to(2.71828, 4), 2.7183, 'to 4 decimals - round up');
+    @include true.assert-equal(round-to(1.234567, 4), 1.2346, 'to 4 decimals - round up');
+
+    // Test rounding to 10 decimal places (Sass precision limit)
+    @include true.assert-equal(round-to(3.14159265359, 10), 3.1415926536000005, 'to 10 decimals');
+    @include true.assert-equal(round-to(2.71828182846, 10), 2.7182818285, 'to 10 decimals');
+
+    // Test rounding high-precision Sass 1.94.2 output
+    @include true.assert-equal(round-to(2.6999999999999997, 2), 2.7, 'Sass 1.94.2 precision - 2 decimals');
+    @include true.assert-equal(round-to(0.36863999999999997, 2), 0.37, 'Sass 1.94.2 precision - 2 decimals');
+    @include true.assert-equal(round-to(0.8888888888888888, 4), 0.8889, 'Sass 1.94.2 precision - 4 decimals');
+    @include true.assert-equal(round-to(0.7901234567901234, 4), 0.7901000000000001, 'Sass 1.94.2 precision - 4 decimals');
+
+    // Test with zero
+    @include true.assert-equal(round-to(0, 2), 0, 'zero value');
+    @include true.assert-equal(round-to(0.0, 4), 0, 'zero value with 4 decimals');
+
+    // Test with negative numbers
+    @include true.assert-equal(round-to(-3.14159, 2), -3.14, 'negative number to 2 decimals');
+    @include true.assert-equal(round-to(-0.666, 2), -0.67, 'negative number rounding up');
+
+    // Test with units (em)
+    @include true.assert-equal(round-to(2.6999999999999997em, 2), 2.7em, 'with em unit to 2 decimals');
+    @include true.assert-equal(round-to(3.14159em, 2), 3.14em, 'with em unit - truncate');
+    @include true.assert-equal(round-to(0.8888888888888888em, 4), 0.8889em, 'with em unit to 4 decimals');
+
+    // Test with units (px)
+    @include true.assert-equal(round-to(41.052552223205566px, 2), 41.05px, 'with px unit to 2 decimals');
+    @include true.assert-equal(round-to(3.14159px, 4), 3.1416px, 'with px unit to 4 decimals');
+
+    // Test with units (%)
+    @include true.assert-equal(round-to(1136.8683772161603%, 2), 1136.87%, 'with percent unit to 2 decimals');
+    @include true.assert-equal(round-to(286.102294921875%, 4), 286.1023%, 'with percent unit to 4 decimals');
+
+    // Test with units (rem)
+    @include true.assert-equal(round-to(1.802032470703125rem, 2), 1.80rem, 'with rem unit to 2 decimals');
+    @include true.assert-equal(round-to(0.7901234567901234rem, 4), 0.7901000000000001rem, 'with rem unit to 4 decimals');
+
+    // Test with negative numbers and units
+    @include true.assert-equal(round-to(-3.14159px, 2), -3.14px, 'negative with px unit to 2 decimals');
+    @include true.assert-equal(round-to(-0.666em, 2), -0.67em, 'negative with em unit to 2 decimals');
+  }
+}

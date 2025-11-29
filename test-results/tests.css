@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* # Module: settings [function] */
-/* ------------------------------- */
+/* ----------------------------- */
 /* Test: It normalizes base and ratio starting with defaults */
 /*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
 /*   ✔ [assert-equal] It normalizes base and ratio starting with defaults */
@@ -15,14 +15,14 @@
 /*  */
 /*  */
 /* # Module: sort [function] */
-/* --------------------------- */
+/* ------------------------- */
 /* Test: It sorts a list of numbers */
 /*   ✔ [assert-equal] separated by spaces */
 /*   ✔ [assert-equal] separated by commas */
 /*  */
 /*  */
 /* # Module: step [function] */
-/* --------------------------- */
+/* ------------------------- */
 /* Test: It returns the size based at the provided step */
 /*   ✔ [assert-equal] when positive */
 /*   ✔ [assert-equal] when using a named ratio */
@@ -46,7 +46,7 @@
 /*  */
 /*  */
 /* # Module: strip-unit [function] */
-/* --------------------------------- */
+/* ------------------------------- */
 /* Test: It remove units from numbers */
 /*   ✔ [assert-equal] when positives */
 /*   ✔ [assert-equal] when negatives */
@@ -54,7 +54,7 @@
 /*  */
 /*  */
 /* # Module: ratio-by-target [function] */
-/* -------------------------------------- */
+/* ------------------------------------ */
 /* Test: It finds a ratio based on a target value */
 /*   ✔ [assert-equal] It finds a ratio based on a target value */
 /*   ✔ [assert-equal] It finds a ratio based on a target value */
@@ -64,7 +64,7 @@
 /*  */
 /*  */
 /* # Module: step-by-target [function] */
-/* ------------------------------------- */
+/* ----------------------------------- */
 /* Test: It finds a step based on a target value */
 /*   ✔ [assert-equal] It finds a step based on a target value */
 /*   ✔ [assert-equal] It finds a step based on a target value */
@@ -74,7 +74,7 @@
 /*  */
 /*  */
 /* # Module: to-num [function] */
-/* ----------------------------- */
+/* --------------------------- */
 /* Test: It parses string digits as numbers */
 /*   ✔ [assert-equal] when 0 */
 /*   ✔ [assert-equal] when positive padded */
@@ -82,17 +82,52 @@
 /*   ✔ [assert-equal] when positive */
 /*  */
 /*  */
+/* # Module: round-to [function] */
+/* ----------------------------- */
+/* Test: It rounds numbers to a specific number of decimal places */
+/*   ✔ [assert-equal] when rounding to integer */
+/*   ✔ [assert-equal] when rounding half to nearest integer */
+/*   ✔ [assert-equal] when rounding down to nearest integer */
+/*   ✔ [assert-equal] to 2 decimals - truncate */
+/*   ✔ [assert-equal] to 2 decimals - round up */
+/*   ✔ [assert-equal] to 2 decimals - round down */
+/*   ✔ [assert-equal] to 4 decimals - round up */
+/*   ✔ [assert-equal] to 4 decimals - round up */
+/*   ✔ [assert-equal] to 4 decimals - round up */
+/*   ✔ [assert-equal] to 10 decimals */
+/*   ✔ [assert-equal] to 10 decimals */
+/*   ✔ [assert-equal] Sass 1.94.2 precision - 2 decimals */
+/*   ✔ [assert-equal] Sass 1.94.2 precision - 2 decimals */
+/*   ✔ [assert-equal] Sass 1.94.2 precision - 4 decimals */
+/*   ✔ [assert-equal] Sass 1.94.2 precision - 4 decimals */
+/*   ✔ [assert-equal] zero value */
+/*   ✔ [assert-equal] zero value with 4 decimals */
+/*   ✔ [assert-equal] negative number to 2 decimals */
+/*   ✔ [assert-equal] negative number rounding up */
+/*   ✔ [assert-equal] with em unit to 2 decimals */
+/*   ✔ [assert-equal] with em unit - truncate */
+/*   ✔ [assert-equal] with em unit to 4 decimals */
+/*   ✔ [assert-equal] with px unit to 2 decimals */
+/*   ✔ [assert-equal] with px unit to 4 decimals */
+/*   ✔ [assert-equal] with percent unit to 2 decimals */
+/*   ✔ [assert-equal] with percent unit to 4 decimals */
+/*   ✔ [assert-equal] with rem unit to 2 decimals */
+/*   ✔ [assert-equal] with rem unit to 4 decimals */
+/*   ✔ [assert-equal] negative with px unit to 2 decimals */
+/*   ✔ [assert-equal] negative with em unit to 2 decimals */
+/*  */
+/*  */
 /* # Module: Responsive modular scales */
-/* ------------------------------------- */
+/* ----------------------------------- */
 /* Test: declaring Typetura */
 /*   ASSERT:    */
 /*   OUTPUT   */
 .typetura {
   font-size: 17.28px;
-  --tt-key: u8jcsfm;
+  --tt-key: udrhxuh;
   --tt-max: 1000;
 }
-@keyframes u8jcsfm {
+@keyframes udrhxuh {
   40% {
     font-size: 14.4px;
   }
@@ -212,12 +247,12 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 9 Tests: */
-/* - 7 Passed */
+/* 10 Tests: */
+/* - 8 Passed */
 /* - 0 Failed */
 /* - 2 Output to CSS */
 /* Stats: */
-/* - 8 Modules */
-/* - 9 Tests */
-/* - 50 Assertions */
+/* - 9 Modules */
+/* - 10 Tests */
+/* - 80 Assertions */
 /* -------------------- */

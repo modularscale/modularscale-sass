@@ -26,7 +26,7 @@
   },
   "homepage": "https://www.modularscale.com",
   "dependencies": {
-    "sass": "^1.34.0"
+    "sass": "^1.94.2"
   },
   "devDependencies": {
     "sass-true": "^5.0.0",

@@ -44,7 +44,7 @@
   }
 
   // Remove base units to calculate ratio
-  $base: strip-unit(nth($base, 1));
+  $base: strip-unit(list.nth($base, 1));
 
   @if $value == $base or $target == 0 {
     @error 'It\'s impossible to calculate a ratio from the same size as its base';

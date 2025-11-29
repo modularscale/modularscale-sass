@@ -2,6 +2,7 @@
 @use 'sass:map';
 @use 'sass:math';
 @use 'sass:meta';
+@use 'sass:string';
 
 @use 'constants';
 @use 'normalize-base-and-ratio' as *;
@@ -10,7 +11,7 @@
 @use 'step-by-target' as *;
 @use 'strip-unit' as *;
 
-$_settings: () !default;
+$global-settings: () !default;
 
 $_ratios: constants.$ratios;
 
@@ -21,12 +22,12 @@ $_ratios: constants.$ratios;
 
   // we need to preserve base
   @if meta.type-of(map.get($settings, 'base')) != 'number' {
-    $base: map.get($_settings, 'base');
+    $base: map.get($global-settings, 'base');
     $settings: map.merge($settings, (base: $base));
   }
   // we need to preserve ratio
   @if meta.type-of(map.get($settings, 'ratio')) != 'number' {
-    $ratio: map.get($_settings, 'ratio');
+    $ratio: map.get($global-settings, 'ratio');
     $settings: map.merge($settings, (ratio: $ratio));
   }
 
@@ -40,7 +41,7 @@ $_ratios: constants.$ratios;
     $settings: map.remove($settings, 'ratios');
   }
 
-  $_settings: $settings !global;
+  $global-settings: $settings !global;
 }
 
 @function step(
@@ -56,7 +57,7 @@ $_ratios: constants.$ratios;
     $thread: $respond;
   }
 
-  $settings: map.deep-merge($_settings, $settings);
+  $settings: map.deep-merge($global-settings, $settings);
 
   @if meta.type-of($ratio) == 'string' {
     @if map.has-key($_ratios, $ratio) {
@@ -76,7 +77,7 @@ $_ratios: constants.$ratios;
   $bases: ();
 
   // Render target values from settings.
-  @if type-of($ratio) == 'string' or type-of($ratio) == 'list' {
+  @if meta.type-of($ratio) == 'string' or meta.type-of($ratio) == 'list' {
     $ratio: radio-target($ratio, $base);
   }
 
@@ -120,9 +121,9 @@ $_ratios: constants.$ratios;
   @return math.pow($ratio, $step) * list.nth($bases, $base);
 }
 
-@mixin respond-to($mode: map-get($_settings, 'respond')) {
+@mixin respond-to($mode: map.get($global-settings, 'respond')) {
   // Setup
-  $id: #{unique-id()};
+  $id: #{string.unique-id()};
   $max: 0;
   $queries: 0;
   $c: 0;
@@ -132,7 +133,7 @@ $_ratios: constants.$ratios;
     $query: 'typetura';
   }
   // Find maximum value
-  @each $bp in $_settings {
+  @each $bp in $global-settings {
     @if (meta.type-of(list.nth($bp, 1)) == 'number') {
       $max: list.nth($bp, 1);
       $queries: $queries + 1;
@@ -140,17 +141,17 @@ $_ratios: constants.$ratios;
   }
 
   // Write fallback styles to broader context
-  @content ($_settings);
+  @content ($global-settings);
 
   // Typetura styles
   @if ($query == 'typetura') {
     --tt-key: #{$id};
     --tt-max: #{strip-unit($max)};
     @keyframes #{$id} {
-      @each $bp in $_settings {
+      @each $bp in $global-settings {
         @if (meta.type-of(list.nth($bp, 1)) == 'number') {
           $key: list.nth($bp, 1);
-          $keyframe: percentage(math.div($key, $max));
+          $keyframe: math.percentage(math.div($key, $max));
           #{$keyframe} {
             @content (list.nth($bp, 1));
           }
@@ -161,7 +162,7 @@ $_ratios: constants.$ratios;
   } @else if ($query == 'container') {
       $query: $query + ' modularscale';
       // Loop through breakpoints
-      @each $bp in $_settings {
+      @each $bp in $global-settings {
         @if (meta.type-of(list.nth($bp, 1)) == 'number') {
           @#{$query} (min-width: #{list.nth($bp, 1)}) {
             $bp: list.nth($bp, 1);
@@ -171,7 +172,7 @@ $_ratios: constants.$ratios;
       }
     } @else {
     // Loop through breakpoints
-    @each $bp in $_settings {
+    @each $bp in $global-settings {
       @if (meta.type-of(list.nth($bp, 1)) == 'number') {
         @#{$query} (min-width: #{list.nth($bp, 1)}) {
           $bp: list.nth($bp, 1);

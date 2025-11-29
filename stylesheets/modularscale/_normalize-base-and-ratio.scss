@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 // Parse settings starting with defaults.
 // Settings should cascade down like you would expect in CSS.
 // More specific overrides previous settings.
@@ -6,29 +8,29 @@
   $base: 1em;
   $ratio: 1.5;
   $respond: 'media';
-  $thread: map-get($m, $t);
+  $thread: map.get($m, $t);
 
   // Override with user settings
-  @if map-get($m, 'base') {
-    $base: map-get($m, 'base');
+  @if map.get($m, 'base') {
+    $base: map.get($m, 'base');
   }
 
-  @if map-get($m, 'ratio') {
-    $ratio: map-get($m, 'ratio');
+  @if map.get($m, 'ratio') {
+    $ratio: map.get($m, 'ratio');
   }
 
-  @if map-get($m, 'respond') {
-    $respond: map-get($m, 'respond');
+  @if map.get($m, 'respond') {
+    $respond: map.get($m, 'respond');
   }
 
   // Override with thread settings
   @if $thread {
-    @if map-get($thread, 'base') {
-      $base: map-get($thread, 'base');
+    @if map.get($thread, 'base') {
+      $base: map.get($thread, 'base');
     }
 
-    @if map-get($thread, 'ratio') {
-      $ratio: map-get($thread, 'ratio');
+    @if map.get($thread, 'ratio') {
+      $ratio: map.get($thread, 'ratio');
     }
   }
 

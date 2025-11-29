@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "sass:math";
+
 // Will remove this as soon as Sass has native sorting
 // https://github.com/sass/sass/issues/155
 
@@ -6,13 +9,13 @@
   $return: ();
 
   // Loop through the list only once.
-  @for $i from 0 to length($l) {
+  @for $i from 0 to list.length($l) {
     // Find the lowest value
-    $m: min($l...);
+    $m: math.min($l...);
     // Write that value to the return
-    $return: append($return, $m);
+    $return: list.append($return, $m);
     // Replace that value in the list so it won't be called again.
-    $l: set-nth($l, index($l, $m), 999);
+    $l: list.set-nth($l, list.index($l, $m), 999);
   }
 
   // Return the newly sorted list

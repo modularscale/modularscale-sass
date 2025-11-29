@@ -3,4 +3,4 @@ $settings: (
   $respond: 'typetura'
 ) !default;
 
-@forward 'api' with ($_settings: $settings);
+@forward 'api' with ($global-settings: $settings);

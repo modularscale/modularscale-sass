@@ -1,0 +1,5 @@
+@use 'modularscale' as ms with ($settings: ());
+
+foo {
+  font-size: ms.step(3);
+}

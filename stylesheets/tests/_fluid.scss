@@ -1,0 +1,34 @@
+@use 'sass:math';
+
+@use 'pkg:sass-true' as true;
+
+@use '../modularscale/api' as *;
+
+@include true.describe('fluid [function]') {
+  @include configure((
+     base: 1em,
+     ratio: 1.5,
+  ));
+
+  @include true.it('It returns the fluid size based on the provided parameters') {
+    @include true.assert-equal(fluid(2.25em 37.5em, 3.25em 87.5em), clamp(2.25em, 2cqi + 1.5em, 3.25em), 'when using em units');
+
+    @include true.assert-equal(fluid(2 37.5em, 5 87.5em), clamp(2.25em, 10.6875cqi - 1.7578125em, 7.59375em), 'when using steps on scale');
+
+    @include true.assert-equal(fluid(36px 600px, 52px 1400px), clamp(36px, 2cqi + 24px, 52px), 'when using px units');
+
+    @include true.assert-equal(fluid(36% 600%, 52% 1400%), clamp(36%, 2cqi + 24%, 52%), 'when using % units');
+
+    @include true.assert-equal(fluid(2rem 25rem, 5rem 50rem), clamp(2rem, 12cqi - 1rem, 5rem), 'when using rem units');
+  }
+
+  @include true.it('It accepts the `at` separator syntax') {
+    @include true.assert-equal(fluid(2.25em at 37.5em, 3.25em at 87.5em), clamp(2.25em, 2cqi + 1.5em, 3.25em), 'when using em units with `at` syntax');
+
+    @include true.assert-equal(fluid(2 at 37.5em, 5 at 87.5em), clamp(2.25em, 10.6875cqi - 1.7578125em, 7.59375em), 'when using steps on scale with `at` syntax');
+
+    @include true.assert-equal(fluid(36px at 600px, 52px at 1400px), clamp(36px, 2cqi + 24px, 52px), 'when using px units with `at` syntax');
+
+    @include true.assert-equal(fluid(2rem at 25rem, 5rem at 50rem), clamp(2rem, 12cqi - 1rem, 5rem), 'when using rem units with `at` syntax');
+  }
+}

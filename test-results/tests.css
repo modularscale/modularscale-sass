@@ -117,6 +117,22 @@
 /*   ✔ [assert-equal] negative with em unit to 2 decimals */
 /*  */
 /*  */
+/* # Module: fluid [function] */
+/* -------------------------- */
+/* Test: It returns the fluid size based on the provided parameters */
+/*   ✔ [assert-equal] when using em units */
+/*   ✔ [assert-equal] when using steps on scale */
+/*   ✔ [assert-equal] when using px units */
+/*   ✔ [assert-equal] when using % units */
+/*   ✔ [assert-equal] when using rem units */
+/*  */
+/* Test: It accepts the `at` separator syntax */
+/*   ✔ [assert-equal] when using em units with `at` syntax */
+/*   ✔ [assert-equal] when using steps on scale with `at` syntax */
+/*   ✔ [assert-equal] when using px units with `at` syntax */
+/*   ✔ [assert-equal] when using rem units with `at` syntax */
+/*  */
+/*  */
 /* # Module: Responsive modular scales */
 /* ----------------------------------- */
 /* Test: declaring Typetura */
@@ -247,12 +263,12 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 10 Tests: */
-/* - 8 Passed */
+/* 12 Tests: */
+/* - 10 Passed */
 /* - 0 Failed */
 /* - 2 Output to CSS */
 /* Stats: */
-/* - 9 Modules */
-/* - 10 Tests */
-/* - 80 Assertions */
+/* - 10 Modules */
+/* - 12 Tests */
+/* - 89 Assertions */
 /* -------------------- */

@@ -211,3 +211,125 @@ $_ratios: constants.$ratios;
     $container-write: true;
   }
 }
+
+/// Parses a fluid parameter that can be either:
+/// - A 2-item list: (size, width)
+/// - A 3-item list with `at` separator: (size at width)
+///
+/// @param {list} $param - The parameter to parse
+/// @param {string} $name - Parameter name for error messages
+/// @return {list} A normalized 2-item list (size, width)
+@function _parse-fluid-param($param, $name) {
+  @if (meta.type-of($param) != 'list') {
+    @error 'Invalid format for #{$name} parameter in `fluid()`: `#{$param}`. Expected format: `(SIZE, WIDTH)` or `(SIZE at WIDTH)`';
+  }
+
+  $length: list.length($param);
+
+  // Format: (size, width)
+  @if ($length == 2) {
+    @return $param;
+  }
+
+  // Format: (size at width) - parsed as 3-item list with `at` as middle element
+  @if ($length == 3 and list.nth($param, 2) == 'at') {
+    @return (list.nth($param, 1), list.nth($param, 3));
+  }
+
+  @error 'Invalid format for #{$name} parameter in `fluid()`: `#{$param}`. Expected format: `(SIZE, WIDTH)` or `(SIZE at WIDTH)`';
+}
+
+/// Fluid typography function that scales between min and max sizes
+/// across a viewport range.
+///
+/// @link https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/
+///
+/// @param {list} $initial - A list of `(size, width)`, `size at width`, or `size width` for the minimum bound
+/// @param {list} $final - A list of `(size, width)`, `size at width`, or `size width` for the maximum bound
+///
+/// @return {number} Calculated fluid size
+@function fluid($initial, $final) {
+  // Parse and normalize parameters
+  $initial: _parse-fluid-param($initial, '$initial');
+  $final: _parse-fluid-param($final, '$final');
+
+  $min-size: list.nth($initial, 1);
+  $initial-width: list.nth($initial, 2);
+  $max-size: list.nth($final, 1);
+  $final-width: list.nth($final, 2);
+
+  // Validate parameters
+  @if (meta.type-of($min-size) != 'number') {
+    @error 'Invalid size value for $initial parameter in `fluid()`: `#{$min-size}`';
+  }
+
+  @if (meta.type-of($max-size) != 'number') {
+    @error 'Invalid size value for $final parameter in `fluid()`: `#{$max-size}`';
+  }
+
+  @if (meta.type-of($initial-width) != 'number') {
+    @error 'Invalid width value for $initial parameter in `fluid()`: `#{$initial-width}`';
+  }
+
+  @if (meta.type-of($final-width) != 'number') {
+    @error 'Invalid width value for $final parameter in `fluid()`: `#{$final-width}`';
+  }
+
+  @if ($initial-width >= $final-width) {
+    @error '$initial width must be less than $final width in `fluid()`. Got `#{$initial-width}` and `#{$final-width}`';
+  }
+
+  // Validate if If the maximum font size is less than or equal to 2.5 times the
+  // minimum font size, then the text will always pass WCAG SC 1.4.4, at least
+  // on all modern browsers.
+  @if ($max-size > 2.5 * $min-size) {
+    @warn 'The maximum font size should be at most 2.5 times the minimum font size to ensure WCAG SC 1.4.4 compliance. Got #{$min-size} and #{$max-size}';
+  }
+
+  // Validate that $min-size and $max-size have matching units (if both have units)
+  $min-unit: math.unit($min-size);
+  $max-unit: math.unit($max-size);
+
+  // If $min-size is unitless, use it as-is in calculations
+  @if ($min-unit == '') {
+    $min-size: step($min-size);
+
+    // Now, we have real unit
+    $min-unit: math.unit($min-size);
+  }
+
+  @if ($max-unit == '') {
+    $max-size: step($max-size);
+
+    // Now, we have real unit
+    $max-unit: math.unit($max-size);
+  }
+
+  @if (string.to-lower-case($min-unit) == 'px' or string.to-lower-case($max-unit) == 'px') {
+    @warn 'Using pixel units for font sizes prevents users from scaling text with browser settings, which may cause accessibility issues (WCAG SC 1.4.4).';
+  }
+
+  @if ($min-unit != '' and $max-unit != '' and $min-unit != $max-unit) {
+    @error '`$min-size` and `$max-size` must have the same unit. Got #{$min-unit} and #{$max-unit}';
+  }
+
+  $initial-unit: math.unit($initial-width);
+  $final-unit: math.unit($final-width);
+
+  // Validate that $initial-width and $final-width have units and matching units
+  @if ($initial-unit == '' or $final-unit == '') {
+    @error '`$initial-width` and `$final-width` must have units. Got `#{$initial-unit}` and `#{$final-unit}`';
+  }
+  @if ($initial-unit != $final-unit) {
+    @error '`$initial-width` and `$final-width` must have the same unit. Got `#{$initial-unit}` and `#{$final-unit}`';
+  }
+
+  // validate that sizes and widths have the same units
+  @if ($min-unit != $initial-unit or $max-unit != $final-unit) {
+    @error 'Sizes and widths must have the same units respectively. Got sizes: `#{$min-unit}`, `#{$max-unit}` and widths: #`{$initial-unit}`, `#{$final-unit}`';
+  }
+  $v: calc(100 * ($max-size - $min-size) / ($final-width - $initial-width));
+  $r: calc(($initial-width * $max-size - $final-width * $min-size) / ($initial-width - $final-width));
+
+  @return clamp($min-size, $v * 1cqi + $r , $max-size);
+}

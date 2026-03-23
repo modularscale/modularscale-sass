@@ -23,7 +23,7 @@ To get started, you need to select a ratio and a base value. The base value is u
 
 #### Initial setup and usage:
 
-The first thing you’ll want to do when you start using modular scale is configure it to meet your needs. This is done in the `ms.$settings` map.
+The first thing you'll want to do when you start using modular scale is configure it to meet your needs. This is done in the `ms.$settings` map.
 
 ```scss
 ms.$settings: (base: 1rem, ratio: 1.25);

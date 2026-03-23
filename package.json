@@ -29,7 +29,7 @@
     "sass": "^1.94.2"
   },
   "devDependencies": {
-    "sass-true": "^10.0.0",
+    "sass-true": "^10.1.0",
     "stylelint-config-sass-guidelines": "^1.1.1"
   }
 }

@@ -1,12 +1,12 @@
 {
   "name": "modularscale-sass",
-  "version": "4.0.0.rc2",
+  "version": "4.0.0.rc3",
   "description": "A tool to help web designers size their type in a more meaningful way.",
   "main": "stylesheets/_modularscale.scss",
   "scripts": {
-    "pretest": "npx sass --no-source-map stylesheets:test-results",
+    "pretest": "npx sass --pkg-importer=node --no-source-map stylesheets:test-results",
     "test": "git diff --exit-code test-results/tests.css",
-    "test:watch": "npm run pretest && npx sass --watch --no-source-map stylesheets:test-results"
+    "test:watch": "npm run pretest && npx sass --pkg-importer=node --watch --no-source-map stylesheets:test-results"
   },
   "repository": {
     "type": "git",
@@ -26,10 +26,10 @@
   },
   "homepage": "https://www.modularscale.com",
   "dependencies": {
-    "sass": "^1.34.0"
+    "sass": "^1.94.2"
   },
   "devDependencies": {
-    "sass-true": "^6.0.1",
-    "stylelint-config-sass-guidelines": "^8.0.0"
+    "sass-true": "^10.1.0",
+    "stylelint-config-sass-guidelines": "^1.1.1"
   }
 }

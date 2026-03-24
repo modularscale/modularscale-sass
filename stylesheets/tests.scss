@@ -1,4 +1,4 @@
-@use '../node_modules/sass-true' as true;
+@use '../node_modules/sass-true/sass/true' as true;
 
 // functions
 @use 'tests/normalize-base-and-ratio';
@@ -8,6 +8,7 @@
 @use 'tests/ratio-by-target';
 @use 'tests/step-by-target';
 @use 'tests/to-num';
+@use 'tests/round-to';
 
 // mixins
 @use 'tests/respond';

@@ -1,9 +1,49 @@
 @use 'sass:map';
 
-// Parse settings starting with defaults.
-// Settings should cascade down like you would expect in CSS.
-// More specific overrides previous settings.
-
+/// Normalizes and cascades base and ratio values from multiple sources.
+///
+/// Parses settings starting with defaults. Settings cascade down like you would
+/// expect in CSS, where more specific settings override previous ones.
+///
+/// This function implements a priority cascade system for modular scale settings,
+/// combining default values, global configuration, thread-specific settings, and
+/// inline parameters.
+///
+/// **Priority cascade (from lowest to highest):**
+/// 1. Default values (base: 1em, ratio: 1.5)
+/// 2. Global settings from $m ('base' and 'ratio' keys)
+/// 3. Thread-specific settings from $m (if $t is provided and exists)
+/// 4. Inline parameters ($b and $r)
+///
+/// @param {Number | List} $b [null] - Inline base value(s). Has highest priority and overrides all other base settings.
+/// @param {Number} $r [null] - Inline ratio value. Has highest priority and overrides all other ratio settings.
+/// @param {String} $t [null] - Thread name to lookup in the settings map. Thread settings override global settings but are overridden by inline parameters.
+/// @param {Map} $m [()] - Settings map containing the modular scale configuration, including 'base', 'ratio', 'respond', and any thread definitions.
+///
+/// @return {List} A space-separated list containing the final base and ratio values: `$base $ratio`
+///
+/// @example scss - Basic usage with inline parameters
+///   $result: normalize-base-and-ratio($b: 16px, $r: 1.618);
+///   // Returns: 16px 1.618
+///
+/// @example scss - Using a thread from the settings map
+///   $settings: (
+///     base: 1em,
+///     ratio: 1.5,
+///     heading: (
+///       base: 1.2em,
+///       ratio: 1.618
+///     )
+///   );
+///   $result: normalize-base-and-ratio($t: heading, $m: $settings);
+///   // Returns: 1.2em 1.618
+///
+/// @example scss - Combining thread with inline override
+///   $result: normalize-base-and-ratio($b: 1.5em, $t: heading, $m: $settings);
+///   // Returns: 1.5em 1.618 (inline base overrides thread base)
+///
+/// @group Utilities
+/// @access private
 @function normalize-base-and-ratio($b: null, $r: null, $t: null, $m: ()) {
   $base: 1em;
   $ratio: 1.5;

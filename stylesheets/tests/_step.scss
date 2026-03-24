@@ -9,6 +9,7 @@
   @include true.it('It returns the size based at the provided step') {
     @include true.assert-equal(step(3), 2.197265625em, 'when positive');
     @include true.assert-equal(step(11, $ratio: 'phi'), 223.8806702465em, 'when using a named ratio');
+    @include true.assert-equal(step(11, $settings: (ratio: 'phi')), 223.8806702465em, 'when using a named ratio from settings map');
     @include true.assert-equal(step(13, $ratio: 'week', $settings:(ratios: (week: 3.428571))), 10177085.866626266em, 'when using a custom named ratio');
     @include true.assert-equal(step(5, $base: 1em 1.2em, $ratio: 1.5), 2.7em, 'when using two bases');
     @include true.assert-equal(step(7, $base: 1em 1.2em 1.6em, $ratio: 1.5), 2.4em, 'when using three bases');

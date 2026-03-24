@@ -23,7 +23,7 @@ $_ratios: constants.$ratios;
 
 @mixin configure($settings: ()) {
   @if meta.type-of($settings) != 'map' {
-    @error 'Invalid type of settings provided: #{meta.type-of($settings)}';
+    @error 'Invalid type of settings provided for `configure` mixin: #{meta.type-of($settings)}';
   }
 
   $global-settings: _get-global-settings();
@@ -94,6 +94,15 @@ $_ratios: constants.$ratios;
   $ratio: list.nth($combined-settings, 2);
   $base-length: list.length($base);
   $bases: ();
+
+  // Resolve named ratio from settings map (e.g. ratio: 'minor-second')
+  @if meta.type-of($ratio) == 'string' {
+    @if map.has-key($_ratios, $ratio) {
+      $ratio: map.get($_ratios, $ratio);
+    } @else if map.has-key($combined-settings, 'ratios', $ratio) {
+      $ratio: map.get($combined-settings, 'ratios', $ratio);
+    }
+  }
 
   // Render target values from settings.
   @if meta.type-of($ratio) == 'string' or meta.type-of($ratio) == 'list' {
